@@ -63,7 +63,7 @@ public class LogInController : MonoBehaviour
 
     void Update()
     {
-        dispatcher.PollJobs();  // 未処理のジョブがあれば実行
+        dispatcher.PollJobs();  
     }
 
     public TResult RunOnMainThread<TResult>(System.Func<TResult> f)
