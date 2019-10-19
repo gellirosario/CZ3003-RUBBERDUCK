@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "181294525249",
+    "firebase_url": "https://teamrubberduck-1420e.firebaseio.com",
+    "project_id": "teamrubberduck-1420e",
+    "storage_bucket": "teamrubberduck-1420e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181294525249:android:c6bfa113c869bc56d98fc0",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.CZ3003UNITY"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181294525249-74b0jots3q8gnvp7dnl7ujopckgcmqs6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo5rxkNZ8mx3zEnOEDwwKwvNBie2DUuM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181294525249-74b0jots3q8gnvp7dnl7ujopckgcmqs6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -226,18 +226,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 140341370}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1155971490}
-        m_MethodName: LoadNextScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Main
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &140341372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -889,9 +878,9 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Register
+          m_StringArgument: register
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!222 &824483897
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1065,6 +1054,7 @@ GameObject:
   - component: {fileID: 1155971489}
   - component: {fileID: 1155971488}
   - component: {fileID: 1155971487}
+  - component: {fileID: 1155971491}
   - component: {fileID: 1155971490}
   m_Layer: 0
   m_Name: Main Camera
@@ -1151,6 +1141,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0825cbb60b83b419376835e1271c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1155971491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155971486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d617bad6705d5c148aacf438a6f54a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmailInputField: {fileID: 2104397767}
+  PasswordInputField: {fileID: 1514088641}
+  LoginButton: {fileID: 140341371}
+  ErrorText: {fileID: 0}
 --- !u!1 &1264952644
 GameObject:
   m_ObjectHideFlags: 0
