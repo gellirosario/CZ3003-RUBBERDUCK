@@ -1,0 +1,499 @@
+fileFormatVersion: 2
+guid: 523dd5dec4d987e4b9c554a3ea7df40d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 383751540797132683
+    second: e003a_10swinging_0
+  - first:
+      213: -372601264151419891
+    second: e003a_10swinging_1
+  - first:
+      213: 7730824379897358070
+    second: e003a_10swinging_2
+  - first:
+      213: 8281290881375612291
+    second: e003a_10swinging_3
+  - first:
+      213: 1650966504740906404
+    second: e003a_10swinging_4
+  - first:
+      213: 5451206033291553355
+    second: e003a_10swinging_5
+  - first:
+      213: 957435538190866222
+    second: e003a_10swinging_6
+  - first:
+      213: -1879621445942511966
+    second: e003a_10swinging_7
+  - first:
+      213: 2247225183750024240
+    second: e003a_10swinging_8
+  - first:
+      213: -9061797449405859299
+    second: e003a_10swinging_9
+  - first:
+      213: 4343696724344904451
+    second: e003a_10swinging_10
+  - first:
+      213: -2501235107366455204
+    second: e003a_10swinging_11
+  - first:
+      213: -3118340985222429334
+    second: e003a_10swinging_12
+  - first:
+      213: -2088539957473203335
+    second: e003a_10swinging_13
+  - first:
+      213: 341912446839076849
+    second: e003a_10swinging_14
+  - first:
+      213: -6867905472477543165
+    second: e003a_10swinging_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: e003a_10swinging_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1528
+        width: 305
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d46c245f32a401c438329ad85758c161
+      internalID: 383751540797132683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_1
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1528
+        width: 317
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97d592394360ba40b3e6ad3b7b380dc
+      internalID: -372601264151419891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_2
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 1528
+        width: 331
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b62b014f9cb8d14d8057c034ce713be
+      internalID: 7730824379897358070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_3
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 1528
+        width: 314
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d527727676438342a57002ab34a27f7
+      internalID: 8281290881375612291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_4
+      rect:
+        serializedVersion: 2
+        x: 2027
+        y: 1528
+        width: 251
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 349f5068433ed7142ba5f9df701f883d
+      internalID: 1650966504740906404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_5
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1048
+        width: 216
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96e89a97cf423f409b46293250e478d
+      internalID: 5451206033291553355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_6
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1048
+        width: 201
+        height: 370
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6dbd6e118d3a8c4fa638375761566e8
+      internalID: 957435538190866222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_7
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 1048
+        width: 220
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa9ccf99cc89f83439c958668c8b149a
+      internalID: -1879621445942511966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_8
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 1047
+        width: 289
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 693fd06da1a7d9b43b5cda3eeaaeb960
+      internalID: 2247225183750024240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_9
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 1047
+        width: 360
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dbfcd405aacf874c9ee8ac112da60e4
+      internalID: -9061797449405859299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_10
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 566
+        width: 364
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644965f317df4fb43a37768497f21b14
+      internalID: 4343696724344904451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_11
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 561
+        width: 347
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e0feb8de819a8a4497ca41f5768e4e4
+      internalID: -2501235107366455204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_12
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 561
+        width: 348
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a3bb63985e2d649bf0b77eef79bb30
+      internalID: -3118340985222429334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_13
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 561
+        width: 347
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f32c9afd63e9ef4c82b13e6e14723f2
+      internalID: -2088539957473203335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_14
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 561
+        width: 347
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1514c2d02a6c9d458fdc57e2b7b2927
+      internalID: 341912446839076849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e003a_10swinging_15
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 81
+        width: 345
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e043af97f7ffa4dad62838768f6ca1
+      internalID: -6867905472477543165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
