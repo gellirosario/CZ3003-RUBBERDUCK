@@ -37,7 +37,7 @@ public class LevelController : MonoBehaviour
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
                 AddQuestionToDatabase();
-                GetQuestionsFromDatabase();
+                
             } else {
                 UnityEngine.Debug.LogError(System.String.Format(
                     "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
@@ -54,8 +54,10 @@ public class LevelController : MonoBehaviour
         {
             Question question = new Question(1, 1, "Medium", "Test Question " + i, 1, "1", "2", "3", "4");
             string json = JsonUtility.ToJson(question);
-            reference.Child("Questions").Child("World").Child("1").Child("Stage").Child("1").SetRawJsonValueAsync(json);
+            reference.Child("Questions").Child("World1").Child("Stage1").Child("1").SetRawJsonValueAsync(json);
         }
+        
+        GetQuestionsFromDatabase();
     }
 
     private void GetQuestionsFromDatabase()
@@ -70,18 +72,27 @@ public class LevelController : MonoBehaviour
                 Debug.Log("Received values for Questions.");
                 
                 DataSnapshot snapshot = task.Result;
-                foreach (var questions in snapshot.Children){
-                    levelTxt.text = "Level " + levelNo;
-                    questionList.Insert(1,questions);
-                    //option1Btn.GetComponentInChildren(Text).text = dictQuestions["option1"];
-                    //option2Btn.GetComponentInChildren(Text).text = dictQuestions["option2"];
-                    //option3Btn.GetComponentInChildren(Text).text = dictQuestions["option3"];
-                    //option4Btn.GetComponentInChildren(Text).text = dictQuestions["option4"];
+                
+                foreach (var world in snapshot.Children)
+                {
+                    Debug.LogFormat("Key = {0}", world.Key);  // "Key = world"
+                    
+                    foreach (var stages in world.Children)
+                    {
+                        Debug.LogFormat("Key = {0}", stages.Key);  // "Key = stage"
+                        
+                        foreach (var questionNo in stages.Children)
+                        {
+                            foreach (var details in questionNo.Children)
+                            {
+                                Debug.LogFormat("Key = {0}, Value = {0}", details.Key, details.Value.ToString());
+                            }
+                        }
+                    }
                 }
             }
         });
-        Debug.Log(questionList);
-        //questionTxt.text = (Question) questionList[0].getQuestion();
+        
     }
     
 }
