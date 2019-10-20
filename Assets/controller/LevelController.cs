@@ -16,9 +16,7 @@ public class LevelController : MonoBehaviour
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
     
-    ArrayList questionList = new ArrayList();
-    Question question = new Question();
-    //private Question[] questionList;
+    public List<Question> questionList = new List<Question>();
     private static int levelNo = 0;
     
     public void Start()
@@ -37,7 +35,7 @@ public class LevelController : MonoBehaviour
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
                 AddQuestionToDatabase();
-                
+
             } else {
                 UnityEngine.Debug.LogError(System.String.Format(
                     "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
@@ -50,18 +48,21 @@ public class LevelController : MonoBehaviour
     // Testing purposes
     private void AddQuestionToDatabase()
     {
+        /*
         for (int i = 0; i < 3; i++)
         {
-            Question question = new Question(1, 1, "Medium", "Test Question " + i, 1, "1", "2", "3", "4");
+            Question question = new Question(1, 1, 1, "Medium", "Test Question " + i, 1, "1", "2", "3", "4");
             string json = JsonUtility.ToJson(question);
-            reference.Child("Questions").Child("World1").Child("Stage1").Child("1").SetRawJsonValueAsync(json);
+            reference.Child("Questions").Child(i.ToString()).SetRawJsonValueAsync(json);
         }
+        */
         
         GetQuestionsFromDatabase();
     }
 
     private void GetQuestionsFromDatabase()
     {
+    
         Firebase.Database.FirebaseDatabase dbInstance = Firebase.Database.FirebaseDatabase.DefaultInstance;
         dbInstance.GetReference("Questions").GetValueAsync().ContinueWith(task => {
             if (task.IsFaulted) {
@@ -72,24 +73,17 @@ public class LevelController : MonoBehaviour
                 Debug.Log("Received values for Questions.");
                 
                 DataSnapshot snapshot = task.Result;
+
                 
-                foreach (var world in snapshot.Children)
+                foreach (DataSnapshot questionNode in snapshot.Children)
                 {
-                    Debug.LogFormat("Key = {0}", world.Key);  // "Key = world"
-                    
-                    foreach (var stages in world.Children)
-                    {
-                        Debug.LogFormat("Key = {0}", stages.Key);  // "Key = stage"
-                        
-                        foreach (var questionNo in stages.Children)
-                        {
-                            foreach (var details in questionNo.Children)
-                            {
-                                Debug.LogFormat("Key = {0}, Value = {0}", details.Key, details.Value.ToString());
-                            }
-                        }
-                    }
+                    //Debug.LogFormat("Key = {0}", questionNode.Key);  // "Key = questionNo"
+                    var questionDict = (IDictionary <string, object>) questionNode.Value;
+                    Question quest = new Question(questionDict);
+                    questionList.Add(quest);
                 }
+
+                Debug.Log(questionList[0].question);
             }
         });
         
