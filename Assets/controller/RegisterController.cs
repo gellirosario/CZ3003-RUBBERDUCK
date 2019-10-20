@@ -10,9 +10,9 @@ using System;
 public class RegisterController : MonoBehaviour
 {
     private FirebaseAuth auth;
-    public InputField UserNameInput, PasswordInput;
-    public Button RegisterButton;
-    public Text ErrorText;
+    public InputField emailInput, passwordInput, confirmInput;
+    public Button registerBtn;
+    public Text messageTxt;
 
 
 
@@ -20,30 +20,29 @@ public class RegisterController : MonoBehaviour
     void Start()
     {
         auth = FirebaseAuth.DefaultInstance;
-
-        
-
-        RegisterButton.onClick.AddListener(() => Signup(UserNameInput.text, PasswordInput.text));
+		messageTxt.text = "";
+        registerBtn.onClick.AddListener(() => Register(emailInput.text, passwordInput.text, confirmInput.text));
     }
 
 
-    private void UpdateErrorMessage(string message)
+    private void UpdateMessage(string message)
     {
-        ErrorText.text = message;
-        Invoke("ClearErrorMessage", 3);
+        messageTxt.text = message;
+        Invoke("ClearMessage", 3);
     }
 
     void ClearErrorMessage()
     {
-        ErrorText.text = "";
+        messageTxt.text = "";
     }
 
-    public void Signup(string email, string password)
+    public void Register(string email, string password, string confirm)
     {
 
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirm))
         {
             //Error handling
+			messageTxt.text = "Please enter all details";
             return;
         }
 
@@ -58,20 +57,22 @@ public class RegisterController : MonoBehaviour
             {
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync error: " + task.Exception);
                 if (task.Exception.InnerExceptions.Count > 0)
-                    UpdateErrorMessage(task.Exception.InnerExceptions[0].Message);
+                    UpdateMessage(task.Exception.InnerExceptions[0].Message);
                 return;
             }
 
             FirebaseUser newUser = task.Result; // Firebase user has been created.
-            Debug.LogFormat("Firebase user created successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
-            UpdateErrorMessage("Signup Success");
+            Debug.LogFormat("Firebase user created successfully: {0} ({1})",newUser.DisplayName, newUser.UserId);
+			ClearDetails();
+            UpdateMessage("Signup Success");
 
-            SceneManager.LoadScene("play");
+            //SceneManager.LoadScene("Login");
         });
     }
-
-
-    // Update is called once per frame
-    
+	
+	public void ClearDetails()
+	{
+		emailInput.text = "";
+		passwordInput.text = "";
+	}
 }

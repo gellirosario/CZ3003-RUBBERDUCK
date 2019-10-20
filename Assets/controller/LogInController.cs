@@ -12,20 +12,20 @@ public class LogInController : MonoBehaviour
     private ThreadDispatcher dispatcher;
 
     public InputField emailInput, passwordInput;
-    public Button loginButton;
-    public Text errorMessage;
+    public Button loginBtn;
+    public Text messageTxt;
 
     private void Awake()
     {
         dispatcher = new ThreadDispatcher();
-        errorMessage.text = "";
+        messageTxt.text = "";
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
     }
 
-    private void UpdateErrorMessage(string message)
+    private void UpdateMessage(string message)
     {
-        errorMessage.text = message;
-        Invoke("ClearErrorMessage", 3);
+        messageTxt.text = message;
+        Invoke("ClearMessage", 3);
     }
 
     public void LogIn()
@@ -41,7 +41,7 @@ public class LogInController : MonoBehaviour
             {
                 Debug.LogError("SignInWithEmailAndPasswordAsync error: " + task.Exception);
                 if (task.Exception.InnerExceptions.Count > 0)
-                    UpdateErrorMessage(task.Exception.InnerExceptions[0].Message);
+                    UpdateMessage(task.Exception.InnerExceptions[0].Message);
                 return;
             }
            
@@ -52,7 +52,6 @@ public class LogInController : MonoBehaviour
             RunOnMainThread(() =>
             {
                 PlayerPrefs.SetString("LoginUser", user != null ? user.Email : "Unknown");
-                errorMessage.text = "Logged In!";
                 SceneManager.LoadScene("Main");
                 return 0;
             });

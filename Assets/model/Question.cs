@@ -25,6 +25,9 @@ public class Question
         this.option3 = o3;
         this.option4 = o4;
     }
+	
+	public string getQuestion(){
+	return	question; }
     /*
     public Dictionary<string, Object> ToDictionary() {
         Dictionary<string, Object> result = new Dictionary<string, Object>();
