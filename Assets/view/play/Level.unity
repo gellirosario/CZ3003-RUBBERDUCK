@@ -277,7 +277,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 7321aa7ad004a674fa01deca05e66d13, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
@@ -398,6 +398,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionTxt: {fileID: 313862339}
   levelTxt: {fileID: 199085566}
+  o1Text: {fileID: 1386816943}
+  o2Text: {fileID: 399646955}
+  o3Text: {fileID: 1922232442}
+  o4Text: {fileID: 844427587}
   option1Btn: {fileID: 1605260837}
   option2Btn: {fileID: 383872704}
   option3Btn: {fileID: 1536137151}
@@ -476,7 +480,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
