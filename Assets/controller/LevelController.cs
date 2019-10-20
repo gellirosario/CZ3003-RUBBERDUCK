@@ -37,37 +37,16 @@ public class LevelController : MonoBehaviour
         if (app.Options.DatabaseUrl != null)
             app.SetEditorDatabaseUrl(app.Options.DatabaseUrl);
         UnityEngine.Debug.LogError("Test");
-        writeTestQuestionPool();
+        AddQuestionToDatabase("1");
         isFirebaseInitialized = true;
     }
 
     // Testing purposes
-    private void writeTestQuestionPool() {
-        
-        //for (int i = 0; i < 10; i++)
-        //{
-            AddQuestionToDatabase("1");
-        //}
-        
-        
-    }
-
     private void AddQuestionToDatabase(string questionID)
     {
-        string difficulty;
-        if (int.Parse(questionID) % 2 == 0)
-        {
-            difficulty = "Medium";
-        }
-        else
-        {
-            difficulty = "Easy";
-        }
-        
-        Question question = new Question(1,1,difficulty,"Test Question " + questionID,1,"1","2","3","4");
-        questionList.Add(question);
+        Question question = new Question(1, 1, "Medium", "Test Question " + questionID, 1, "1", "2", "3", "4");
         string json = JsonUtility.ToJson(question);
 
-        FirebaseDatabase.DefaultInstance.RootReference.Child("questions").Child(questionID).SetValueAsync(json);
+        FirebaseDatabase.DefaultInstance.RootReference.Child("questions").Child(questionID).SetRawJsonValueAsync(json);
     }
 }
