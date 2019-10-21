@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
-using Proyecto26;
+
 
 public class LevelController : MonoBehaviour
 {
@@ -19,17 +19,28 @@ public class LevelController : MonoBehaviour
     public List<Question> questionList = new List<Question>();
     private bool doUpdate = false;
     
-    public void Start()
+    private string world;
+    private string stage;
+    private int score;
+    
+    public void Awake()
     {
-        levelTxt.text = "";
+        levelTxt.text = "Level " + "";
         questionTxt.text = "";
         o1Text.text = "";
         o2Text.text = "";
         o3Text.text = "";
         o4Text.text = "";
+
+        if (questionList.Count == 0)
+        {
+            questionList = QuestionLoader.Instance.questionList_All;
+            
+        }
         
-        o4Text = o4Text.GetComponent<Text>();
-        Debug.Log(o4Text != null);
+        Debug.Log(questionList);
+        
+        doUpdate = true;
         
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -37,7 +48,6 @@ public class LevelController : MonoBehaviour
             {
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
-                GetQuestionsFromDatabase();
 
             } else {
                 UnityEngine.Debug.LogError(System.String.Format(
@@ -47,77 +57,26 @@ public class LevelController : MonoBehaviour
         });
 
     }
-
-    // Testing purposes
-    private void AddQuestionToDatabase()
-    {
-        /*
-        for (int i = 0; i < 3; i++)
-        {
-            Question question = new Question(1, 1, 1, "Medium", "Test Question " + i, 1, "1", "2", "3", "4");
-            string json = JsonUtility.ToJson(question);
-            reference.Child("Questions").Child(i.ToString()).SetRawJsonValueAsync(json);
-        }
-        */
-        
-        GetQuestionsFromDatabase();
-    }
-
-    private void GetQuestionsFromDatabase()
-    {
     
-        Firebase.Database.FirebaseDatabase dbInstance = Firebase.Database.FirebaseDatabase.DefaultInstance;
-        dbInstance.GetReference("Questions").GetValueAsync().ContinueWith(task => {
-            if (task.IsFaulted) {
-                // Handle the error...
-                Debug.Log("Error in data retrieval");
-            }
-            else if (task.IsCompleted) {
-                Debug.Log("Received values for Questions.");
-                
-                DataSnapshot snapshot = task.Result;
-
-                
-                foreach (DataSnapshot questionNode in snapshot.Children)
-                {
-                    //Debug.LogFormat("Key = {0}", questionNode.Key);  // "Key = questionNo"
-                    var questionDict = (IDictionary <string, object>) questionNode.Value;
-                    Question quest = new Question(questionDict);
-                    questionList.Add(quest);
-                }
-
-                Debug.Log(questionList[0].question);
-                
-                Debug.Log(questionList[1].question);
-                
-                Debug.Log(questionList[2].question);
-
-                doUpdate = true;
-
-            }
-        });
-        
-        
+    private void Update() {
+        UpdateUI();
     }
     
-    private void Update()
+    private void UpdateUI()
     {
-        
-        if (questionList == null)
+        if (doUpdate == true && questionList != null)
         {
-            GetQuestionsFromDatabase();
+            int qnId = int.Parse(questionList[0].qnID.ToString());
+        
+            levelTxt.text = "LEVEL " + qnId.ToString();
+            questionTxt.text = questionList[0].question;
+            o1Text.text = questionList[0].option1.ToString();
+            o2Text.text = questionList[0].option2.ToString();
+            o3Text.text = questionList[0].option3.ToString();
+            o4Text.text  = questionList[0].option4.ToString();
+
+            doUpdate = false;
         }
-        Debug.Log(questionList[0].qnID);
-
-        int qnId = int.Parse(questionList[0].qnID.ToString());
-        levelTxt.text = "Level " + qnId+1;
-        questionTxt.GetComponent<Text>().text = questionList[0].question;
-        o1Text.text = questionList[0].option1.ToString();
-        o2Text.text = questionList[0].option2.ToString();
-        o3Text.text = questionList[0].option3.ToString();
-        o4Text.text = questionList[0].option4.ToString();
-
-        doUpdate = false;
     }
 }
     
