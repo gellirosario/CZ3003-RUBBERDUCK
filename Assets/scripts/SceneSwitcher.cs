@@ -9,4 +9,5 @@ public class SceneSwitcher : MonoBehaviour
     {
        SceneManager.LoadScene(sceneName);
     }
+    
 }
