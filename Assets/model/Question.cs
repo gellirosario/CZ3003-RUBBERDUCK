@@ -1,6 +1,10 @@
-﻿[System.Serializable]
+﻿using System.Collections;
+using System.Collections.Generic;
+
+[System.Serializable]
 public class Question
 {
+    public int qnID;
     public int world;
     public int stage;
     public string difficulty;
@@ -14,7 +18,9 @@ public class Question
     public Question() {
     }
 
-    public Question(int world, int stage, string difficulty, string question, int answer, string o1, string o2, string o3, string o4) {
+    public Question(int qnID, int world, int stage, string difficulty, string question, int answer, string o1, string o2, string o3, string o4)
+    {
+        this.qnID = qnID;
         this.world = world;
         this.stage = stage;
         this.difficulty = difficulty;
@@ -25,23 +31,18 @@ public class Question
         this.option3 = o3;
         this.option4 = o4;
     }
-	
-	public string getQuestion(){
-	return	question; }
-    /*
-    public Dictionary<string, Object> ToDictionary() {
-        Dictionary<string, Object> result = new Dictionary<string, Object>();
-        
-        result["world"] = world;
-        result["stage"] = stage;
-        result["difficulty"] = difficulty;
-        result["question"] = question;
-        result["answer"] = answer;
-        result["option1"] = option1;
-        result["option2"] = option2;
-        result["option3"] = option3;
-        result["option4"] = option4;
-        
-        return result;
-    }*/
+
+    public Question(IDictionary <string, object> dict)
+    {
+        this.qnID = int.Parse(dict["qnID"].ToString());
+        this.world = int.Parse(dict["world"].ToString());
+        this.stage = int.Parse(dict["stage"].ToString());
+        this.difficulty = dict["difficulty"].ToString();
+        this.question = dict["question"].ToString();
+        this.answer = int.Parse(dict["answer"].ToString());
+        this.option1 = dict["option1"].ToString();
+        this.option2 = dict["option2"].ToString();
+        this.option3 = dict["option3"].ToString();
+        this.option4 = dict["option4"].ToString();
+    }
 }

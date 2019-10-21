@@ -5,30 +5,41 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
-using Proyecto26;
+
 
 public class LevelController : MonoBehaviour
 {
     private FirebaseApp app;
-    private bool isFirebaseInitialized = false;
     private DatabaseReference reference;
+    private bool isFirebaseInitialized = false;
     
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
     
-    ArrayList questionList = new ArrayList();
-    Question question = new Question();
-    //private Question[] questionList;
-    private static int levelNo = 0;
+    public List<Question> questionList = new List<Question>();
+    private bool doUpdate = false;
     
-    public void Start()
+    private string world;
+    private string stage;
+    private int score;
+    
+    public void Awake()
     {
-        levelTxt.text = "";
+        levelTxt.text = "Level " + "";
         questionTxt.text = "";
         o1Text.text = "";
         o2Text.text = "";
         o3Text.text = "";
         o4Text.text = "";
+
+        if (questionList.Count == 0)
+        {
+            questionList = QuestionLoader.Instance.questionList_All;
+        }
+        
+        Debug.Log(questionList);
+        
+        doUpdate = true;
         
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -36,8 +47,7 @@ public class LevelController : MonoBehaviour
             {
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
-                AddQuestionToDatabase();
-                
+
             } else {
                 UnityEngine.Debug.LogError(System.String.Format(
                     "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
@@ -46,53 +56,48 @@ public class LevelController : MonoBehaviour
         });
 
     }
-
-    // Testing purposes
-    private void AddQuestionToDatabase()
+    
+    private void Update() {
+        UpdateUI();
+    }
+    
+    private void UpdateUI()
     {
-        for (int i = 0; i < 3; i++)
+        if (doUpdate == true && questionList != null)
         {
-            Question question = new Question(1, 1, "Medium", "Test Question " + i, 1, "1", "2", "3", "4");
-            string json = JsonUtility.ToJson(question);
-            reference.Child("Questions").Child("World1").Child("Stage1").Child("1").SetRawJsonValueAsync(json);
-        }
+            int qnId = int.Parse(questionList[0].qnID.ToString());
         
-        GetQuestionsFromDatabase();
+            levelTxt.text = "LEVEL " + qnId.ToString();
+            questionTxt.text = questionList[0].question;
+            o1Text.text = questionList[0].option1.ToString();
+            o2Text.text = questionList[0].option2.ToString();
+            o3Text.text = questionList[0].option3.ToString();
+            o4Text.text  = questionList[0].option4.ToString();
+
+            doUpdate = false;
+        }
     }
 
-    private void GetQuestionsFromDatabase()
+    private void OnClick_Option1()
     {
-        Firebase.Database.FirebaseDatabase dbInstance = Firebase.Database.FirebaseDatabase.DefaultInstance;
-        dbInstance.GetReference("Questions").GetValueAsync().ContinueWith(task => {
-            if (task.IsFaulted) {
-                // Handle the error...
-                Debug.Log("Error in data retrieval");
-            }
-            else if (task.IsCompleted) {
-                Debug.Log("Received values for Questions.");
-                
-                DataSnapshot snapshot = task.Result;
-                
-                foreach (var world in snapshot.Children)
-                {
-                    Debug.LogFormat("Key = {0}", world.Key);  // "Key = world"
-                    
-                    foreach (var stages in world.Children)
-                    {
-                        Debug.LogFormat("Key = {0}", stages.Key);  // "Key = stage"
-                        
-                        foreach (var questionNo in stages.Children)
-                        {
-                            foreach (var details in questionNo.Children)
-                            {
-                                Debug.LogFormat("Key = {0}, Value = {0}", details.Key, details.Value.ToString());
-                            }
-                        }
-                    }
-                }
-            }
-        });
         
     }
     
+    private void OnClick_Option2()
+    {
+        
+    }
+    
+    private void OnClick_Option3()
+    {
+        
+    }
+    
+    private void OnClick_Option4()
+    {
+        
+    }
 }
+    
+    
+
