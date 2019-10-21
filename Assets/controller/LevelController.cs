@@ -11,6 +11,9 @@ public class LevelController : MonoBehaviour
     private FirebaseApp app;
     private DatabaseReference reference;
     private bool isFirebaseInitialized = false;
+
+    public Sprite Character;
+    public Sprite Enemy;
     
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
@@ -28,6 +31,14 @@ public class LevelController : MonoBehaviour
     
     private Color colorGreen = new Color(0,198,0);
     private Color colorRed = new Color(255,0,0);
+
+    private float timer = 1f; // 1sec
+    private float delay = 1f; // 1sec
+
+    public void Start()
+    {
+        
+    }
     
     public void Awake()
     {
@@ -77,8 +88,15 @@ public class LevelController : MonoBehaviour
     
     private void Update()
     {
-        if (doUpdate)
-            UpdateUI();
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            if (doUpdate)
+                UpdateUI();
+            
+            if(this.gameObject.GetComponent<SpriteRenderer>().sprite)
+            timer = delay;
+        }
     }
 
     private void UpdateUI()
