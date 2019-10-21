@@ -162,7 +162,7 @@ Animator:
   m_GameObject: {fileID: 103035639}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c45364941e7181d4f9776b5a005ff152, type: 2}
+  m_Controller: {fileID: 9100000, guid: 33faef780163507499d8b664edcbad62, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2514,8 +2514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918c0c97e23f9ab4e9d5477c688d62ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 0}
-  Enemy: {fileID: 0}
   questionTxt: {fileID: 313862339}
   levelTxt: {fileID: 199085566}
   o1Text: {fileID: 1297553204}
@@ -2526,3 +2524,5 @@ MonoBehaviour:
   option2Btn: {fileID: 383872704}
   option3Btn: {fileID: 1536137151}
   option4Btn: {fileID: 470195055}
+  Character: {fileID: 0}
+  Enemy: {fileID: 0}
