@@ -6,27 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/view/log in/Log In.unity
+    path: Assets/View/log in/Log In.unity
     guid: 80a663e3fd3d31944884460ca7d27385
   - enabled: 1
-    path: Assets/view/register/Register.unity
+    path: Assets/View/register/Register.unity
     guid: 94cdf7aadf47756448892dbb305315e9
   - enabled: 1
-    path: Assets/view/main/Main.unity
+    path: Assets/View/main/Main.unity
     guid: 231d6765c5df045449a2fe85694c49c5
   - enabled: 1
-    path: Assets/view/play/Level.unity
+    path: Assets/View/play/Level.unity
     guid: 4d004a26c573da94b96410b5058494b3
   - enabled: 1
-    path: Assets/view/play/Stage.unity
+    path: Assets/View/play/Stage.unity
     guid: ba75d243106073240b09b65835bdea20
   - enabled: 1
-    path: Assets/view/play/StageClear.unity
+    path: Assets/View/play/StageClear.unity
     guid: 8b452cf220128cf41b7ecbd77afe8dd4
   - enabled: 1
-    path: Assets/view/play/StageFail.unity
+    path: Assets/View/play/StageFail.unity
     guid: 746fa42a144d175479c52f83054b1f0d
   - enabled: 1
-    path: Assets/view/play/World.unity
+    path: Assets/View/play/World.unity
     guid: 8f6219441f6a01e45b51b4da88b029ac
+  - enabled: 1
+    path: Assets/View/customization/Customization.unity
+    guid: 877d08f7105655849a07eb14996f387b
   m_configObjects: {}
