@@ -17,7 +17,7 @@ public class LevelController : MonoBehaviour
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
     
     public List<Question> questionList = new List<Question>();
-    private static int levelNo = 0;
+    private bool doUpdate = false;
     
     public void Start()
     {
@@ -28,13 +28,16 @@ public class LevelController : MonoBehaviour
         o3Text.text = "";
         o4Text.text = "";
         
+        o4Text = o4Text.GetComponent<Text>();
+        Debug.Log(o4Text != null);
+        
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
-                AddQuestionToDatabase();
+                GetQuestionsFromDatabase();
 
             } else {
                 UnityEngine.Debug.LogError(System.String.Format(
@@ -84,9 +87,39 @@ public class LevelController : MonoBehaviour
                 }
 
                 Debug.Log(questionList[0].question);
+                
+                Debug.Log(questionList[1].question);
+                
+                Debug.Log(questionList[2].question);
+
+                doUpdate = true;
+
             }
         });
         
+        
     }
     
+    private void Update()
+    {
+        
+        if (questionList == null)
+        {
+            GetQuestionsFromDatabase();
+        }
+        Debug.Log(questionList[0].qnID);
+
+        int qnId = int.Parse(questionList[0].qnID.ToString());
+        levelTxt.text = "Level " + qnId+1;
+        questionTxt.GetComponent<Text>().text = questionList[0].question;
+        o1Text.text = questionList[0].option1.ToString();
+        o2Text.text = questionList[0].option2.ToString();
+        o3Text.text = questionList[0].option3.ToString();
+        o4Text.text = questionList[0].option4.ToString();
+
+        doUpdate = false;
+    }
 }
+    
+    
+
