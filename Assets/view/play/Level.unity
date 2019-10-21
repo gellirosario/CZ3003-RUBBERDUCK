@@ -580,7 +580,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 383872703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2123809666}
+        m_MethodName: CheckAnswer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &383872705
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -772,7 +783,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 470195054}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2123809666}
+        m_MethodName: CheckAnswer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &470195056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1786,7 +1808,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536137150}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2123809666}
+        m_MethodName: CheckAnswer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1536137152
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1917,13 +1950,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2123809664}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2123809666}
+        m_MethodName: CheckAnswer
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2411,12 +2444,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionTxt: {fileID: 313862339}
   levelTxt: {fileID: 199085566}
-  o1Text: {fileID: 1386816943}
-  o2Text: {fileID: 399646955}
-  o3Text: {fileID: 1922232442}
-  o4Text: {fileID: 844427587}
+  o1Text: {fileID: 1297553204}
+  o2Text: {fileID: 1690622154}
+  o3Text: {fileID: 1700213569}
+  o4Text: {fileID: 1153585363}
   option1Btn: {fileID: 1605260837}
   option2Btn: {fileID: 383872704}
   option3Btn: {fileID: 1536137151}
   option4Btn: {fileID: 470195055}
-  questionList: []

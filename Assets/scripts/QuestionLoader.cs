@@ -92,7 +92,7 @@ public class QuestionLoader : MonoBehaviour
 
     }
 
-    private List<Question> FilterQuestionsByWorldAndStage(int world, int stage)
+    public List<Question> FilterQuestionsByWorldAndStage(int world, int stage)
     {
         List<Question> questionList_Filtered = new List<Question>();
         
@@ -107,7 +107,7 @@ public class QuestionLoader : MonoBehaviour
         return questionList_Filtered;
     }
 
-    private List<Question> FilterQuestionsListByDifficulty(List<Question> questionList, string difficulty)
+    public List<Question> FilterQuestionsListByDifficulty(List<Question> questionList, string difficulty)
     {
         List<Question> questionList_Filtered = new List<Question>();
                 
