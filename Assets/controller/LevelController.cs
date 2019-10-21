@@ -10,8 +10,8 @@ using Firebase.Unity.Editor;
 public class LevelController : MonoBehaviour
 {
     private FirebaseApp app;
-    private bool isFirebaseInitialized = false;
     private DatabaseReference reference;
+    private bool isFirebaseInitialized = false;
     
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
@@ -35,7 +35,6 @@ public class LevelController : MonoBehaviour
         if (questionList.Count == 0)
         {
             questionList = QuestionLoader.Instance.questionList_All;
-            
         }
         
         Debug.Log(questionList);
@@ -77,6 +76,26 @@ public class LevelController : MonoBehaviour
 
             doUpdate = false;
         }
+    }
+
+    private void OnClick_Option1()
+    {
+        
+    }
+    
+    private void OnClick_Option2()
+    {
+        
+    }
+    
+    private void OnClick_Option3()
+    {
+        
+    }
+    
+    private void OnClick_Option4()
+    {
+        
     }
 }
     
