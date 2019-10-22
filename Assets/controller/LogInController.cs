@@ -15,15 +15,29 @@ public class LogInController : MonoBehaviour
     public Button loginBtn;
     public Text messageTxt;
 
+    private bool errorFound = false;
+    private string message;
+    
     private void Awake()
     {
         dispatcher = new ThreadDispatcher();
+        message = "";
         messageTxt.text = "";
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        
     }
 
-    private void UpdateMessage(string message)
+    private void Update()
     {
+        dispatcher.PollJobs();
+
+        if (errorFound)
+            UpdateMessage();
+    }
+
+    private void UpdateMessage()
+    {
+        errorFound = false;
         messageTxt.text = message;
         Invoke("ClearMessage", 3);
     }
@@ -40,8 +54,25 @@ public class LogInController : MonoBehaviour
             if (task.IsFaulted)
             {
                 Debug.LogError("SignInWithEmailAndPasswordAsync error: " + task.Exception);
-                if (task.Exception.InnerExceptions.Count > 0)
-                    UpdateMessage(task.Exception.InnerExceptions[0].Message);
+                
+                foreach (var exception in task.Exception.Flatten().InnerExceptions)
+                {
+                    string authErrorCode = "";
+                    Firebase.FirebaseException firebaseEx = exception as Firebase.FirebaseException;
+                    if (firebaseEx != null)
+                    {
+                        authErrorCode = string.Format("AuthError.{0}: ",
+                            ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString());
+                    }
+                    Debug.Log("number- "+ authErrorCode +"the exception is- "+ exception.ToString());
+                    string code = ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString();
+                    Debug.Log(code);
+
+                    message = GetErrorMessage((Firebase.Auth.AuthError)firebaseEx.ErrorCode);
+                    Debug.Log("---- Message " + message);
+                    errorFound = true;
+                }
+                    
                 return;
             }
            
@@ -51,7 +82,8 @@ public class LogInController : MonoBehaviour
             
             RunOnMainThread(() =>
             {
-                PlayerPrefs.SetString("LoginUser", user != null ? user.Email : "Unknown");
+                //PlayerPrefs.SetString("LoginUser", user != null ? user.Email : "Unknown");
+                PlayerPrefs.SetString("UserID", user.UserId.ToString());
                 SceneManager.LoadScene("Main");
                 return 0;
             });
@@ -60,15 +92,48 @@ public class LogInController : MonoBehaviour
         });
     }
 
-    void Update()
-    {
-        dispatcher.PollJobs();  
-    }
-
     public TResult RunOnMainThread<TResult>(System.Func<TResult> f)
     {
         return dispatcher.Run(f);
     }
 
+    private void ClearMessage()
+    {
+        messageTxt.text = "";
+    }
+    
+    private string GetErrorMessage(AuthError errorCode)
+    {
+        var msg = "";
+        
+        switch (errorCode)
+        {
+            case AuthError.AccountExistsWithDifferentCredentials:
+                msg = "Wrong password";
+                break;
+            case AuthError.MissingPassword:
+                msg = "Please input a password";
+                break;
+            case AuthError.WeakPassword:
+                msg = "Weak Password";
+                break;
+            case AuthError.WrongPassword:
+                msg = "Please input a correct password";
+                break;
+            case AuthError.EmailAlreadyInUse:
+                msg = "Email already in use";
+                break;
+            case AuthError.InvalidEmail:
+                msg = "Email is invalid";
+                break;
+            case AuthError.MissingEmail:
+                msg = "Email does not exist";
+                break;
+            default:
+                msg = "Error occured";
+                break;
+        }
+        return msg;
+    }
 }
 
