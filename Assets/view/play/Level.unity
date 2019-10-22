@@ -228,20 +228,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 486733692}
     m_Modifications:
-    - target: {fileID: 4757150024472032566, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+    - target: {fileID: 4757150025519736934, guid: 7dae3ed1a109b4455ab36dca53ed818e,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0.7264151
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757150024472032566, guid: 7dae3ed1a109b4455ab36dca53ed818e,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.004575891
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757150024472032566, guid: 7dae3ed1a109b4455ab36dca53ed818e,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
+      propertyPath: m_Name
+      value: pfHealthBar_Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4757150025519736932, guid: 7dae3ed1a109b4455ab36dca53ed818e,
         type: 3}
@@ -313,10 +303,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 91.50068
       objectReference: {fileID: 0}
-    - target: {fileID: 4757150025519736934, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+    - target: {fileID: 4757150024472032566, guid: 7dae3ed1a109b4455ab36dca53ed818e,
         type: 3}
-      propertyPath: m_Name
-      value: pfHealthBar_Enemy
+      propertyPath: m_Color.r
+      value: 0.7264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757150024472032566, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.004575891
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757150024472032566, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dae3ed1a109b4455ab36dca53ed818e, type: 3}
@@ -1670,6 +1670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 486689761}
     m_Modifications:
+    - target: {fileID: 4757150025519736934, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+        type: 3}
+      propertyPath: m_Name
+      value: pfHealthBar_player
+      objectReference: {fileID: 0}
     - target: {fileID: 4757150025519736932, guid: 7dae3ed1a109b4455ab36dca53ed818e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1740,10 +1745,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 91.50068
       objectReference: {fileID: 0}
-    - target: {fileID: 4757150025519736934, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+    - target: {fileID: 4421154206620994992, guid: 7dae3ed1a109b4455ab36dca53ed818e,
         type: 3}
-      propertyPath: m_Name
-      value: pfHealthBar_player
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421154206620994992, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421154206620994992, guid: 7dae3ed1a109b4455ab36dca53ed818e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -966687085
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dae3ed1a109b4455ab36dca53ed818e, type: 3}
