@@ -15,7 +15,12 @@ public class LevelController : MonoBehaviour
     
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
-    
+
+    public HealthBar healthbarPlayer, healthbarEnemy;
+
+   
+
+
     private List<Question> questionList = new List<Question>();
     private List<Question> questionList_Filtered = new List<Question>();
     private bool doUpdate = false;
@@ -40,6 +45,9 @@ public class LevelController : MonoBehaviour
     public void Start()
     {
         
+       
+
+
     }
     
     public void Awake()
@@ -55,7 +63,9 @@ public class LevelController : MonoBehaviour
         option2Btn = GetComponent<Button>();
         option3Btn = GetComponent<Button>();
         option4Btn = GetComponent<Button>();
-        
+
+       
+
         difficulty = "Medium"; // First level = Medium
         isFirst = true;
         level = 0;
@@ -174,20 +184,44 @@ public class LevelController : MonoBehaviour
     // Check selection option
     public void CheckAnswer(int selectedOption)
     {
+        
+
+       
+        
+
+            HealthSystem healthSystemPlayer = new HealthSystem(50);
+            healthbarPlayer.Setup(healthSystemPlayer);
+            HealthSystem healthSystemEnemy = new HealthSystem(100);
+            healthbarEnemy.Setup(healthSystemEnemy);
+
+           
+        
+
+        healthbarPlayer = GetComponent<HealthBar>();
+        healthbarEnemy = GetComponent<HealthBar>();
+
         Debug.Log("Correct Answer = " + questionList_Filtered[randomQuestionNo].answer.ToString());
         Debug.Log("Selected Answer = " + questionList_Filtered[randomQuestionNo].answer.ToString());
 
         if (selectedOption == questionList_Filtered[randomQuestionNo].answer)
         {
+
+            
+            
             isCorrect = true;
             
             character1Anim.SetTrigger("Stabbing");
             enemy1Anim.SetTrigger("Damage");
+
             
+
             character1Anim.SetTrigger("Ready");
             enemy1Anim.SetTrigger("Idle");
             
             int scoreGiven = 0;
+
+            healthSystemEnemy.Damage(10);
+
 
             switch (difficulty)
             {
@@ -211,15 +245,19 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+           
+
             isCorrect = false;
             
             character1Anim.SetTrigger("Damage");
             enemy1Anim.SetTrigger("Swinging");
             
+            
             character1Anim.SetTrigger("Ready");
             enemy1Anim.SetTrigger("Idle");
             
             questionTxt.text = "Wrong!";
+            healthSystemPlayer.Damage(10);
         }
         
         Debug.Log("Score = " + score.ToString());
