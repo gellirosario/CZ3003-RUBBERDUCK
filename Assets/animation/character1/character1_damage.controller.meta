@@ -1,5 +1,13 @@
 fileFormatVersion: 2
-guid: 467827f2b3d09cc46a53294a5fcd0ce2
+<<<<<<< HEAD
+guid: ac0ce75bde0321c4492d41cff4347489
+=======
+<<<<<<< HEAD:Assets/animation/enemy1/Enemy1Sprite.controller.meta
+guid: e7acebe09784af44ca74ba4ba70e64b9
+=======
+guid: ac0ce75bde0321c4492d41cff4347489
+>>>>>>> parent of 4c516b1... Revert "Updated animation for character1 and enemy1":Assets/animation/character1/Character1Sprite.controller.meta
+>>>>>>> parent of 4c516b1... Revert "Updated animation for character1 and enemy1"
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
