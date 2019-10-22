@@ -30,4 +30,9 @@ public class EndStageController : MonoBehaviour
     {
         SceneManager.LoadScene("Level");
     }
+
+    public void QuitToMenuClick()
+    {
+        SceneManager.LoadScene("Main");
+    }
 }
