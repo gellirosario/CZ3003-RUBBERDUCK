@@ -5,6 +5,9 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Firebase;
+using Firebase.Database;
+using Firebase.Unity.Editor;
 using Firebase.Auth;
 
 
@@ -19,15 +22,35 @@ public class RegisterController : MonoBehaviour
     private bool errorFound = false;
     private bool success = false;
     private string message;
+    public string userType;
+    
+    private FirebaseApp app;
+    private DatabaseReference reference;
     
     // Regex ntu email pattern
     public const string MatchEmailPattern = @"[a-zA-Z0-9]{0,}([.]?[a-zA-Z0-9]{1,})[@](e.ntu.edu.sg)";
+    
     // Start is called before the first frame update
     void Start()
     {
         auth = FirebaseAuth.DefaultInstance;
 		messageTxt.text = "";
         message = "";
+        
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
+                reference = FirebaseDatabase.DefaultInstance.RootReference;
+
+            } else {
+                UnityEngine.Debug.LogError(System.String.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
+        
         registerBtn.onClick.AddListener(() => Register(emailInput.text, passwordInput.text, confirmInput.text));
     }
 
@@ -53,7 +76,7 @@ public class RegisterController : MonoBehaviour
         Invoke("ClearMessage", 3);
     }
 
-    void ClearErrorMessage()
+    void ClearMessage()
     {
         messageTxt.text = "";
     }
@@ -80,6 +103,10 @@ public class RegisterController : MonoBehaviour
             //Error handling
             messageTxt.text = "Please use your NTU email";
             return;
+        }
+        else
+        {
+            userType = "Player";
         }
         
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task =>
@@ -117,8 +144,31 @@ public class RegisterController : MonoBehaviour
             FirebaseUser newUser = task.Result; // Firebase user has been created.
             Debug.LogFormat("Firebase user created successfully: {0} ({1})",newUser.DisplayName, newUser.UserId);
             
+            string name = email.Split('@')[0];
+            Debug.LogFormat("--- NAME : ",name);
+            
             // TODO: ADD TO REALTIME DATABASE???
+            User user = new User();
 
+            if (userType == "Player")
+            {
+                Mastery playerMastery = new Mastery(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+                Player player = new Player(playerMastery, 1,0, 0); 
+                user = new User(newUser.UserId, name, email, userType, player);
+                
+                string json = JsonUtility.ToJson(user);
+                reference.Child("Users").Child(newUser.UserId).SetRawJsonValueAsync(json);
+                
+                //string json1 = JsonUtility.ToJson(player);
+                //reference.Child("Player").Child(newUser.UserId).SetRawJsonValueAsync(json1);
+            }
+            else
+            {
+                user = new User(newUser.UserId, name, email, userType);
+                string json = JsonUtility.ToJson(user);
+                reference.Child("Users").Child(newUser.UserId).SetRawJsonValueAsync(json);
+            }
+            
             
             // Success Message
             success = true;

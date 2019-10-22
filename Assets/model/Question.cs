@@ -15,7 +15,7 @@ public class Question
     public string option3;
     public string option4;
     
-    public Question() {
+    public Question(){
     }
 
     public Question(int qnID, int world, int stage, string difficulty, string question, int answer, string o1, string o2, string o3, string o4)
@@ -31,7 +31,8 @@ public class Question
         this.option3 = o3;
         this.option4 = o4;
     }
-
+    
+    // Updating IDictionary to Class
     public Question(IDictionary <string, object> dict)
     {
         this.qnID = int.Parse(dict["qnID"].ToString());
