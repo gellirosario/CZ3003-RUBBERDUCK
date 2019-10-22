@@ -50,18 +50,9 @@ public class QuestionLoader : MonoBehaviour
     private void AddQuestionToDatabase()
     {
         /*
-        for (int i = 1; i < 41; i++)
+        for (int i = 0; i < 3; i++)
         {
-            string difficulty = "Easy";
-            if (i > 10 && i < 21)
-            {
-                difficulty = "Medium";
-            }
-            else if(i>21)
-            {
-                difficulty = "Hard";
-            }
-            Question question = new Question(i, 1, 1, difficulty, "Test Question " + i, 1, "1", "2", "3", "4");
+            Question question = new Question(1, 1, 1, "Medium", "Test Question " + i, 1, "1", "2", "3", "4");
             string json = JsonUtility.ToJson(question);
             reference.Child("Questions").Child(i.ToString()).SetRawJsonValueAsync(json);
         }
