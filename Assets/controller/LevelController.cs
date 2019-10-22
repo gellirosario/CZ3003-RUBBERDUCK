@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
@@ -178,6 +179,8 @@ public class LevelController : MonoBehaviour
 
         if (selectedOption == questionList_Filtered[randomQuestionNo].answer)
         {
+            isCorrect = true;
+            
             character1Anim.SetTrigger("Stabbing");
             enemy1Anim.SetTrigger("Damage");
             
@@ -202,23 +205,21 @@ public class LevelController : MonoBehaviour
             score = score + scoreGiven;
             
             
-            if (level > 1) // After first question
-            {
-                if (isCorrect)
-                {
-                    questionTxt.text = "Correct!";
-                }
-            }
+            questionTxt.text = "Correct!";
             
             doUpdate = false;
         }
         else
         {
+            isCorrect = false;
+            
             character1Anim.SetTrigger("Damage");
             enemy1Anim.SetTrigger("Swinging");
             
             character1Anim.SetTrigger("Ready");
             enemy1Anim.SetTrigger("Idle");
+            
+            questionTxt.text = "Wrong!";
         }
         
         Debug.Log("Score = " + score.ToString());
@@ -237,7 +238,20 @@ public class LevelController : MonoBehaviour
     // Check whether pass or fail
     public void EndStage()
     {
+        if (score != 0)
+        {
+            PlayerPrefs.SetInt("Score", score);
+        }
         
+        Debug.Log("Preferences set: Score - " + score.ToString());
+        if (PlayerPrefs.GetInt("Score") != null)
+        {
+            SceneManager.LoadScene("StageClear");
+        }
+        else
+        {
+            SceneManager.LoadScene("StageFail");
+        }
     }
 }
     
