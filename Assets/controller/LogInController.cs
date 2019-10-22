@@ -44,6 +44,13 @@ public class LogInController : MonoBehaviour
 
     public void LogIn()
     {
+        if (string.IsNullOrEmpty(emailInput.text.Trim()) || string.IsNullOrEmpty(passwordInput.text.Trim()))
+        {
+            //Error handling
+            messageTxt.text = "Please enter all details";
+            return;
+        }
+        
         auth.SignInWithEmailAndPasswordAsync(emailInput.text.Trim(), passwordInput.text.Trim()).ContinueWith(task =>
         {
             if (task.IsCanceled)
