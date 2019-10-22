@@ -11,9 +11,6 @@ public class LevelController : MonoBehaviour
     private FirebaseApp app;
     private DatabaseReference reference;
     private bool isFirebaseInitialized = false;
-
-    public Sprite Character;
-    public Sprite Enemy;
     
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
@@ -32,8 +29,12 @@ public class LevelController : MonoBehaviour
     private Color colorGreen = new Color(0,198,0);
     private Color colorRed = new Color(255,0,0);
 
-    private float timer = 1f; // 1sec
-    private float delay = 1f; // 1sec
+    public Animator character1Anim;
+    public Animator enemy1Anim;
+    
+    private float timer = 2f; // 1sec
+    private float delay = 2f; // 1sec
+    
 
     public void Start()
     {
@@ -94,7 +95,6 @@ public class LevelController : MonoBehaviour
             if (doUpdate)
                 UpdateUI();
             
-            if(this.gameObject.GetComponent<SpriteRenderer>().sprite)
             timer = delay;
         }
     }
@@ -107,6 +107,9 @@ public class LevelController : MonoBehaviour
             
             if (doUpdate == true && questionList != null)
             {
+                character1Anim.SetTrigger("Ready");
+                enemy1Anim.SetTrigger("Idle");
+                
                 level = level + 1; // Update level
                 levelTxt.text = "LEVEL " + level.ToString();
 
@@ -175,6 +178,11 @@ public class LevelController : MonoBehaviour
 
         if (selectedOption == questionList_Filtered[randomQuestionNo].answer)
         {
+            character1Anim.SetTrigger("Stabbing");
+            enemy1Anim.SetTrigger("Damage");
+            
+            character1Anim.SetTrigger("Ready");
+            enemy1Anim.SetTrigger("Idle");
             
             int scoreGiven = 0;
 
@@ -206,7 +214,11 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-           
+            character1Anim.SetTrigger("Damage");
+            enemy1Anim.SetTrigger("Swinging");
+            
+            character1Anim.SetTrigger("Ready");
+            enemy1Anim.SetTrigger("Idle");
         }
         
         Debug.Log("Score = " + score.ToString());
