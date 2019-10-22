@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/view/play/World.unity
     guid: 8f6219441f6a01e45b51b4da88b029ac
   - enabled: 1
+    path: Assets/view/customization/Customization.unity
+    guid: 877d08f7105655849a07eb14996f387b
+  - enabled: 1
     path: Assets/view/profile/Profile.unity
     guid: 7cbe3f99d0412c64193b4e6e93e9dc84
   m_configObjects: {}
