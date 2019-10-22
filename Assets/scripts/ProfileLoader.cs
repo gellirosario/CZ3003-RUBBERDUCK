@@ -11,6 +11,7 @@ public class ProfileLoader : MonoBehaviour
 
     private FirebaseApp app;
     private DatabaseReference reference;
+	public string id;
 
     private void Awake()
     {
@@ -21,19 +22,17 @@ public class ProfileLoader : MonoBehaviour
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
-    }
 
-    void Start()
-    {
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
-                LoadUserData();
+				
+                
             }
             else
             {
@@ -44,11 +43,17 @@ public class ProfileLoader : MonoBehaviour
         });
     }
 
+	public void Start(){
+		LoadUserData();
+	}
+
+
 
     private void LoadUserData()
     {
-        string uid = PlayerPrefs.GetString("UserID");
-        Debug.Log(uid);
+		Debug.LogFormat("----HERE---");
+        id = PlayerPrefs.GetString("UserID");
+        Debug.LogFormat("----USER INFO ID---" +id);
 
         FirebaseDatabase.DefaultInstance.GetReference("Users").GetValueAsync().ContinueWith(task =>
         {

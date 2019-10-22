@@ -84,13 +84,14 @@ public class LogInController : MonoBehaviour
             }
            
             FirebaseUser user = task.Result;
-            Debug.LogFormat("User signed in successfully: {0} ({1})", user.DisplayName, user.UserId);
+            Debug.LogFormat("User signed in successfully: ({0})", user.UserId);
 
             
             RunOnMainThread(() =>
             {
                 //PlayerPrefs.SetString("LoginUser", user != null ? user.Email : "Unknown");
                 PlayerPrefs.SetString("UserID", user.UserId.ToString());
+                Debug.LogFormat("---USER ID SET---" + user.UserId.ToString());
                 SceneManager.LoadScene("Main");
                 return 0;
             });
