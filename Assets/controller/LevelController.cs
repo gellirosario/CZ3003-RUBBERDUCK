@@ -17,10 +17,9 @@ public class LevelController : MonoBehaviour
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
 
     public HealthBar healthbarPlayer, healthbarEnemy;
-
-   
-
-
+    private HealthSystem healthSystemPlayer;
+    private HealthSystem healthSystemEnemy;
+    
     private List<Question> questionList = new List<Question>();
     private List<Question> questionList_Filtered = new List<Question>();
     private bool doUpdate = false;
@@ -44,9 +43,10 @@ public class LevelController : MonoBehaviour
 
     public void Start()
     {
-        
-       
-
+        healthSystemPlayer = new HealthSystem(50);
+        healthbarPlayer.Setup(healthSystemPlayer);
+        healthSystemEnemy = new HealthSystem(100);
+        healthbarEnemy.Setup(healthSystemEnemy);
 
     }
     
@@ -59,13 +59,14 @@ public class LevelController : MonoBehaviour
         o3Text.text = "";
         o4Text.text = "";
         
-        option1Btn = GetComponent<Button>();
-        option2Btn = GetComponent<Button>();
-        option3Btn = GetComponent<Button>();
-        option4Btn = GetComponent<Button>();
+        //option1Btn = GetComponent<Button>();
+        //option2Btn = GetComponent<Button>();
+        //option3Btn = GetComponent<Button>();
+        //option4Btn = GetComponent<Button>();
 
-       
-
+        //healthbarPlayer = GetComponent<HealthBar>();
+        //healthbarEnemy = GetComponent<HealthBar>();
+        
         difficulty = "Medium"; // First level = Medium
         isFirst = true;
         level = 0;
@@ -184,22 +185,6 @@ public class LevelController : MonoBehaviour
     // Check selection option
     public void CheckAnswer(int selectedOption)
     {
-        
-
-       
-        
-
-            HealthSystem healthSystemPlayer = new HealthSystem(50);
-            healthbarPlayer.Setup(healthSystemPlayer);
-            HealthSystem healthSystemEnemy = new HealthSystem(100);
-            healthbarEnemy.Setup(healthSystemEnemy);
-
-           
-        
-
-        healthbarPlayer = GetComponent<HealthBar>();
-        healthbarEnemy = GetComponent<HealthBar>();
-
         Debug.Log("Correct Answer = " + questionList_Filtered[randomQuestionNo].answer.ToString());
         Debug.Log("Selected Answer = " + questionList_Filtered[randomQuestionNo].answer.ToString());
 
