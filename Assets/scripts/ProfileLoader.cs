@@ -113,20 +113,27 @@ public class ProfileLoader : MonoBehaviour
                         //load player data into player object
                         var playerDict = (IDictionary<string, object>)playerNode.Value;
 
-
+						//Debug.LogFormat("Key = {0}, Value = {1}", playerNode.Key, playerNode.Value);
                         foreach (KeyValuePair<string, object> kvp in playerDict)
                         {
-                            Debug.LogFormat("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                            Debug.LogFormat("PLAYER ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+							if(kvp.Key == "mastery")
+							{
+								var masteryDict = (IDictionary<string, object>)playerDict["mastery"];
+								foreach (KeyValuePair<string, object> kvp1 in masteryDict)
+                        		{
+                            		Debug.LogFormat("MASTERY ---- Key = {0}, Value = {1}", kvp1.Key, kvp1.Value);
+                        		}
+								playerData = new Player(playerDict, masteryDict);
+							}
+							
                         }
 
-                        var masteryDict = (IDictionary<string, object>)playerDict["Mastery"];
+                        
 
-                        foreach (KeyValuePair<string, object> kvp in masteryDict)
-                        {
-                            Debug.LogFormat("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-                        }
+                        
 
-                        playerData = new Player(playerDict, masteryDict);
+                        
                     }
                 }
                 Debug.Log(playerData.characterID);
