@@ -28,7 +28,8 @@ public class RegisterController : MonoBehaviour
     private DatabaseReference reference;
     
     // Regex ntu email pattern
-    public const string MatchEmailPattern = @"[a-zA-Z0-9]{0,}([.]?[a-zA-Z0-9]{1,})[@](e.ntu.edu.sg)";
+    public const string MatchStudentEmailPattern = @"[a-zA-Z0-9]{0,}([.]?[a-zA-Z0-9]{1,})[@](e.ntu.edu.sg)";
+    public const string MatchTeacherEmailPattern = @"[a-zA-Z0-9]{0,}([.]?[a-zA-Z0-9]{1,})[@](ntu.edu.sg)";
     
     // Start is called before the first frame update
     void Start()
@@ -98,15 +99,20 @@ public class RegisterController : MonoBehaviour
             return;
         }
 
-        if (!Regex.IsMatch(email, MatchEmailPattern))
+        
+        if(Regex.IsMatch(email, MatchStudentEmailPattern))
+        {
+            userType = "Player";
+        }
+        else if(Regex.IsMatch(email, MatchTeacherEmailPattern))
+        {
+            userType = "Teacher";
+        }
+        else
         {
             //Error handling
             messageTxt.text = "Please use your NTU email";
             return;
-        }
-        else
-        {
-            userType = "Player";
         }
         
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task =>

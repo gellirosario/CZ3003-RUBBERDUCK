@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using Firebase.Auth;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class LogInController : MonoBehaviour
 
     private bool errorFound = false;
     private string message;
+
+    public const string MatchTeacherEmailPattern = @"[a-zA-Z0-9]{0,}([.]?[a-zA-Z0-9]{1,})[@](ntu.edu.sg)";
     
     private void Awake()
     {
@@ -92,7 +95,17 @@ public class LogInController : MonoBehaviour
                 //PlayerPrefs.SetString("LoginUser", user != null ? user.Email : "Unknown");
                 PlayerPrefs.SetString("UserID", user.UserId.ToString());
                 Debug.LogFormat("---USER ID SET---" + user.UserId.ToString());
-                SceneManager.LoadScene("Main");
+
+                 if(Regex.IsMatch(user.Email, MatchTeacherEmailPattern))
+                {
+                    SceneManager.LoadScene("TeacherMain");
+                }
+                else
+                {
+                    SceneManager.LoadScene("PlayerMain");
+                }
+
+                
                 return 0;
             });
            

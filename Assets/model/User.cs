@@ -20,6 +20,7 @@ public class User
         this.name = name;
         this.email = email;
         this.userType = userType;
+        this.player = null;
     }
     
     public User(string id, string name, string email, string userType, Player player)
