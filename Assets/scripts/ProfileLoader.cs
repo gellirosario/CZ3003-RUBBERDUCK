@@ -12,9 +12,8 @@ public class ProfileLoader : MonoBehaviour
     private FirebaseApp app;
     private DatabaseReference reference;
 	public string id;
-
-    private Player playerData;
-    private User userData;
+    public Player playerData { get; private set; }
+    public User userData { get; private set; }
 
     private void Awake()
     {
@@ -128,11 +127,6 @@ public class ProfileLoader : MonoBehaviour
 							}
 							
                         }
-
-                        
-
-                        
-
                         
                     }
                 }
