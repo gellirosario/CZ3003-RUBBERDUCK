@@ -13,6 +13,9 @@ public class ProfileLoader : MonoBehaviour
     private DatabaseReference reference;
 	public string id;
 
+    private Player playerData;
+    private User userData;
+
     private void Awake()
     {
         if (Instance == null)
@@ -45,6 +48,7 @@ public class ProfileLoader : MonoBehaviour
 
 	public void Start(){
 		LoadUserData();
+        LoadPlayerData();
 	}
 
 
@@ -59,18 +63,85 @@ public class ProfileLoader : MonoBehaviour
         {
             if (task.IsFaulted)
             {
-
+                Debug.Log("Error in data retrieval from Users table");
             }
             else if (task.IsCompleted)
             {
-
                 DataSnapshot snapshot = task.Result;
-                //to do the actual loading
 
+                foreach (DataSnapshot userNode in snapshot.Children)
+                {
+                    if(userNode.Key == id)
+                    {
+                        //load user data into player object
+                        var userDict = (IDictionary<string, object>)userNode.Value;
+                        userData = new User(userDict);
+                    }
+                }
+                Debug.Log(userData.userID);
+                Debug.Log(userData.userType);
+                Debug.Log(userData.name);
+                Debug.Log(userData.email);
             }
 
         });
 
       
+    }
+
+
+    private void LoadPlayerData()
+    {
+        Debug.LogFormat("----HERE---");
+        id = PlayerPrefs.GetString("UserID");
+        Debug.LogFormat("----USER INFO ID---" + id);
+
+        FirebaseDatabase.DefaultInstance.GetReference("Player").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("Error in data retrieval from Player table");
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+
+                foreach (DataSnapshot playerNode in snapshot.Children)
+                {
+                    if (playerNode.Key == id)
+                    {
+                        //load player data into player object
+                        var playerDict = (IDictionary<string, object>)playerNode.Value;
+
+						//Debug.LogFormat("Key = {0}, Value = {1}", playerNode.Key, playerNode.Value);
+                        foreach (KeyValuePair<string, object> kvp in playerDict)
+                        {
+                            Debug.LogFormat("PLAYER ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+							if(kvp.Key == "mastery")
+							{
+								var masteryDict = (IDictionary<string, object>)playerDict["mastery"];
+								foreach (KeyValuePair<string, object> kvp1 in masteryDict)
+                        		{
+                            		Debug.LogFormat("MASTERY ---- Key = {0}, Value = {1}", kvp1.Key, kvp1.Value);
+                        		}
+								playerData = new Player(playerDict, masteryDict);
+							}
+							
+                        }
+
+                        
+
+                        
+
+                        
+                    }
+                }
+                Debug.Log(playerData.characterID);
+                Debug.Log(playerData.mastery);
+                Debug.Log(playerData.totalPoints);
+                Debug.Log(playerData.totalQnAnswered);
+            }
+
+        });
     }
 }

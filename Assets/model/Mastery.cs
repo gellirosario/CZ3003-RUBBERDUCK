@@ -47,7 +47,22 @@ public class Mastery
     // Updating IDictionary to Class
     public Mastery(IDictionary <string, object> dict)
     {
-        //pls refer to question model
+        this.world1stage1 = int.Parse(dict["world1stage1"].ToString());
+        this.world1stage2 = int.Parse(dict["world1stage2"].ToString());
+        this.world1stage3 = int.Parse(dict["world1stage3"].ToString());
+        this.world2stage1 = int.Parse(dict["world2stage1"].ToString());
+        this.world2stage2 = int.Parse(dict["world2stage2"].ToString());
+        this.world2stage3 = int.Parse(dict["world2stage3"].ToString());
+        this.world3stage1 = int.Parse(dict["world3stage1"].ToString());
+        this.world3stage2 = int.Parse(dict["world3stage2"].ToString());
+        this.world3stage3 = int.Parse(dict["world3stage3"].ToString());
+        this.world4stage1 = int.Parse(dict["world4stage1"].ToString());
+        this.world4stage2 = int.Parse(dict["world4stage2"].ToString());
+        this.world4stage3 = int.Parse(dict["world4stage3"].ToString());
+        this.world5stage1 = int.Parse(dict["world5stage1"].ToString());
+        this.world5stage2 = int.Parse(dict["world5stage2"].ToString());
+        this.world5stage3 = int.Parse(dict["world5stage3"].ToString());
     }
+
 }
 

@@ -25,6 +25,9 @@ public class User
     // Updating IDictionary to Class
     public User(IDictionary <string, object> dict)
     {
-        //pls refer to question model 
+        this.userID = dict["userID"].ToString();
+        this.name = dict["name"].ToString();
+        this.email = dict["email"].ToString();
+        this.userType = dict["userType"].ToString();
     }
 }
