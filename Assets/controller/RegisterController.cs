@@ -160,18 +160,19 @@ public class RegisterController : MonoBehaviour
             {
                 Mastery playerMastery = new Mastery(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
                 Player player = new Player(playerMastery, 1,0, 0); 
-                user = new User(newUser.UserId, name, email, userType, player);
+                user = new User(newUser.UserId, name, email, userType);
                 
                 string json = JsonUtility.ToJson(user);
                 reference.Child("Users").Child(newUser.UserId).SetRawJsonValueAsync(json);
                 
-                //string json1 = JsonUtility.ToJson(player);
-                //reference.Child("Player").Child(newUser.UserId).SetRawJsonValueAsync(json1);
+                string json1 = JsonUtility.ToJson(player);
+                reference.Child("Player").Child(newUser.UserId).SetRawJsonValueAsync(json1);
             }
             else
             {
                 user = new User(newUser.UserId, name, email, userType);
                 string json = JsonUtility.ToJson(user);
+
                 reference.Child("Users").Child(newUser.UserId).SetRawJsonValueAsync(json);
             }
             
