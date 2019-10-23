@@ -1718,7 +1718,7 @@ PrefabInstance:
     - target: {fileID: 552678005461841057, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
       propertyPath: m_Name
-      value: Healthbar
+      value: EnemyHealthbar
       objectReference: {fileID: 0}
     - target: {fileID: 552678005461841056, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
@@ -1893,6 +1893,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1365692763}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1365692765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 552678005461841057, guid: 23444eddbbf74474cb157ac6e03f21c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1365692763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1365692766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365692765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4989888defc6e4eac771f1a466e773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1386816941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,7 +2718,7 @@ PrefabInstance:
     - target: {fileID: 552678005461841057, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
       propertyPath: m_Name
-      value: Healthbar
+      value: PlayerHealthbar
       objectReference: {fileID: 0}
     - target: {fileID: 552678005461841056, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
@@ -2817,15 +2835,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.8399658
       objectReference: {fileID: 0}
-    - target: {fileID: 552678005578486427, guid: 23444eddbbf74474cb157ac6e03f21c8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.00010681152
-      objectReference: {fileID: 0}
     - target: {fileID: 552678005578486426, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 552678005578486426, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
@@ -2850,7 +2863,7 @@ PrefabInstance:
     - target: {fileID: 552678005578486426, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
       propertyPath: m_text
-      value: 30 / 30
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 552678005578486426, guid: 23444eddbbf74474cb157ac6e03f21c8,
         type: 3}
@@ -2882,6 +2895,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 552678005578486427, guid: 23444eddbbf74474cb157ac6e03f21c8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00010681152
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23444eddbbf74474cb157ac6e03f21c8, type: 3}
 --- !u!224 &1894810963 stripped
@@ -2890,6 +2908,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1894810962}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1894810964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 552678005461841057, guid: 23444eddbbf74474cb157ac6e03f21c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1894810962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1894810965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894810964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4989888defc6e4eac771f1a466e773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1922232440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,6 +3056,8 @@ MonoBehaviour:
   option2Btn: {fileID: 383872704}
   option3Btn: {fileID: 1536137151}
   option4Btn: {fileID: 470195055}
+  healthbarPlayer: {fileID: 1894810965}
+  healthbarEnemy: {fileID: 1365692766}
   character1Anim: {fileID: 103035641}
   enemy1Anim: {fileID: 1255542211}
 --- !u!1001 &8556658747497097362

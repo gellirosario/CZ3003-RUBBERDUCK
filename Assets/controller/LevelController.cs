@@ -15,7 +15,11 @@ public class LevelController : MonoBehaviour
     
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
-    
+
+    public HealthBar healthbarPlayer, healthbarEnemy;
+    private HealthSystem healthSystemPlayer;
+    private HealthSystem healthSystemEnemy;
+
     private List<Question> questionList = new List<Question>();
     private List<Question> questionList_Filtered = new List<Question>();
     private bool doUpdate = false;
@@ -39,7 +43,10 @@ public class LevelController : MonoBehaviour
 
     public void Start()
     {
-        
+        healthSystemPlayer = new HealthSystem(30);
+        healthbarPlayer.Setup(healthSystemPlayer);
+        healthSystemEnemy = new HealthSystem(50);
+        healthbarEnemy.Setup(healthSystemEnemy);
     }
     
     public void Awake()
@@ -189,6 +196,8 @@ public class LevelController : MonoBehaviour
             
             int scoreGiven = 0;
 
+            healthSystemEnemy.Damage(10);
+
             switch (difficulty)
             {
                 case "Easy":
@@ -220,6 +229,8 @@ public class LevelController : MonoBehaviour
             enemy1Anim.SetTrigger("Idle");
             
             questionTxt.text = "Wrong!";
+
+            healthSystemPlayer.Damage(10);
         }
         
         Debug.Log("Score = " + score.ToString());
