@@ -22,9 +22,13 @@ public class Player
     }
     
     // Updating IDictionary to Class
-    public Player(IDictionary <string, object> dict)
+    public Player(IDictionary <string, object> dict, IDictionary<string, object> mdict)
     {
-        //pls refer to question model
+        this.characterID = int.Parse(dict["characterID"].ToString());
+        this.totalPoints = int.Parse(dict["totalPoints"].ToString());
+        this.totalQnAnswered = int.Parse(dict["totalQnAnswered"].ToString());
+        this.mastery = new Mastery(mdict);
+        
     }
 }
 
