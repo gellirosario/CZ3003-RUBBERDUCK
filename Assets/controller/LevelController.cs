@@ -25,11 +25,13 @@ public class LevelController : MonoBehaviour
     private bool doUpdate = false;
     private bool isFirst = false;
     private bool isCorrect = false;
+    private bool isChecked = false;
     
     private string difficulty;
     private int level;
     private int score;
     private int randomQuestionNo;
+    private int qnWrong;
     
     private Color colorGreen = new Color(0,198,0);
     private Color colorRed = new Color(255,0,0);
@@ -37,10 +39,6 @@ public class LevelController : MonoBehaviour
     public Animator character1Anim;
     public Animator enemy1Anim;
     
-    private float timer = 2f; // 1sec
-    private float delay = 2f; // 1sec
-    
-
     public void Start()
     {
         healthSystemPlayer = new HealthSystem(30);
@@ -67,6 +65,7 @@ public class LevelController : MonoBehaviour
         isFirst = true;
         level = 0;
         score = 0;
+        qnWrong = 0;
 
         if (questionList.Count == 0)
         {
@@ -97,33 +96,39 @@ public class LevelController : MonoBehaviour
     
     private void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (doUpdate)
         {
-            if (doUpdate)
-                UpdateUI();
-            
-            timer = delay;
+            UpdateUI();
         }
+
     }
 
     private void UpdateUI()
     {
         // Check if stage hasn't ended (lvl 10 is the last stage)
-        if (level < 10)
+        if (healthSystemEnemy.GetHealth() != 0 || healthSystemPlayer.GetHealth() != 0)
         {
-            
             if (doUpdate == true && questionList != null)
             {
-                character1Anim.SetTrigger("Ready");
-                enemy1Anim.SetTrigger("Idle");
                 
+                if (healthSystemPlayer.GetHealth() == 10)
+                {
+                    character1Anim.SetBool("isSick",true);
+                }
+                else
+                {
+                    character1Anim.SetBool("isReady",true);
+                    character1Anim.SetTrigger("Ready");
+                }
+                enemy1Anim.SetTrigger("Idle");
+
                 level = level + 1; // Update level
                 levelTxt.text = "LEVEL " + level.ToString();
 
                 // Set question and options
                 if (!isFirst)
                 {
+                    // Set Difficulty according if the previous answer is correct
                     if (isCorrect)
                     {
                         switch (difficulty)
@@ -173,7 +178,12 @@ public class LevelController : MonoBehaviour
         else
         {
             doUpdate = false;
-            EndStage();
+            
+            questionTxt.text = "Game Over!"; 
+            o1Text.text = "";
+            o2Text.text = "";
+            o3Text.text = "";
+            o4Text.text = "";
         }
         
     }
@@ -186,18 +196,39 @@ public class LevelController : MonoBehaviour
 
         if (selectedOption == questionList_Filtered[randomQuestionNo].answer)
         {
-            isCorrect = true;
-            
+         
             character1Anim.SetTrigger("Stabbing");
             enemy1Anim.SetTrigger("Damage");
             
-            character1Anim.SetTrigger("Ready");
-            enemy1Anim.SetTrigger("Idle");
+            isCorrect = true;
             
             int scoreGiven = 0;
 
+            questionTxt.text = "Correct!";
+            
             healthSystemEnemy.Damage(10);
-
+            
+            // Enemy HP is 0
+            if (healthSystemEnemy.GetHealth() == 0)
+            {
+                character1Anim.SetTrigger("Victory");
+                enemy1Anim.SetTrigger("Down");
+                
+                
+                // End Stage
+                Invoke("EndStage", 2);
+            }
+            else if (healthSystemPlayer.GetHealth() == 10)
+            {
+                character1Anim.SetBool("isSick",true);
+            }
+            else
+            {
+                character1Anim.SetTrigger("Ready");
+            }
+            
+            enemy1Anim.SetTrigger("Idle");
+                
             switch (difficulty)
             {
                 case "Easy":
@@ -212,25 +243,43 @@ public class LevelController : MonoBehaviour
             }
             
             score = score + scoreGiven;
-            
-            
-            questionTxt.text = "Correct!";
-            
-            doUpdate = false;
         }
         else
         {
-            isCorrect = false;
+            // Set no. of QN Wrong
+            qnWrong += 1;
             
             character1Anim.SetTrigger("Damage");
             enemy1Anim.SetTrigger("Swinging");
             
-            character1Anim.SetTrigger("Ready");
-            enemy1Anim.SetTrigger("Idle");
+            isCorrect = false;
             
             questionTxt.text = "Wrong!";
 
             healthSystemPlayer.Damage(10);
+            
+            // Character HP is 0
+            if (healthSystemPlayer.GetHealth() == 0)
+            {
+                character1Anim.SetTrigger("Down");
+                enemy1Anim.SetTrigger("Idle");
+                
+                // Set Score to 0 (Stage Fail)
+                score = 0;
+                
+                // End Stage
+                Invoke("EndStage", 2);
+            }
+            else if (healthSystemPlayer.GetHealth() == 10)
+            {
+                character1Anim.SetBool("isSick",true);
+            }
+            else
+            {
+                character1Anim.SetBool("isReady",true);
+            }
+            
+            enemy1Anim.SetTrigger("Idle");
         }
         
         Debug.Log("Score = " + score.ToString());
@@ -246,12 +295,18 @@ public class LevelController : MonoBehaviour
         }
     }
 
+
     // Check whether pass or fail
     public void EndStage()
     {
         if (score != 0)
         {
             PlayerPrefs.SetInt("Score", score);
+            SavePlayerScore();
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Score", 0);
         }
         
         Debug.Log("Preferences set: Score - " + score.ToString());
@@ -263,6 +318,37 @@ public class LevelController : MonoBehaviour
         {
             SceneManager.LoadScene("StageFail");
         }
+    }
+
+    public void SavePlayerScore()
+    {
+        currentPlayer = ProfileLoader.Instance.playerData;
+
+        level = level - 1;
+        
+        int totalScore = totalPoints + score;
+        int totalQnAnswered = currentPlayer.totalQnAnswered + level;
+        
+        reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("totalPoints").SetValueAsync(totalScore);
+        reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("totalQnAnswered").SetValueAsync(totalQnAnswered);
+
+        string worldStage = "world" + PlayerPrefs.GetInt("SelectedWorld").ToString() + "stage" +
+                            PlayerPrefs.GetInt("SelectedStage");
+        
+        int stars = 0;
+        double percentageWrong = 0;
+
+        percentageWrong = qnWrong / level;
+        if (percentageWrong == 0)
+        {
+            stars = 3;
+        }
+        else if (percentageWrong >= 0.5)
+        {
+            stars = 2;
+        }
+        
+        reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("mastery").Child(worldStage).SetValueAsync(stars);
     }
 }
     

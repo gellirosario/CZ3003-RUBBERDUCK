@@ -150,6 +150,9 @@ public class LogInController : MonoBehaviour
             case AuthError.MissingEmail:
                 msg = "Email does not exist";
                 break;
+			case AuthError.UserNotFound:
+                msg = "User not found";
+                break;
             default:
                 msg = "Error occured";
                 break;
