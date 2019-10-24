@@ -39,6 +39,8 @@ public class LevelController : MonoBehaviour
     public Animator character1Anim;
     public Animator enemy1Anim;
     
+    private Player currentPlayer;
+    
     public void Start()
     {
         healthSystemPlayer = new HealthSystem(30);
@@ -326,7 +328,7 @@ public class LevelController : MonoBehaviour
 
         level = level - 1;
         
-        int totalScore = totalPoints + score;
+        int totalScore = currentPlayer.totalPoints + score;
         int totalQnAnswered = currentPlayer.totalQnAnswered + level;
         
         reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("totalPoints").SetValueAsync(totalScore);
