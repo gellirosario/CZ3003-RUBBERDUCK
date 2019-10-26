@@ -63,7 +63,7 @@ public class LevelController : MonoBehaviour
         option3Btn = GetComponent<Button>();
         option4Btn = GetComponent<Button>();
         
-        difficulty = "Medium"; // First level = Medium
+        difficulty = "Normal"; // First level = Normal
         isFirst = true;
         level = 0;
         score = 0;
@@ -74,10 +74,10 @@ public class LevelController : MonoBehaviour
             // Retrieve Question List According to World and Stage
             questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(PlayerPrefs.GetInt("SelectedWorld"),
                 PlayerPrefs.GetInt("SelectedStage"));
+            
+            Debug.LogFormat("QUESTION FOUND ==== "+questionList);
         }
-        
-        Debug.Log(questionList);
-        
+
         doUpdate = true;
         
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
@@ -136,9 +136,9 @@ public class LevelController : MonoBehaviour
                         switch (difficulty)
                         {
                             case "Easy":
-                                difficulty = "Medium";
+                                difficulty = "Normal";
                                 break;
-                            case "Medium":
+                            case "Normal":
                                 difficulty = "Hard";
                                 break;
                         }
@@ -148,11 +148,11 @@ public class LevelController : MonoBehaviour
                     {
                         switch (difficulty)
                         {
-                            case "Medium":
+                            case "Normal":
                                 difficulty = "Easy";
                                 break;
                             case "Hard":
-                                difficulty = "Medium";
+                                difficulty = "Normal";
                                 break;
                         }
                     }
@@ -236,7 +236,7 @@ public class LevelController : MonoBehaviour
                 case "Easy":
                     scoreGiven = 10;
                     break;
-                case "Medium":
+                case "Normal":
                     scoreGiven = 20;
                     break;
                 case "Hard":
