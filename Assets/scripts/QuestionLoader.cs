@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;   
 using UnityEngine;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using SimpleJSON;
 
 public class QuestionLoader : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class QuestionLoader : MonoBehaviour
     private bool isFirebaseInitialized = false;
 
     public List<Question> questionList_All = new List<Question>();
+    
+    private string dataFileName = "QuestionsList.json"; // Json file in StreamingAssets folder
     
     private void Awake()
     {
@@ -46,21 +50,32 @@ public class QuestionLoader : MonoBehaviour
         });
     }
     
-    // Testing purposes
-    private void AddQuestionToDatabase()
+    private void AddQuestionData()
     {
-        /*
-        for (int i = 0; i < 3; i++)
-        {
-            Question question = new Question(1, 1, 1, "Medium", "Test Question " + i, 1, "1", "2", "3", "4");
-            string json = JsonUtility.ToJson(question);
-            reference.Child("Questions").Child(i.ToString()).SetRawJsonValueAsync(json);
-        }
-        */
-        
-        GetAllQuestionsFromDatabase();
-    }
+        string filePath = Path.Combine(Application.streamingAssetsPath, dataFileName);
 
+        if(File.Exists(filePath))
+        {
+            // Read the json from the file into a string
+            string jsonString = File.ReadAllText(filePath);
+            JSONNode data = JSON.Parse(jsonString);
+            Debug.LogError("=ADD QUESTION=");
+            
+            foreach(JSONNode record in data["Questions"])
+            {
+                Question question = new Question(record["id"].AsInt, record["world"].AsInt, record["stage"].AsInt,
+                    record["difficulty"].Value, record["question"].Value, record["answer"].AsInt,
+                    record["option1"].Value, record["option2"].Value, record["option3"].Value, record["option4"].Value);
+                string json = JsonUtility.ToJson(question);
+                reference.Child("Questions").Child(record["id"].Value).SetRawJsonValueAsync(json);
+            }
+        }
+        else
+        {
+            Debug.LogError("Cannot load question data!");
+        }
+    }
+    
     private void GetAllQuestionsFromDatabase()
     {
         Firebase.Database.FirebaseDatabase dbInstance = Firebase.Database.FirebaseDatabase.DefaultInstance;
@@ -81,12 +96,12 @@ public class QuestionLoader : MonoBehaviour
                     Question quest = new Question(questionDict);
                     questionList_All.Add(quest);
                 }
+                
+                if (questionList_All.Count == 0)
+                {
+                    AddQuestionData();
+                }
 
-                Debug.Log(questionList_All[0].question);
-                
-                Debug.Log(questionList_All[1].question);
-                
-                Debug.Log(questionList_All[2].question);
             }
         });
 
