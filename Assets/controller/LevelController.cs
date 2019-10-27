@@ -11,7 +11,6 @@ public class LevelController : MonoBehaviour
 {
     private FirebaseApp app;
     private DatabaseReference reference;
-    private bool isFirebaseInitialized = false;
     
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
@@ -21,7 +20,13 @@ public class LevelController : MonoBehaviour
     private HealthSystem healthSystemEnemy;
 
     private List<Question> questionList = new List<Question>();
-    private List<Question> questionList_Filtered = new List<Question>();
+    private List<Question> questionList_Filtered_Easy = new List<Question>();
+    private List<Question> questionList_Filtered_Normal = new List<Question>();
+    private List<Question> questionList_Filtered_Hard = new List<Question>();
+    
+    private string qn, o1, o2, o3, o4; // For the UI
+    private int answer; // For the UI
+    
     private bool doUpdate = false;
     private bool isFirst = false;
     private bool isCorrect = false;
@@ -63,7 +68,7 @@ public class LevelController : MonoBehaviour
         option3Btn = GetComponent<Button>();
         option4Btn = GetComponent<Button>();
         
-        difficulty = "Medium"; // First level = Medium
+        difficulty = "Normal"; // First level = Normal
         isFirst = true;
         level = 0;
         score = 0;
@@ -74,10 +79,13 @@ public class LevelController : MonoBehaviour
             // Retrieve Question List According to World and Stage
             questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(PlayerPrefs.GetInt("SelectedWorld"),
                 PlayerPrefs.GetInt("SelectedStage"));
+            
+            // Retrieve Question List According to Difficulty
+            questionList_Filtered_Easy = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Easy"); 
+            questionList_Filtered_Normal = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Normal"); 
+            questionList_Filtered_Hard = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Hard"); 
         }
-        
-        Debug.Log(questionList);
-        
+
         doUpdate = true;
         
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
@@ -136,9 +144,9 @@ public class LevelController : MonoBehaviour
                         switch (difficulty)
                         {
                             case "Easy":
-                                difficulty = "Medium";
+                                difficulty = "Normal";
                                 break;
-                            case "Medium":
+                            case "Normal":
                                 difficulty = "Hard";
                                 break;
                         }
@@ -148,29 +156,54 @@ public class LevelController : MonoBehaviour
                     {
                         switch (difficulty)
                         {
-                            case "Medium":
+                            case "Normal":
                                 difficulty = "Easy";
                                 break;
                             case "Hard":
-                                difficulty = "Medium";
+                                difficulty = "Normal";
                                 break;
                         }
                     }
                 }
                 
                 // Filter question list according to difficulty
-                questionList_Filtered = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, difficulty); 
-                randomQuestionNo = Random.Range(0, questionList_Filtered.Count);
-                Debug.LogFormat("Level : " + level.ToString());
-                Debug.LogFormat("Difficulty : " + difficulty);
-                Debug.LogFormat("Question List Filtered No : " + questionList_Filtered.Count.ToString());
-                Debug.LogFormat("Random Number : " + randomQuestionNo.ToString());
+                switch (difficulty)
+                {
+                    case "Easy":
+                        randomQuestionNo = Random.Range(0, questionList_Filtered_Easy.Count);
+                        qn = questionList_Filtered_Easy[randomQuestionNo].question;
+                        o1 = questionList_Filtered_Easy[randomQuestionNo].option1;
+                        o2 = questionList_Filtered_Easy[randomQuestionNo].option2;
+                        o3 = questionList_Filtered_Easy[randomQuestionNo].option3;
+                        o4 = questionList_Filtered_Easy[randomQuestionNo].option4;
+                        answer = questionList_Filtered_Easy[randomQuestionNo].answer;
+                        break;
+                    case "Normal":
+                        randomQuestionNo = Random.Range(0, questionList_Filtered_Normal.Count);
+                        Debug.LogError("RANDOM QN = NORMAL " + randomQuestionNo.ToString());
+                        qn = questionList_Filtered_Normal[randomQuestionNo].question;
+                        o1 = questionList_Filtered_Normal[randomQuestionNo].option1;
+                        o2 = questionList_Filtered_Normal[randomQuestionNo].option2;
+                        o3 = questionList_Filtered_Normal[randomQuestionNo].option3;
+                        o4 = questionList_Filtered_Normal[randomQuestionNo].option4;
+                        answer = questionList_Filtered_Normal[randomQuestionNo].answer;
+                        break;
+                    case "Hard":
+                        randomQuestionNo = Random.Range(0, questionList_Filtered_Hard.Count);
+                        qn = questionList_Filtered_Hard[randomQuestionNo].question;
+                        o1 = questionList_Filtered_Hard[randomQuestionNo].option1;
+                        o2 = questionList_Filtered_Hard[randomQuestionNo].option2;
+                        o3 = questionList_Filtered_Hard[randomQuestionNo].option3;
+                        o4 = questionList_Filtered_Hard[randomQuestionNo].option4;
+                        answer = questionList_Filtered_Hard[randomQuestionNo].answer;
+                        break;
+                }
                 
-                questionTxt.text = questionList_Filtered[randomQuestionNo].question;
-                o1Text.text = "a. " + questionList_Filtered[randomQuestionNo].option1;
-                o2Text.text = "b. " + questionList_Filtered[randomQuestionNo].option2;
-                o3Text.text = "c. " + questionList_Filtered[randomQuestionNo].option3;
-                o4Text.text = "d. " + questionList_Filtered[randomQuestionNo].option4;
+                questionTxt.text = qn;
+                o1Text.text = "a. " + o1;
+                o2Text.text = "b. " + o2;
+                o3Text.text = "c. " + o3;
+                o4Text.text = "d. " + o4;
                 
                 isFirst = false; // Not first question
                 doUpdate = false; // Set to false until the player answered
@@ -193,10 +226,9 @@ public class LevelController : MonoBehaviour
     // Check selection option
     public void CheckAnswer(int selectedOption)
     {
-        Debug.Log("Correct Answer = " + questionList_Filtered[randomQuestionNo].answer.ToString());
-        Debug.Log("Selected Answer = " + questionList_Filtered[randomQuestionNo].answer.ToString());
+        Debug.Log("Correct Answer = " + answer.ToString());
 
-        if (selectedOption == questionList_Filtered[randomQuestionNo].answer)
+        if (selectedOption == answer)
         {
          
             character1Anim.SetTrigger("Stabbing");
@@ -218,7 +250,7 @@ public class LevelController : MonoBehaviour
                 
                 
                 // End Stage
-                Invoke("EndStage", 2);
+                Invoke("EndStage", 1);
             }
             else if (healthSystemPlayer.GetHealth() == 10)
             {
@@ -236,7 +268,7 @@ public class LevelController : MonoBehaviour
                 case "Easy":
                     scoreGiven = 10;
                     break;
-                case "Medium":
+                case "Normal":
                     scoreGiven = 20;
                     break;
                 case "Hard":
@@ -270,7 +302,7 @@ public class LevelController : MonoBehaviour
                 score = 0;
                 
                 // End Stage
-                Invoke("EndStage", 2);
+                Invoke("EndStage", 1);
             }
             else if (healthSystemPlayer.GetHealth() == 10)
             {
@@ -288,12 +320,17 @@ public class LevelController : MonoBehaviour
         
         doUpdate = true;
         
-        for (int i = 0; i < questionList.Count; i++)
+        switch (difficulty)
         {
-            if (questionList[i].qnID == questionList_Filtered[randomQuestionNo].qnID)
-            {
-                questionList.RemoveAt(i);
-            }
+            case "Easy":
+                questionList_Filtered_Easy.RemoveAt(randomQuestionNo);
+                break;
+            case "Normal":
+                questionList_Filtered_Normal.RemoveAt(randomQuestionNo);
+                break;
+            case "Hard":
+                questionList_Filtered_Hard.RemoveAt(randomQuestionNo);
+                break;
         }
     }
 
@@ -312,7 +349,7 @@ public class LevelController : MonoBehaviour
         }
         
         Debug.Log("Preferences set: Score - " + score.ToString());
-        if (PlayerPrefs.GetInt("Score") != null)
+        if (PlayerPrefs.GetInt("Score") != 0)
         {
             SceneManager.LoadScene("StageClear");
         }

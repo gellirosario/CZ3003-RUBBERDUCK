@@ -33,6 +33,6 @@ public class EndStageController : MonoBehaviour
 
     public void QuitToMenuClick()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("PlayerMain");
     }
 }

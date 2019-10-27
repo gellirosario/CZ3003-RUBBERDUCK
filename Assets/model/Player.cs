@@ -20,7 +20,15 @@ public class Player
         this.totalPoints = totalPoints;
         this.totalQnAnswered = totalQnAnswered;
     }
-    
+
+    // Updating IDictionary to Class
+    public Player(IDictionary<string, object> dict)
+    {
+        this.totalPoints = int.Parse(dict["totalPoints"].ToString());
+        this.totalQnAnswered = int.Parse(dict["totalQnAnswered"].ToString());
+
+    }
+
     // Updating IDictionary to Class
     public Player(IDictionary <string, object> dict, IDictionary<string, object> mdict)
     {
