@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/challenges/ViewChallenges.unity
     guid: 8c03f8b1563dc9640be4af5642efab00
+  - enabled: 1
+    path: Assets/view/leaderboard/Leaderboard.unity
+    guid: ae830e273369e448facaaac4b74991b4
   m_configObjects: {}

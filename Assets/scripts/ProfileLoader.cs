@@ -11,9 +11,16 @@ public class ProfileLoader : MonoBehaviour
 
     private FirebaseApp app;
     private DatabaseReference reference;
-	public string id;
+    public string id;
     public Player playerData { get; private set; }
     public User userData { get; private set; }
+
+    /*----------leaderBoard-----------*/
+    public Player topPlayerData { get; private set; }
+    public User topUserData { get; private set; }
+
+    public static List<Player> leaderboard = new List<Player>();
+    public static List<User> playerName = new List<User>();
 
     private void Awake()
     {
@@ -27,14 +34,15 @@ public class ProfileLoader : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
         }
 
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
-				
-                
+
+
             }
             else
             {
@@ -45,18 +53,25 @@ public class ProfileLoader : MonoBehaviour
         });
     }
 
-	public void Start(){
-		LoadUserData();
+    public void Start()
+    {
+        LoadUserData();
         LoadPlayerData();
-	}
+
+        /*---leaderBoard---*/
+        leaderboard.Clear();
+        playerName.Clear();
+        LoadLeaderboardData();
+
+    }
 
 
 
     private void LoadUserData()
     {
-		Debug.LogFormat("----HERE---");
+        Debug.LogFormat("----HERE---");
         id = PlayerPrefs.GetString("UserID");
-        Debug.LogFormat("----USER INFO ID---" +id);
+        Debug.LogFormat("----USER INFO ID---" + id);
 
         FirebaseDatabase.DefaultInstance.GetReference("Users").GetValueAsync().ContinueWith(task =>
         {
@@ -70,7 +85,7 @@ public class ProfileLoader : MonoBehaviour
 
                 foreach (DataSnapshot userNode in snapshot.Children)
                 {
-                    if(userNode.Key == id)
+                    if (userNode.Key == id)
                     {
                         //load user data into player object
                         var userDict = (IDictionary<string, object>)userNode.Value;
@@ -85,7 +100,7 @@ public class ProfileLoader : MonoBehaviour
 
         });
 
-      
+
     }
 
 
@@ -112,22 +127,22 @@ public class ProfileLoader : MonoBehaviour
                         //load player data into player object
                         var playerDict = (IDictionary<string, object>)playerNode.Value;
 
-						//Debug.LogFormat("Key = {0}, Value = {1}", playerNode.Key, playerNode.Value);
+                        //Debug.LogFormat("Key = {0}, Value = {1}", playerNode.Key, playerNode.Value);
                         foreach (KeyValuePair<string, object> kvp in playerDict)
                         {
                             Debug.LogFormat("PLAYER ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-							if(kvp.Key == "mastery")
-							{
-								var masteryDict = (IDictionary<string, object>)playerDict["mastery"];
-								foreach (KeyValuePair<string, object> kvp1 in masteryDict)
-                        		{
-                            		Debug.LogFormat("MASTERY ---- Key = {0}, Value = {1}", kvp1.Key, kvp1.Value);
-                        		}
-								playerData = new Player(playerDict, masteryDict);
-							}
-							
+                            if (kvp.Key == "mastery")
+                            {
+                                var masteryDict = (IDictionary<string, object>)playerDict["mastery"];
+                                foreach (KeyValuePair<string, object> kvp1 in masteryDict)
+                                {
+                                    Debug.LogFormat("MASTERY ---- Key = {0}, Value = {1}", kvp1.Key, kvp1.Value);
+                                }
+                                playerData = new Player(playerDict, masteryDict);
+                            }
+
                         }
-                        
+
                     }
                 }
                 Debug.Log(playerData.characterID);
@@ -137,5 +152,60 @@ public class ProfileLoader : MonoBehaviour
             }
 
         });
+    }
+
+
+
+    /*----------------------------------------------------*/
+    /*--------------------leaderBoard---------------------*/
+    /*----------------------------------------------------*/
+
+    private void LoadLeaderboardData()
+    {
+        Debug.LogFormat("----loadleaderboard---");
+      
+        FirebaseDatabase.DefaultInstance.GetReference("Player").OrderByChild("totalPoints").LimitToLast(10).ValueChanged += HandleValueChanged;
+    }
+
+    void HandleValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        if (args.DatabaseError != null)
+        {
+            Debug.LogError(args.DatabaseError.Message);
+            return;
+        }
+        FirebaseDatabase.DefaultInstance.GetReference("Users").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("Error in data retrieval from Users table");
+            }
+            else if (task.IsCompleted)
+            {
+                // Do something with the data in args.Snapshot
+                DataSnapshot snapshot = args.Snapshot;
+                DataSnapshot snapshot2 = task.Result;
+
+                foreach (DataSnapshot playerNode in snapshot.Children)
+                {
+                    //load player data into player object
+                    foreach (DataSnapshot userNode in snapshot2.Children)
+                    {
+                        if (userNode.Key == playerNode.Key)
+                        {
+                            var playerDict = (IDictionary<string, object>)playerNode.Value;
+                            topPlayerData = new Player(playerDict);
+                            leaderboard.Insert(0, topPlayerData);
+                            
+                            var userDict = (IDictionary<string, object>)userNode.Value;
+                            topUserData = new User(userDict);
+                            playerName.Insert(0, topUserData);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+        Debug.LogFormat("----out db---");
     }
 }
