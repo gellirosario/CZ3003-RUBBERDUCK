@@ -11,9 +11,13 @@ public class LevelController : MonoBehaviour
 {
     private FirebaseApp app;
     private DatabaseReference reference;
-    
+
     public Text questionTxt, levelTxt, o1Text, o2Text, o3Text, o4Text;
     public Button option1Btn, option2Btn, option3Btn, option4Btn;
+
+    public Text scoreTxt;
+    public Text difficultyTxt;
+
 
     public HealthBar healthbarPlayer, healthbarEnemy;
     private HealthSystem healthSystemPlayer;
@@ -23,37 +27,41 @@ public class LevelController : MonoBehaviour
     private List<Question> questionList_Filtered_Easy = new List<Question>();
     private List<Question> questionList_Filtered_Normal = new List<Question>();
     private List<Question> questionList_Filtered_Hard = new List<Question>();
-    
+
     private string qn, o1, o2, o3, o4; // For the UI
     private int answer; // For the UI
-    
+
     private bool doUpdate = false;
     private bool isFirst = false;
     private bool isCorrect = false;
     private bool isChecked = false;
-    
+
     private string difficulty;
     private int level;
     private int score;
     private int randomQuestionNo;
     private int qnWrong;
-    
-    private Color colorGreen = new Color(0,198,0);
-    private Color colorRed = new Color(255,0,0);
+
+
+    private Color colorGreen = new Color(0, 198, 0);
+    private Color colorRed = new Color(255, 0, 0);
 
     public Animator character1Anim;
     public Animator enemy1Anim;
-    
+
     private Player currentPlayer;
-    
+
     public void Start()
     {
         healthSystemPlayer = new HealthSystem(30);
         healthbarPlayer.Setup(healthSystemPlayer);
         healthSystemEnemy = new HealthSystem(50);
         healthbarEnemy.Setup(healthSystemEnemy);
+
+        difficultyTxt.text = "Difficulty: Normal";
+        scoreTxt.text = "Score: ";
     }
-    
+
     public void Awake()
     {
         levelTxt.text = "Level " + "";
@@ -62,12 +70,12 @@ public class LevelController : MonoBehaviour
         o2Text.text = "";
         o3Text.text = "";
         o4Text.text = "";
-        
+
         option1Btn = GetComponent<Button>();
         option2Btn = GetComponent<Button>();
         option3Btn = GetComponent<Button>();
         option4Btn = GetComponent<Button>();
-        
+
         difficulty = "Normal"; // First level = Normal
         isFirst = true;
         level = 0;
@@ -79,15 +87,15 @@ public class LevelController : MonoBehaviour
             // Retrieve Question List According to World and Stage
             questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(PlayerPrefs.GetInt("SelectedWorld"),
                 PlayerPrefs.GetInt("SelectedStage"));
-            
+
             // Retrieve Question List According to Difficulty
-            questionList_Filtered_Easy = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Easy"); 
-            questionList_Filtered_Normal = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Normal"); 
-            questionList_Filtered_Hard = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Hard"); 
+            questionList_Filtered_Easy = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Easy");
+            questionList_Filtered_Normal = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Normal");
+            questionList_Filtered_Hard = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Hard");
         }
 
         doUpdate = true;
-        
+
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
@@ -95,7 +103,9 @@ public class LevelController : MonoBehaviour
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-            } else {
+            }
+            else
+            {
                 UnityEngine.Debug.LogError(System.String.Format(
                     "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
                 // Firebase Unity SDK is not safe to use here.
@@ -103,7 +113,7 @@ public class LevelController : MonoBehaviour
         });
 
     }
-    
+
     private void Update()
     {
         if (doUpdate)
@@ -120,14 +130,14 @@ public class LevelController : MonoBehaviour
         {
             if (doUpdate == true && questionList != null)
             {
-                
+
                 if (healthSystemPlayer.GetHealth() == 10)
                 {
-                    character1Anim.SetBool("isSick",true);
+                    character1Anim.SetBool("isSick", true);
                 }
                 else
                 {
-                    character1Anim.SetBool("isReady",true);
+                    character1Anim.SetBool("isReady", true);
                     character1Anim.SetTrigger("Ready");
                 }
                 enemy1Anim.SetTrigger("Idle");
@@ -150,7 +160,7 @@ public class LevelController : MonoBehaviour
                                 difficulty = "Hard";
                                 break;
                         }
-                        
+
                     }
                     else
                     {
@@ -165,7 +175,7 @@ public class LevelController : MonoBehaviour
                         }
                     }
                 }
-                
+
                 // Filter question list according to difficulty
                 switch (difficulty)
                 {
@@ -198,13 +208,13 @@ public class LevelController : MonoBehaviour
                         answer = questionList_Filtered_Hard[randomQuestionNo].answer;
                         break;
                 }
-                
+
                 questionTxt.text = qn;
                 o1Text.text = "a. " + o1;
                 o2Text.text = "b. " + o2;
                 o3Text.text = "c. " + o3;
                 o4Text.text = "d. " + o4;
-                
+
                 isFirst = false; // Not first question
                 doUpdate = false; // Set to false until the player answered
             }
@@ -213,14 +223,14 @@ public class LevelController : MonoBehaviour
         else
         {
             doUpdate = false;
-            
-            questionTxt.text = "Game Over!"; 
+
+            questionTxt.text = "Game Over!";
             o1Text.text = "";
             o2Text.text = "";
             o3Text.text = "";
             o4Text.text = "";
         }
-        
+
     }
 
     // Check selection option
@@ -230,39 +240,39 @@ public class LevelController : MonoBehaviour
 
         if (selectedOption == answer)
         {
-         
+
             character1Anim.SetTrigger("Stabbing");
             enemy1Anim.SetTrigger("Damage");
-            
+
             isCorrect = true;
-            
+
             int scoreGiven = 0;
 
             questionTxt.text = "Correct!";
-            
+
             healthSystemEnemy.Damage(10);
-            
+
             // Enemy HP is 0
             if (healthSystemEnemy.GetHealth() == 0)
             {
                 character1Anim.SetTrigger("Victory");
                 enemy1Anim.SetTrigger("Down");
-                
-                
+
+
                 // End Stage
                 Invoke("EndStage", 1);
             }
             else if (healthSystemPlayer.GetHealth() == 10)
             {
-                character1Anim.SetBool("isSick",true);
+                character1Anim.SetBool("isSick", true);
             }
             else
             {
                 character1Anim.SetTrigger("Ready");
             }
-            
+
             enemy1Anim.SetTrigger("Idle");
-                
+
             switch (difficulty)
             {
                 case "Easy":
@@ -275,51 +285,53 @@ public class LevelController : MonoBehaviour
                     scoreGiven = 30;
                     break;
             }
-            
+
             score = score + scoreGiven;
+            scoreTxt.text = "Score: " + score.ToString();
+            difficultyTxt.text = "Difficulty: " + difficulty.ToString();
         }
         else
         {
             // Set no. of QN Wrong
             qnWrong += 1;
-            
+
             character1Anim.SetTrigger("Damage");
             enemy1Anim.SetTrigger("Swinging");
-            
+
             isCorrect = false;
-            
+
             questionTxt.text = "Wrong!";
 
             healthSystemPlayer.Damage(10);
-            
+
             // Character HP is 0
             if (healthSystemPlayer.GetHealth() == 0)
             {
                 character1Anim.SetTrigger("Down");
                 enemy1Anim.SetTrigger("Idle");
-                
+
                 // Set Score to 0 (Stage Fail)
                 score = 0;
-                
+
                 // End Stage
                 Invoke("EndStage", 1);
             }
             else if (healthSystemPlayer.GetHealth() == 10)
             {
-                character1Anim.SetBool("isSick",true);
+                character1Anim.SetBool("isSick", true);
             }
             else
             {
-                character1Anim.SetBool("isReady",true);
+                character1Anim.SetBool("isReady", true);
             }
-            
+
             enemy1Anim.SetTrigger("Idle");
         }
-        
+
         Debug.Log("Score = " + score.ToString());
-        
+
         doUpdate = true;
-        
+
         switch (difficulty)
         {
             case "Easy":
@@ -347,7 +359,7 @@ public class LevelController : MonoBehaviour
         {
             PlayerPrefs.SetInt("Score", 0);
         }
-        
+
         Debug.Log("Preferences set: Score - " + score.ToString());
         if (PlayerPrefs.GetInt("Score") != 0)
         {
@@ -364,16 +376,16 @@ public class LevelController : MonoBehaviour
         currentPlayer = ProfileLoader.Instance.playerData;
 
         level = level - 1;
-        
+
         int totalScore = currentPlayer.totalPoints + score;
         int totalQnAnswered = currentPlayer.totalQnAnswered + level;
-        
+
         reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("totalPoints").SetValueAsync(totalScore);
         reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("totalQnAnswered").SetValueAsync(totalQnAnswered);
 
         string worldStage = "world" + PlayerPrefs.GetInt("SelectedWorld").ToString() + "stage" +
                             PlayerPrefs.GetInt("SelectedStage");
-        
+
         int stars = 0;
         double percentageWrong = 0;
 
@@ -386,10 +398,10 @@ public class LevelController : MonoBehaviour
         {
             stars = 2;
         }
-        
+
         reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("mastery").Child(worldStage).SetValueAsync(stars);
     }
 }
-    
-    
+
+
 
