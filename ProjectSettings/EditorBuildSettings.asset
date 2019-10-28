@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/challenges/ChallengeSelect.unity
     guid: fc3da1f93bc82344290f8aaabeb14b84
+  - enabled: 1
+    path: Assets/view/challenges/CreateChallenge.unity
+    guid: 45d3d06d53eba62429478f3344e32f36
   m_configObjects: {}

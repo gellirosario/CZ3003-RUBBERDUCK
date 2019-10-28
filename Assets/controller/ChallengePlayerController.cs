@@ -106,7 +106,7 @@ public class ChallengePlayerController : MonoBehaviour
     {
         Debug.Log(" found2");
         uid = null;
-        SceneManager.LoadScene("ChallengeSelect");
+        SceneManager.LoadScene("CreateChallenge");
 
     }
     // Update is called once per frame
