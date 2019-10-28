@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/assignments/ViewAssignment.unity
     guid: af34256cea65d4d4eaddccdc7c059d67
+  - enabled: 1
+    path: Assets/view/assignments/ViewAssignment2.unity
+    guid: 05a10ff4bccde5441bd136968c78f376
   m_configObjects: {}
