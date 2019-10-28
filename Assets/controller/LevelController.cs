@@ -41,6 +41,8 @@ public class LevelController : MonoBehaviour
     private int score;
     private int randomQuestionNo;
     private int qnWrong;
+    private int rightansNo = 0;
+    
 
 
     private Color colorGreen = new Color(0, 198, 0);
@@ -58,8 +60,8 @@ public class LevelController : MonoBehaviour
         healthSystemEnemy = new HealthSystem(50);
         healthbarEnemy.Setup(healthSystemEnemy);
 
-        difficultyTxt.text = "Difficulty: Normal";
-        scoreTxt.text = "Score: ";
+        difficultyTxt.text = "Difficulty: ";
+        scoreTxt.text = "Score: 0";
     }
 
     public void Awake()
@@ -77,6 +79,7 @@ public class LevelController : MonoBehaviour
         option4Btn = GetComponent<Button>();
 
         difficulty = "Normal"; // First level = Normal
+        
         isFirst = true;
         level = 0;
         score = 0;
@@ -95,6 +98,8 @@ public class LevelController : MonoBehaviour
         }
 
         doUpdate = true;
+
+        difficultyTxt.text = "Difficulty: Normal";
 
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -125,7 +130,7 @@ public class LevelController : MonoBehaviour
 
     private void UpdateUI()
     {
-        // Check if stage hasn't ended (lvl 10 is the last stage)
+        // Check if stage hasn't ended (lvl 7 is the last stage)
         if (healthSystemEnemy.GetHealth() != 0 || healthSystemPlayer.GetHealth() != 0)
         {
             if (doUpdate == true && questionList != null)
@@ -208,7 +213,7 @@ public class LevelController : MonoBehaviour
                         answer = questionList_Filtered_Hard[randomQuestionNo].answer;
                         break;
                 }
-
+                difficultyTxt.text = "Difficulty: " + difficulty.ToString();
                 questionTxt.text = qn;
                 o1Text.text = "a. " + o1;
                 o2Text.text = "b. " + o2;
@@ -249,6 +254,7 @@ public class LevelController : MonoBehaviour
             int scoreGiven = 0;
 
             questionTxt.text = "Correct!";
+            
 
             healthSystemEnemy.Damage(10);
 
@@ -282,16 +288,18 @@ public class LevelController : MonoBehaviour
                     scoreGiven = 20;
                     break;
                 case "Hard":
-                    scoreGiven = 30;
+                    scoreGiven = 40;
                     break;
             }
 
             score = score + scoreGiven;
             scoreTxt.text = "Score: " + score.ToString();
-            difficultyTxt.text = "Difficulty: " + difficulty.ToString();
+            
+            rightansNo++;
         }
         else
         {
+
             // Set no. of QN Wrong
             qnWrong += 1;
 
@@ -301,6 +309,7 @@ public class LevelController : MonoBehaviour
             isCorrect = false;
 
             questionTxt.text = "Wrong!";
+            
 
             healthSystemPlayer.Damage(10);
 
@@ -326,6 +335,7 @@ public class LevelController : MonoBehaviour
             }
 
             enemy1Anim.SetTrigger("Idle");
+         
         }
 
         Debug.Log("Score = " + score.ToString());
@@ -350,6 +360,11 @@ public class LevelController : MonoBehaviour
     // Check whether pass or fail
     public void EndStage()
     {
+        PlayerPrefs.SetInt("stageCorrectAns", rightansNo);
+        int stagelevel = level - 1;
+        PlayerPrefs.SetInt("stageQnsAttempt", stagelevel);
+        
+
         if (score != 0)
         {
             PlayerPrefs.SetInt("Score", score);
@@ -369,6 +384,9 @@ public class LevelController : MonoBehaviour
         {
             SceneManager.LoadScene("StageFail");
         }
+
+        
+
     }
 
     public void SavePlayerScore()
@@ -401,6 +419,11 @@ public class LevelController : MonoBehaviour
 
         reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("mastery").Child(worldStage).SetValueAsync(stars);
     }
+
+
+    
+
+
 }
 
 
