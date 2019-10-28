@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/assignments/ViewAssignment.unity
     guid: af34256cea65d4d4eaddccdc7c059d67
+  - enabled: 1
+    path: Assets/view/challenges/ChallengeSelect.unity
+    guid: fc3da1f93bc82344290f8aaabeb14b84
   m_configObjects: {}
