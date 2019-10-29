@@ -27,7 +27,7 @@ public class AssignmentScrollList : MonoBehaviour
 
     void RefreshDisplay()
     {
-        //RemoveButtons();
+        RemoveButtons();
         AddButtons();
     }
 
@@ -46,7 +46,9 @@ public class AssignmentScrollList : MonoBehaviour
         {
             Item item = itemList[i];
             GameObject newButton = buttonObjectPool.GetObject();
-            newButton.transform.SetParent(contentPanel);
+
+            //newButton.transform.SetParent(contentPanel); //Sets "newParent" as the new parent of the player GameObject
+            newButton.transform.SetParent(contentPanel, false); //Same as above, except this makes the player keep its local orientation rather than its global orientation.
 
             AssignmentButton assignmentButton = newButton.GetComponent<AssignmentButton>();
             assignmentButton.Setup(item, this);
