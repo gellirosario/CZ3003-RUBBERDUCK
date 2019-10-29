@@ -27,7 +27,7 @@ public class AssignmentScrollList : MonoBehaviour
 
     void RefreshDisplay()
     {
-        RemoveButtons();
+       // RemoveButtons();
         AddButtons();
     }
 

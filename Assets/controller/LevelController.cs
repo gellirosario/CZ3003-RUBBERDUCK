@@ -42,7 +42,12 @@ public class LevelController : MonoBehaviour
     private int randomQuestionNo;
     private int qnWrong;
     private int rightansNo = 0;
-    
+
+    private string worldAndStage;  //ss ==
+    private int appear = 0;//ss ==
+    private int correctAns = 0;//ss ==
+    private int wrongAns = 0;//ss ==
+
 
 
     private Color colorGreen = new Color(0, 198, 0);
@@ -52,6 +57,9 @@ public class LevelController : MonoBehaviour
     public Animator enemy1Anim;
 
     private Player currentPlayer;
+
+   // private Report currentReport;
+
 
     public void Start()
     {
@@ -90,6 +98,11 @@ public class LevelController : MonoBehaviour
             // Retrieve Question List According to World and Stage
             questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(PlayerPrefs.GetInt("SelectedWorld"),
                 PlayerPrefs.GetInt("SelectedStage"));
+
+            // for report use ============= ss
+            worldAndStage = "w" + PlayerPrefs.GetInt("SelectedWorld").ToString() +
+                            "s" + PlayerPrefs.GetInt("SelectedStage").ToString();
+            //==========================
 
             // Retrieve Question List According to Difficulty
             questionList_Filtered_Easy = QuestionLoader.Instance.FilterQuestionsListByDifficulty(questionList, "Easy");
@@ -245,6 +258,9 @@ public class LevelController : MonoBehaviour
 
         if (selectedOption == answer)
         {
+            //==================
+            correctAns += 1; // for report use
+            //==========================
 
             character1Anim.SetTrigger("Stabbing");
             enemy1Anim.SetTrigger("Damage");
@@ -299,6 +315,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            wrongAns += 1;  // for report use=========
 
             // Set no. of QN Wrong
             qnWrong += 1;
@@ -360,6 +377,8 @@ public class LevelController : MonoBehaviour
     // Check whether pass or fail
     public void EndStage()
     {
+        SaveReport(); //=============
+
         PlayerPrefs.SetInt("stageCorrectAns", rightansNo);
         int stagelevel = level - 1;
         PlayerPrefs.SetInt("stageQnsAttempt", stagelevel);
@@ -420,8 +439,43 @@ public class LevelController : MonoBehaviour
         reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("mastery").Child(worldStage).SetValueAsync(stars);
     }
 
+    public void SaveReport()
+    {
+        //currentPlayer = ProfileLoader.Instance.playerData;
+       // DataSnapshot s = reference.Child("Report").Child(worldAndStage).Child("Correct").GetValueAsync().Result;
+       // System.Convert.ToInt32(s);
+       // Debug.Log("===" + s + "====");
 
-    
+                // Debug.Log("HI, S = " + s.Key);
+                // For report use =================
+                 FirebaseDatabase.DefaultInstance.GetReference("Report").Child(worldAndStage).Child("Correct").GetValueAsync().ContinueWith(task => {
+                       if (task.IsFaulted)
+                       {
+                           Debug.Log("HI, S =  waht you have");
+                           // Handle the error...
+                       }
+                       else if (task.IsCompleted)
+                       {
+                           DataSnapshot s = task.Result;
+                           System.Convert.ToInt32(s);
+                           Debug.Log("===" + s + "====");
+                        // Debug.Log("HI, S = " + s.Key);
+                           // Do something with snapshot...
+                       }
+                   });
+
+                appear = correctAns + wrongAns; // get total number of questionappear
+         reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
+        //reference.Child("Report").Child(worldAndStage).Child("Correct").ValueChanged += correctAns;
+        reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
+        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns); // have issues how to increase 
+        //=================
+
+
+    }
+
+
+
 
 
 }
