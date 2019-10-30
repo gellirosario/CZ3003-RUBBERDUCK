@@ -2180,7 +2180,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 913382887}
   m_HandleRect: {fileID: 913382886}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3051,7 +3051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18.419, y: 0.03849}
+  m_AnchoredPosition: {x: 18.419006, y: 0.038513184}
   m_SizeDelta: {x: -36.759, y: -746.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252579423
@@ -4963,7 +4963,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Assignment
+          m_StringArgument: question
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &1942407111
