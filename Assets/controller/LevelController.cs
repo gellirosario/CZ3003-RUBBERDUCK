@@ -54,9 +54,21 @@ public class LevelController : MonoBehaviour
     private Color colorRed = new Color(255, 0, 0);
 
     public Animator character1Anim;
+    public Animator character2Anim;
     public Animator enemy1Anim;
+    public Animator enemy2Anim;
+    public Animator enemy3Anim;
 
     private Player currentPlayer;
+
+    public GameObject charSprite1;
+    public GameObject charSprite2;
+    public GameObject enemySprite1;
+    public GameObject enemySprite2;
+    public GameObject enemySprite3;
+
+    private int selectedChar;
+    private int randomEnemy;
 
    // private Report currentReport;
 
@@ -74,6 +86,33 @@ public class LevelController : MonoBehaviour
 
     public void Awake()
     {
+        selectedChar = ProfileLoader.Instance.playerData.characterID;
+        randomEnemy = Random.Range(0, 2);
+
+        switch(selectedChar){
+            case 0:
+                charSprite2.GetComponent<Renderer>().enabled = false;
+                break;
+            case 1:
+                charSprite1.GetComponent<Renderer>().enabled = false;
+                break;
+        }
+
+        switch(randomEnemy){
+            case 0:
+                enemySprite2.GetComponent<Renderer>().enabled = false;
+                enemySprite3.GetComponent<Renderer>().enabled = false;
+                break;
+            case 1:
+                enemySprite1.GetComponent<Renderer>().enabled = false;
+                enemySprite3.GetComponent<Renderer>().enabled = false;
+                break;
+            case 2:
+                enemySprite1.GetComponent<Renderer>().enabled = false;
+                enemySprite2.GetComponent<Renderer>().enabled = false;
+                break;
+        }
+
         levelTxt.text = "Level " + "";
         questionTxt.text = "";
         o1Text.text = "";
@@ -151,14 +190,42 @@ public class LevelController : MonoBehaviour
 
                 if (healthSystemPlayer.GetHealth() == 10)
                 {
-                    character1Anim.SetBool("isSick", true);
+                    switch(selectedChar){
+                        case 0:
+                            character1Anim.SetBool("isSick", true);
+                            break;
+                        case 1:
+                            character2Anim.SetBool("isSick", true);
+                            break;
+                    }
+                    
                 }
                 else
                 {
-                    character1Anim.SetBool("isReady", true);
-                    character1Anim.SetTrigger("Ready");
+                    switch(selectedChar){
+                        case 0:
+                            character1Anim.SetBool("isReady", true);
+                            character1Anim.SetTrigger("Ready");
+                            break;
+                        case 1:
+                            character2Anim.SetBool("isReady", true);
+                            character2Anim.SetTrigger("Ready");
+                            break;
+                    }
+                    
                 }
-                enemy1Anim.SetTrigger("Idle");
+                
+                switch(randomEnemy){
+                    case 0:
+                        enemy1Anim.SetTrigger("Idle");
+                        break;
+                    case 1:
+                        enemy1Anim.SetTrigger("Idle");
+                        break;
+                    case 2:
+                        enemy1Anim.SetTrigger("Idle");
+                        break;
+                }
 
                 level = level + 1; // Update level
                 levelTxt.text = "LEVEL " + level.ToString();
@@ -226,6 +293,7 @@ public class LevelController : MonoBehaviour
                         answer = questionList_Filtered_Hard[randomQuestionNo].answer;
                         break;
                 }
+                Debug.Log("------- Correct Answer = " + answer.ToString());
                 difficultyTxt.text = "Difficulty: " + difficulty.ToString();
                 questionTxt.text = qn;
                 o1Text.text = "a. " + o1;
@@ -254,16 +322,32 @@ public class LevelController : MonoBehaviour
     // Check selection option
     public void CheckAnswer(int selectedOption)
     {
-        Debug.Log("Correct Answer = " + answer.ToString());
-
         if (selectedOption == answer)
         {
             //==================
             correctAns += 1; // for report use
             //==========================
 
-            character1Anim.SetTrigger("Stabbing");
-            enemy1Anim.SetTrigger("Damage");
+            switch(selectedChar){
+                case 0:
+                    character1Anim.SetTrigger("Stabbing");
+                    break;
+                case 1:
+                    character2Anim.SetTrigger("Stabbing");
+                    break;
+            }
+
+            switch(randomEnemy){
+                case 0:
+                    enemy1Anim.SetTrigger("Damage");
+                    break;
+                case 1:
+                    enemy2Anim.SetTrigger("Damage");
+                    break;
+                case 2:
+                    enemy3Anim.SetTrigger("Damage");
+                    break;
+            }
 
             isCorrect = true;
 
@@ -277,8 +361,27 @@ public class LevelController : MonoBehaviour
             // Enemy HP is 0
             if (healthSystemEnemy.GetHealth() == 0)
             {
-                character1Anim.SetTrigger("Victory");
-                enemy1Anim.SetTrigger("Down");
+
+                switch(selectedChar){
+                    case 0:
+                        character1Anim.SetTrigger("Victory");
+                        break;
+                    case 1:
+                        character2Anim.SetTrigger("Victory");
+                        break;
+                }
+
+                switch(randomEnemy){
+                    case 0:
+                        enemy1Anim.SetTrigger("Down");
+                        break;
+                    case 1:
+                        enemy2Anim.SetTrigger("Down");
+                        break;
+                    case 2:
+                        enemy3Anim.SetTrigger("Down");
+                        break;
+                }
 
 
                 // End Stage
@@ -286,14 +389,28 @@ public class LevelController : MonoBehaviour
             }
             else if (healthSystemPlayer.GetHealth() == 10)
             {
-                character1Anim.SetBool("isSick", true);
+                switch(selectedChar){
+                    case 0:
+                        character1Anim.SetBool("isSick", true);
+                        break;
+                    case 1:
+                        character2Anim.SetBool("isSick", true);
+                        break;
+                }
+                
             }
             else
             {
-                character1Anim.SetTrigger("Ready");
+                switch(selectedChar){
+                    case 0:
+                        character1Anim.SetTrigger("Ready");
+                        break;
+                    case 1:
+                        character2Anim.SetTrigger("Ready");
+                        break;
+                }
+                
             }
-
-            enemy1Anim.SetTrigger("Idle");
 
             switch (difficulty)
             {
@@ -320,8 +437,30 @@ public class LevelController : MonoBehaviour
             // Set no. of QN Wrong
             qnWrong += 1;
 
-            character1Anim.SetTrigger("Damage");
-            enemy1Anim.SetTrigger("Swinging");
+            switch(selectedChar){
+                    case 0:
+                        character1Anim.SetTrigger("Damage");
+                        break;
+                    case 1:
+                        character2Anim.SetTrigger("Damage");
+                        break;
+                }
+
+                switch(randomEnemy){
+                    case 0:
+                        enemy1Anim.SetTrigger("Swinging");
+                        break;
+                    case 1:
+                        enemy2Anim.SetTrigger("Swinging");
+                        break;
+                    case 2:
+                        enemy3Anim.SetTrigger("Swinging");
+                        break;
+                }
+
+
+            
+            
 
             isCorrect = false;
 
@@ -333,8 +472,26 @@ public class LevelController : MonoBehaviour
             // Character HP is 0
             if (healthSystemPlayer.GetHealth() == 0)
             {
-                character1Anim.SetTrigger("Down");
-                enemy1Anim.SetTrigger("Idle");
+                switch(selectedChar){
+                    case 0:
+                        character1Anim.SetTrigger("Down");
+                        break;
+                    case 1:
+                        character2Anim.SetTrigger("Down");
+                        break;
+                }
+
+                switch(randomEnemy){
+                    case 0:
+                        enemy1Anim.SetTrigger("Idle");
+                        break;
+                    case 1:
+                        enemy2Anim.SetTrigger("Idle");
+                        break;
+                    case 2:
+                        enemy3Anim.SetTrigger("Idle");
+                        break;
+                }
 
                 // Set Score to 0 (Stage Fail)
                 score = 0;
@@ -344,16 +501,41 @@ public class LevelController : MonoBehaviour
             }
             else if (healthSystemPlayer.GetHealth() == 10)
             {
-                character1Anim.SetBool("isSick", true);
+                switch(selectedChar){
+                    case 0:
+                        character1Anim.SetBool("isSick", true);
+                        break;
+                    case 1:
+                        character2Anim.SetBool("isSick", true);
+                        break;
+                }
+
             }
             else
             {
-                character1Anim.SetBool("isReady", true);
+                switch(selectedChar){
+                    case 0:
+                        character1Anim.SetBool("isReady", true);
+                        break;
+                    case 1:
+                        character2Anim.SetBool("isReady", true);
+                        break;
+                }
             }
 
-            enemy1Anim.SetTrigger("Idle");
-         
         }
+
+        switch(randomEnemy){
+                case 0:
+                    enemy1Anim.SetTrigger("Idle");
+                    break;
+                case 1:
+                    enemy2Anim.SetTrigger("Idle");
+                    break;
+                case 2:
+                    enemy3Anim.SetTrigger("Idle");
+                    break;
+            }
 
         Debug.Log("Score = " + score.ToString());
 
