@@ -293,6 +293,7 @@ public class LevelController : MonoBehaviour
                         answer = questionList_Filtered_Hard[randomQuestionNo].answer;
                         break;
                 }
+                Debug.Log("------- Correct Answer = " + answer.ToString());
                 difficultyTxt.text = "Difficulty: " + difficulty.ToString();
                 questionTxt.text = qn;
                 o1Text.text = "a. " + o1;
@@ -321,8 +322,6 @@ public class LevelController : MonoBehaviour
     // Check selection option
     public void CheckAnswer(int selectedOption)
     {
-        Debug.Log("Correct Answer = " + answer.ToString());
-
         if (selectedOption == answer)
         {
             //==================
@@ -525,7 +524,7 @@ public class LevelController : MonoBehaviour
             }
 
         }
-        
+
         switch(randomEnemy){
                 case 0:
                     enemy1Anim.SetTrigger("Idle");
