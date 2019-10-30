@@ -441,14 +441,7 @@ public class LevelController : MonoBehaviour
 
     public void SaveReport()
     {
-        //currentPlayer = ProfileLoader.Instance.playerData;
-       // DataSnapshot s = reference.Child("Report").Child(worldAndStage).Child("Correct").GetValueAsync().Result;
-       // System.Convert.ToInt32(s);
-       // Debug.Log("===" + s + "====");
-
-                // Debug.Log("HI, S = " + s.Key);
-                // For report use =================
-                 FirebaseDatabase.DefaultInstance.GetReference("Report").Child(worldAndStage).Child("Correct").GetValueAsync().ContinueWith(task => {
+                 FirebaseDatabase.DefaultInstance.GetReference("Report").Child(worldAndStage).GetValueAsync().ContinueWith(task => {
                        if (task.IsFaulted)
                        {
                            Debug.Log("HI, S =  waht you have");
@@ -457,23 +450,42 @@ public class LevelController : MonoBehaviour
                        else if (task.IsCompleted)
                        {
                            DataSnapshot s = task.Result;
-                           System.Convert.ToInt32(s);
-                           Debug.Log("===" + s + "====");
-                        // Debug.Log("HI, S = " + s.Key);
+
+                           foreach(DataSnapshot node in s.Children)
+                         {
+                             Debug.Log(node.Key + ": " + node.Value);
+
+                             if(node.Key == "Correct")
+                             {
+                                 correctAns = correctAns + int.Parse(node.Value.ToString());
+
+                             }
+
+                             if(node.Key == "Wrong")
+                             {
+                                 wrongAns = wrongAns + int.Parse(node.Value.ToString());
+                             }
+                         }
+                         updateReport(correctAns, wrongAns);
+                         // System.Convert.ToInt32(s);
+                        // Debug.Log("===" + s + "====");
+                         //Debug.Log("HI, S = " + s.Key + ": " + s.Value + ", " + s.GetRawJsonValue());
                            // Do something with snapshot...
                        }
                    });
 
-                appear = correctAns + wrongAns; // get total number of questionappear
-         reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
-        //reference.Child("Report").Child(worldAndStage).Child("Correct").ValueChanged += correctAns;
-        reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
-        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns); // have issues how to increase 
-        //=================
 
-
+     
     }
 
+    public void updateReport(int correctAns, int wrongAns)
+    {
+        
+        reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
+        reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
+        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns);
+        //=================
+    }
 
 
 
