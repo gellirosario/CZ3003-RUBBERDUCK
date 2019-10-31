@@ -7,6 +7,7 @@ public class AssignmentButton : MonoBehaviour
 {
     public Button button;
     public Text assignmentLabel;
+    public Text questionLabel;
 
     private Item item;
     private AssignmentScrollList scrollList;
@@ -21,7 +22,7 @@ public class AssignmentButton : MonoBehaviour
     {
         item = currentItem;
         assignmentLabel.text = item.assignmentName;
-        
+        questionLabel.text = item.questionName;
         scrollList = currentScrollList;
 
     }
