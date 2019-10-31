@@ -6,6 +6,8 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
 using TMPro;
+using Firebase.Extensions;
+using System;
 
 public class ReportController : MonoBehaviour
 {
@@ -52,7 +54,7 @@ public class ReportController : MonoBehaviour
 
     public void pullReport()
     {
-            FirebaseDatabase.DefaultInstance.GetReference("Report").GetValueAsync().ContinueWith(task =>
+            FirebaseDatabase.DefaultInstance.GetReference("Report").GetValueAsync().ContinueWithOnMainThread(task =>
             {
                 if (task.IsFaulted)
                 {
@@ -89,8 +91,10 @@ public class ReportController : MonoBehaviour
 
                         total = correct + wrong;
                         Debug.Log(total);
-
-                        string concat = correct + "/" + total;
+                        double percent = (double)correct / (double)total * 100;
+                        percent =Math.Round(percent, 2);
+                        string concat = percent + "%";
+                        //string concat = correct + "/"+total;
                         Debug.Log(concat);
 
                         switch (node.Key)
