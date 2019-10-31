@@ -660,9 +660,9 @@ public class LevelController : MonoBehaviour
         double p = 0.0;
         reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
         reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
-        if (correctAns + wrongAns != 0)
-        p = System.Math.Round((double)correctAns / (correctAns + wrongAns),2);
-        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(p);
+        //if (correctAns + wrongAns != 0)
+        //p = System.Math.Round((double)correctAns / (correctAns + wrongAns),2);
+        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns);
         //=================
     }
 
