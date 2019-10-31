@@ -649,23 +649,20 @@ public class LevelController : MonoBehaviour
                              }
                          }
                          updateReport(correctAns, wrongAns);
-                         // System.Convert.ToInt32(s);
-                        // Debug.Log("===" + s + "====");
-                         //Debug.Log("HI, S = " + s.Key + ": " + s.Value + ", " + s.GetRawJsonValue());
                            // Do something with snapshot...
                        }
                    });
-
-
      
     }
 
     public void updateReport(int correctAns, int wrongAns)
     {
-        
+        double p = 0.0;
         reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
         reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
-        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns);
+        p = System.Math.Round((double)correctAns / (correctAns + wrongAns),2);
+        Debug.Log(p + "======");
+        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(p);
         //=================
     }
 

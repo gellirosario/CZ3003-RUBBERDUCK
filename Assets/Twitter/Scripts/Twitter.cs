@@ -37,7 +37,7 @@ namespace TwitterKit.Unity
 #elif UNITY_ANDROID && !UNITY_EDITOR
 			twitter = new AndroidTwitterImpl();
 #else
-			twitter = new EditorTwitterImpl();
+			//twitter = new EditorTwitterImpl();
 #endif
 		}
 
