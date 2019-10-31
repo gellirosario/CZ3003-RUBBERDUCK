@@ -26,8 +26,8 @@ public class ReportController : MonoBehaviour
 
     void Start()
     {
-        // pullReport();
-       // w1s1.text = w1Report.w1s1r.ToString();
+       pullReport();
+       // w1s1.text = updateReport1();
     }
     public void Awake()
     {
@@ -72,20 +72,14 @@ public class ReportController : MonoBehaviour
                         foreach (DataSnapshot node in s.Children)
                         {
                             Debug.Log(node.Key + ": " + node.Value);
-
                             if (node.Key == "Appear")
                             {
-                              // w1Report.w1s1r = int.Parse(node.Value.ToString());
-                               // report.w1s1r = int.Parse(node.Value.ToString());
-
-                                //correctAns11 += int.Parse(node.Value.ToString());
+                                result1 = node.Value.ToString();
+                                updateReportw1s1(result1);
                             }
 
                         }
-                
                     }
-                    
-
                 });
 
           //  } // end of iner for loop
@@ -93,5 +87,9 @@ public class ReportController : MonoBehaviour
        
 
     }
-   
-}
+    public void updateReportw1s1(string correctAns1)
+    {
+        w1s1.text = correctAns1;
+    }
+
+ }
