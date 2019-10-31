@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using TMPro;
 
 public class ReportController : MonoBehaviour
 {
@@ -13,25 +14,26 @@ public class ReportController : MonoBehaviour
     public static int w1s1R;
     public Report reportData { get; private set; }
 
-
     public Text w1s1, w1s2, w1s3;
     public Text w2s1, w2s2, w2s3;
     public Text w3s1, w3s2, w3s3;
     public Text w4s1, w4s2, w4s3;
     public Text w5s1, w5s2, w5s3;
+
     private string result1;
     private string worldAndStage;
 
     public static List<Report> playerName = new List<Report>();
+    public static int i = 1;
 
     void Start()
     {
-        // pullReport();
-       // w1s1.text = w1Report.w1s1r.ToString();
+        pullReport();
     }
     public void Awake()
     {
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
@@ -50,48 +52,103 @@ public class ReportController : MonoBehaviour
 
     public void pullReport()
     {
-        int i=1, y=1;
-
-       // for (i = 1; i <= 5; i++)
-      //  {
-            
-           // for(y=1;y<=3;y++)
-          //  {
-                worldAndStage = "w" + i + "s" + y;
-                //Debug.Log(worldAndStage);
-                FirebaseDatabase.DefaultInstance.GetReference("Report").Child(worldAndStage).GetValueAsync().ContinueWith(task =>
+            FirebaseDatabase.DefaultInstance.GetReference("Report").GetValueAsync().ContinueWith(task =>
+            {
+                if (task.IsFaulted)
                 {
-                    if (task.IsFaulted)
+                    Debug.Log("HI, S =  what you have");
+                    // Handle the error...
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot s = task.Result;
+
+                    //for each world & stage
+                    foreach (DataSnapshot node in s.Children)
                     {
-                        Debug.Log("HI, S =  what you have");
-                        // Handle the error...
-                    }
-                    else if (task.IsCompleted)
-                    {
-                        DataSnapshot s = task.Result;
-                        foreach (DataSnapshot node in s.Children)
+
+                        int total = 0, correct = 0, wrong = 0;
+
+                        //for each field in world & stage
+                        foreach(DataSnapshot childNode in node.Children)
                         {
-                            Debug.Log(node.Key + ": " + node.Value);
+                            Debug.Log(childNode.Key + ": " + childNode.Value);
 
-                            if (node.Key == "Appear")
+                            if (childNode.Key == "Correct")
                             {
-                              // w1Report.w1s1r = int.Parse(node.Value.ToString());
-                               // report.w1s1r = int.Parse(node.Value.ToString());
-
-                                //correctAns11 += int.Parse(node.Value.ToString());
+                                correct = int.Parse(childNode.Value.ToString());
+                                Debug.Log("Correct key found: " + correct);
                             }
 
+                            if (childNode.Key == "Wrong")
+                            {
+                                wrong = int.Parse(childNode.Value.ToString());
+                                Debug.Log("Wrong key found: " + wrong);
+                            }
                         }
-                
+
+                        total = correct + wrong;
+                        Debug.Log(total);
+
+                        string concat = correct + "/" + total;
+                        Debug.Log(concat);
+
+                        switch (node.Key)
+                        {
+                            case "w1s1":
+                                w1s1.text = concat;
+                                break;
+                            case "w1s2":
+                                w1s2.text = concat;
+                                break;
+                            case "w1s3":
+                                w1s3.text = concat;
+                                break;
+                            case "w2s1":
+                                w2s1.text = concat;
+                                break;
+                            case "w2s2":
+                                w2s2.text = concat;
+                                break;
+                            case "w2s3":
+                                w2s3.text = concat;
+                                break;
+                            case "w3s1":
+                                w3s1.text = concat;
+                                break;
+                            case "w3s2":
+                                w3s2.text = concat;
+                                break;
+                            case "w3s3":
+                                w3s3.text = concat;
+                                break;
+                            case "w4s1":
+                                w4s1.text = concat;
+                                break;
+                            case "w4s2":
+                                w4s2.text = concat;
+                                break;
+                            case "w4s3":
+                                w4s3.text = concat;
+                                break;
+                            case "w5s1":
+                                w5s1.text = concat;
+                                break;
+                            case "w5s2":
+                                w5s2.text = concat;
+                                break;
+                            case "w5s3":
+                                w5s3.text = concat;
+                                break;
+                        }
+
+
                     }
-                    
 
-                });
+                }
 
-          //  } // end of iner for loop
-       // } // end of out for loop
-       
+            });
 
     }
-   
+
 }
