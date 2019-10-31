@@ -1125,21 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9a2e4a43662cb40a74f81745a5e79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList:
-  - assignmentName: Assignment1
-  - assignmentName: Assignment2
-  - assignmentName: Assignment3
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
-  - assignmentName: Assignment4
+  itemList: []
   contentPanel: {fileID: 1196133202}
   createAssignment: {fileID: 0}
   buttonObjectPool: {fileID: 1581003201}

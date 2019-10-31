@@ -1204,7 +1204,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ChallengePlayer
+          m_StringArgument: CreateChallenge
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &1839931501
@@ -1356,7 +1356,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Challenge Player
+  m_Text: Create Challenge
 --- !u!222 &1863968920
 CanvasRenderer:
   m_ObjectHideFlags: 0

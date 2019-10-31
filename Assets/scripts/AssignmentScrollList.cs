@@ -7,12 +7,14 @@ using System.Collections.Generic;
 public class Item
 {
     public string assignmentName;
+    public string questionName;
 }
 
 public class AssignmentScrollList : MonoBehaviour
 {
 
     public List<Item> itemList;
+    public List<Assignment> assignmentList = new List<Assignment>();
     public Transform contentPanel;
     public AssignmentScrollList createAssignment;
     public SimpleObjectPool buttonObjectPool;
@@ -22,6 +24,15 @@ public class AssignmentScrollList : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        print("reach here");
+        //AssignmentController assignmentController = new AssignmentController();
+        AssignmentController assignmentController = gameObject.AddComponent<AssignmentController>();
+        assignmentList = assignmentController.LoadAssignment();
+        print("Assignment list count: " + assignmentList.Count);
+        for (int i = 0; i < assignmentList.Count; i++)
+        {
+            print(assignmentList[i]);
+        }
         RefreshDisplay();
     }
 
@@ -40,8 +51,12 @@ public class AssignmentScrollList : MonoBehaviour
         }
     }*/
 
+    
+
+
     private void AddButtons()
     {
+        //print(itemList.Count);
         for (int i = 0; i < itemList.Count; i++)
         {
             Item item = itemList[i];

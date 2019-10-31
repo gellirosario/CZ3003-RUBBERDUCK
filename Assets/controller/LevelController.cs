@@ -626,7 +626,7 @@ public class LevelController : MonoBehaviour
                  FirebaseDatabase.DefaultInstance.GetReference("Report").Child(worldAndStage).GetValueAsync().ContinueWith(task => {
                        if (task.IsFaulted)
                        {
-                           Debug.Log("HI, S =  waht you have");
+                           Debug.Log("HI, S =  what you have");
                            // Handle the error...
                        }
                        else if (task.IsCompleted)
@@ -660,9 +660,9 @@ public class LevelController : MonoBehaviour
         double p = 0.0;
         reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
         reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
-        p = System.Math.Round((double)correctAns / (correctAns + wrongAns),2);
-        Debug.Log(p + "======");
-        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(p);
+        //if (correctAns + wrongAns != 0)
+        //p = System.Math.Round((double)correctAns / (correctAns + wrongAns),2);
+        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns);
         //=================
     }
 
