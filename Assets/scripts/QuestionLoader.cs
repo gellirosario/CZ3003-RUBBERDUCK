@@ -130,7 +130,7 @@ public class QuestionLoader : MonoBehaviour
         {
             if (questionList[i].difficulty == difficulty)
             {
-                questionList_Filtered.Add(questionList_All[i]);
+                questionList_Filtered.Add(questionList[i]);
             }
         }
 
