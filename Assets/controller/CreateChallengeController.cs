@@ -12,7 +12,7 @@ public class CreateChallengeController : MonoBehaviour
     public Dropdown difficultyDropdown, worldDropdown, stageDropdown;
 
     public GameObject popup;
-    public Text idText;
+    public Text idText, warningText;
 
     public const int MIN_QNS = 1;
     public const int MAX_QNS = 10;
@@ -95,6 +95,7 @@ public class CreateChallengeController : MonoBehaviour
         reference.Child("Challenges").Child(newChallenge.challengeId).SetRawJsonValueAsync(json);
 
         idText.text = "Challenge ID: " + newChallenge.challengeId;
+
         TogglePopup();
     }
     //generates a randomized list of questions with specified difficulty, world, stage, and number of questions
@@ -135,7 +136,7 @@ public class CreateChallengeController : MonoBehaviour
 
         if (questionList.Count < NoOfQns)
         {
-            Debug.Log("Not enough questions in database, so only " + questionList.Count + " questions will be included.");
+            warningText.text = "Warning: Not enough questions in database, so only " + questionList.Count + " questions are included in this challenge.";
         }
 
         int randomIndex = 0;
