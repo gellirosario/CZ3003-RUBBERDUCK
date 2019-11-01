@@ -14,6 +14,12 @@ public class ProfileController : MonoBehaviour
 
     public Image w1s1, w1s2, w1s3, w2s1, w2s2, w2s3, w3s1, w3s2, w3s3, w4s1, w4s2, w4s3, w5s1, w5s2, w5s3;
 
+    public Sprite red, black;
+    public SpriteRenderer currentCharacter;
+
+    public RuntimeAnimatorController redAnim, blackAnim;
+    public Animator currentCharacterAnimator;
+
     void Start()
     {
         currentUser = ProfileLoader.Instance.userData;
@@ -25,7 +31,25 @@ public class ProfileController : MonoBehaviour
         accTypeText.text = currentUser.userType;
         totalQnAnsweredText.text = currentPlayer.totalQnAnswered.ToString();
         UpdateAll(m);
-  
+        LoadCurrentCharacter(PlayerPrefs.GetInt("CharacterID"));
+    }
+
+    private void LoadCurrentCharacter(int characterId)
+    {
+        Debug.Log("character id: " + characterId);
+        switch (characterId)
+        {
+            case 0:
+                currentCharacter.sprite = red;
+                currentCharacterAnimator.runtimeAnimatorController = redAnim;
+                break;
+            case 1:
+                currentCharacter.sprite = black;
+                currentCharacterAnimator.runtimeAnimatorController = blackAnim;
+                break;
+            default:
+                break;
+        }
     }
 
     private void UpdateAll(Mastery m)

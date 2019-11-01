@@ -22,6 +22,8 @@ public class ProfileLoader : MonoBehaviour
     public static List<Player> leaderboard = new List<Player>();
     public static List<User> playerName = new List<User>();
 
+    private ThreadDispatcher dispatcher;
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,6 +35,8 @@ public class ProfileLoader : MonoBehaviour
         {
             //DontDestroyOnLoad(gameObject);
         }
+
+        dispatcher = new ThreadDispatcher();
 
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
@@ -65,7 +69,15 @@ public class ProfileLoader : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        dispatcher.PollJobs();
+    }
 
+    public TResult RunOnMainThread<TResult>(System.Func<TResult> f)
+    {
+        return dispatcher.Run(f);
+    }
 
     private void LoadUserData()
     {
@@ -102,7 +114,6 @@ public class ProfileLoader : MonoBehaviour
 
 
     }
-
 
     private void LoadPlayerData()
     {
@@ -149,8 +160,13 @@ public class ProfileLoader : MonoBehaviour
                 Debug.Log(playerData.mastery);
                 Debug.Log(playerData.totalPoints);
                 Debug.Log(playerData.totalQnAnswered);
-            }
 
+                RunOnMainThread(() =>
+                {
+                    PlayerPrefs.SetInt("CharacterID", playerData.characterID);
+                    return 0;
+                });
+            }
         });
     }
 
