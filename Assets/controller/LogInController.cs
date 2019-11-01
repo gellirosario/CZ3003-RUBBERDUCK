@@ -10,8 +10,6 @@ using UnityEngine.SceneManagement;
 public class LogInController : MonoBehaviour
 {
     private FirebaseAuth auth;
-    Firebase.Auth.FirebaseUser currentuser;
-
     private ThreadDispatcher dispatcher;
 
     public InputField emailInput, passwordInput;
@@ -29,10 +27,6 @@ public class LogInController : MonoBehaviour
         message = "";
         messageTxt.text = "";
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
-        
-
-        //------logOut-----//
-        onDestroy();
         
     }
 
@@ -93,8 +87,6 @@ public class LogInController : MonoBehaviour
             }
            
             FirebaseUser user = task.Result;
-            auth.StateChanged += AuthStateChanged;
-            AuthStateChanged(this, null);
             Debug.LogFormat("User signed in successfully: ({0})", user.UserId);
 
             
@@ -167,38 +159,5 @@ public class LogInController : MonoBehaviour
         }
         return msg;
     }
-
-
-    //-------logOut--------//
-    private void onDestroy()
-    {
-        Destroy(GameObject.Find("ProfileLoader"));
-        Destroy(GameObject.Find("QuestionLoader"));
-        PlayerPrefs.DeleteAll();
-        auth.SignOut();
-        //auth = null;
-
-        auth.StateChanged -= AuthStateChanged;
-        AuthStateChanged(this, null);
-    }
-
-    // Track state changes of the auth object.
-    void AuthStateChanged(object sender, System.EventArgs eventArgs)
-    {
-        if (auth.CurrentUser != currentuser)
-        {
-            bool signedIn = currentuser != auth.CurrentUser && auth.CurrentUser != null;
-            if (!signedIn && currentuser != null)
-            {
-                Debug.Log("Signed out " + currentuser.UserId);
-            }
-            currentuser = auth.CurrentUser;
-            if (signedIn)
-            {
-                Debug.Log("Signed in " + currentuser.UserId);
-            }
-        }
-    }
-
 }
 
