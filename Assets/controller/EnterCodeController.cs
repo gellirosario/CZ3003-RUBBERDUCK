@@ -72,7 +72,7 @@ public class EnterCodeController : MonoBehaviour
                     {
                         cid = challenge.Key.ToString();
                         //Debug.Log("" + dictUser["name"] + " - " + dictUser["email"]+ user.Key);
-                        Debug.Log(cid);
+                        Debug.Log(cid+"-cid");
                         PlayerPrefs.SetString("challengedID",cid);
                         
                         selected = true;
@@ -106,7 +106,7 @@ public class EnterCodeController : MonoBehaviour
                     //Debug.Log("" + dictUser["challengeId"] + " - " + dictUser["challengeId"] + user.Key);
                     if (assignment.Key == inputField.text.ToString())
                     {
-                        uid = assignment.Key.ToString();
+                        //cid = assignment.Key.ToString();
                         //Debug.Log("" + dictUser["name"] + " - " + dictUser["email"]+ user.Key);
                         //Debug.Log(uid);
                         //PlayerPrefs.SetString("challengedID", uid);
