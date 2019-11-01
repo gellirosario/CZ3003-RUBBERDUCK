@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Firebase;
+using Firebase.Database;
+using Firebase.Unity.Editor;
+using Firebase.Auth;
 
 public class TestScript : MonoBehaviour
 {
+    private FirebaseAuth auth;
     private FirebaseApp app;
     private DatabaseReference reference;
 
@@ -75,19 +80,15 @@ public class TestScript : MonoBehaviour
         // Insert Teacher
         Register("teacherTest@ntu.edu.sg", "test123", "Teacher");
 
-        string json3 = JsonUtility.ToJson(teacherUser);
-        reference.Child("Users").Child(newUser.UserId).SetRawJsonValueAsync(json3);
-
         // Insert Challenge
-        List<int> challengeQns = new ArrayList<>() ;
+        List<int> challengeQns = new List<int>() ;
         challengeQns.Add(1);
         challengeQns.Add(2);
         challengeQns.Add(3);
-        Challenge newChallenge = new Challenge(1, challengeQns);
-        string challengeID = newChallenge.generateId();
+        Challenge newChallenge = new Challenge("1", challengeQns);
 
         string json1 = JsonUtility.ToJson(newChallenge);
-        reference.Child("Challenges").Child(challengeID).SetRawJsonValueAsync(json1);
+        reference.Child("Challenges").SetRawJsonValueAsync(json1);
 
         // Insert Assignment
         //Assignment(string assignmentName, int qnID, int world, int stage, string difficulty, string question, int answer, string o1, string o2, string o3, string o4)
@@ -110,24 +111,6 @@ public class TestScript : MonoBehaviour
             if (task.IsFaulted)
             {
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync error: " + task.Exception);
-
-                foreach (var exception in task.Exception.Flatten().InnerExceptions)
-                {
-                    string authErrorCode = "";
-                    Firebase.FirebaseException firebaseEx = exception as Firebase.FirebaseException;
-                    if (firebaseEx != null)
-                    {
-                        authErrorCode = string.Format("AuthError.{0}: ",
-                            ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString());
-                    }
-                    Debug.Log("number- " + authErrorCode + "the exception is- " + exception.ToString());
-                    string code = ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString();
-                    Debug.Log(code);
-
-                    message = GetErrorMessage((Firebase.Auth.AuthError)firebaseEx.ErrorCode);
-                    Debug.Log("---- Message " + message);
-                    errorFound = true;
-                }
 
                 return;
             }
