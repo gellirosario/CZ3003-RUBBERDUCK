@@ -13,6 +13,13 @@ namespace Tests
         public void LogInTestScriptSimplePasses()
         {
             // Use the Assert class to test conditions
+
+            // Arrange:
+            var analyzer = new LogInController();
+            // Act:
+            var result = analyzer.LogIn();
+            // Assert:
+            Assert.AreEqual(true, result); // Why 123?
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
