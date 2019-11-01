@@ -62,7 +62,7 @@ public class TestScript : MonoBehaviour
         /*
         Mastery playerMastery = new Mastery(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Player player = new Player(playerMastery, 1, 0, 0);
-        User playerUser = new User(1, "Player Test", "playerTest@e.ntu.edu.sg", "Player");
+        User playerUser = new User(1, "Player Test", "player@e.ntu.edu.sg", "Player");
 
         string json = JsonUtility.ToJson(playerUser);
         reference.Child("Users").Child(newUser.UserId).SetRawJsonValueAsync(json);
@@ -71,24 +71,26 @@ public class TestScript : MonoBehaviour
         reference.Child("Player").Child(newUser.UserId).SetRawJsonValueAsync(json1);
 
         // Insert Teacher
-        User teacherUser = new User(2, "Teacher Test", "teacherTest@ntu.edu.sg", "Teacher");
+        User teacherUser = new User(2, "Teacher Test", "teacher@ntu.edu.sg", "Teacher");
         */
 
         // Insert Player
-        Register("playerTest@e.ntu.edu.sg", "test123", "Player");
+        Register("player@e.ntu.edu.sg", "Test123", "Player");
 
         // Insert Teacher
-        Register("teacherTest@ntu.edu.sg", "test123", "Teacher");
+        Register("teacher@ntu.edu.sg", "Test123", "Teacher");
 
         // Insert Challenge
         List<int> challengeQns = new List<int>() ;
         challengeQns.Add(1);
         challengeQns.Add(2);
         challengeQns.Add(3);
-        Challenge newChallenge = new Challenge("1", challengeQns);
+
+        Challenge newChallenge = new Challenge(challengeQns);
 
         string json1 = JsonUtility.ToJson(newChallenge);
-        reference.Child("Challenges").SetRawJsonValueAsync(json1);
+        reference.Child("Challenges").Child(newChallenge.challengeId).SetRawJsonValueAsync(json1);
+
 
         // Insert Assignment
         //Assignment(string assignmentName, int qnID, int world, int stage, string difficulty, string question, int answer, string o1, string o2, string o3, string o4)
