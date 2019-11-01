@@ -14,7 +14,7 @@ public class ReportController : MonoBehaviour
     private DatabaseReference reference;
 
     public static int w1s1R;
-    public Report reportData { get; private set; }
+    //public Report reportData { get; private set; }
 
     public Text w1s1, w1s2, w1s3;
     public Text w2s1, w2s2, w2s3;
@@ -25,7 +25,7 @@ public class ReportController : MonoBehaviour
     private string result1;
     private string worldAndStage;
 
-    public static List<Report> playerName = new List<Report>();
+   // public static List<Report> playerName = new List<Report>();
     public static int i = 1;
 
     void Start()
