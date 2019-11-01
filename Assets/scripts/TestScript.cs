@@ -86,7 +86,7 @@ public class TestScript : MonoBehaviour
         challengeQns.Add(2);
         challengeQns.Add(3);
 
-        Challenge newChallenge = new Challenge(challengeQns);
+        Challenge newChallenge = new Challenge(challengeQns, "teacher");
 
         string json1 = JsonUtility.ToJson(newChallenge);
         reference.Child("Challenges").Child(newChallenge.challengeId).SetRawJsonValueAsync(json1);
