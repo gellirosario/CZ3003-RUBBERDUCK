@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
@@ -24,10 +25,14 @@ public class ProfileLoader : MonoBehaviour
 
     private ThreadDispatcher dispatcher;
 
+    public GameObject loadingScreen;
+
     private void Awake()
     {
         if (Instance == null)
         {
+            //show loading screen on first load
+            ShowLoadingScreen();
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -66,7 +71,6 @@ public class ProfileLoader : MonoBehaviour
         leaderboard.Clear();
         playerName.Clear();
         LoadLeaderboardData();
-
     }
 
     private void Update()
@@ -77,6 +81,22 @@ public class ProfileLoader : MonoBehaviour
     public TResult RunOnMainThread<TResult>(System.Func<TResult> f)
     {
         return dispatcher.Run(f);
+    }
+
+    public void ShowLoadingScreen()
+    {
+        if (loadingScreen != null)
+        {
+            loadingScreen.SetActive(true);
+        }
+    }
+
+    public void HideLoadingScreen()
+    {
+        if (loadingScreen != null)
+        {
+            loadingScreen.SetActive(false);
+        }
     }
 
     private void LoadUserData()
@@ -164,6 +184,9 @@ public class ProfileLoader : MonoBehaviour
                 RunOnMainThread(() =>
                 {
                     PlayerPrefs.SetInt("CharacterID", playerData.characterID);
+
+                    //hide loading screen after finished loading
+                    HideLoadingScreen();
                     return 0;
                 });
             }
