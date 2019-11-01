@@ -6,17 +6,20 @@ using UnityEngine;
 public class Challenge
 {
     public string challengeId;
+    public string challengeCreator;
     public List<int> challengeQns; //List of qn ids in the challenge
 
-    public Challenge(List<int> qns)
+    public Challenge(List<int> qns, string creator)
     {
         this.challengeId = generateId();
         this.challengeQns = qns;
+        this.challengeCreator = creator;
     }
-    public Challenge(string id, List<int> qns)
+    public Challenge(string id, List<int> qns, string creator)
     {
         this.challengeId = id;
         this.challengeQns = qns;
+        this.challengeCreator = creator;
     }
 
     //generate an 8-character long random ID for the challenge

@@ -79,7 +79,10 @@ public class CreateChallengeController : MonoBehaviour
         //some test code for now
         List<int> questionList = RandomizeQuestions(int.Parse(noOfQns.text), world, stage, difficultySelected);
 
-        Challenge newChallenge = new Challenge(questionList);
+        //get name of challenge creator
+        string creator = ProfileLoader.Instance.userData.name;
+
+        Challenge newChallenge = new Challenge(questionList, creator);
 
         Debug.Log("Challenge created with ID of " + newChallenge.challengeId);
 
