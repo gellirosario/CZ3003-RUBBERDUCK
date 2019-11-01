@@ -9,6 +9,11 @@ public class Challenge
     public string challengeCreator;
     public List<int> challengeQns; //List of qn ids in the challenge
 
+    public Challenge(List<int> challengeQns)
+    {
+        this.challengeQns = challengeQns;
+    }
+
     public Challenge(List<int> qns, string creator)
     {
         this.challengeId = generateId();
