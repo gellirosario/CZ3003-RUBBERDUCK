@@ -16,7 +16,7 @@ public class EnterCodeController : MonoBehaviour
     public InputField inputField;
     private bool isFirebaseInitialized = false;
     public Text messageTxt;
-    private string uid = null;
+    private string cid = null;
     private bool selected = false;
     private bool selected2 = false;
     void Start()
@@ -70,14 +70,15 @@ public class EnterCodeController : MonoBehaviour
                     //Debug.Log("" + dictUser["challengeId"] + " - " + dictUser["challengeId"] + user.Key);
                     if (challenge.Key == inputField.text.ToString())
                     {
-                        uid = challenge.Key.ToString();
+                        cid = challenge.Key.ToString();
                         //Debug.Log("" + dictUser["name"] + " - " + dictUser["email"]+ user.Key);
-                        //Debug.Log(uid);
-                        //PlayerPrefs.SetString("challengedID", uid);
+                        Debug.Log(cid);
+                        PlayerPrefs.SetString("challengedID",cid);
+                        
                         selected = true;
                         Debug.Log(" found in challenges");
                         //break;
-                        
+                        SceneManager.LoadScene("ViewChallenges");
                     }
                 }
                
