@@ -86,7 +86,7 @@ public class LevelController : MonoBehaviour
 
     public void Awake()
     {
-        selectedChar = ProfileLoader.Instance.playerData.characterID;
+        selectedChar = PlayerPrefs.GetInt("CharacterID");
         randomEnemy = Random.Range(0, 2);
 
         switch(selectedChar){
