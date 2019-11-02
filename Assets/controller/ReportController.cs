@@ -24,6 +24,7 @@ public class ReportController : MonoBehaviour
 
     private string result1;
     private string worldAndStage;
+    private Text testout;
 
    // public static List<Report> playerName = new List<Report>();
     public static int i = 1;
@@ -31,6 +32,7 @@ public class ReportController : MonoBehaviour
     void Start()
     {
         pullReport();
+        //ChangeClolr();
     }
     public void Awake()
     {
@@ -101,6 +103,7 @@ public class ReportController : MonoBehaviour
                         {
                             case "w1s1":
                                 w1s1.text = concat;
+                               // w1s1.color = Color.red;
                                 break;
                             case "w1s2":
                                 w1s2.text = concat;
@@ -154,5 +157,5 @@ public class ReportController : MonoBehaviour
             });
 
     }
-
+   
 }
