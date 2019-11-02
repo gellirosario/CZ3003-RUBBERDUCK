@@ -1126,6 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList: []
+  assignmentList2: []
   contentPanel: {fileID: 1196133202}
   createAssignment: {fileID: 0}
   buttonObjectPool: {fileID: 1581003201}

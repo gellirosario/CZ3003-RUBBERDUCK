@@ -14,28 +14,61 @@ public class AssignmentScrollList : MonoBehaviour
 {
 
     public List<Item> itemList;
-    public List<Assignment> assignmentList = new List<Assignment>();
+    public List<Assignment> assignmentList2 = new List<Assignment>();
     public Transform contentPanel;
     public AssignmentScrollList createAssignment;
     public SimpleObjectPool buttonObjectPool;
-
-
+    
 
     // Use this for initialization
     void Start()
     {
-        print("reach here");
-        //AssignmentController assignmentController = new AssignmentController();
-        AssignmentController assignmentController = gameObject.AddComponent<AssignmentController>();
-        assignmentList = assignmentController.LoadAssignment();
-        print("Assignment list count: " + assignmentList.Count);
-        for (int i = 0; i < assignmentList.Count; i++)
+        //AssignmentController.Instance.test();
+        //assignmentList2 = AssignmentController.Instance.LoadAssignment();
+        StartCoroutine(WaitForSecondsWrapper(30));
+        print("Message Passed: " + PlayerPrefs.GetString("codeal"));
+        int assignmentListCount = PlayerPrefs.GetInt("ALCount");
+        assignmentList2.Capacity = assignmentListCount;
+        print("In assignmentscrolllist count: " + assignmentListCount);
+        for (var i = 0; i < assignmentList2.Count; i++)
         {
-            print(assignmentList[i]);
+            assignmentList2[i].assignmentName = PlayerPrefs.GetString("AssignmentList(assignmentName)");
+            assignmentList2[i].qnID = PlayerPrefs.GetInt("AssignmentList(qnID)");
+            assignmentList2[i].world = PlayerPrefs.GetInt("AssignmentList(world)");
+            assignmentList2[i].stage = PlayerPrefs.GetInt("AssignmentList(stage)");
+            assignmentList2[i].difficulty = PlayerPrefs.GetString("AssignmentList(difficulty)");
+            assignmentList2[i].question = PlayerPrefs.GetString("AssignmentList(question)");
+            assignmentList2[i].answer = PlayerPrefs.GetInt("AssignmentList(answer)");
+            assignmentList2[i].option1 = PlayerPrefs.GetString("AssignmentList(option1)");
+            assignmentList2[i].option2 = PlayerPrefs.GetString("AssignmentList(option2)");
+            assignmentList2[i].option3 = PlayerPrefs.GetString("AssignmentList(option3)");
+            assignmentList2[i].option4 = PlayerPrefs.GetString("AssignmentList(option4)");
         }
-        RefreshDisplay();
+        /*for (var i = 0; i < assignmentList2; i++)
+        {
+            if (PlayerPrefs.GetInt("AssignmentList").GetType == typeof(int))
+                assignmentList2[i] = PlayerPrefs.GetInt("AssignmentList");
+
+            else if (PlayerPrefs.GetString("AssignmentList").GetType == typeof(String))
+                assignmentList2[i] = PlayerPrefs.GetString("AssignmentList");
+        }*/
+
+        print("Assignment list count2: " + assignmentList2.Count);
+        for (int i = 0; i < assignmentList2.Count; i++)
+        {
+            print("assignment2lsit contents");
+            print(assignmentList2[i].assignmentName + assignmentList2[i].qnID + assignmentList2[i].world + assignmentList2[i].stage + assignmentList2[i].difficulty + assignmentList2[i].question +
+                    assignmentList2[i].answer + assignmentList2[i].option1 + assignmentList2[i].option2 + assignmentList2[i].option3 + assignmentList2[i].option4);
+        }
+
+        //RefreshDisplay();
+        
     }
 
+    IEnumerator WaitForSecondsWrapper(int secs)
+    {
+        yield return new UnityEngine.WaitForSeconds(secs);
+    }
     void RefreshDisplay()
     {
        // RemoveButtons();
@@ -56,7 +89,9 @@ public class AssignmentScrollList : MonoBehaviour
 
     private void AddButtons()
     {
-        //print(itemList.Count);
+        itemList.Capacity = assignmentList2.Count;
+       
+        print("Item List count: " + itemList.Count);
         for (int i = 0; i < itemList.Count; i++)
         {
             Item item = itemList[i];

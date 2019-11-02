@@ -34,6 +34,13 @@ public class ReportController : MonoBehaviour
         pullReport();
         //ChangeClolr();
     }
+    private void Update()
+    {
+        pullReport();
+    }
+
+
+
     public void Awake()
     {
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
