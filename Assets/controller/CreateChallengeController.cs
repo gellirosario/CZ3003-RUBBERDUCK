@@ -98,6 +98,7 @@ public class CreateChallengeController : MonoBehaviour
         reference.Child("Challenges").Child(newChallenge.challengeId).SetRawJsonValueAsync(json);
 
         idText.text = "Challenge ID: " + newChallenge.challengeId;
+        PlayerPrefs.SetString("NewChallengeID", newChallenge.challengeId);
 
         TogglePopup();
     }
