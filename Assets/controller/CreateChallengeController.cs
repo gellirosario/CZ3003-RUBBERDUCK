@@ -43,6 +43,47 @@ public class CreateChallengeController : MonoBehaviour
         });
     }
 
+    public void OnTopicDropdownChange()
+    {
+        int topic = worldDropdown.value;
+
+        switch (topic)
+        {
+            case 0:
+                stageDropdown.options[0].text = "1. Software Engineering Principles";
+                stageDropdown.options[1].text = "2. Requirements Analysis";
+                stageDropdown.options[2].text = "3. Modelling";
+                stageDropdown.RefreshShownValue();
+                break;
+            case 1:
+                stageDropdown.options[0].text = "1. Architectural Designs";
+                stageDropdown.options[1].text = "2. Design Concepts";
+                stageDropdown.options[2].text = "3. Component Level Designs";
+                stageDropdown.RefreshShownValue();
+                break;
+            case 2:
+                stageDropdown.options[0].text = "1. Software Elements";
+                stageDropdown.options[1].text = "2. Software Components";
+                stageDropdown.options[2].text = "3. Software Configuration";
+                stageDropdown.RefreshShownValue();
+                break;
+            case 3:
+                stageDropdown.options[0].text = "1. Software Testing Techniques and Strategies";
+                stageDropdown.options[1].text = "2. Testing Application";
+                stageDropdown.options[2].text = "3. Software Testing";
+                stageDropdown.RefreshShownValue();
+                break;
+            case 4:
+                stageDropdown.options[0].text = "1. Software Management";
+                stageDropdown.options[1].text = "2. Software Configuration";
+                stageDropdown.options[2].text = "3. Quality Management";
+                stageDropdown.RefreshShownValue();
+                break;
+            default:
+                break;
+        }
+    }
+
     //toggles the popup window on challenge creation
     public void TogglePopup()
     {

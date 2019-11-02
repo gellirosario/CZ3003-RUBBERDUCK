@@ -1169,12 +1169,12 @@ PrefabInstance:
     - target: {fileID: 6704611891707810411, guid: c3da8191a24b11e4584d5f6a0b11da99,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000018733554
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 6704611891707810411, guid: c3da8191a24b11e4584d5f6a0b11da99,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000045776367
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 6704611891707810411, guid: c3da8191a24b11e4584d5f6a0b11da99,
         type: 3}
@@ -1289,16 +1289,16 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 7321aa7ad004a674fa01deca05e66d13, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 5
+    m_MaxSize: 28
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Subtopic 1
+  m_Text: 1. Software Engineering Principles
 --- !u!222 &442420913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3006,11 +3006,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Subtopic 1
+    - m_Text: 1. Software Engineering Principles
       m_Image: {fileID: 0}
-    - m_Text: Subtopic 2
+    - m_Text: 2. Requirement Analysis
       m_Image: {fileID: 0}
-    - m_Text: Subtopic 3
+    - m_Text: 3. Modelling
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3264,8 +3264,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 0, y: 202.7}
+  m_AnchoredPosition: {x: -0.000030517578, y: 2}
+  m_SizeDelta: {x: -0.000061035, y: 202.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1303244298
 MonoBehaviour:
@@ -3603,8 +3603,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.5299988, y: -0.0000038146973}
-  m_SizeDelta: {x: -7.06, y: -0}
+  m_AnchoredPosition: {x: 3.5299988, y: 3.8400002}
+  m_SizeDelta: {x: -7.06, y: -7.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368663835
 MonoBehaviour:
@@ -3628,9 +3628,9 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 7321aa7ad004a674fa01deca05e66d13, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 5
+    m_MaxSize: 28
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -4537,7 +4537,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2042698584}
+        m_MethodName: OnTopicDropdownChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1888602902
 MonoBehaviour:
