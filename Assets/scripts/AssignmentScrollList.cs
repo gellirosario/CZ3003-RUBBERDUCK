@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Item
 {
     public string assignmentName;
-    public string questionName;
+    //public string questionName;
 
     /*public Item()
     {
@@ -22,15 +22,23 @@ public class AssignmentScrollList : MonoBehaviour
     public Transform contentPanel;
     public AssignmentScrollList createAssignment;
     public SimpleObjectPool buttonObjectPool;
-    
+
 
     // Use this for initialization
     void Start()
     {
 
         assignmentList = retrieveAssignmentDataFromAssignmentController();
+
+        // Wait for 10 seconds
+        StartCoroutine(Timer(10));
         RefreshDisplay();
 
+    }
+
+    IEnumerator Timer(int secs)
+    {
+        yield return new UnityEngine.WaitForSeconds(secs);
     }
 
     private List<Assignment> retrieveAssignmentDataFromAssignmentController()
@@ -68,18 +76,18 @@ public class AssignmentScrollList : MonoBehaviour
 
     void RefreshDisplay()
     {
-       // RemoveButtons();
+        //RemoveButtons();
         AddButtons();
     }
 
-    /*private void RemoveButtons()
+    private void RemoveButtons()
     {
         while (contentPanel.childCount > 0)
         {
             GameObject toRemove = transform.GetChild(0).gameObject;
             buttonObjectPool.ReturnObject(toRemove);
         }
-    }*/
+    }
 
     private void AddButtons()
     {
@@ -93,7 +101,7 @@ public class AssignmentScrollList : MonoBehaviour
             Item item = new Item();
             itemList.Add(item);
             item.assignmentName = assignmentList[i].assignmentName;
-            item.questionName = assignmentList[i].question;
+            //item.questionName = assignmentList[i].question;
             GameObject newButton = buttonObjectPool.GetObject();
 
             //newButton.transform.SetParent(contentPanel); //Sets "newParent" as the new parent of the player GameObject
@@ -103,7 +111,7 @@ public class AssignmentScrollList : MonoBehaviour
             assignmentButton.Setup(item, this);
         }
     }
-    
+
     /*public void addAssignment(Item item)
     {
         if (otherShop.gold >= item.price)
@@ -121,7 +129,7 @@ public class AssignmentScrollList : MonoBehaviour
         }
         Debug.Log("attempted");
     }*/
-    
+
     void AddItem(Item itemToAdd, AssignmentScrollList assignmentList)
     {
         assignmentList.itemList.Add(itemToAdd);
