@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using Firebase.Extensions;
+
 public class AssignmentController : MonoBehaviour
 {
     public static AssignmentController Instance { get; set; }
@@ -29,11 +31,6 @@ public class AssignmentController : MonoBehaviour
             Instance = this;
             //DontDestroyOnLoad(gameObject);
         }
-    }
-
-    public void test()
-    {
-        print("From AssignmentController");
     }
 
     // Start is called before the first frame update
@@ -95,12 +92,11 @@ public class AssignmentController : MonoBehaviour
 
     public void LoadAssignment()
     {
-        PlayerPrefs.SetString("codeal","secretcode");
         Debug.LogFormat("----HERE---");
         uid = PlayerPrefs.GetString("UserID");
         Debug.LogFormat("----ASSIGNMENT INFO ID---" + uid);
 
-        FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWith(task =>
+        FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {
@@ -148,17 +144,17 @@ public class AssignmentController : MonoBehaviour
             PlayerPrefs.SetInt("ALCount", assignmentList.Count);
             for (var i = 0; i < assignmentList.Count; i++)
             {
-                PlayerPrefs.SetString("AssignmentList(assignmentName)", assignmentList[i].assignmentName);
-                PlayerPrefs.SetInt("AssignmentList(qnID)", assignmentList[i].qnID);
-                PlayerPrefs.SetInt("AssignmentList(world)", assignmentList[i].world);
-                PlayerPrefs.SetInt("AssignmentList(stage)", assignmentList[i].stage);
-                PlayerPrefs.SetString("AssignmentList(difficulty)", assignmentList[i].difficulty);
-                PlayerPrefs.SetString("AssignmentList(question)", assignmentList[i].question);
-                PlayerPrefs.SetInt("AssignmentList(answer)", assignmentList[i].answer);
-                PlayerPrefs.SetString("AssignmentList(option1)", assignmentList[i].option1);
-                PlayerPrefs.SetString("AssignmentList(option2)", assignmentList[i].option2);
-                PlayerPrefs.SetString("AssignmentList(option3)", assignmentList[i].option3);
-                PlayerPrefs.SetString("AssignmentList(option4)", assignmentList[i].option4);
+                PlayerPrefs.SetString("AssignmentList(assignmentName)" + i, assignmentList[i].assignmentName);
+                PlayerPrefs.SetInt("AssignmentList(qnID)" + i, assignmentList[i].qnID);
+                PlayerPrefs.SetInt("AssignmentList(world)" + i, assignmentList[i].world);
+                PlayerPrefs.SetInt("AssignmentList(stage)" + i, assignmentList[i].stage);
+                PlayerPrefs.SetString("AssignmentList(difficulty)" + i, assignmentList[i].difficulty);
+                PlayerPrefs.SetString("AssignmentList(question)" + i, assignmentList[i].question);
+                PlayerPrefs.SetInt("AssignmentList(answer)" + i, assignmentList[i].answer);
+                PlayerPrefs.SetString("AssignmentList(option1)" + i, assignmentList[i].option1);
+                PlayerPrefs.SetString("AssignmentList(option2)" + i, assignmentList[i].option2);
+                PlayerPrefs.SetString("AssignmentList(option3)" + i, assignmentList[i].option3);
+                PlayerPrefs.SetString("AssignmentList(option4)" + i, assignmentList[i].option4);
             }
         });
     }
