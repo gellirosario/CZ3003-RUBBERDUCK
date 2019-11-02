@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+
+public class ChallengeEntry //this class is for storing player ids that have completed the challenge and their score, since unity does not support serializing dictionaries to json
+{
+    public string id; //player id
+    public int score;
+
+    public ChallengeEntry(string id, int score)
+    {
+        this.id = id;
+        this.score = score;
+    }
+}
 public class Challenge
 {
     public string challengeId;
     public string challengeCreator;
     public List<int> challengeQns; //List of qn ids in the challenge
+    public List<ChallengeEntry> challengePlayers;
 
     public Challenge(List<int> challengeQns)
     {
@@ -19,12 +32,20 @@ public class Challenge
         this.challengeId = generateId();
         this.challengeQns = qns;
         this.challengeCreator = creator;
+        this.challengePlayers = new List<ChallengeEntry>();
     }
-    public Challenge(string id, List<int> qns, string creator)
+
+    public Challenge(string id, List<int> qns, string creator, List<ChallengeEntry> players)
     {
         this.challengeId = id;
         this.challengeQns = qns;
         this.challengeCreator = creator;
+        this.challengePlayers = players;
+    }
+
+    public void addPlayerAndScore(string id, int score) //use this function to when a player has completed a challenge
+    {
+        this.challengePlayers.Add(new ChallengeEntry(id, score));
     }
 
     //generate an 8-character long random ID for the challenge
