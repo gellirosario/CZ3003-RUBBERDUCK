@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList: []
+  assignmentList: []
   contentPanel: {fileID: 345742697}
   createAssignment: {fileID: 0}
   buttonObjectPool: {fileID: 508013833}
@@ -1320,11 +1321,11 @@ RectTransform:
   m_Father: {fileID: 1402449324}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.42, y: 608.75}
-  m_SizeDelta: {x: 157.15, y: 62.13}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000037467573, y: -0.000030517578}
+  m_SizeDelta: {x: 157.15002, y: 62.130005}
+  m_Pivot: {x: 0.99999976, y: 0.9999995}
 --- !u!114 &1537858209
 MonoBehaviour:
   m_ObjectHideFlags: 0
