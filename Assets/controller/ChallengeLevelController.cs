@@ -171,6 +171,7 @@ public class ChallengeLevelController : MonoBehaviour
     {
         if (doUpdate == true && questionList != null && questionsLeft > 0)
         {
+            Debug.Log(questionsLeft);
 
             switch (randomEnemy)
             {
@@ -213,11 +214,8 @@ public class ChallengeLevelController : MonoBehaviour
     // Check selection option
     public void CheckAnswer(int selectedOption)
     {
-
-        //decrement qn counter
         questionsLeft--;
-
-        if (selectedOption == answer)
+        if (selectedOption == answer) //if correct
         {
             //==================
             correctAns += 1; // for report use
@@ -252,7 +250,6 @@ public class ChallengeLevelController : MonoBehaviour
 
             questionTxt.text = "Correct!";
 
-
             // no more questions left
             if (questionsLeft == 0)
             {
@@ -284,6 +281,7 @@ public class ChallengeLevelController : MonoBehaviour
                 // End Stage
                 Invoke("EndStage", 1);
             }
+
             else
             {
                 switch (selectedChar)
@@ -316,7 +314,7 @@ public class ChallengeLevelController : MonoBehaviour
 
             rightansNo++;
         }
-        else
+        else //if wrong
         {
             wrongAns += 1;  // for report use=========
 
@@ -350,6 +348,12 @@ public class ChallengeLevelController : MonoBehaviour
 
             questionTxt.text = "Wrong!";
 
+            if (questionsLeft == 0)
+            { 
+                // End Stage
+                Invoke("EndStage", 1);
+            }
+
         }
 
         switch (randomEnemy)
@@ -377,7 +381,7 @@ public class ChallengeLevelController : MonoBehaviour
         SaveReport(); //=============
 
         PlayerPrefs.SetInt("stageCorrectAns", rightansNo);
-        int stagelevel = level - 1;
+        int stagelevel = level;
         PlayerPrefs.SetInt("stageQnsAttempt", stagelevel);
 
 
