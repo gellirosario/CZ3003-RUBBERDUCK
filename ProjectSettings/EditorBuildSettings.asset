@@ -92,4 +92,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/question/deletequestion.unity
     guid: 1a6f0b7ef2c5a40a5babb9b212138743
+  - enabled: 1
+    path: Assets/view/assignments/AssignmentQuestionList.unity
+    guid: 89a3cfae90936d2479a88a896a8b95fe
   m_configObjects: {}
