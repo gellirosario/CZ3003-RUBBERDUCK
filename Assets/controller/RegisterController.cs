@@ -159,7 +159,7 @@ public class RegisterController : MonoBehaviour
             if (userType == "Player")
             {
                 Mastery playerMastery = new Mastery(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-                Player player = new Player(playerMastery, 1,0, 0); 
+                Player player = new Player(playerMastery, 0,0, 0); 
                 user = new User(newUser.UserId, name, email, userType);
                 
                 string json = JsonUtility.ToJson(user);
