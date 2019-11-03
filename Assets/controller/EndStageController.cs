@@ -25,7 +25,7 @@ public class EndStageController : MonoBehaviour
 
     public void OkClick()
     {
-        SceneManager.LoadScene("Stage");
+        SceneManager.LoadScene("PlayerMain");
     }
     
     public void RestartClick()
