@@ -21,7 +21,7 @@ public class AssignmentButton : MonoBehaviour
     public void Setup(Item currentItem, AssignmentScrollList currentScrollList)
     {
         item = currentItem;
-        assignmentLabel.text = item.assignmentName;
+        assignmentLabel.text = item.assignmentTxt;
         //questionLabel.text = item.questionName;
         scrollList = currentScrollList;
 

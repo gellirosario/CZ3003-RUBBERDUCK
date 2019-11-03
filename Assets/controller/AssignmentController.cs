@@ -16,7 +16,9 @@ public class AssignmentController : MonoBehaviour
     public Text displayDeleteMessage;
     public string uid;
     private List<Question> questionList = new List<Question>();
-    private List<Assignment> assignmentList = new List<Assignment>();
+    //private List<Assignment> assignmentList = new List<Assignment>();
+    private List<string> assignmentNameList = new List<string>();
+    private List<Assignment> assignmentQuestionList = new List<Assignment>();
     public Assignment assignmentData { get; private set; }
     private DatabaseReference reference;
 
@@ -68,20 +70,20 @@ public class AssignmentController : MonoBehaviour
     public void SaveAssignment()
     {
         print("After loading questionlist count: " + questionList.Count);
-        //DatabaseReference referenceRef = reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(createAssignmentInput.text);
+        DatabaseReference referenceRef = reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(createAssignmentInput.text);
 
         for (int i = 0; i < questionList.Count; i++)
         {
             Assignment assignment = new Assignment(createAssignmentInput.text, questionList[i].qnID, questionList[i].world, questionList[i].stage, questionList[i].difficulty,
                 questionList[i].question, questionList[i].answer, questionList[i].option1, questionList[i].option2, questionList[i].option3, questionList[i].option4);
             string json = JsonUtility.ToJson(assignment);
-            reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(assignment.assignmentName).SetRawJsonValueAsync(json);
-            //referenceRef.Child((i+1).ToString()).SetRawJsonValueAsync(json);
+            //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(assignment.assignmentName).SetRawJsonValueAsync(json);
+            referenceRef.Child((i + 1).ToString()).SetRawJsonValueAsync(json);
         }
         createAssignmentInput.text = "";
     }
 
-    public void LoadAssignment()
+    /*public void LoadAssignment()
     {
         Debug.LogFormat("----HERE---");
         uid = PlayerPrefs.GetString("UserID");
@@ -108,18 +110,31 @@ public class AssignmentController : MonoBehaviour
 
                         foreach (KeyValuePair<string, object> kvp in assignmentDict)
                         {
-                            Debug.LogFormat("ASSIGNMENT ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-                            var assignmentNameDict = (IDictionary<string, object>)assignmentDict[kvp.Key];
-
-                            foreach (KeyValuePair<string, object> kvp1 in assignmentNameDict)
+                            Debug.LogFormat("ASSIGNMENT NAME ---- Key = {0}", kvp.Key);
+                            var assignmentQnIdDict = (IDictionary<string, object>)assignmentDict[kvp.Key];
+                            Debug.LogFormat("ASSIGNMENT QNIDDICT COUNT :", assignmentQnIdDict.Count);
+                            foreach (KeyValuePair<string, object> kvp1 in assignmentQnIdDict)
                             {
-                                Debug.LogFormat("ASSIGNMENT NAME ---- Key = {0}, Value = {1}", kvp1.Key, kvp1.Value);
-                            }
+                                Debug.LogFormat("REACH HERE");
+                                Debug.LogFormat("ASSIGNMENT QUESTION ID ---- Key = {0}", kvp1.Key);
+                                var assignmentQnDetailsDict = (IDictionary<string, object>)assignmentQnIdDict[kvp1.Key];
 
-                            assignmentData = new Assignment(assignmentNameDict);
-                            Debug.Log("Assignment Name: " + assignmentData.assignmentName);
-                            assignmentList.Add(assignmentData);
-                            print("Assignment list count: " + assignmentList.Count);
+                                if(assignmentQnDetailsDict.Count != 0)
+                                {
+                                    foreach (KeyValuePair<string, object> kvp2 in assignmentQnDetailsDict)
+                                    {
+                                        Debug.LogFormat("ASSIGNMENT QUESTION DETAILS ---- Key = {0}, Value = {1}", kvp2.Key, kvp2.Value);
+                                    }
+                                }
+                                
+                            }
+                            if (assignmentQnIdDict.Count != 0)
+                            {
+                                assignmentData = new Assignment(assignmentQnIdDict);
+                                Debug.Log("Assignment Name: " + assignmentData.assignmentName);
+                                assignmentList.Add(assignmentData);
+                                print("Assignment list count: " + assignmentList.Count);
+                            }
                         }
                     }
                 }
@@ -142,8 +157,84 @@ public class AssignmentController : MonoBehaviour
                 PlayerPrefs.SetString("AssignmentList(option4)" + i, assignmentList[i].option4);
             }
         });
-    }
+    }*/
 
+    public void LoadAssignment()
+    {
+        Debug.LogFormat("----HERE---");
+        uid = PlayerPrefs.GetString("UserID");
+        Debug.LogFormat("----ASSIGNMENT INFO ID---" + uid);
+
+        FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("Error in data retrieval from Assignment table");
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                foreach (DataSnapshot userid in snapshot.Children)
+                {
+                    Debug.Log("USER ID OF FIREBASE:" + userid.Key);
+                    Debug.Log("USER ID OF CURRENT USER:" + uid);
+                    if (userid.Key == uid)
+                    {
+                        foreach (DataSnapshot assignmentname in userid.Children)
+                        {
+                            print("reach here");
+                            Debug.LogFormat("ASSIGNMENT NAME ---- Key = {0}", assignmentname.Key);
+                            foreach (DataSnapshot assignmentquestionid in assignmentname.Children)
+                            {
+                                Debug.LogFormat("ASSIGNMENT QUESTION ID ---- Key = {0}", assignmentquestionid.Key);
+                                //load assignment data into assignment object
+                                var assignmentQnIDDict = (IDictionary<string, object>)assignmentquestionid.Value;
+
+                                foreach (KeyValuePair<string, object> kvp in assignmentQnIDDict)
+                                {
+                                    Debug.LogFormat("ASSIGNMENT QUESTION DETAILS ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                                }
+
+                                assignmentData = new Assignment(assignmentQnIDDict);
+                                Debug.Log("Assignment Name: " + assignmentData.assignmentName);
+                                // adding list of questions in assignment names
+                                assignmentQuestionList.Add(assignmentData);
+                                //assignmentList.Add(assignmentData);
+                                print("Assignment list count: " + assignmentQuestionList.Count);
+                            }
+
+                            // adding list of assignment names
+                            assignmentNameList.Add(assignmentname.Key.ToString());
+                        }
+                        break;
+                    }
+                }
+            }
+            print("Current list of assignment names in assignment : " + assignmentNameList.Count);
+            PlayerPrefs.SetInt("AssignmentNameListCount", assignmentNameList.Count);
+            for (var i = 0; i < assignmentNameList.Count; i++)
+            {
+                PlayerPrefs.SetString("AssignmentNameList" + i, assignmentNameList[i]);
+            }
+
+            print("Current list of questions in assignment name: " + assignmentQuestionList.Count);
+            PlayerPrefs.SetInt("AssignmentQuestionListCount", assignmentQuestionList.Count);
+            for (var i = 0; i < assignmentQuestionList.Count; i++)
+            {
+                PlayerPrefs.SetString("AssignmentList(assignmentName)" + i, assignmentQuestionList[i].assignmentName);
+                PlayerPrefs.SetInt("AssignmentList(qnID)" + i, assignmentQuestionList[i].qnID);
+                PlayerPrefs.SetInt("AssignmentList(world)" + i, assignmentQuestionList[i].world);
+                PlayerPrefs.SetInt("AssignmentList(stage)" + i, assignmentQuestionList[i].stage);
+                PlayerPrefs.SetString("AssignmentList(difficulty)" + i, assignmentQuestionList[i].difficulty);
+                PlayerPrefs.SetString("AssignmentList(question)" + i, assignmentQuestionList[i].question);
+                PlayerPrefs.SetInt("AssignmentList(answer)" + i, assignmentQuestionList[i].answer);
+                PlayerPrefs.SetString("AssignmentList(option1)" + i, assignmentQuestionList[i].option1);
+                PlayerPrefs.SetString("AssignmentList(option2)" + i, assignmentQuestionList[i].option2);
+                PlayerPrefs.SetString("AssignmentList(option3)" + i, assignmentQuestionList[i].option3);
+                PlayerPrefs.SetString("AssignmentList(option4)" + i, assignmentQuestionList[i].option4);
+            }
+        });
+    }
 
     public void DeleteAssignment()
     {
