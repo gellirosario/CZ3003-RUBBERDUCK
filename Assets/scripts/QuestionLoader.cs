@@ -107,6 +107,22 @@ public class QuestionLoader : MonoBehaviour
 
     }
 
+    public List<Question> FilterQuestionsFromChallenge(Challenge challenge)
+    {
+        List<Question> questionList = new List<Question>();
+
+        //iterate through entire question list
+        for(int i = 0; i < questionList_All.Count; i++)
+        {
+            if (challenge.challengeQns.Contains(questionList_All[i].qnID))
+            {
+                questionList.Add(questionList_All[i]);
+            }
+        }
+
+        return questionList;
+    }
+
     public List<Question> FilterQuestionsByWorldAndStage(int world, int stage)
     {
         List<Question> questionList_Filtered = new List<Question>();
