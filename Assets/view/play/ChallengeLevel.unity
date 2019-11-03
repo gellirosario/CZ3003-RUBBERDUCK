@@ -778,7 +778,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2123809666}
+      - m_Target: {fileID: 1672904313}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:
@@ -981,7 +981,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2123809666}
+      - m_Target: {fileID: 1672904313}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:
@@ -2112,7 +2112,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2123809666}
+      - m_Target: {fileID: 1672904313}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:
@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2123809666}
+      - m_Target: {fileID: 1672904313}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:
@@ -2592,6 +2592,71 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1672904312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1672904314}
+  - component: {fileID: 1672904313}
+  m_Layer: 0
+  m_Name: ChallengeLevelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1672904313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672904312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ca00324e6a3034e9afa65f1a10f6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionTxt: {fileID: 313862339}
+  levelTxt: {fileID: 199085566}
+  o1Text: {fileID: 1297553204}
+  o2Text: {fileID: 1690622154}
+  o3Text: {fileID: 1700213569}
+  o4Text: {fileID: 1153585363}
+  option1Btn: {fileID: 1605260837}
+  option2Btn: {fileID: 383872704}
+  option3Btn: {fileID: 1536137151}
+  option4Btn: {fileID: 470195055}
+  scoreTxt: {fileID: 172676696}
+  difficultyTxt: {fileID: 311742658}
+  character1Anim: {fileID: 103035641}
+  character2Anim: {fileID: 1694878125}
+  enemy1Anim: {fileID: 1255542211}
+  enemy2Anim: {fileID: 47544128}
+  enemy3Anim: {fileID: 1629207656}
+  charSprite1: {fileID: 8556658747497097363}
+  charSprite2: {fileID: 1694878126}
+  enemySprite1: {fileID: 1255542209}
+  enemySprite2: {fileID: 47544126}
+  enemySprite3: {fileID: 1629207654}
+--- !u!4 &1672904314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672904312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690622152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,73 +3001,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922232440}
   m_CullTransparentMesh: 0
---- !u!1 &2123809664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2123809665}
-  - component: {fileID: 2123809666}
-  m_Layer: 0
-  m_Name: LevelController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2123809665
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123809664}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2123809666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123809664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918c0c97e23f9ab4e9d5477c688d62ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questionTxt: {fileID: 313862339}
-  levelTxt: {fileID: 199085566}
-  o1Text: {fileID: 1297553204}
-  o2Text: {fileID: 1690622154}
-  o3Text: {fileID: 1700213569}
-  o4Text: {fileID: 1153585363}
-  option1Btn: {fileID: 1605260837}
-  option2Btn: {fileID: 383872704}
-  option3Btn: {fileID: 1536137151}
-  option4Btn: {fileID: 470195055}
-  scoreTxt: {fileID: 172676696}
-  difficultyTxt: {fileID: 311742658}
-  healthbarPlayer: {fileID: 0}
-  healthbarEnemy: {fileID: 0}
-  character1Anim: {fileID: 103035641}
-  character2Anim: {fileID: 1694878125}
-  enemy1Anim: {fileID: 1255542211}
-  enemy2Anim: {fileID: 47544128}
-  enemy3Anim: {fileID: 1629207656}
-  charSprite1: {fileID: 8556658747497097363}
-  charSprite2: {fileID: 1694878126}
-  enemySprite1: {fileID: 1255542209}
-  enemySprite2: {fileID: 47544126}
-  enemySprite3: {fileID: 1629207654}
 --- !u!1001 &8556658747497097362
 PrefabInstance:
   m_ObjectHideFlags: 0

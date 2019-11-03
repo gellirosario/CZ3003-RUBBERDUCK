@@ -16,6 +16,8 @@ public class QuestionLoader : MonoBehaviour
     private bool isFirebaseInitialized = false;
 
     public List<Question> questionList_All = new List<Question>();
+
+    public Challenge challenge;
     
     private string dataFileName = "QuestionsList.json"; // Json file in StreamingAssets folder
     
@@ -107,19 +109,22 @@ public class QuestionLoader : MonoBehaviour
 
     }
 
-    public List<Question> FilterQuestionsFromChallenge(Challenge challenge)
+    public List<Question> FilterQuestionsFromChallenge()
     {
         List<Question> questionList = new List<Question>();
 
-        //iterate through entire question list
-        for(int i = 0; i < questionList_All.Count; i++)
+        for (int i = 0; i < this.challenge.challengeQns.Count; i++)
         {
-            if (challenge.challengeQns.Contains(questionList_All[i].qnID))
+            for (int j = 0; j < questionList_All.Count;j++)
             {
-                questionList.Add(questionList_All[i]);
+                if (this.challenge.challengeQns[i] == questionList_All[j].qnID)
+                {
+                    questionList.Add(questionList_All[j]);
+                    //Debug.Log(questionList_All[j].qnID + " Added");
+                }
             }
-        }
 
+        }
         return questionList;
     }
 

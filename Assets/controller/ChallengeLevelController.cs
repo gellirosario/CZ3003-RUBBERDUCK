@@ -26,7 +26,6 @@ public class ChallengeLevelController : MonoBehaviour
     private int answer; // For the UI
 
     private bool doUpdate = false;
-    private bool isFirst = false;
     private bool isCorrect = false;
     private bool isChecked = false;
 
@@ -117,9 +116,6 @@ public class ChallengeLevelController : MonoBehaviour
         option3Btn = GetComponent<Button>();
         option4Btn = GetComponent<Button>();
 
-        difficulty = "Normal"; // First level = Normal
-
-        isFirst = true;
         level = 0;
         score = 0;
         qnWrong = 0;
@@ -127,7 +123,7 @@ public class ChallengeLevelController : MonoBehaviour
         if (questionList.Count == 0)
         {
             // Retrieve Question List According to World and Stage
-            questionList = QuestionLoader.Instance.FilterQuestionsFromChallenge(challenge);
+            questionList = QuestionLoader.Instance.FilterQuestionsFromChallenge();
 
             // for report use ============= ss
             worldAndStage = "w" + questionList[0].world +
@@ -137,8 +133,6 @@ public class ChallengeLevelController : MonoBehaviour
         }
 
         doUpdate = true;
-
-        difficultyTxt.text = "Difficulty: Normal";
 
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -168,7 +162,7 @@ public class ChallengeLevelController : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (doUpdate == true && questionList != null)
+        if (doUpdate == true && questionList != null && questionsLeft > 0)
         {
 
             switch (randomEnemy)
@@ -184,39 +178,16 @@ public class ChallengeLevelController : MonoBehaviour
                     break;
             }
 
-            level = level + 1; // Update level
-            levelTxt.text = "LEVEL " + level.ToString();
+
+            qn = questionList[level - 1].question;
+            o1 = questionList[level - 1].option1;
+            o2 = questionList[level - 1].option2;
+            o3 = questionList[level - 1].option3;
+            o4 = questionList[level - 1].option4;
+            answer = questionList[level - 1].answer;
+            difficulty = questionList[level - 1].difficulty;
 
             // Set question and options
-            if (!isFirst)
-            {
-                // Set Difficulty according if the previous answer is correct
-                if (isCorrect)
-                {
-                    switch (difficulty)
-                    {
-                        case "Easy":
-                            difficulty = "Normal";
-                            break;
-                        case "Normal":
-                            difficulty = "Hard";
-                            break;
-                    }
-
-                }
-                else
-                {
-                    switch (difficulty)
-                    {
-                        case "Normal":
-                            difficulty = "Easy";
-                            break;
-                        case "Hard":
-                            difficulty = "Normal";
-                            break;
-                    }
-                }
-            }
             Debug.Log("------- Correct Answer = " + answer.ToString());
             difficultyTxt.text = "Difficulty: " + difficulty.ToString();
             questionTxt.text = qn;
@@ -225,7 +196,6 @@ public class ChallengeLevelController : MonoBehaviour
             o3Text.text = "c. " + o3;
             o4Text.text = "d. " + o4;
 
-            isFirst = false; // Not first question
             doUpdate = false; // Set to false until the player answered
         }
 
@@ -274,7 +244,7 @@ public class ChallengeLevelController : MonoBehaviour
             questionTxt.text = "Correct!";
 
 
-            // Enemy HP is 0
+            // no more questions left
             if (questionsLeft == 0)
             {
 
@@ -401,6 +371,9 @@ public class ChallengeLevelController : MonoBehaviour
         int stagelevel = level - 1;
         PlayerPrefs.SetInt("stageQnsAttempt", stagelevel);
 
+
+        QuestionLoader.Instance.challenge = null;
+        questionList = null;
 
         if (score != 0)
         {

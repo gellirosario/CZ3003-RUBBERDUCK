@@ -47,9 +47,9 @@ public class EnterCodeController : MonoBehaviour
         { 
          //messageTxt.text = "Cannot find code " + inputField.text + " in firebase";
         }
-        
 
     }
+
     private void searchChallenge()
     {
         FirebaseDatabase.DefaultInstance.GetReference("Challenges").GetValueAsync().ContinueWithOnMainThread(task =>
@@ -78,7 +78,15 @@ public class EnterCodeController : MonoBehaviour
                         selected = true;
                         Debug.Log(" found in challenges");
                         //break;
-                        SceneManager.LoadScene("ViewChallenges");
+
+                        //load challenge from db
+
+                        string challengeData = challenge.GetRawJsonValue();
+
+                        //load challenge into questionloader for further processing
+                        QuestionLoader.Instance.challenge = JsonUtility.FromJson<Challenge>(challengeData);
+
+                        SceneManager.LoadScene("ChallengeLevel");
                     }
                 }
                
