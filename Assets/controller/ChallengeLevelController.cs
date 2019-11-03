@@ -122,6 +122,8 @@ public class ChallengeLevelController : MonoBehaviour
 
         if (questionList.Count == 0)
         {
+            Debug.Log("Retrieving challenge questions...");
+
             // Retrieve Question List According to World and Stage
             questionList = QuestionLoader.Instance.FilterQuestionsFromChallenge();
 
@@ -130,6 +132,11 @@ public class ChallengeLevelController : MonoBehaviour
                             "s" + questionList[0].stage;
             //==========================
             questionsLeft = questionList.Count;
+
+            foreach (Question q in questionList)
+            {
+                Debug.Log(q.qnID);
+            }
         }
 
         doUpdate = true;
@@ -178,6 +185,8 @@ public class ChallengeLevelController : MonoBehaviour
                     break;
             }
 
+            level = level + 1; // Update level
+            levelTxt.text = "LEVEL " + level.ToString();
 
             qn = questionList[level - 1].question;
             o1 = questionList[level - 1].option1;
