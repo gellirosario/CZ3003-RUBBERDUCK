@@ -284,7 +284,6 @@ GameObject:
   - component: {fileID: 129052936}
   - component: {fileID: 129052935}
   - component: {fileID: 129052934}
-  - component: {fileID: 129052933}
   m_Layer: 5
   m_Name: ViewAssignmentButton
   m_TagString: Untagged
@@ -312,18 +311,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000003814789, y: 0.0000019073486}
   m_SizeDelta: {x: 287.9, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &129052933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129052931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4419e4812eb8c42b6b8cdc3f05bd46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &129052934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +515,6 @@ MonoBehaviour:
   deleteAssignmentInput: {fileID: 0}
   displayDeleteMessage: {fileID: 0}
   uid: 
-  assignmentList: []
 --- !u!1 &813483117
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +604,6 @@ GameObject:
   - component: {fileID: 829418517}
   - component: {fileID: 829418516}
   - component: {fileID: 829418515}
-  - component: {fileID: 829418514}
   m_Layer: 5
   m_Name: DeleteAssignmentButton
   m_TagString: Untagged
@@ -646,18 +631,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000011444, y: -135}
   m_SizeDelta: {x: 287.9, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &829418514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829418512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4419e4812eb8c42b6b8cdc3f05bd46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &829418515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,7 +757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000009366777, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 157.15002, y: 62.130005}
   m_Pivot: {x: 0.99999994, y: 0.9999995}
 --- !u!114 &1071368700
@@ -985,7 +958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3.7199993}
+  m_AnchoredPosition: {x: 0, y: 3.7200012}
   m_SizeDelta: {x: 0, y: -7.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398273856
@@ -1367,7 +1340,6 @@ GameObject:
   - component: {fileID: 1974088894}
   - component: {fileID: 1974088893}
   - component: {fileID: 1974088892}
-  - component: {fileID: 1974088891}
   m_Layer: 5
   m_Name: CreateAssignmentButton
   m_TagString: Untagged
@@ -1395,18 +1367,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000045798, y: 133}
   m_SizeDelta: {x: 287.9, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1974088891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974088889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4419e4812eb8c42b6b8cdc3f05bd46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1974088892
 MonoBehaviour:
   m_ObjectHideFlags: 0
