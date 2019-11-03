@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using Firebase.Extensions;
 
 public class CustomizeController : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class CustomizeController : MonoBehaviour
     private void Start()
     {
         messageTxt.text = "";
+        readcharacter();
         UpdateCharacterSelectionUI();
         Debug.Log(string.Format("start"));
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
@@ -74,6 +76,8 @@ public class CustomizeController : MonoBehaviour
                 // Firebase Unity SDK is not safe to use here.
             }
         });
+
+        
         /*Firebase.Auth.FirebaseUser user = auth.CurrentUser;
         if (user != null)
         {
@@ -86,7 +90,46 @@ public class CustomizeController : MonoBehaviour
             userId = user.UserId;
         }*/
     }
+    private void readcharacter()
+    {
+        FirebaseDatabase.DefaultInstance.GetReference("Player").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("cant find");
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("wtf");
+                DataSnapshot snapshot = task.Result;
+               
+                foreach (DataSnapshot user in snapshot.Children)
+                {
 
+                    
+                    var dictUser = (IDictionary<string, object>)user.Value;
+                    
+                    //Debug.Log(user.Key+" |||  " +PlayerPrefs.GetString("UserID"));
+                    if ((string)user.Key == (string)PlayerPrefs.GetString("UserID"))
+                    {
+                       
+                        if(dictUser["characterID"].ToString() == "1")
+                        {
+                            selectIndex = 1;
+                            UpdateCharacterSelectionUI();
+                        }
+                        else if (dictUser["characterID"].ToString() == "0")
+                        {
+                            selectIndex = 0;
+                            UpdateCharacterSelectionUI();
+                        }
+                        
+                    }
+                    
+                }
+            }
+        });
+    }
     // Update is called once per frame
     void Update()
     {
