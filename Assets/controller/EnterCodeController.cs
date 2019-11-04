@@ -23,7 +23,7 @@ public class EnterCodeController : MonoBehaviour
     public GameObject popup, leaderboard;
     public Text idText;
 
-    void Start()
+    void Awake()
     {
         messageTxt.text = "";
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
@@ -41,6 +41,11 @@ public class EnterCodeController : MonoBehaviour
                 // Firebase Unity SDK is not safe to use here.
             }
         });
+    }
+
+    void Start()
+    {
+
     }
 
     public void TogglePopup(GameObject popup)
@@ -87,7 +92,7 @@ public class EnterCodeController : MonoBehaviour
                         cid = challenge.Key.ToString();
                         //Debug.Log("" + dictUser["name"] + " - " + dictUser["email"]+ user.Key);
                         Debug.Log(cid+"-cid");
-                        PlayerPrefs.SetString("challengedID",cid);
+                        PlayerPrefs.SetString("challengeID",cid);
                         
                         selected = true;
                         Debug.Log(" found in challenges");
