@@ -275,7 +275,6 @@ public class LevelController : MonoBehaviour
                         break;
                     case "Normal":
                         randomQuestionNo = Random.Range(0, questionList_Filtered_Normal.Count);
-                        Debug.LogError("RANDOM QN = NORMAL " + randomQuestionNo.ToString());
                         qn = questionList_Filtered_Normal[randomQuestionNo].question;
                         o1 = questionList_Filtered_Normal[randomQuestionNo].option1;
                         o2 = questionList_Filtered_Normal[randomQuestionNo].option2;

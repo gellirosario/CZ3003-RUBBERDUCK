@@ -1,5 +1,5 @@
 {
-  "Questions": [
+  "Question(latest)": [
     {
       "id": 1,
       "world": 1,
@@ -115,7 +115,7 @@
       "difficulty": "Easy",
       "question": "The reason for software bugs and failures is due to",
       "answer": 3,
-      "option1": "Software companiesSoftware Developers",
+      "option1": "Software companies",
       "option2": "Software Developers",
       "option3": "Both Software companies and Developers",
       "option4": "All of the mentioned"
@@ -869,30 +869,6 @@
       "world": 1,
       "stage": 3,
       "difficulty": "Hard",
-      "question": "what does QFD stands for?",
-      "answer": 3,
-      "option1": "quality function design",
-      "option2": "quality function development",
-      "option3": "quality function deployment",
-      "option4": "none of the mentioned"
-    },
-    {
-      "id": 74,
-      "world": 1,
-      "stage": 3,
-      "difficulty": "Hard",
-      "question": "According to components of FURPS+, which of the following does not belong to S ?",
-      "answer": 2,
-      "option1": "Testability",
-      "option2": "Speed Efficiency",
-      "option3": "Serviceability",
-      "option4": "Installability"
-    },
-    {
-      "id": 75,
-      "world": 1,
-      "stage": 3,
-      "difficulty": "Hard",
       "question": "Choose the incorrect statement with respect to Non-Functional Requirement(NFR).",
       "answer": 3,
       "option1": "Product-oriented Approach – Focus on system (or software) quality",
@@ -901,7 +877,7 @@
       "option4": "Qualitative Approach – Study various relationships between quality goals"
     },
     {
-      "id": 76,
+      "id": 74,
       "world": 1,
       "stage": 3,
       "difficulty": "Hard",
@@ -913,7 +889,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 77,
+      "id": 75,
       "world": 1,
       "stage": 3,
       "difficulty": "Hard",
@@ -925,7 +901,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 78,
+      "id": 76,
       "world": 1,
       "stage": 3,
       "difficulty": "Hard",
@@ -937,7 +913,7 @@
       "option4": "Security"
     },
     {
-      "id": 79,
+      "id": 77,
       "world": 1,
       "stage": 3,
       "difficulty": "Hard",
@@ -949,7 +925,7 @@
       "option4": "Qualitative Approach – Study various relationships between quality goals"
     },
     {
-      "id": 80,
+      "id": 78,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -961,19 +937,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 81,
-      "world": 1,
-      "stage": 3,
-      "difficulty": "Normal",
-      "question": "what does QFD stands for?",
-      "answer": 3,
-      "option1": "quality function design",
-      "option2": "quality function development",
-      "option3": "quality function deployment",
-      "option4": "none of the mentioned"
-    },
-    {
-      "id": 82,
+      "id": 79,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -985,7 +949,7 @@
       "option4": "Installability"
     },
     {
-      "id": 83,
+      "id": 80,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -997,19 +961,7 @@
       "option4": "Security, Safety, Testability, Usability"
     },
     {
-      "id": 84,
-      "world": 1,
-      "stage": 3,
-      "difficulty": "Normal",
-      "question": "The product should be easy to use",
-      "answer": 2,
-      "option1": "The product should be easy to use",
-      "option2": "Software engineers shall ensure that their products and related modifications meet the highest professional standards possible",
-      "option3": "Software engineers shall ensure that their products and related modifications satisfy the client",
-      "option4": "It means that the product designed /created should be easily available"
-    },
-    {
-      "id": 85,
+      "id": 81,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -1021,7 +973,7 @@
       "option4": "Web based system should be developed and delivered incrementally"
     },
     {
-      "id": 86,
+      "id": 82,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -1033,7 +985,7 @@
       "option4": "Qualitative Approach – Study various relationships between quality goals"
     },
     {
-      "id": 87,
+      "id": 83,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -1045,7 +997,7 @@
       "option4": "Traceable"
     },
     {
-      "id": 88,
+      "id": 84,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -1057,7 +1009,7 @@
       "option4": "Nine"
     },
     {
-      "id": 89,
+      "id": 85,
       "world": 1,
       "stage": 3,
       "difficulty": "Normal",
@@ -1069,178 +1021,10 @@
       "option4": "Object Model"
     },
     {
-      "id": 90,
+      "id": 86,
       "world": 2,
       "stage": 1,
       "difficulty": "Easy",
-      "question": "The best representation of system architecture is an operational software prototype",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 91,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "The architectural representations can be an enabler for communication among project stakeholders",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 92,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "An architectural description is often documented using an architecture template",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 93,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Architecture once established can be applied to other products as well.",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 94,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "An architectural decision is often documented using an architecture decision description template",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 95,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "An architectural genre will often dictate the architectural approach that may used for the structure to be built",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 96,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Architectural design is a creative process satisfying only functional-requirements of a system.",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 97,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Before an architectural pattern can be chosen for use in a specific system it must have a code implementation to facilitate its reuse",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 98,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Software architectural considerations often interact with each other and moderate each other",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 99,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Developer notes are not a reliable means of documenting architectural decisions",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 100,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Pattern-based architectural reviews can be useful for project with short build cycles and volatile requirements",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 101,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Architectural design has no role in agile software process models",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 102,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "The client server approach can  be used to implement a repository-based system.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 103,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "The most important advantage  of the client-server model is that distribution is straight forward.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 104,
-      "world": 2,
-      "stage": 1,
-      "difficulty": "Normal",
       "question": "During process of modeling the system in context, systems that interact with the target system are represented as",
       "answer": 4,
       "option1": "Peer-level systems",
@@ -1249,10 +1033,10 @@
       "option4": "All of the above"
     },
     {
-      "id": 105,
+      "id": 87,
       "world": 2,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Which of the following is a type of Architectural Model?",
       "answer": 4,
       "option1": "Static structural model",
@@ -1261,10 +1045,10 @@
       "option4": "All of the above"
     },
     {
-      "id": 106,
+      "id": 88,
       "world": 2,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "What describes how a set of interacting components can share data?",
       "answer": 3,
       "option1": "Model-View-Controller",
@@ -1273,10 +1057,10 @@
       "option4": "None of the above"
     },
     {
-      "id": 107,
+      "id": 89,
       "world": 2,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "An architectural style encompasses which of the following elements?",
       "answer": 4,
       "option1": "constraints",
@@ -1285,10 +1069,10 @@
       "option4": "All of the above"
     },
     {
-      "id": 108,
+      "id": 90,
       "world": 2,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Which view shows the system hardware and how software components are distributed across the processors in the system.?",
       "answer": 1,
       "option1": "Physical",
@@ -1297,7 +1081,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 109,
+      "id": 91,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1309,7 +1093,7 @@
       "option4": "Architectural design"
     },
     {
-      "id": 110,
+      "id": 92,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1321,7 +1105,7 @@
       "option4": "Process"
     },
     {
-      "id": 111,
+      "id": 93,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1333,7 +1117,7 @@
       "option4": "Distribution of the system"
     },
     {
-      "id": 112,
+      "id": 94,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1345,7 +1129,7 @@
       "option4": "Different Operating System"
     },
     {
-      "id": 113,
+      "id": 95,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1357,7 +1141,7 @@
       "option4": "Process"
     },
     {
-      "id": 114,
+      "id": 96,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1369,7 +1153,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 115,
+      "id": 97,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1381,7 +1165,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 116,
+      "id": 98,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1393,7 +1177,7 @@
       "option4": "2 and 3"
     },
     {
-      "id": 117,
+      "id": 99,
       "world": 2,
       "stage": 1,
       "difficulty": "Normal",
@@ -1405,7 +1189,7 @@
       "option4": "2 and 3"
     },
     {
-      "id": 118,
+      "id": 100,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1417,7 +1201,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 119,
+      "id": 101,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1429,7 +1213,7 @@
       "option4": "Microkernel module"
     },
     {
-      "id": 120,
+      "id": 102,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1441,7 +1225,7 @@
       "option4": "Memory Management Components"
     },
     {
-      "id": 121,
+      "id": 103,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1453,7 +1237,7 @@
       "option4": "Design Patterns"
     },
     {
-      "id": 122,
+      "id": 104,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1465,7 +1249,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 123,
+      "id": 105,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1477,7 +1261,7 @@
       "option4": "Broker"
     },
     {
-      "id": 124,
+      "id": 106,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1489,7 +1273,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 125,
+      "id": 107,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1501,7 +1285,7 @@
       "option4": "MVC Architectural Style"
     },
     {
-      "id": 126,
+      "id": 108,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1513,7 +1297,7 @@
       "option4": "Broker"
     },
     {
-      "id": 127,
+      "id": 109,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1525,7 +1309,7 @@
       "option4": "Set parameters at startup"
     },
     {
-      "id": 128,
+      "id": 110,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1537,7 +1321,7 @@
       "option4": "ER Diagram"
     },
     {
-      "id": 129,
+      "id": 111,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1549,7 +1333,7 @@
       "option4": "The components to be easily replaceable"
     },
     {
-      "id": 130,
+      "id": 112,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1561,7 +1345,7 @@
       "option4": "Seperate interface from implementation"
     },
     {
-      "id": 131,
+      "id": 113,
       "world": 2,
       "stage": 1,
       "difficulty": "Hard",
@@ -1573,82 +1357,10 @@
       "option4": "None of the above"
     },
     {
-      "id": 132,
+      "id": 114,
       "world": 2,
       "stage": 2,
       "difficulty": "Easy",
-      "question": "Design patterns are not applicable to the design of object-oriented software",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 133,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Easy",
-      "question": "Since modularity is an important design goal it is not possible to have too many modules in a proposed design",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 134,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Easy",
-      "question": "Information hiding makes program maintenance easier by hiding data and procedure from unaffected parts of the program",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 135,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Easy",
-      "question": "When using structured design methodologies, the process of stepwise refinement is unncessary",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 136,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Easy",
-      "question": "Software designs are refactored to allow the creation of software that is easier to integrate, easier to test, and easier to maintain",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 137,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Easy",
-      "question": "The deployment design elements specify the build order for the software components",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 138,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Normal",
       "question": "Which of the following are areas of concern in the design model?",
       "answer": 4,
       "option1": "Architecture",
@@ -1657,10 +1369,10 @@
       "option4": "All of the above"
     },
     {
-      "id": 139,
+      "id": 115,
       "world": 2,
       "stage": 2,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "The importance of software design can be summarised in a single word",
       "answer": 1,
       "option1": "Quality",
@@ -1669,10 +1381,10 @@
       "option4": "Accuracy"
     },
     {
-      "id": 140,
+      "id": 116,
       "world": 2,
       "stage": 2,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Which of the following is not a characteristic common to all design methods?",
       "answer": 1,
       "option1": "Configuration management",
@@ -1681,10 +1393,10 @@
       "option4": "Refinement heuristics"
     },
     {
-      "id": 141,
+      "id": 117,
       "world": 2,
       "stage": 2,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Which of the following can be used to represent the architectural design of a piece of software?",
       "answer": 4,
       "option1": "Dynamic models",
@@ -1693,7 +1405,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 142,
+      "id": 118,
       "world": 2,
       "stage": 2,
       "difficulty": "Normal",
@@ -1705,7 +1417,7 @@
       "option4": "Is connected to other modules and the outside world"
     },
     {
-      "id": 143,
+      "id": 119,
       "world": 2,
       "stage": 2,
       "difficulty": "Normal",
@@ -1717,7 +1429,7 @@
       "option4": "Is able to complete its function in a timely manner"
     },
     {
-      "id": 144,
+      "id": 120,
       "world": 2,
       "stage": 2,
       "difficulty": "Normal",
@@ -1729,7 +1441,7 @@
       "option4": "User interface classes"
     },
     {
-      "id": 145,
+      "id": 121,
       "world": 2,
       "stage": 2,
       "difficulty": "Normal",
@@ -1741,7 +1453,7 @@
       "option4": "Interface design elements"
     },
     {
-      "id": 146,
+      "id": 122,
       "world": 2,
       "stage": 2,
       "difficulty": "Normal",
@@ -1753,31 +1465,7 @@
       "option4": "Interface design"
     },
     {
-      "id": 147,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Normal",
-      "question": "Which design is equivalent to the detailed drawings of the access points and external utilities for a house?",
-      "answer": 4,
-      "option1": "Data design",
-      "option2": "Architectural design",
-      "option3": "Component-level design",
-      "option4": "Interface design"
-    },
-    {
-      "id": 148,
-      "world": 2,
-      "stage": 2,
-      "difficulty": "Normal",
-      "question": "Which design is equivalent to the detailed drawings for each room in a house?",
-      "answer": 2,
-      "option1": "Interface design",
-      "option2": "Component-level design",
-      "option3": "Architectural design",
-      "option4": "Data design"
-    },
-    {
-      "id": 149,
+      "id": 123,
       "world": 2,
       "stage": 2,
       "difficulty": "Hard",
@@ -1789,7 +1477,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 150,
+      "id": 124,
       "world": 2,
       "stage": 2,
       "difficulty": "Hard",
@@ -1801,118 +1489,34 @@
       "option4": "B, D"
     },
     {
-      "id": 151,
+      "id": 125,
       "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "Software engineers always need to create components from scratch in order to meet customer expectations fully",
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Which design is equivalent to the detailed drawings of the access points and external utilities for a house?",
+      "answer": 4,
+      "option1": "Data design",
+      "option2": "Architectural design",
+      "option3": "Component-level design",
+      "option4": "Interface design"
+    },
+    {
+      "id": 126,
+      "world": 2,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Which design is equivalent to the detailed drawings for each room in a house?",
       "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
+      "option1": "Interface design",
+      "option2": "Component-level design",
+      "option3": "Architectural design",
+      "option4": "Data design"
     },
     {
-      "id": 152,
+      "id": 127,
       "world": 2,
       "stage": 3,
       "difficulty": "Easy",
-      "question": "The use of stereotypes can help identify the nature of components at the detailed design level",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 153,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "Classes and components that exhibit functional, layer, or communicational cohesion are relatively easy to implement, test, and maintain",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 154,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "Software coupling is a sign of poor architectural design and can always be avoided in every system",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 155,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "WebApp content design at the component level focuses on content objects and the manner in which they interact",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 156,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "A WebApp functional architecture describes the key functional components and how they interact with each other",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 157,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "Component-level design for mobile apps is not any different from component-based design for Web apps",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 158,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "In component-based software engineering, the development team examines the requirements to see which are amenable to composition, rather than construction, before beginning detailed design tasks",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 159,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Easy",
-      "question": "In the most general sense a component is a modular building block for computer software",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 160,
-      "world": 2,
-      "stage": 3,
-      "difficulty": "Normal",
       "question": "In the context of object-oriented software engineering, a component contains",
       "answer": 4,
       "option1": "Attributes and operations",
@@ -1921,10 +1525,10 @@
       "option4": "Set of collaborating classes"
     },
     {
-      "id": 161,
+      "id": 128,
       "world": 2,
       "stage": 3,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "In traditional software engineering modules must serve in which of the following roles?",
       "answer": 4,
       "option1": "Control component",
@@ -1933,10 +1537,10 @@
       "option4": "All of the above"
     },
     {
-      "id": 162,
+      "id": 129,
       "world": 2,
       "stage": 3,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Which of the following is not one of the four principles used to guide component-level design?",
       "answer": 4,
       "option1": "Dependency Inversion Principle",
@@ -1945,10 +1549,10 @@
       "option4": "Parsimonious Complexity Principle"
     },
     {
-      "id": 163,
+      "id": 130,
       "world": 2,
       "stage": 3,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Which of the following is not one of the major activities of domain engineering?",
       "answer": 4,
       "option1": "Analysis",
@@ -1957,7 +1561,7 @@
       "option4": "Validation"
     },
     {
-      "id": 164,
+      "id": 131,
       "world": 2,
       "stage": 3,
       "difficulty": "Normal",
@@ -1969,7 +1573,7 @@
       "option4": "Development and integration tools required"
     },
     {
-      "id": 165,
+      "id": 132,
       "world": 2,
       "stage": 3,
       "difficulty": "Normal",
@@ -1981,7 +1585,7 @@
       "option4": "White-box wrapping"
     },
     {
-      "id": 166,
+      "id": 133,
       "world": 2,
       "stage": 3,
       "difficulty": "Normal",
@@ -1993,7 +1597,7 @@
       "option4": "Standard interface protocols"
     },
     {
-      "id": 167,
+      "id": 134,
       "world": 2,
       "stage": 3,
       "difficulty": "Normal",
@@ -2005,7 +1609,7 @@
       "option4": "Flowchart"
     },
     {
-      "id": 168,
+      "id": 135,
       "world": 2,
       "stage": 3,
       "difficulty": "Normal",
@@ -2017,7 +1621,7 @@
       "option4": "Only when building an expert system"
     },
     {
-      "id": 169,
+      "id": 136,
       "world": 2,
       "stage": 3,
       "difficulty": "Normal",
@@ -2029,7 +1633,7 @@
       "option4": "Useful way to represent software architecture"
     },
     {
-      "id": 170,
+      "id": 137,
       "world": 2,
       "stage": 3,
       "difficulty": "Hard",
@@ -2041,7 +1645,7 @@
       "option4": "B, D"
     },
     {
-      "id": 171,
+      "id": 138,
       "world": 2,
       "stage": 3,
       "difficulty": "Hard",
@@ -2053,7 +1657,7 @@
       "option4": "A, C"
     },
     {
-      "id": 172,
+      "id": 139,
       "world": 2,
       "stage": 3,
       "difficulty": "Hard",
@@ -2065,7 +1669,7 @@
       "option4": "A, B, D"
     },
     {
-      "id": 173,
+      "id": 140,
       "world": 2,
       "stage": 3,
       "difficulty": "Hard",
@@ -2077,178 +1681,10 @@
       "option4": "A, B, C"
     },
     {
-      "id": 174,
+      "id": 141,
       "world": 3,
       "stage": 1,
       "difficulty": "Easy",
-      "question": "There is no need to assess customer satisfaction when trying to determine the quality of a piece of software.",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 175,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Quality of conformance focuses on the degree to which the implementation of a design meets its requirements and performance goals",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 176,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Many software metrics can only be measured indirectly.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 177,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Developers need to create a collection of targeted questions to asses each\nquality factor.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 178,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": ". Software metrics represent direct measures of some manifestation of quality.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 179,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "The quality dilemma might be summarized as choosing between building things\nquickly or building things correctly.",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 180,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Good enough software delivers high quality software functions along with\nspecialized functions that contain known bugs.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 181,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Poor quality leads to software risks that can become serious?",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 182,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "When a system fails to deliver required functions it is because the customer changes requirements?",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 183,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Developers must start focusing on quality during the design phase in order to build secure systems.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 184,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "Quality control encompasses a set of software engineering actions that help to ensure that each work product meets its quality goals",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 185,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "The goal of quality assurance to insure that a software project is error free. A. True B. False",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 186,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "The purpose of software reviews is to uncover errors and defects in work products so they can be removed before moving on to the next phase of development.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 187,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Easy",
-      "question": "In general the earlier a software defect is discovered and corrected the less costly to the overall project budget.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 188,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Normal",
       "question": "Variation control in the context of software engineering involves controlling\nvariation in the",
       "answer": 4,
       "option1": "process applied",
@@ -2257,10 +1693,10 @@
       "option4": "all of the above"
     },
     {
-      "id": 189,
+      "id": 142,
       "world": 3,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "A key concept of quality control is that all work products",
       "answer": 3,
       "option1": "are delivered on time and under budget",
@@ -2269,10 +1705,10 @@
       "option4": "are thoroughly tested before delivery to the customer"
     },
     {
-      "id": 190,
+      "id": 143,
       "world": 3,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Quality costs may be divided into costs associated with",
       "answer": null,
       "option1": "prevention, appraisal, and failure",
@@ -2281,10 +1717,10 @@
       "option4": "all of the above"
     },
     {
-      "id": 191,
+      "id": 144,
       "world": 3,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": " Poka-yoke devices are mechanisms that lead to the\r\nA. creation of quality processes with minimal resources\r\nB. determining causes of software defects\r\nC. prevention of potential quality problems\r\nD. rapid detection of quality problems introduced",
       "answer": 2,
       "option1": "A,B",
@@ -2293,10 +1729,10 @@
       "option4": "A,B,D"
     },
     {
-      "id": 192,
+      "id": 145,
       "world": 3,
       "stage": 1,
-      "difficulty": "Normal",
+      "difficulty": "Easy",
       "question": "Which of the following is not one of the attributes of software quality?",
       "answer": 3,
       "option1": "Adds value for developers and users",
@@ -2305,7 +1741,7 @@
       "option4": "Useful products satisfy stakeholder requirements"
     },
     {
-      "id": 193,
+      "id": 146,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2317,7 +1753,7 @@
       "option4": "B,D"
     },
     {
-      "id": 194,
+      "id": 147,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2329,7 +1765,7 @@
       "option4": "Prevention costs"
     },
     {
-      "id": 195,
+      "id": 148,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2341,7 +1777,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 196,
+      "id": 149,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2353,7 +1789,7 @@
       "option4": "C,D"
     },
     {
-      "id": 197,
+      "id": 150,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2365,7 +1801,7 @@
       "option4": "A,B,C"
     },
     {
-      "id": 198,
+      "id": 151,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2377,7 +1813,7 @@
       "option4": "uncover errors in software work products"
     },
     {
-      "id": 199,
+      "id": 152,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2389,7 +1825,7 @@
       "option4": "C,D"
     },
     {
-      "id": 200,
+      "id": 153,
       "world": 3,
       "stage": 1,
       "difficulty": "Normal",
@@ -2401,67 +1837,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 201,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Normal",
-      "question": "In any type of technical review, the focus of the review is on the product and not the producer",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 202,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Hard",
-      "question": "Software quality might be defined as conformance to explicitly stated requirements and standards, nothing more and nothing less.",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 203,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Hard",
-      "question": "People who perform software quality assurance must look at the software from\nthe customer's perspective.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 204,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Hard",
-      "question": "Review metrics can be used to assess the efficacy of each review activity.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 205,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Hard",
-      "question": "The elements of software quality assurance consist of reviews, audits, and\ntesting.",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 206,
+      "id": 154,
       "world": 3,
       "stage": 1,
       "difficulty": "Hard",
@@ -2473,31 +1849,7 @@
       "option4": "serve as the sole test team for any software produced"
     },
     {
-      "id": 207,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Hard",
-      "question": "Metrics can be used to indicate the relative strength of a software quality\nattribute.",
-      "answer": 1,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 208,
-      "world": 3,
-      "stage": 1,
-      "difficulty": "Hard",
-      "question": " Attempts to apply mathematical proof to demonstrate that a program conforms to\nits specifications are doomed to failure.",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
-    },
-    {
-      "id": 209,
+      "id": 155,
       "world": 3,
       "stage": 1,
       "difficulty": "Hard",
@@ -2509,7 +1861,7 @@
       "option4": "tracing each defect to its underlying causes and using the Pareto principle to correct each problem found"
     },
     {
-      "id": 210,
+      "id": 156,
       "world": 3,
       "stage": 1,
       "difficulty": "Hard",
@@ -2521,7 +1873,7 @@
       "option4": "define, measure, control"
     },
     {
-      "id": 211,
+      "id": 157,
       "world": 3,
       "stage": 1,
       "difficulty": "Hard",
@@ -2533,7 +1885,7 @@
       "option4": "B,C"
     },
     {
-      "id": 212,
+      "id": 158,
       "world": 3,
       "stage": 1,
       "difficulty": "Hard",
@@ -2545,7 +1897,7 @@
       "option4": "prevent profitable marketing of the final product"
     },
     {
-      "id": 213,
+      "id": 159,
       "world": 3,
       "stage": 1,
       "difficulty": "Hard",
@@ -2557,7 +1909,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 214,
+      "id": 160,
       "world": 3,
       "stage": 1,
       "difficulty": "Hard",
@@ -2569,19 +1921,487 @@
       "option4": "test"
     },
     {
-      "id": 215,
+      "id": 161,
       "world": 3,
-      "stage": 1,
-      "difficulty": "Hard",
-      "question": "Defect amplification models can be used to illustrate the costs associated with\r\nusing software from its initial deployment to its retirement",
-      "answer": 2,
-      "option1": true,
-      "option2": false,
-      "option3": null,
-      "option4": null
+      "stage": 2,
+      "difficulty": "Easy",
+      "question": "Variation control in the context of software engineering involves controlling\nvariation in the",
+      "answer": 1,
+      "option1": "process applied",
+      "option2": "resources expended",
+      "option3": "product quality attributes",
+      "option4": "all of the above"
     },
     {
-      "id": 216,
+      "id": 162,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Easy",
+      "question": "A key concept of quality control is that all work products",
+      "answer": 1,
+      "option1": "are delivered on time and under budget",
+      "option2": "have complete documentation",
+      "option3": "have measurable specifications for process outputs",
+      "option4": "are thoroughly tested before delivery to the customer"
+    },
+    {
+      "id": 163,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Easy",
+      "question": "Quality costs may be divided into costs associated with",
+      "answer": 1,
+      "option1": "prevention, appraisal, and failure",
+      "option2": "people, process, and product",
+      "option3": "customers, developers, and maintenance",
+      "option4": "all of the above"
+    },
+    {
+      "id": 164,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Easy",
+      "question": " Poka-yoke devices are mechanisms that lead to the\r\nA. creation of quality processes with minimal resources\r\nB. determining causes of software defects\r\nC. prevention of potential quality problems\r\nD. rapid detection of quality problems introduced",
+      "answer": 1,
+      "option1": "A,B",
+      "option2": "C,D",
+      "option3": "A,C,D",
+      "option4": "A,B,D"
+    },
+    {
+      "id": 165,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Easy",
+      "question": "Which of the following is not one of the attributes of software quality?",
+      "answer": 1,
+      "option1": "Adds value for developers and users",
+      "option2": "Effective software process creates infrastructure",
+      "option3": "Removes need to consider performance issues",
+      "option4": "Useful products satisfy stakeholder requirements"
+    },
+    {
+      "id": 166,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": " Which of the following are ISO 9126 software quality factors?\nA. Functionality\nB. Portability\nC. Reliability\nD. Visual appeal",
+      "answer": 1,
+      "option1": "A,B,C",
+      "option2": "B,C,D",
+      "option3": "A,C",
+      "option4": "B,D"
+    },
+    {
+      "id": 167,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": ". Which of the following is likely to be the most expensive cost of quality?",
+      "answer": 1,
+      "option1": "Appraisal costs",
+      "option2": "External failure costs",
+      "option3": "Internal failure costs",
+      "option4": "Prevention costs"
+    },
+    {
+      "id": 168,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": "Which of the following management decisions have the potential to impact software quality?",
+      "answer": 1,
+      "option1": "Estimation decisions",
+      "option2": "Risk-oriented decisions",
+      "option3": "Scheduling decisions",
+      "option4": "All of the above"
+    },
+    {
+      "id": 169,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": " The level of review formality is determined by which of the following?\r\nA. amount of preparation\r\nB. reviewer follow-up\r\nC. size of project budget\r\nD. structure of review",
+      "answer": 1,
+      "option1": "B,D",
+      "option2": "A,B,C",
+      "option3": "A,B,D",
+      "option4": "C,D"
+    },
+    {
+      "id": 170,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": "An informal review may consist of which of the following?\nA. casual meeting\nB. desk check\nC. inspection\nD. pair programming",
+      "answer": 1,
+      "option1": "B,C,D",
+      "option2": "A,B",
+      "option3": "A,C",
+      "option4": "A,B,C"
+    },
+    {
+      "id": 171,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": "Which of the following are objectives for formal technical reviews?",
+      "answer": 1,
+      "option1": "allow senior staff members to correct errors",
+      "option2": "assess programmer productivity",
+      "option3": "determining who introduced an error into a program",
+      "option4": "uncover errors in software work products"
+    },
+    {
+      "id": 172,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": "At the end of a formal technical review all attendees can decide to\nA. accept the work product without modification\nB. modify the work product and continue the review\nC. reject the product due to stylistic discrepancies\nD. reject the product due to severe errors",
+      "answer": 1,
+      "option1": "A,D",
+      "option2": "A,B",
+      "option3": "B,C",
+      "option4": "C,D"
+    },
+    {
+      "id": 173,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Normal",
+      "question": "A review summary report answers which three questions?",
+      "answer": 1,
+      "option1": "terminate project, replace producer, request a time extension",
+      "option2": "what defects were found, what caused defects, who was responsible",
+      "option3": "what was reviewed, who reviewed it, what were the findings",
+      "option4": "None of the above"
+    },
+    {
+      "id": 174,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Which of these activities is not one of the activities recommended to be performed by an independent SQA group?",
+      "answer": 1,
+      "option1": "prepare SQA plan for the project",
+      "option2": "review software engineering activities to verify process compliance",
+      "option3": "report any evidence of noncompliance to senior management",
+      "option4": "serve as the sole test team for any software produced"
+    },
+    {
+      "id": 175,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Statistical quality assurance involves",
+      "answer": 1,
+      "option1": "using sampling in place of exhaustive testing of software",
+      "option2": "surveying customers to find out their opinions about product quality",
+      "option3": "tracing each defect to its underlying cause, isolating the \"vital few\" causes, and moving to correct them",
+      "option4": "tracing each defect to its underlying causes and using the Pareto principle to correct each problem found"
+    },
+    {
+      "id": 176,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Six Sigma methodology defines three core steps.",
+      "answer": 1,
+      "option1": "analyze, improve, control",
+      "option2": "analyze, design, verify",
+      "option3": "define, measure, analyze",
+      "option4": "define, measure, control"
+    },
+    {
+      "id": 177,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Software reliability problems can almost always be traced to\nA. errors in accuracy\nB. errors in design\nC. errors in implementation\nD. errors in operation",
+      "answer": 1,
+      "option1": "C,D",
+      "option2": "A,B",
+      "option3": "A,D",
+      "option4": "B,C"
+    },
+    {
+      "id": 178,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Software safety is a quality assurance activity that focuses on hazards that",
+      "answer": 1,
+      "option1": "affect the reliability of a software component",
+      "option2": "may cause an entire system to fail",
+      "option3": "may result from user input errors",
+      "option4": "prevent profitable marketing of the final product"
+    },
+    {
+      "id": 179,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "The ISO quality assurance standard that applies to software engineering is",
+      "answer": 1,
+      "option1": "ISO 9000",
+      "option2": "ISO 9001",
+      "option3": "ISO 9002",
+      "option4": "None of the above"
+    },
+    {
+      "id": 180,
+      "world": 3,
+      "stage": 2,
+      "difficulty": "Hard",
+      "question": "Which of the following is not a section in the standard for SQA plans recommended by IEEE?",
+      "answer": 1,
+      "option1": "budget",
+      "option2": "documentation",
+      "option3": "reviews and audits",
+      "option4": "test"
+    },
+    {
+      "id": 181,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Easy",
+      "question": "Variation control in the context of software engineering involves controlling\nvariation in the",
+      "answer": 4,
+      "option1": "process applied",
+      "option2": "resources expended",
+      "option3": "product quality attributes",
+      "option4": "all of the above"
+    },
+    {
+      "id": 182,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Easy",
+      "question": "A key concept of quality control is that all work products",
+      "answer": 3,
+      "option1": "are delivered on time and under budget",
+      "option2": "have complete documentation",
+      "option3": "have measurable specifications for process outputs",
+      "option4": "are thoroughly tested before delivery to the customer"
+    },
+    {
+      "id": 183,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Easy",
+      "question": "Quality costs may be divided into costs associated with",
+      "answer": null,
+      "option1": "prevention, appraisal, and failure",
+      "option2": "people, process, and product",
+      "option3": "customers, developers, and maintenance",
+      "option4": "all of the above"
+    },
+    {
+      "id": 184,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Easy",
+      "question": " Poka-yoke devices are mechanisms that lead to the\r\nA. creation of quality processes with minimal resources\r\nB. determining causes of software defects\r\nC. prevention of potential quality problems\r\nD. rapid detection of quality problems introduced",
+      "answer": 2,
+      "option1": "A,B",
+      "option2": "C,D",
+      "option3": "A,C,D",
+      "option4": "A,B,D"
+    },
+    {
+      "id": 185,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Easy",
+      "question": "Which of the following is not one of the attributes of software quality?",
+      "answer": 3,
+      "option1": "Adds value for developers and users",
+      "option2": "Effective software process creates infrastructure",
+      "option3": "Removes need to consider performance issues",
+      "option4": "Useful products satisfy stakeholder requirements"
+    },
+    {
+      "id": 186,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": " Which of the following are ISO 9126 software quality factors?\nA. Functionality\nB. Portability\nC. Reliability\nD. Visual appeal",
+      "answer": 1,
+      "option1": "A,B,C",
+      "option2": "B,C,D",
+      "option3": "A,C",
+      "option4": "B,D"
+    },
+    {
+      "id": 187,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": ". Which of the following is likely to be the most expensive cost of quality?",
+      "answer": 2,
+      "option1": "Appraisal costs",
+      "option2": "External failure costs",
+      "option3": "Internal failure costs",
+      "option4": "Prevention costs"
+    },
+    {
+      "id": 188,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": "Which of the following management decisions have the potential to impact software quality?",
+      "answer": 4,
+      "option1": "Estimation decisions",
+      "option2": "Risk-oriented decisions",
+      "option3": "Scheduling decisions",
+      "option4": "All of the above"
+    },
+    {
+      "id": 189,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": " The level of review formality is determined by which of the following?\r\nA. amount of preparation\r\nB. reviewer follow-up\r\nC. size of project budget\r\nD. structure of review",
+      "answer": 3,
+      "option1": "B,D",
+      "option2": "A,B,C",
+      "option3": "A,B,D",
+      "option4": "C,D"
+    },
+    {
+      "id": 190,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": "An informal review may consist of which of the following?\nA. casual meeting\nB. desk check\nC. inspection\nD. pair programming",
+      "answer": 2,
+      "option1": "B,C,D",
+      "option2": "A,B",
+      "option3": "A,C",
+      "option4": "A,B,C"
+    },
+    {
+      "id": 191,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": "Which of the following are objectives for formal technical reviews?",
+      "answer": 4,
+      "option1": "allow senior staff members to correct errors",
+      "option2": "assess programmer productivity",
+      "option3": "determining who introduced an error into a program",
+      "option4": "uncover errors in software work products"
+    },
+    {
+      "id": 192,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": "At the end of a formal technical review all attendees can decide to\nA. accept the work product without modification\nB. modify the work product and continue the review\nC. reject the product due to stylistic discrepancies\nD. reject the product due to severe errors",
+      "answer": 1,
+      "option1": "A,D",
+      "option2": "A,B",
+      "option3": "B,C",
+      "option4": "C,D"
+    },
+    {
+      "id": 193,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Normal",
+      "question": "A review summary report answers which three questions?",
+      "answer": 3,
+      "option1": "terminate project, replace producer, request a time extension",
+      "option2": "what defects were found, what caused defects, who was responsible",
+      "option3": "what was reviewed, who reviewed it, what were the findings",
+      "option4": "None of the above"
+    },
+    {
+      "id": 194,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Hard",
+      "question": "Which of these activities is not one of the activities recommended to be performed by an independent SQA group?",
+      "answer": 4,
+      "option1": "prepare SQA plan for the project",
+      "option2": "review software engineering activities to verify process compliance",
+      "option3": "report any evidence of noncompliance to senior management",
+      "option4": "serve as the sole test team for any software produced"
+    },
+    {
+      "id": 195,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Hard",
+      "question": "Statistical quality assurance involves",
+      "answer": 3,
+      "option1": "using sampling in place of exhaustive testing of software",
+      "option2": "surveying customers to find out their opinions about product quality",
+      "option3": "tracing each defect to its underlying cause, isolating the \"vital few\" causes, and moving to correct them",
+      "option4": "tracing each defect to its underlying causes and using the Pareto principle to correct each problem found"
+    },
+    {
+      "id": 196,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Hard",
+      "question": "Six Sigma methodology defines three core steps.",
+      "answer": 3,
+      "option1": "analyze, improve, control",
+      "option2": "analyze, design, verify",
+      "option3": "define, measure, analyze",
+      "option4": "define, measure, control"
+    },
+    {
+      "id": 197,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Hard",
+      "question": "Software reliability problems can almost always be traced to\nA. errors in accuracy\nB. errors in design\nC. errors in implementation\nD. errors in operation",
+      "answer": 4,
+      "option1": "C,D",
+      "option2": "A,B",
+      "option3": "A,D",
+      "option4": "B,C"
+    },
+    {
+      "id": 198,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Hard",
+      "question": "Software safety is a quality assurance activity that focuses on hazards that",
+      "answer": 2,
+      "option1": "affect the reliability of a software component",
+      "option2": "may cause an entire system to fail",
+      "option3": "may result from user input errors",
+      "option4": "prevent profitable marketing of the final product"
+    },
+    {
+      "id": 199,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Hard",
+      "question": "The ISO quality assurance standard that applies to software engineering is",
+      "answer": 2,
+      "option1": "ISO 9000",
+      "option2": "ISO 9001",
+      "option3": "ISO 9002",
+      "option4": "None of the above"
+    },
+    {
+      "id": 200,
+      "world": 3,
+      "stage": 3,
+      "difficulty": "Hard",
+      "question": "Which of the following is not a section in the standard for SQA plans recommended by IEEE?",
+      "answer": 1,
+      "option1": "budget",
+      "option2": "documentation",
+      "option3": "reviews and audits",
+      "option4": "test"
+    },
+    {
+      "id": 201,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2593,7 +2413,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 217,
+      "id": 202,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2605,7 +2425,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 218,
+      "id": 203,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2617,7 +2437,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 219,
+      "id": 204,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2629,7 +2449,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 220,
+      "id": 205,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2641,7 +2461,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 221,
+      "id": 206,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2653,7 +2473,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 222,
+      "id": 207,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2665,7 +2485,7 @@
       "option4": "exercise structure observable by the user"
     },
     {
-      "id": 223,
+      "id": 208,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2677,7 +2497,7 @@
       "option4": "the conflicts of interest between developers and testers is reduced"
     },
     {
-      "id": 224,
+      "id": 209,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2689,7 +2509,7 @@
       "option4": "validation testing, system testing, integration testing, unit testing"
     },
     {
-      "id": 225,
+      "id": 210,
       "world": 4,
       "stage": 1,
       "difficulty": "Easy",
@@ -2701,7 +2521,7 @@
       "option4": "1 and 2"
     },
     {
-      "id": 226,
+      "id": 211,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2713,7 +2533,7 @@
       "option4": "all of the above"
     },
     {
-      "id": 227,
+      "id": 212,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2725,7 +2545,7 @@
       "option4": "Fixing defects"
     },
     {
-      "id": 228,
+      "id": 213,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2737,7 +2557,7 @@
       "option4": "Combination of all"
     },
     {
-      "id": 229,
+      "id": 214,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2749,7 +2569,7 @@
       "option4": "Integration testing"
     },
     {
-      "id": 230,
+      "id": 215,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2761,7 +2581,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 231,
+      "id": 216,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2773,7 +2593,7 @@
       "option4": "None of the above."
     },
     {
-      "id": 232,
+      "id": 217,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2785,7 +2605,7 @@
       "option4": "Finding and fixing defects does not help if the system built is unusable and does not fulfill the users need and expectations."
     },
     {
-      "id": 233,
+      "id": 218,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2797,7 +2617,7 @@
       "option4": "Cohesion and coupling."
     },
     {
-      "id": 234,
+      "id": 219,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2809,7 +2629,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 235,
+      "id": 220,
       "world": 4,
       "stage": 1,
       "difficulty": "Normal",
@@ -2821,7 +2641,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 236,
+      "id": 221,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2833,7 +2653,7 @@
       "option4": "unit testing for small programs"
     },
     {
-      "id": 237,
+      "id": 222,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2845,7 +2665,7 @@
       "option4": "none of the above"
     },
     {
-      "id": 238,
+      "id": 223,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2857,7 +2677,7 @@
       "option4": "systems engineers"
     },
     {
-      "id": 239,
+      "id": 224,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2869,7 +2689,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 240,
+      "id": 225,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2881,7 +2701,7 @@
       "option4": "Green box testing"
     },
     {
-      "id": 241,
+      "id": 226,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2893,7 +2713,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 242,
+      "id": 227,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2905,7 +2725,7 @@
       "option4": "Confirmation testing"
     },
     {
-      "id": 243,
+      "id": 228,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2917,7 +2737,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 244,
+      "id": 229,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2929,7 +2749,7 @@
       "option4": "impractical and impossible"
     },
     {
-      "id": 245,
+      "id": 230,
       "world": 4,
       "stage": 1,
       "difficulty": "Hard",
@@ -2941,7 +2761,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 246,
+      "id": 231,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -2953,7 +2773,7 @@
       "option4": "all of the above"
     },
     {
-      "id": 247,
+      "id": 232,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -2965,7 +2785,7 @@
       "option4": "white-box testing"
     },
     {
-      "id": 248,
+      "id": 233,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -2977,7 +2797,7 @@
       "option4": "white-box testing"
     },
     {
-      "id": 249,
+      "id": 234,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -2989,7 +2809,7 @@
       "option4": "1 and 3"
     },
     {
-      "id": 250,
+      "id": 235,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -3001,7 +2821,7 @@
       "option4": "statements in the program"
     },
     {
-      "id": 251,
+      "id": 236,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -3013,7 +2833,7 @@
       "option4": "focus on testing the validity of loop constructs"
     },
     {
-      "id": 252,
+      "id": 237,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -3025,7 +2845,7 @@
       "option4": "focus on testing the validity of loop constructs"
     },
     {
-      "id": 253,
+      "id": 238,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -3037,7 +2857,7 @@
       "option4": "focus on testing the validity of loop constructs"
     },
     {
-      "id": 254,
+      "id": 239,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -3049,7 +2869,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 255,
+      "id": 240,
       "world": 4,
       "stage": 2,
       "difficulty": "Easy",
@@ -3061,7 +2881,7 @@
       "option4": "use-case diagram"
     },
     {
-      "id": 256,
+      "id": 241,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3073,7 +2893,7 @@
       "option4": "time"
     },
     {
-      "id": 257,
+      "id": 242,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3085,7 +2905,7 @@
       "option4": "Both 2 and 3"
     },
     {
-      "id": 258,
+      "id": 243,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3097,7 +2917,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 259,
+      "id": 244,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3109,7 +2929,7 @@
       "option4": "white-box testing of operator algorithms"
     },
     {
-      "id": 260,
+      "id": 245,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3121,7 +2941,7 @@
       "option4": "test network connectivity"
     },
     {
-      "id": 261,
+      "id": 246,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3133,7 +2953,7 @@
       "option4": "N, D, P"
     },
     {
-      "id": 262,
+      "id": 247,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3145,7 +2965,7 @@
       "option4": "both 1 and 2"
     },
     {
-      "id": 263,
+      "id": 248,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3157,7 +2977,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 264,
+      "id": 249,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3169,7 +2989,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 265,
+      "id": 250,
       "world": 4,
       "stage": 2,
       "difficulty": "Normal",
@@ -3181,7 +3001,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 266,
+      "id": 251,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3193,7 +3013,7 @@
       "option4": "both 1 and 2"
     },
     {
-      "id": 267,
+      "id": 252,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3205,7 +3025,7 @@
       "option4": "state-based partitioning"
     },
     {
-      "id": 268,
+      "id": 253,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3217,7 +3037,7 @@
       "option4": "Usability"
     },
     {
-      "id": 269,
+      "id": 254,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3229,7 +3049,7 @@
       "option4": "both 1 and 3"
     },
     {
-      "id": 270,
+      "id": 255,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3241,7 +3061,7 @@
       "option4": "Uncover syntactic errors"
     },
     {
-      "id": 271,
+      "id": 256,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3253,7 +3073,7 @@
       "option4": "both 1 and 3"
     },
     {
-      "id": 272,
+      "id": 257,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3265,7 +3085,7 @@
       "option4": "Links"
     },
     {
-      "id": 273,
+      "id": 258,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3277,7 +3097,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 274,
+      "id": 259,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3289,7 +3109,7 @@
       "option4": "System security measures"
     },
     {
-      "id": 275,
+      "id": 260,
       "world": 4,
       "stage": 2,
       "difficulty": "Hard",
@@ -3301,7 +3121,7 @@
       "option4": "Penetration"
     },
     {
-      "id": 276,
+      "id": 261,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3313,7 +3133,7 @@
       "option4": "Exhaustive Testing is possible and practicable."
     },
     {
-      "id": 277,
+      "id": 262,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3325,7 +3145,7 @@
       "option4": "Integration Testing"
     },
     {
-      "id": 278,
+      "id": 263,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3337,7 +3157,7 @@
       "option4": "All of the above."
     },
     {
-      "id": 279,
+      "id": 264,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3349,7 +3169,7 @@
       "option4": "All of the above."
     },
     {
-      "id": 280,
+      "id": 265,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3361,7 +3181,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 281,
+      "id": 266,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3373,7 +3193,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 282,
+      "id": 267,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3385,7 +3205,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 283,
+      "id": 268,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3397,7 +3217,7 @@
       "option4": "It is usually conducted by the development team."
     },
     {
-      "id": 284,
+      "id": 269,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3409,7 +3229,7 @@
       "option4": "Component Testing"
     },
     {
-      "id": 285,
+      "id": 270,
       "world": 4,
       "stage": 3,
       "difficulty": "Easy",
@@ -3421,7 +3241,7 @@
       "option4": "Multiple Condition Coverage"
     },
     {
-      "id": 286,
+      "id": 271,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3433,7 +3253,7 @@
       "option4": "2 and 3"
     },
     {
-      "id": 287,
+      "id": 272,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3445,7 +3265,7 @@
       "option4": "2 and 3"
     },
     {
-      "id": 288,
+      "id": 273,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3457,7 +3277,7 @@
       "option4": "regression testing is not required"
     },
     {
-      "id": 289,
+      "id": 274,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3469,7 +3289,7 @@
       "option4": "drivers require testing"
     },
     {
-      "id": 290,
+      "id": 275,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3481,7 +3301,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 291,
+      "id": 276,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3493,7 +3313,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 292,
+      "id": 277,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3505,7 +3325,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 293,
+      "id": 278,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3517,7 +3337,7 @@
       "option4": "Green box testing"
     },
     {
-      "id": 294,
+      "id": 279,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3529,7 +3349,7 @@
       "option4": "None of the above"
     },
     {
-      "id": 295,
+      "id": 280,
       "world": 4,
       "stage": 3,
       "difficulty": "Normal",
@@ -3541,7 +3361,7 @@
       "option4": "All of the above"
     },
     {
-      "id": 296,
+      "id": 281,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3553,7 +3373,7 @@
       "option4": "Throughout life-cycle"
     },
     {
-      "id": 297,
+      "id": 282,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3565,7 +3385,7 @@
       "option4": "Configuration Control"
     },
     {
-      "id": 298,
+      "id": 283,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3577,7 +3397,7 @@
       "option4": "Test suite"
     },
     {
-      "id": 299,
+      "id": 284,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3589,7 +3409,7 @@
       "option4": "raise incidents on fault "
     },
     {
-      "id": 300,
+      "id": 285,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3601,7 +3421,7 @@
       "option4": "All of the above."
     },
     {
-      "id": 301,
+      "id": 286,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3613,7 +3433,7 @@
       "option4": "V model"
     },
     {
-      "id": 302,
+      "id": 287,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3625,7 +3445,7 @@
       "option4": "Decision Coverage"
     },
     {
-      "id": 303,
+      "id": 288,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3637,7 +3457,7 @@
       "option4": "None of the above."
     },
     {
-      "id": 304,
+      "id": 289,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3649,7 +3469,7 @@
       "option4": "None of the above."
     },
     {
-      "id": 305,
+      "id": 290,
       "world": 4,
       "stage": 3,
       "difficulty": "Hard",
@@ -3661,7 +3481,7 @@
       "option4": "Combination of all"
     },
     {
-      "id": 306,
+      "id": 291,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3673,7 +3493,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 307,
+      "id": 292,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3685,7 +3505,7 @@
       "option4": "Preventive"
     },
     {
-      "id": 308,
+      "id": 293,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3697,7 +3517,7 @@
       "option4": "five"
     },
     {
-      "id": 309,
+      "id": 294,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3709,7 +3529,7 @@
       "option4": "nine"
     },
     {
-      "id": 310,
+      "id": 295,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3721,7 +3541,7 @@
       "option4": "Quick fix model"
     },
     {
-      "id": 311,
+      "id": 296,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3733,7 +3553,7 @@
       "option4": "Actual change traffic"
     },
     {
-      "id": 312,
+      "id": 297,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3745,7 +3565,7 @@
       "option4": "all of the mentioned"
     },
     {
-      "id": 313,
+      "id": 298,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3757,7 +3577,7 @@
       "option4": "process"
     },
     {
-      "id": 314,
+      "id": 299,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3769,7 +3589,7 @@
       "option4": "Senior managers"
     },
     {
-      "id": 315,
+      "id": 300,
       "world": 5,
       "stage": 1,
       "difficulty": "Easy",
@@ -3781,7 +3601,7 @@
       "option4": "Mission criticality"
     },
     {
-      "id": 316,
+      "id": 301,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3793,7 +3613,7 @@
       "option4": "all of the mentioned"
     },
     {
-      "id": 317,
+      "id": 302,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3805,7 +3625,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 318,
+      "id": 303,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3817,7 +3637,7 @@
       "option4": "Preventive"
     },
     {
-      "id": 319,
+      "id": 304,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3829,7 +3649,7 @@
       "option4": "five"
     },
     {
-      "id": 320,
+      "id": 305,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3841,7 +3661,7 @@
       "option4": "Inclusiveness"
     },
     {
-      "id": 321,
+      "id": 306,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3853,7 +3673,7 @@
       "option4": "Inclusiveness"
     },
     {
-      "id": 322,
+      "id": 307,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3865,7 +3685,7 @@
       "option4": "Maximization"
     },
     {
-      "id": 323,
+      "id": 308,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3877,7 +3697,7 @@
       "option4": "Unit Testing"
     },
     {
-      "id": 324,
+      "id": 309,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3889,7 +3709,7 @@
       "option4": "Re-engineering"
     },
     {
-      "id": 325,
+      "id": 310,
       "world": 5,
       "stage": 1,
       "difficulty": "Hard",
@@ -3901,7 +3721,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 326,
+      "id": 311,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3913,7 +3733,7 @@
       "option4": "Quick fix model"
     },
     {
-      "id": 327,
+      "id": 312,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3925,7 +3745,7 @@
       "option4": "Actual change traffic"
     },
     {
-      "id": 328,
+      "id": 313,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3937,7 +3757,7 @@
       "option4": "none of the mentioned"
     },
     {
-      "id": 329,
+      "id": 314,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3949,7 +3769,7 @@
       "option4": "SRS"
     },
     {
-      "id": 330,
+      "id": 315,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3961,7 +3781,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 331,
+      "id": 316,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3973,7 +3793,7 @@
       "option4": "five"
     },
     {
-      "id": 332,
+      "id": 317,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3985,7 +3805,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 333,
+      "id": 318,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -3997,7 +3817,7 @@
       "option4": "Workspace"
     },
     {
-      "id": 334,
+      "id": 319,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -4009,7 +3829,7 @@
       "option4": "50-30-20"
     },
     {
-      "id": 335,
+      "id": 320,
       "world": 5,
       "stage": 1,
       "difficulty": "Normal",
@@ -4021,7 +3841,7 @@
       "option4": "CBSE"
     },
     {
-      "id": 336,
+      "id": 321,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4033,7 +3853,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 337,
+      "id": 322,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4045,7 +3865,7 @@
       "option4": "EV = (Sopt + 2Sm + Spess)/4"
     },
     {
-      "id": 338,
+      "id": 323,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4057,7 +3877,7 @@
       "option4": "External inquiries"
     },
     {
-      "id": 339,
+      "id": 324,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4069,7 +3889,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 340,
+      "id": 325,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4081,7 +3901,7 @@
       "option4": "synchronous paradigm"
     },
     {
-      "id": 341,
+      "id": 326,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4093,7 +3913,7 @@
       "option4": "The rigidity of the delivery date"
     },
     {
-      "id": 342,
+      "id": 327,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4105,7 +3925,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 343,
+      "id": 328,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4117,7 +3937,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 344,
+      "id": 329,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4129,7 +3949,7 @@
       "option4": "Defined outcomes"
     },
     {
-      "id": 345,
+      "id": 330,
       "world": 5,
       "stage": 2,
       "difficulty": "Easy",
@@ -4141,7 +3961,7 @@
       "option4": "Effort Distribution"
     },
     {
-      "id": 346,
+      "id": 331,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4153,7 +3973,7 @@
       "option4": "Both degree of Rigor and adaptation criteria"
     },
     {
-      "id": 347,
+      "id": 332,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4165,7 +3985,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 348,
+      "id": 333,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4177,7 +3997,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 349,
+      "id": 334,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4189,7 +4009,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 350,
+      "id": 335,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4201,7 +4021,7 @@
       "option4": "Reporting"
     },
     {
-      "id": 351,
+      "id": 336,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4213,7 +4033,7 @@
       "option4": "Workspace"
     },
     {
-      "id": 352,
+      "id": 337,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4225,7 +4045,7 @@
       "option4": "50-30-20"
     },
     {
-      "id": 353,
+      "id": 338,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4237,7 +4057,7 @@
       "option4": "CBSE"
     },
     {
-      "id": 354,
+      "id": 339,
       "world": 5,
       "stage": 2,
       "difficulty": "Hard",
@@ -4249,7 +4069,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 355,
+      "id": 340,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4261,7 +4081,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 356,
+      "id": 341,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4273,7 +4093,7 @@
       "option4": "Preventive"
     },
     {
-      "id": 357,
+      "id": 342,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4285,7 +4105,7 @@
       "option4": "five"
     },
     {
-      "id": 358,
+      "id": 343,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4297,7 +4117,7 @@
       "option4": "nine"
     },
     {
-      "id": 359,
+      "id": 344,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4309,7 +4129,7 @@
       "option4": "Quick fix model"
     },
     {
-      "id": 360,
+      "id": 345,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4321,7 +4141,7 @@
       "option4": "Actual change traffic"
     },
     {
-      "id": 361,
+      "id": 346,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4333,7 +4153,7 @@
       "option4": "all of the mentioned"
     },
     {
-      "id": 362,
+      "id": 347,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4345,7 +4165,7 @@
       "option4": "process"
     },
     {
-      "id": 363,
+      "id": 348,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4357,7 +4177,7 @@
       "option4": "Senior managers"
     },
     {
-      "id": 364,
+      "id": 349,
       "world": 5,
       "stage": 2,
       "difficulty": "Normal",
@@ -4369,7 +4189,7 @@
       "option4": "Mission criticality"
     },
     {
-      "id": 365,
+      "id": 350,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4381,7 +4201,7 @@
       "option4": "Inclusiveness"
     },
     {
-      "id": 366,
+      "id": 351,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4393,7 +4213,7 @@
       "option4": "Maximization"
     },
     {
-      "id": 367,
+      "id": 352,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4405,7 +4225,7 @@
       "option4": "Unit Testing"
     },
     {
-      "id": 368,
+      "id": 353,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4417,7 +4237,7 @@
       "option4": "Re-engineering"
     },
     {
-      "id": 369,
+      "id": 354,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4429,7 +4249,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 370,
+      "id": 355,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4441,7 +4261,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 371,
+      "id": 356,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4453,7 +4273,7 @@
       "option4": "Preventive"
     },
     {
-      "id": 372,
+      "id": 357,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4465,7 +4285,7 @@
       "option4": "five"
     },
     {
-      "id": 373,
+      "id": 358,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4477,7 +4297,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 374,
+      "id": 359,
       "world": 5,
       "stage": 3,
       "difficulty": "Easy",
@@ -4489,7 +4309,7 @@
       "option4": "Effort Distribution"
     },
     {
-      "id": 375,
+      "id": 360,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4501,7 +4321,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 376,
+      "id": 361,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4513,7 +4333,7 @@
       "option4": "EV = (Sopt + 2Sm + Spess)/4"
     },
     {
-      "id": 377,
+      "id": 362,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4525,7 +4345,7 @@
       "option4": "External inquiries"
     },
     {
-      "id": 378,
+      "id": 363,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4537,7 +4357,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 379,
+      "id": 364,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4549,7 +4369,7 @@
       "option4": "synchronous paradigm"
     },
     {
-      "id": 380,
+      "id": 365,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4561,7 +4381,7 @@
       "option4": "The rigidity of the delivery date"
     },
     {
-      "id": 381,
+      "id": 366,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4573,7 +4393,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 382,
+      "id": 367,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4585,7 +4405,7 @@
       "option4": "All of the mentioned"
     },
     {
-      "id": 383,
+      "id": 368,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4597,7 +4417,7 @@
       "option4": "Defined outcomes"
     },
     {
-      "id": 384,
+      "id": 369,
       "world": 5,
       "stage": 3,
       "difficulty": "Hard",
@@ -4609,7 +4429,7 @@
       "option4": "Effort Distribution"
     },
     {
-      "id": 385,
+      "id": 370,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4621,7 +4441,7 @@
       "option4": "None of the mentioned"
     },
     {
-      "id": 386,
+      "id": 371,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4633,19 +4453,7 @@
       "option4": "Reporting"
     },
     {
-      "id": 387,
-      "world": 5,
-      "stage": 3,
-      "difficulty": "Normal",
-      "question": "Which of the following is the reason that software is delivered late?",
-      "answer": 4,
-      "option1": "Changing customer requirements that are not reflected in schedule changes",
-      "option2": "Technical difficulties that could not have been foreseen in advance",
-      "option3": "Human difficulties that could not have been foreseen in advance",
-      "option4": "All of the mentioned"
-    },
-    {
-      "id": 388,
+      "id": 372,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4657,7 +4465,7 @@
       "option4": "Defined outcomes"
     },
     {
-      "id": 389,
+      "id": 373,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4669,7 +4477,7 @@
       "option4": "Effort Distribution"
     },
     {
-      "id": 390,
+      "id": 374,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4681,7 +4489,7 @@
       "option4": "none of the mentioned"
     },
     {
-      "id": 391,
+      "id": 375,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4693,7 +4501,7 @@
       "option4": "Workspace"
     },
     {
-      "id": 392,
+      "id": 376,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4705,7 +4513,7 @@
       "option4": "50-30-20"
     },
     {
-      "id": 393,
+      "id": 377,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
@@ -4717,7 +4525,7 @@
       "option4": "CBSE"
     },
     {
-      "id": 394,
+      "id": 378,
       "world": 5,
       "stage": 3,
       "difficulty": "Normal",
