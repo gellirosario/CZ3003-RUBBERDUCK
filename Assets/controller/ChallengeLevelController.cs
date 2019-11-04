@@ -414,7 +414,7 @@ public class ChallengeLevelController : MonoBehaviour
 
     public void SavePlayerScore()
     {
-        currentPlayer = ProfileLoader.Instance.playerData;
+        currentPlayer = ProfileLoader.playerData;
 
         level = level - 1;
 

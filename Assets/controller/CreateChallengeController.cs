@@ -121,7 +121,7 @@ public class CreateChallengeController : MonoBehaviour
         List<int> questionList = RandomizeQuestions(int.Parse(noOfQns.text), world, stage, difficultySelected);
 
         //get name of challenge creator
-        string creator = ProfileLoader.Instance.userData.name;
+        string creator = ProfileLoader.userData.name;
 
         Challenge newChallenge = new Challenge(questionList, creator);
 
