@@ -58,12 +58,12 @@ public class QuestionController : MonoBehaviour
         //}
     }
 
-   
+
 
     public void SaveQuestion()
     {
 
-        int qid=0;
+        int qid = 0;
 
         Debug.LogFormat("Question: " + questionInputField.text);
 
@@ -74,24 +74,24 @@ public class QuestionController : MonoBehaviour
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
 
         // Get the root reference location of the database.
-       reference = FirebaseDatabase.DefaultInstance.RootReference;
+        reference = FirebaseDatabase.DefaultInstance.RootReference;
 
         reference.GetValueAsync().ContinueWith(task =>
         {
-        if (task.IsFaulted)
-        {
-            // Handle the error...
-            Debug.Log("Error in data retrieval");
-        }
-        else if (task.IsCompleted)
-        {
-            Debug.Log("Received values for Questions.");
+            if (task.IsFaulted)
+            {
+                // Handle the error...
+                Debug.Log("Error in data retrieval");
+            }
+            else if (task.IsCompleted)
+            {
+                Debug.Log("Received values for Questions.");
 
-            DataSnapshot snapshot = task.Result;
+                DataSnapshot snapshot = task.Result;
 
-            //print("test: " + snapshot.Child("Questions").ChildrenCount);
-            qid = (int)snapshot.Child("Questions").ChildrenCount + 1;
-            print("QID" + qid);
+                //print("test: " + snapshot.Child("Questions").ChildrenCount);
+                qid = (int)snapshot.Child("Questions").ChildrenCount + 1;
+                print("QID" + qid);
 
                 //LocPickerString = LocationPicker.GetComponent.< UI.Dropdown > ().itemText.text
                 //print("Level" + dropdownLevel.options[dropdownLevel.value].text);
@@ -103,26 +103,25 @@ public class QuestionController : MonoBehaviour
                  , questionInputField.text, int.Parse(answerInputField.text),
                 option1InputField.text, option2InputField.text, option3InputField.text, option4InputField.text);
                 string json = JsonUtility.ToJson(question);
-                
+
                 print("test:" + json);
                 reference.Child("Questions").Child(qid.ToString()).SetRawJsonValueAsync(json);
             }
         });
-
-       
+    
 
         /*Question question = new Question(1234, 123, 274,
                     "difficulty","question", 456,
                     "option1", "option2", "option3","option4");
                 string json = JsonUtility.ToJson(question);
                 reference.Child("Questions").Child("1234").SetRawJsonValueAsync(json);*/
-        
 
-       // Question question = new Question("questionid",dropdownWorld.value, dropdownTopic.value,
-       //             dropdownLevel.value.ToString() , questionInputField.text, int.Parse(answerInputField.text),
-       //             option1InputField.text , option2InputField.text, option3InputField.text, option4InputField.text);
-       // string json = JsonUtility.ToJson(question);
-       // reference.Child("Questions").Child("UserID").SetRawJsonValueAsync(json);
+
+        // Question question = new Question("questionid",dropdownWorld.value, dropdownTopic.value,
+        //             dropdownLevel.value.ToString() , questionInputField.text, int.Parse(answerInputField.text),
+        //             option1InputField.text , option2InputField.text, option3InputField.text, option4InputField.text);
+        // string json = JsonUtility.ToJson(question);
+        // reference.Child("Questions").Child("UserID").SetRawJsonValueAsync(json);
 
         //print("After loading questionlist count: " + questionList.Count);
         //for (int i = 0; i < questionList.Count; i++)
@@ -136,6 +135,47 @@ public class QuestionController : MonoBehaviour
 
 
         //}
+    }
+
+    public void OnTopicDropdownChange()
+    {
+        int topic = dropdownWorld.value;
+
+        switch (topic)
+        {
+            case 0:
+                dropdownTopic.options[0].text = "1. Software Engineering Principles";
+                dropdownTopic.options[1].text = "2. Requirements Analysis";
+                dropdownTopic.options[2].text = "3. Modelling";
+                dropdownTopic.RefreshShownValue();
+                break;
+            case 1:
+                dropdownTopic.options[0].text = "1. Architectural Designs";
+                dropdownTopic.options[1].text = "2. Design Concepts";
+                dropdownTopic.options[2].text = "3. Component Level Designs";
+                dropdownTopic.RefreshShownValue();
+                break;
+            case 2:
+                dropdownTopic.options[0].text = "1. Software Elements";
+                dropdownTopic.options[1].text = "2. Software Components";
+                dropdownTopic.options[2].text = "3. Software Configuration";
+                dropdownTopic.RefreshShownValue();
+                break;
+            case 3:
+                dropdownTopic.options[0].text = "1. Software Testing Techniques and Strategies";
+                dropdownTopic.options[1].text = "2. Testing Application";
+                dropdownTopic.options[2].text = "3. Software Testing";
+                dropdownTopic.RefreshShownValue();
+                break;
+            case 4:
+                dropdownTopic.options[0].text = "1. Software Management";
+                dropdownTopic.options[1].text = "2. Software Configuration";
+                dropdownTopic.options[2].text = "3. Quality Management";
+                dropdownTopic.RefreshShownValue();
+                break;
+            default:
+                break;
+        }
     }
 
     public void DeleteQuestion()
