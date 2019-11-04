@@ -354,7 +354,7 @@ public class ChallengeLevelController : MonoBehaviour
     }
 
 
-    // Check whether pass or fail
+    // End of Challenge
     public void EndStage()
     {
 
@@ -362,32 +362,14 @@ public class ChallengeLevelController : MonoBehaviour
         int stagelevel = level;
         PlayerPrefs.SetInt("stageQnsAttempt", stagelevel);
 
-
-        if (score != 0)
-        {
-            PlayerPrefs.SetInt("Score", score);
-            SavePlayerScore();
-        }
-        else
-        {
-            PlayerPrefs.SetInt("Score", 0);
-        }
+        PlayerPrefs.SetInt("Score", score);
+        SavePlayerScore();
 
         QuestionLoader.Instance.challenge = null;
         questionList = null;
 
         Debug.Log("Preferences set: Score - " + score.ToString());
-        if (PlayerPrefs.GetInt("Score") != 0)
-        {
-            SceneManager.LoadScene("StageClear");
-        }
-        else
-        {
-            SceneManager.LoadScene("StageFail");
-        }
-
-
-
+        SceneManager.LoadScene("ChallengeEnd");
     }
 
     //save player score to challenge db

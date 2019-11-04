@@ -78,6 +78,9 @@ EditorBuildSettings:
     path: Assets/view/play/ChallengeLevel.unity
     guid: e51e8750a8d71434381d00d50ad5e824
   - enabled: 1
+    path: Assets/view/play/ChallengeEnd.unity
+    guid: 0cb6a6053438cc34193275a3468690e7
+  - enabled: 1
     path: Assets/view/report/GenerateReport.unity
     guid: 8c37fe731ca0c4138bdd28b16be0eebf
   - enabled: 1

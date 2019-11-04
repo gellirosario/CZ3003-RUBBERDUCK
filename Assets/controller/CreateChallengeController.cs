@@ -117,7 +117,6 @@ public class CreateChallengeController : MonoBehaviour
         world = worldDropdown.value + 1;
         stage = stageDropdown.value + 1;
 
-        //some test code for now
         List<int> questionList = RandomizeQuestions(int.Parse(noOfQns.text), world, stage, difficultySelected);
 
         //get name of challenge creator
