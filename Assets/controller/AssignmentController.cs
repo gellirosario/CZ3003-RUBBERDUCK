@@ -66,7 +66,6 @@ public class AssignmentController : MonoBehaviour
     }
 
 
-
     public void SaveAssignment()
     {
         print("After loading questionlist count: " + questionList.Count);
@@ -83,81 +82,6 @@ public class AssignmentController : MonoBehaviour
         createAssignmentInput.text = "";
     }
 
-    /*public void LoadAssignment()
-    {
-        Debug.LogFormat("----HERE---");
-        uid = PlayerPrefs.GetString("UserID");
-        Debug.LogFormat("----ASSIGNMENT INFO ID---" + uid);
-
-        FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted)
-            {
-                Debug.Log("Error in data retrieval from Assignment table");
-            }
-            else if (task.IsCompleted)
-            {
-                DataSnapshot snapshot = task.Result;
-                foreach (DataSnapshot assignmentNode in snapshot.Children)
-                {
-                    Debug.Log("USER ID OF FIREBASE:" + assignmentNode.Key);
-                    Debug.Log("USER ID OF CURRENT USER:" + uid);
-                    if (assignmentNode.Key == uid)
-                    {
-                        //load assignment data into assignment object
-                        var assignmentDict = (IDictionary<string, object>)assignmentNode.Value;
-                        print("assignment dictionary count: " + assignmentDict.Count);
-
-                        foreach (KeyValuePair<string, object> kvp in assignmentDict)
-                        {
-                            Debug.LogFormat("ASSIGNMENT NAME ---- Key = {0}", kvp.Key);
-                            var assignmentQnIdDict = (IDictionary<string, object>)assignmentDict[kvp.Key];
-                            Debug.LogFormat("ASSIGNMENT QNIDDICT COUNT :", assignmentQnIdDict.Count);
-                            foreach (KeyValuePair<string, object> kvp1 in assignmentQnIdDict)
-                            {
-                                Debug.LogFormat("REACH HERE");
-                                Debug.LogFormat("ASSIGNMENT QUESTION ID ---- Key = {0}", kvp1.Key);
-                                var assignmentQnDetailsDict = (IDictionary<string, object>)assignmentQnIdDict[kvp1.Key];
-
-                                if(assignmentQnDetailsDict.Count != 0)
-                                {
-                                    foreach (KeyValuePair<string, object> kvp2 in assignmentQnDetailsDict)
-                                    {
-                                        Debug.LogFormat("ASSIGNMENT QUESTION DETAILS ---- Key = {0}, Value = {1}", kvp2.Key, kvp2.Value);
-                                    }
-                                }
-                                
-                            }
-                            if (assignmentQnIdDict.Count != 0)
-                            {
-                                assignmentData = new Assignment(assignmentQnIdDict);
-                                Debug.Log("Assignment Name: " + assignmentData.assignmentName);
-                                assignmentList.Add(assignmentData);
-                                print("Assignment list count: " + assignmentList.Count);
-                            }
-                        }
-                    }
-                }
-            }
-
-            print("Load firebase assignment list count in controller: " + assignmentList.Count);
-            PlayerPrefs.SetInt("ALCount", assignmentList.Count);
-            for (var i = 0; i < assignmentList.Count; i++)
-            {
-                PlayerPrefs.SetString("AssignmentList(assignmentName)" + i, assignmentList[i].assignmentName);
-                PlayerPrefs.SetInt("AssignmentList(qnID)" + i, assignmentList[i].qnID);
-                PlayerPrefs.SetInt("AssignmentList(world)" + i, assignmentList[i].world);
-                PlayerPrefs.SetInt("AssignmentList(stage)" + i, assignmentList[i].stage);
-                PlayerPrefs.SetString("AssignmentList(difficulty)" + i, assignmentList[i].difficulty);
-                PlayerPrefs.SetString("AssignmentList(question)" + i, assignmentList[i].question);
-                PlayerPrefs.SetInt("AssignmentList(answer)" + i, assignmentList[i].answer);
-                PlayerPrefs.SetString("AssignmentList(option1)" + i, assignmentList[i].option1);
-                PlayerPrefs.SetString("AssignmentList(option2)" + i, assignmentList[i].option2);
-                PlayerPrefs.SetString("AssignmentList(option3)" + i, assignmentList[i].option3);
-                PlayerPrefs.SetString("AssignmentList(option4)" + i, assignmentList[i].option4);
-            }
-        });
-    }*/
 
     public void LoadAssignment()
     {

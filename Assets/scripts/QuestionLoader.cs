@@ -18,6 +18,7 @@ public class QuestionLoader : MonoBehaviour
     public List<Question> questionList_All = new List<Question>();
 
     public Challenge challenge;
+    public Assignment assignment;
     
     private string dataFileName = "QuestionsList.json"; // Json file in StreamingAssets folder
     
@@ -118,6 +119,24 @@ public class QuestionLoader : MonoBehaviour
             for (int j = 0; j < questionList_All.Count;j++)
             {
                 if (this.challenge.challengeQns[i] == questionList_All[j].qnID)
+                {
+                    questionList.Add(questionList_All[j]);
+                    //Debug.Log(questionList_All[j].qnID + " Added");
+                }
+            }
+        }
+        return questionList;
+    }
+
+    public List<Question> FilterQuestionsFromAssignment()
+    {
+        List<Question> questionList = new List<Question>();
+
+        for (int i = 0; i < this.assignment.assignmentQns.Count; i++)
+        {
+            for (int j = 0; j < questionList_All.Count; j++)
+            {
+                if (this.assignment.assignmentQns[i] == questionList_All[j].qnID)
                 {
                     questionList.Add(questionList_All[j]);
                     //Debug.Log(questionList_All[j].qnID + " Added");

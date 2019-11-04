@@ -70,7 +70,7 @@ public class AssignmentScrollList : MonoBehaviour
 
     void RefreshDisplay()
     {
-        //RemoveButtons();
+        RemoveButtons();
         AddButtons();
     }
 
@@ -108,6 +108,7 @@ public class AssignmentScrollList : MonoBehaviour
             AssignmentButton assignmentButton = newButton.GetComponent<AssignmentButton>();
 
             assignmentButton.Setup(item, this);
+            print("PLACED BUTTONS");
         }
     }
 

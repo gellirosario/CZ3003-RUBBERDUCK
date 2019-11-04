@@ -90,17 +90,17 @@ public class AssignmentQuestionScrollList : MonoBehaviour
             QuestionItem questionItem = new QuestionItem();
             questionItemList.Add(questionItem);
 
-            /*questionItem.assignmentTxt = assignmentQuestionList[i].assignmentName;
-            questionItem.worldTxt = assignmentQuestionList[i].world.ToString();
-            questionItem.stageTxt = assignmentQuestionList[i].stage.ToString();
+            questionItem.assignmentTxt = "Name: " + assignmentQuestionList[i].assignmentName;
+            questionItem.worldTxt = "Topic: " + assignmentQuestionList[i].world.ToString();
+            questionItem.stageTxt = "Subtopic: " + assignmentQuestionList[i].stage.ToString();
             questionItem.difficultyTxt = assignmentQuestionList[i].difficulty;
-            questionItem.questionIDTxt = assignmentQuestionList[i].qnID.ToString();*/
+            questionItem.questionIDTxt = "Qn No.: " + assignmentQuestionList[i].qnID.ToString();
             questionItem.questionTxt = assignmentQuestionList[i].question;
             questionItem.o1Txt = assignmentQuestionList[i].option1;
             questionItem.o2Txt = assignmentQuestionList[i].option2;
             questionItem.o3Txt = assignmentQuestionList[i].option3;
             questionItem.o4Txt = assignmentQuestionList[i].option4;
-            //questionItem.answerTxt = assignmentQuestionList[i].answer.ToString();
+            questionItem.answerTxt = "Answer: " + assignmentQuestionList[i].answer.ToString();
 
             GameObject newContainer = questionContainerObjectPool.GetObject();
 
