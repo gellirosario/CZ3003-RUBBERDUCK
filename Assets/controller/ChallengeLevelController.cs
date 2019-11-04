@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -38,13 +36,6 @@ public class ChallengeLevelController : MonoBehaviour
 
     private int questionsLeft;
 
-    private string worldAndStage;  //ss ==
-    private int appear = 0;//ss ==
-    private int correctAns = 0;//ss ==
-    private int wrongAns = 0;//ss ==
-
-    public Challenge challenge;
-
     private Color colorGreen = new Color(0, 198, 0);
     private Color colorRed = new Color(255, 0, 0);
 
@@ -53,8 +44,6 @@ public class ChallengeLevelController : MonoBehaviour
     public Animator enemy1Anim;
     public Animator enemy2Anim;
     public Animator enemy3Anim;
-
-    private Player currentPlayer;
 
     public GameObject charSprite1;
     public GameObject charSprite2;
@@ -127,10 +116,6 @@ public class ChallengeLevelController : MonoBehaviour
             // Retrieve Question List According to World and Stage
             questionList = QuestionLoader.Instance.FilterQuestionsFromChallenge();
 
-            // for report use ============= ss
-            worldAndStage = "w" + questionList[0].world +
-                            "s" + questionList[0].stage;
-            //==========================
             questionsLeft = questionList.Count;
 
             foreach (Question q in questionList)
@@ -217,10 +202,6 @@ public class ChallengeLevelController : MonoBehaviour
         questionsLeft--;
         if (selectedOption == answer) //if correct
         {
-            //==================
-            correctAns += 1; // for report use
-            //==========================
-
             switch (selectedChar)
             {
                 case 0:
@@ -316,8 +297,6 @@ public class ChallengeLevelController : MonoBehaviour
         }
         else //if wrong
         {
-            wrongAns += 1;  // for report use=========
-
             // Set no. of QN Wrong
             qnWrong += 1;
 
@@ -378,15 +357,11 @@ public class ChallengeLevelController : MonoBehaviour
     // Check whether pass or fail
     public void EndStage()
     {
-        SaveReport(); //=============
 
         PlayerPrefs.SetInt("stageCorrectAns", rightansNo);
         int stagelevel = level;
         PlayerPrefs.SetInt("stageQnsAttempt", stagelevel);
 
-
-        QuestionLoader.Instance.challenge = null;
-        questionList = null;
 
         if (score != 0)
         {
@@ -397,6 +372,9 @@ public class ChallengeLevelController : MonoBehaviour
         {
             PlayerPrefs.SetInt("Score", 0);
         }
+
+        QuestionLoader.Instance.challenge = null;
+        questionList = null;
 
         Debug.Log("Preferences set: Score - " + score.ToString());
         if (PlayerPrefs.GetInt("Score") != 0)
@@ -412,83 +390,17 @@ public class ChallengeLevelController : MonoBehaviour
 
     }
 
+    //save player score to challenge db
     public void SavePlayerScore()
     {
-        currentPlayer = ProfileLoader.playerData;
+        //retrieve challenge object from questionloader
+        Challenge challengeToUpload = QuestionLoader.Instance.challenge;
 
-        level = level - 1;
+        challengeToUpload.addPlayerAndScore(PlayerPrefs.GetString("UserID"), ProfileLoader.userData.name, PlayerPrefs.GetInt("Score"));
 
-        int totalScore = currentPlayer.totalPoints + score;
-        int totalQnAnswered = currentPlayer.totalQnAnswered + level;
-
-        reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("totalPoints").SetValueAsync(totalScore);
-        reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("totalQnAnswered").SetValueAsync(totalQnAnswered);
-
-        string worldStage = "world" + PlayerPrefs.GetInt("SelectedWorld").ToString() + "stage" +
-                            PlayerPrefs.GetInt("SelectedStage");
-
-        int stars = 0;
-        double percentageWrong = 0;
-
-        percentageWrong = qnWrong / level;
-        if (percentageWrong == 0)
-        {
-            stars = 3;
-        }
-        else if (percentageWrong >= 0.5)
-        {
-            stars = 2;
-        }
-
-        reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("mastery").Child(worldStage).SetValueAsync(stars);
+        string json = JsonUtility.ToJson(challengeToUpload);
+        reference.Child("Challenges").Child(challengeToUpload.challengeId).SetRawJsonValueAsync(json);
     }
-
-    public void SaveReport()
-    {
-        FirebaseDatabase.DefaultInstance.GetReference("Report").Child(worldAndStage).GetValueAsync().ContinueWith(task => {
-            if (task.IsFaulted)
-            {
-                Debug.Log("HI, S =  what you have");
-                // Handle the error...
-            }
-            else if (task.IsCompleted)
-            {
-                DataSnapshot s = task.Result;
-
-                foreach (DataSnapshot node in s.Children)
-                {
-                    Debug.Log(node.Key + ": " + node.Value);
-
-                    if (node.Key == "Correct")
-                    {
-                        correctAns = correctAns + int.Parse(node.Value.ToString());
-
-                    }
-
-                    if (node.Key == "Wrong")
-                    {
-                        wrongAns = wrongAns + int.Parse(node.Value.ToString());
-                    }
-                }
-                updateReport(correctAns, wrongAns);
-                // Do something with snapshot...
-            }
-        });
-
-    }
-
-    public void updateReport(int correctAns, int wrongAns)
-    {
-        double p = 0.0;
-        reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
-        reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
-        reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns);
-        //=================
-    }
-
-
-
-
 }
 
 

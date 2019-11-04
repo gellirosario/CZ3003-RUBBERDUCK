@@ -7,11 +7,13 @@ using UnityEngine;
 public class ChallengeEntry //this class is for storing player ids that have completed the challenge and their score, since unity does not support serializing dictionaries to json
 {
     public string id; //player id
+    public string name; //player name
     public int score;
 
-    public ChallengeEntry(string id, int score)
+    public ChallengeEntry(string id, string name, int score)
     {
         this.id = id;
+        this.name = name;
         this.score = score;
     }
 }
@@ -43,9 +45,26 @@ public class Challenge
         this.challengePlayers = players;
     }
 
-    public void addPlayerAndScore(string id, int score) //use this function to when a player has completed a challenge
+    public void addPlayerAndScore(string id, string name, int score) //use this function to when a player has completed a challenge
     {
-        this.challengePlayers.Add(new ChallengeEntry(id, score));
+        //check if an entry already exists for this player
+        for (int i = 0; i < this.challengePlayers.Count; i++)
+        {
+            //if entry exists
+            if (challengePlayers[i].id == id)
+            {
+                //if new score greater than existing score
+                if(score > challengePlayers[i].score) 
+                {
+                    challengePlayers[i].score = score;
+                }
+                //else don't update the score
+
+                return;
+            }
+        }
+
+        this.challengePlayers.Add(new ChallengeEntry(id, name, score));
     }
 
     //generate an 8-character long random ID for the challenge
