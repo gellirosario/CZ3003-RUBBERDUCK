@@ -85,7 +85,7 @@ public class CreateChallengeController : MonoBehaviour
     }
 
     //toggles the popup window on challenge creation
-    public void TogglePopup()
+    private void TogglePopup()
     {
         if(popup != null)
         {

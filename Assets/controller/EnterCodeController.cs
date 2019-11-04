@@ -43,7 +43,7 @@ public class EnterCodeController : MonoBehaviour
         });
     }
 
-    public void TogglePopup()
+    private void TogglePopup()
     {
         if (popup != null)
         {
@@ -100,7 +100,7 @@ public class EnterCodeController : MonoBehaviour
                         //load challenge into questionloader for further processing
                         QuestionLoader.Instance.challenge = JsonUtility.FromJson<Challenge>(challengeData);
 
-                        idText.text = cid;
+                        idText.text = "ID: " + cid;
                         TogglePopup();
                     }
                 }
