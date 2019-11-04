@@ -20,7 +20,7 @@ public class ChallengeEntry //this class is for storing player ids that have com
 public class Challenge
 {
     public string challengeId;
-    public string userId;
+    public string username;
     public List<int> challengeQns; //List of qn ids in the challenge
     public List<ChallengeEntry> challengePlayers;
 
@@ -33,7 +33,7 @@ public class Challenge
     {
         this.challengeId = generateId();
         this.challengeQns = qns;
-        this.userId = creator;
+        this.username = creator;
         this.challengePlayers = new List<ChallengeEntry>();
     }
 
@@ -41,7 +41,7 @@ public class Challenge
     {
         this.challengeId = id;
         this.challengeQns = qns;
-        this.userId = creator;
+        this.username = creator;
         this.challengePlayers = players;
     }
 
