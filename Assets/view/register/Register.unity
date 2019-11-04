@@ -195,17 +195,17 @@ PrefabInstance:
     - target: {fileID: 6916774072535982257, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -133
+      value: -139
       objectReference: {fileID: 0}
     - target: {fileID: 6916774072535982257, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 638.49
+      value: 638.5
       objectReference: {fileID: 0}
     - target: {fileID: 6916774072535982257, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 66.20001
+      value: 169.2
       objectReference: {fileID: 0}
     - target: {fileID: 6916774072535982257, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
@@ -240,23 +240,48 @@ PrefabInstance:
     - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cdb99aa2bf4c044da1d7421d5803435, type: 3}
 --- !u!224 &175736201 stripped
