@@ -13,8 +13,8 @@ public class ProfileLoader : MonoBehaviour
     private FirebaseApp app;
     private DatabaseReference reference;
     public string id;
-    public Player playerData { get; private set; }
-    public User userData { get; private set; }
+    public static Player playerData { get; private set; }
+    public static User userData { get; private set; }
 
     /*----------leaderBoard-----------*/
     public Player topPlayerData { get; private set; }
@@ -64,6 +64,9 @@ public class ProfileLoader : MonoBehaviour
 
     public void Start()
     {
+        playerData = new Player();
+        userData = new User();
+
         LoadUserData();
         LoadPlayerData();
 

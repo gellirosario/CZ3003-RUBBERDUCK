@@ -22,8 +22,8 @@ public class ProfileController : MonoBehaviour
 
     void Start()
     {
-        currentUser = ProfileLoader.Instance.userData;
-        currentPlayer = ProfileLoader.Instance.playerData;
+        currentUser = ProfileLoader.userData;
+        currentPlayer = ProfileLoader.playerData;
 
         m = currentPlayer.mastery;
 
