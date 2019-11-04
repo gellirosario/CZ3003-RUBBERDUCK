@@ -19,6 +19,10 @@ public class EnterCodeController : MonoBehaviour
     private string cid = null;
     private bool selected = false;
     private bool selected2 = false;
+
+    public GameObject popup;
+    public Text idText;
+
     void Start()
     {
         messageTxt.text = "";
@@ -38,6 +42,16 @@ public class EnterCodeController : MonoBehaviour
             }
         });
     }
+
+    public void TogglePopup()
+    {
+        if (popup != null)
+        {
+            bool isActive = popup.activeSelf;
+            popup.SetActive(!isActive);
+        }
+    }
+
     public void SearchCode()
     {
         searchChallenge();
@@ -86,7 +100,8 @@ public class EnterCodeController : MonoBehaviour
                         //load challenge into questionloader for further processing
                         QuestionLoader.Instance.challenge = JsonUtility.FromJson<Challenge>(challengeData);
 
-                        SceneManager.LoadScene("ChallengeLevel");
+                        idText.text = cid;
+                        TogglePopup();
                     }
                 }
                
