@@ -21,7 +21,7 @@ public class QuestionController : MonoBehaviour
     public Dropdown dropdownWorld;
     public Dropdown dropdownTopic;
     public Dropdown dropdownLevel;
-    public InputField levelInputField;
+    
 
     public List<Question> questionList_All = new List<Question>();
 
@@ -99,7 +99,7 @@ public class QuestionController : MonoBehaviour
                 //add
                 //print(diff);
 
-                Question question = new Question(qid, dropdownWorld.value, dropdownTopic.value, levelInputField.text
+                Question question = new Question(qid, dropdownWorld.value, dropdownTopic.value, dropdownLevel.value.ToString()
                  , questionInputField.text, int.Parse(answerInputField.text),
                 option1InputField.text, option2InputField.text, option3InputField.text, option4InputField.text);
                 string json = JsonUtility.ToJson(question);
