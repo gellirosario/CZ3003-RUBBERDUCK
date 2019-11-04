@@ -20,7 +20,7 @@ public class EnterCodeController : MonoBehaviour
     private bool selected = false;
     private bool selected2 = false;
 
-    public GameObject popup;
+    public GameObject popup, leaderboard;
     public Text idText;
 
     void Start()
@@ -43,7 +43,7 @@ public class EnterCodeController : MonoBehaviour
         });
     }
 
-    private void TogglePopup()
+    public void TogglePopup(GameObject popup)
     {
         if (popup != null)
         {
@@ -101,7 +101,7 @@ public class EnterCodeController : MonoBehaviour
                         QuestionLoader.Instance.challenge = JsonUtility.FromJson<Challenge>(challengeData);
 
                         idText.text = "ID: " + cid;
-                        TogglePopup();
+                        TogglePopup(popup);
                     }
                 }
                
