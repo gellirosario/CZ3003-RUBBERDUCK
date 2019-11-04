@@ -62,7 +62,6 @@ public class QuestionLoader : MonoBehaviour
             // Read the json from the file into a string
             string jsonString = File.ReadAllText(filePath);
             JSONNode data = JSON.Parse(jsonString);
-            Debug.LogError("=ADD QUESTION=");
             
             foreach(JSONNode record in data["Questions"])
             {
@@ -85,7 +84,7 @@ public class QuestionLoader : MonoBehaviour
         dbInstance.GetReference("Questions").GetValueAsync().ContinueWith(task => {
             if (task.IsFaulted) {
                 // Handle the error...
-                Debug.Log("Error in data retrieval");
+                Debug.LogError("Error in data retrieval");
             }
             else if (task.IsCompleted) {
                 Debug.Log("Received values for Questions.");

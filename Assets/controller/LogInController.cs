@@ -101,7 +101,6 @@ public class LogInController : MonoBehaviour
             {
                 //PlayerPrefs.SetString("LoginUser", user != null ? user.Email : "Unknown");
                 PlayerPrefs.SetString("UserID", user.UserId.ToString());
-                Debug.LogFormat("---USER ID SET---" + user.UserId.ToString());
 
                  if(Regex.IsMatch(user.Email, MatchTeacherEmailPattern))
                 {

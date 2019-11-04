@@ -558,7 +558,7 @@ public class LevelController : MonoBehaviour
     // Check whether pass or fail
     public void EndStage()
     {
-        SaveReport(); //=============
+        SaveReport(); 
 
         PlayerPrefs.SetInt("stageCorrectAns", rightansNo);
         int stagelevel = level - 1;
@@ -660,7 +660,6 @@ public class LevelController : MonoBehaviour
         reference.Child("Report").Child(worldAndStage).Child("Correct").SetValueAsync(correctAns);
         reference.Child("Report").Child(worldAndStage).Child("Wrong").SetValueAsync(wrongAns);
         reference.Child("Report").Child(worldAndStage).Child("Appear").SetValueAsync(correctAns + wrongAns);
-        //=================
     }
 
 

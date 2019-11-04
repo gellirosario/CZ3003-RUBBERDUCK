@@ -104,15 +104,13 @@ public class ProfileLoader : MonoBehaviour
 
     private void LoadUserData()
     {
-        Debug.LogFormat("----HERE---");
         id = PlayerPrefs.GetString("UserID");
-        Debug.LogFormat("----USER INFO ID---" + id);
 
         FirebaseDatabase.DefaultInstance.GetReference("Users").GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted)
             {
-                Debug.Log("Error in data retrieval from Users table");
+                Debug.LogError("Error in data retrieval from Users table");
             }
             else if (task.IsCompleted)
             {
@@ -140,15 +138,13 @@ public class ProfileLoader : MonoBehaviour
 
     private void LoadPlayerData()
     {
-        Debug.LogFormat("----HERE---");
         id = PlayerPrefs.GetString("UserID");
-        Debug.LogFormat("----USER INFO ID---" + id);
 
         FirebaseDatabase.DefaultInstance.GetReference("Player").GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted)
             {
-                Debug.Log("Error in data retrieval from Player table");
+                Debug.LogError("Error in data retrieval from Player table");
             }
             else if (task.IsCompleted)
             {
@@ -164,13 +160,13 @@ public class ProfileLoader : MonoBehaviour
                         //Debug.LogFormat("Key = {0}, Value = {1}", playerNode.Key, playerNode.Value);
                         foreach (KeyValuePair<string, object> kvp in playerDict)
                         {
-                            Debug.LogFormat("PLAYER ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                            //Debug.LogFormat("PLAYER ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                             if (kvp.Key == "mastery")
                             {
                                 var masteryDict = (IDictionary<string, object>)playerDict["mastery"];
                                 foreach (KeyValuePair<string, object> kvp1 in masteryDict)
                                 {
-                                    Debug.LogFormat("MASTERY ---- Key = {0}, Value = {1}", kvp1.Key, kvp1.Value);
+                                    //Debug.LogFormat("MASTERY ---- Key = {0}, Value = {1}", kvp1.Key, kvp1.Value);
                                 }
                                 playerData = new Player(playerDict, masteryDict);
                             }
@@ -188,7 +184,7 @@ public class ProfileLoader : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("CharacterID", playerData.characterID);
 
-                    //hide loading screen after finished loading
+                    // Hide loading screen after finished loading
                     HideLoadingScreen();
                     return 0;
                 });
@@ -204,8 +200,6 @@ public class ProfileLoader : MonoBehaviour
 
     private void LoadLeaderboardData()
     {
-        Debug.LogFormat("----loadleaderboard---");
-      
         FirebaseDatabase.DefaultInstance.GetReference("Player").OrderByChild("totalPoints").LimitToLast(10).ValueChanged += HandleValueChanged;
     }
 
@@ -220,7 +214,7 @@ public class ProfileLoader : MonoBehaviour
         {
             if (task.IsFaulted)
             {
-                Debug.Log("Error in data retrieval from Users table");
+                Debug.LogError("Error in data retrieval from Users table");
             }
             else if (task.IsCompleted)
             {
@@ -248,6 +242,5 @@ public class ProfileLoader : MonoBehaviour
                 }
             }
         });
-        Debug.LogFormat("----out db---");
     }
 }
