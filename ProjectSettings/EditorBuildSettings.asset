@@ -39,17 +39,11 @@ EditorBuildSettings:
     path: Assets/view/profile/Profile.unity
     guid: 7cbe3f99d0412c64193b4e6e93e9dc84
   - enabled: 1
-    path: Assets/view/challenges/ChallengePlayer.unity
-    guid: cfc4e80b7a1c43f45a24b2eb15a2a6ae
-  - enabled: 1
     path: Assets/view/challenges/Challenges.unity
     guid: d443d29928e99e84d9bca2d954850baa
   - enabled: 1
     path: Assets/view/challenges/EnterCode.unity
     guid: 118c6c1d93d87a1478dd99190d843663
-  - enabled: 0
-    path: 
-    guid: 8c03f8b1563dc9640be4af5642efab00
   - enabled: 1
     path: Assets/view/leaderboard/Leaderboard.unity
     guid: ae830e273369e448facaaac4b74991b4
@@ -63,14 +57,8 @@ EditorBuildSettings:
     path: Assets/view/assignments/DeleteAssignment.unity
     guid: 3b1990ba6f17eae4ab5516059c4cea55
   - enabled: 1
-    path: Assets/view/assignments/ViewAssignment.unity
-    guid: af34256cea65d4d4eaddccdc7c059d67
-  - enabled: 1
     path: Assets/view/assignments/ViewAssignment2.unity
     guid: 05a10ff4bccde5441bd136968c78f376
-  - enabled: 1
-    path: Assets/view/challenges/ChallengeSelect.unity
-    guid: fc3da1f93bc82344290f8aaabeb14b84
   - enabled: 1
     path: Assets/view/challenges/CreateChallenge.unity
     guid: 45d3d06d53eba62429478f3344e32f36
@@ -92,9 +80,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/question/createquestion.unity
     guid: f2ad494ac59064d11a504ec3ad0ec31b
-  - enabled: 1
-    path: Assets/view/question/viewquestion.unity
-    guid: 162dbc8d1012e474a807e96bef51ebea
   - enabled: 1
     path: Assets/view/question/deletequestion.unity
     guid: 1a6f0b7ef2c5a40a5babb9b212138743
