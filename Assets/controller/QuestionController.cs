@@ -22,8 +22,8 @@ public class QuestionController : MonoBehaviour
     public InputField option3InputField;
     public InputField option4InputField;
     public Dropdown dropdownWorld;
-    public Dropdown dropdownTopic;
-    public Dropdown dropdownLevel;
+    public Dropdown dropdownStage;
+    public Dropdown dropdownDifficulty;
     public Question questionData { get; private set; }
 
 
@@ -53,14 +53,6 @@ public class QuestionController : MonoBehaviour
                 // Firebase Unity SDK is not safe to use here.
             }
         });
-
-        // Retrieve Question List According to World and Stage
-
-        //print("Before loading questionlist count: " + questionList.Count);
-        //if (questionList.Count == 0)
-        //{
-        //  questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(1,1);
-        //}
     }
 
 
@@ -100,13 +92,14 @@ public class QuestionController : MonoBehaviour
                 qid = (int)snapshot.Child("Questions").ChildrenCount + 1;
                 print("TOTAL CHILD VALUE" + snapshot.Child("Questions").ChildrenCount);
 
+
                 //LocPickerString = LocationPicker.GetComponent.< UI.Dropdown > ().itemText.text
                 //print("Level" + dropdownLevel.options[dropdownLevel.value].text);
                 //string diff = dropdownLevel.options[dropdownLevel.value].text.ToString();
                 //add
                 //print(diff);
 
-                Question question = new Question(qid, dropdownWorld.value, dropdownTopic.value, dropdownLevel.value.ToString()
+                Question question = new Question(qid, dropdownWorld.value, dropdownStage.value, dropdownDifficulty.value.ToString()
                  , questionInputField.text, int.Parse(answerInputField.text),
                 option1InputField.text, option2InputField.text, option3InputField.text, option4InputField.text);
                 string json = JsonUtility.ToJson(question);
@@ -115,33 +108,6 @@ public class QuestionController : MonoBehaviour
                 reference.Child("Questions").Child(qid.ToString()).SetRawJsonValueAsync(json);
             }
         });
-
-
-        /*Question question = new Question(1234, 123, 274,
-                    "difficulty","question", 456,
-                    "option1", "option2", "option3","option4");
-                string json = JsonUtility.ToJson(question);
-                reference.Child("Questions").Child("1234").SetRawJsonValueAsync(json);*/
-
-
-        // Question question = new Question("questionid",dropdownWorld.value, dropdownTopic.value,
-        //             dropdownLevel.value.ToString() , questionInputField.text, int.Parse(answerInputField.text),
-        //             option1InputField.text , option2InputField.text, option3InputField.text, option4InputField.text);
-        // string json = JsonUtility.ToJson(question);
-        // reference.Child("Questions").Child("UserID").SetRawJsonValueAsync(json);
-
-        //print("After loading questionlist count: " + questionList.Count);
-        //for (int i = 0; i < questionList.Count; i++)
-        //{
-
-        //Assignment assignment = new Assignment(createAssignmentInput.text, questionList[i].qnID, questionList[i].world, questionList[i].stage, questionList[i].difficulty,
-        //  questionList[i].question, questionList[i].answer, questionList[i].option1, questionList[i].option2, questionList[i].option3, questionList[i].option4);
-        //string json = JsonUtility.ToJson(assignment);
-        //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).SetRawJsonValueAsync(json);
-        //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(assignment.assignmentName).SetRawJsonValueAsync(json);
-
-
-        //}
     }
 
     public void OnTopicDropdownChange()
@@ -151,34 +117,34 @@ public class QuestionController : MonoBehaviour
         switch (topic)
         {
             case 0:
-                dropdownTopic.options[0].text = "1. Software Engineering Principles";
-                dropdownTopic.options[1].text = "2. Requirements Analysis";
-                dropdownTopic.options[2].text = "3. Modelling";
-                dropdownTopic.RefreshShownValue();
+                dropdownStage.options[0].text = "1. Software Engineering Principles";
+                dropdownStage.options[1].text = "2. Requirements Analysis";
+                dropdownStage.options[2].text = "3. Modelling";
+                dropdownStage.RefreshShownValue();
                 break;
             case 1:
-                dropdownTopic.options[0].text = "1. Architectural Designs";
-                dropdownTopic.options[1].text = "2. Design Concepts";
-                dropdownTopic.options[2].text = "3. Component Level Designs";
-                dropdownTopic.RefreshShownValue();
+                dropdownStage.options[0].text = "1. Architectural Designs";
+                dropdownStage.options[1].text = "2. Design Concepts";
+                dropdownStage.options[2].text = "3. Component Level Designs";
+                dropdownStage.RefreshShownValue();
                 break;
             case 2:
-                dropdownTopic.options[0].text = "1. Software Elements";
-                dropdownTopic.options[1].text = "2. Software Components";
-                dropdownTopic.options[2].text = "3. Software Configuration";
-                dropdownTopic.RefreshShownValue();
+                dropdownStage.options[0].text = "1. Software Elements";
+                dropdownStage.options[1].text = "2. Software Components";
+                dropdownStage.options[2].text = "3. Software Configuration";
+                dropdownStage.RefreshShownValue();
                 break;
             case 3:
-                dropdownTopic.options[0].text = "1. Software Testing Techniques and Strategies";
-                dropdownTopic.options[1].text = "2. Testing Application";
-                dropdownTopic.options[2].text = "3. Software Testing";
-                dropdownTopic.RefreshShownValue();
+                dropdownStage.options[0].text = "1. Software Testing Techniques and Strategies";
+                dropdownStage.options[1].text = "2. Testing Application";
+                dropdownStage.options[2].text = "3. Software Testing";
+                dropdownStage.RefreshShownValue();
                 break;
             case 4:
-                dropdownTopic.options[0].text = "1. Software Management";
-                dropdownTopic.options[1].text = "2. Software Configuration";
-                dropdownTopic.options[2].text = "3. Quality Management";
-                dropdownTopic.RefreshShownValue();
+                dropdownStage.options[0].text = "1. Software Management";
+                dropdownStage.options[1].text = "2. Software Configuration";
+                dropdownStage.options[2].text = "3. Quality Management";
+                dropdownStage.RefreshShownValue();
                 break;
             default:
                 break;
@@ -216,37 +182,49 @@ public class QuestionController : MonoBehaviour
             }
 
 
+            /*//get filtered list from QuestionLoader
+            List<Question> worldStageList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(dropdownWorld.value, dropdownStage.value);
+            Debug.Log("Filtered list by world " + dropdownWorld.value + ", stage " + dropdownStage.value);
+
+            //foreach (Question q in worldStageList)
+            //{
+            //    Debug.Log("Question ID: " + q.qnID + "  world: " + q.stage + "  stage: " + q.world + "  difficulty: " + q.difficulty);
+            //}
+
+            //filter further by difficulty
+            List<Question> filteredList = QuestionLoader.Instance.FilterQuestionsListByDifficulty(worldStageList, dropdownDifficulty.value.ToString());
+            Debug.Log("Filtered list by difficulty: " + dropdownDifficulty.value.ToString());
+            Debug.Log("Filtered list has " + filteredList.Count + " items.");
+
+            print("==============================================================");
+            print("Current filitered list of questions : " + filteredList.Count);
+            print("==============================================================");
+            PlayerPrefs.SetInt("QuestionListCount", filteredList.Count);*/
+
+
+
+
             print("Current list of questions in question id: " + questionList_All.Count);
             PlayerPrefs.SetInt("QuestionListCount", questionList_All.Count);
 
             for (var i = 0; i < questionList_All.Count; i++)
             {
-                PlayerPrefs.SetInt("QuestionList(qnID)" + i, questionList_All[i].qnID);
-                PlayerPrefs.SetInt("QuestionList(world)" + i, questionList_All[i].world);
-                PlayerPrefs.SetInt("QuestionList(stage)" + i, questionList_All[i].stage);
-                PlayerPrefs.SetString("QuestionList(difficulty)" + i, questionList_All[i].difficulty);
-                PlayerPrefs.SetString("QuestionList(question)" + i, questionList_All[i].question);
-                PlayerPrefs.SetInt("QuestionList(answer)" + i, questionList_All[i].answer);
-                PlayerPrefs.SetString("QuestionList(option1)" + i, questionList_All[i].option1);
-                PlayerPrefs.SetString("QuestionList(option2)" + i, questionList_All[i].option2);
-                PlayerPrefs.SetString("QuestionList(option3)" + i, questionList_All[i].option3);
-                PlayerPrefs.SetString("QuestionList(option4)" + i, questionList_All[i].option4);
+                if (((dropdownWorld.value + 1) == questionList_All[i].world) && ((dropdownStage.value + 1) == questionList_All[i].stage) && (dropdownDifficulty.value.ToString() == questionList_All[i].difficulty))
+                {
+                    PlayerPrefs.SetInt("QuestionList(qnID)" + i, questionList_All[i].qnID);
+                    PlayerPrefs.SetInt("QuestionList(world)" + i, questionList_All[i].world);
+                    PlayerPrefs.SetInt("QuestionList(stage)" + i, questionList_All[i].stage);
+                    PlayerPrefs.SetString("QuestionList(difficulty)" + i, questionList_All[i].difficulty);
+                    PlayerPrefs.SetString("QuestionList(question)" + i, questionList_All[i].question);
+                    PlayerPrefs.SetInt("QuestionList(answer)" + i, questionList_All[i].answer);
+                    PlayerPrefs.SetString("QuestionList(option1)" + i, questionList_All[i].option1);
+                    PlayerPrefs.SetString("QuestionList(option2)" + i, questionList_All[i].option2);
+                    PlayerPrefs.SetString("QuestionList(option3)" + i, questionList_All[i].option3);
+                    PlayerPrefs.SetString("QuestionList(option4)" + i, questionList_All[i].option4);
+                }
             }
         });
     }
-
-    /*public void DeleteQuestion()
-    {
-        //Debug.LogFormat("Question: " + questionInputField.text);
-
-
-        //print(reference);
-        //print(reference.Child("Questions").Child("1234"));
-
-        //reference.Child("Questions").Child("1234").RemoveValueAsync();
-        //displayDeleteMessage.text = deleteAssignmentInput.text + " Successfully Deleted" ;
-
-    }*/
 
     public void DeleteQuestion()
     {
@@ -269,9 +247,9 @@ public class QuestionController : MonoBehaviour
                 {
                     print("=================================REACH DELETE QUESTION 2===================================");
 
-                   //var questiontDict = (IDictionary<string, object>)questionNode.Value;
+                    //var questiontDict = (IDictionary<string, object>)questionNode.Value;
 
-                   // Debug.Log("QUESTION NAME:" + key);
+                    // Debug.Log("QUESTION NAME:" + key);
                     Debug.Log("Inputted Text:" + deleteQuestionInput.text);
                     print("QUESTION KEY" + questionNode.Key);
 

@@ -962,6 +962,7 @@ GameObject:
   - component: {fileID: 596396170}
   - component: {fileID: 596396169}
   - component: {fileID: 596396168}
+  - component: {fileID: 596396172}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1047,6 +1048,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &596396172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596396167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62edcd8aa9844734989b26467cba5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createQuestionBtn: {fileID: 0}
+  deleteQuestionBtn: {fileID: 0}
+  uid: 
+  displayDeleteMessage: {fileID: 0}
+  deleteQuestionInput: {fileID: 0}
+  answerInputField: {fileID: 0}
+  questionInputField: {fileID: 0}
+  option1InputField: {fileID: 0}
+  option2InputField: {fileID: 0}
+  option3InputField: {fileID: 0}
+  option4InputField: {fileID: 0}
+  dropdownWorld: {fileID: 755083739}
+  dropdownStage: {fileID: 586362920}
+  dropdownDifficulty: {fileID: 1707542988}
+  questionList_All: []
 --- !u!1 &601313420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1405,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 596396172}
         m_MethodName: OnTopicDropdownChange
         m_Mode: 1
         m_Arguments:
@@ -2439,6 +2467,17 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: ViewQuestion
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 596396172}
+        m_MethodName: LoadQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1266876470
@@ -3675,7 +3714,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 268, y: 0.000002861}
+  m_AnchoredPosition: {x: 268, y: 0}
   m_SizeDelta: {x: 237.6, y: 52.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707542988

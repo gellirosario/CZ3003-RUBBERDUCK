@@ -27,7 +27,8 @@ public class CreateAssignmentQuestions : MonoBehaviour
 
     private void Start()
     {
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
@@ -162,7 +163,7 @@ public class CreateAssignmentQuestions : MonoBehaviour
             {
                 Debug.Log("worldandstage Question ID: " + worldStageList[i].qnID);
             }
-            
+
         }
         //foreach (Question q in worldStageList)
         //{
@@ -194,13 +195,13 @@ public class CreateAssignmentQuestions : MonoBehaviour
     private List<int> SelectQuestionsList(List<Question> questionList, int NoOfQns)
     {
         List<int> qnList = new List<int>();
-        
+
         if (questionList.Count < NoOfQns)
         {
             warningText.text = "Warning: Not enough questions in database, so only " + questionList.Count + " questions are included in this assignment.";
         }
 
-        int questionNumber = 1;
+        //int questionNumber = 1;
         int i = 0;
         //NoOfQns += 1;
 
@@ -209,23 +210,17 @@ public class CreateAssignmentQuestions : MonoBehaviour
 
             //Debug.Log("BEFORE INDEX: " + questionNumber);
             //Debug.Log("BEFORE ID " + questionList[i].qnID);
-            if (questionList[i].qnID == questionNumber)
-            {
-                
-                qnList.Add(questionList[i].qnID);
-                questionNumber++;
-                NoOfQns--;
-                //Debug.Log("No of question left to add: " + NoOfQns);
 
-                //Debug.Log("ADDED INDEX: " + questionNumber);
-                //Debug.Log("ADDED ID " + questionList[i].qnID);
 
-                if (i == 9)
-                {
-                    i = 9;
-                    continue;
-                }
-            }
+            qnList.Add(questionList[i].qnID);
+            //questionNumber++;
+            NoOfQns--;
+            //Debug.Log("No of question left to add: " + NoOfQns);
+
+            //Debug.Log("ADDED INDEX: " + questionNumber);
+            //Debug.Log("ADDED ID " + questionList[i].qnID);
+
+
             i++;
             //print("==========INDEX OF I========= " + i);
             //Debug.Log("Added index " + Index + " to new list");

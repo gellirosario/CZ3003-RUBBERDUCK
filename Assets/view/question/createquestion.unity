@@ -2603,6 +2603,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createQuestionBtn: {fileID: 0}
   deleteQuestionBtn: {fileID: 0}
+  uid: 
+  displayDeleteMessage: {fileID: 0}
+  deleteQuestionInput: {fileID: 0}
   answerInputField: {fileID: 0}
   questionInputField: {fileID: 0}
   option1InputField: {fileID: 0}
@@ -2610,9 +2613,8 @@ MonoBehaviour:
   option3InputField: {fileID: 0}
   option4InputField: {fileID: 0}
   dropdownWorld: {fileID: 0}
-  dropdownTopic: {fileID: 0}
-  dropdownLevel: {fileID: 0}
-  dropdownAnswer: {fileID: 0}
+  dropdownStage: {fileID: 0}
+  dropdownDifficulty: {fileID: 0}
   questionList_All: []
 --- !u!1 &927809786
 GameObject:
@@ -5255,6 +5257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createQuestionBtn: {fileID: 2012691444}
   deleteQuestionBtn: {fileID: 0}
+  uid: 
+  displayDeleteMessage: {fileID: 0}
+  deleteQuestionInput: {fileID: 0}
   answerInputField: {fileID: 0}
   questionInputField: {fileID: 239070036}
   option1InputField: {fileID: 1322532892}
@@ -5262,9 +5267,8 @@ MonoBehaviour:
   option3InputField: {fileID: 1491027228}
   option4InputField: {fileID: 1900353292}
   dropdownWorld: {fileID: 2064650423}
-  dropdownTopic: {fileID: 1094694158}
-  dropdownLevel: {fileID: 2032846212}
-  dropdownAnswer: {fileID: 1956580561}
+  dropdownStage: {fileID: 0}
+  dropdownDifficulty: {fileID: 0}
   questionList_All: []
 --- !u!1 &1582342032
 GameObject:
@@ -6851,7 +6855,7 @@ GameObject:
   - component: {fileID: 2032846213}
   - component: {fileID: 2032846212}
   m_Layer: 0
-  m_Name: LevelDropdown
+  m_Name: DificultylDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

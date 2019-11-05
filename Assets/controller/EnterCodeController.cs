@@ -17,11 +17,12 @@ public class EnterCodeController : MonoBehaviour
     private bool isFirebaseInitialized = false;
     public Text messageTxt;
     private string cid = null;
+    private string aid = null;
     private int selected = 0;
     
 
-    public GameObject popup, leaderboard;
-    public Text idText;
+    public GameObject popup, popup2, leaderboard;
+    public Text idText, idText2;
 
     void Awake()
     {
@@ -54,6 +55,15 @@ public class EnterCodeController : MonoBehaviour
         {
             bool isActive = popup.activeSelf;
             popup.SetActive(!isActive);
+        }
+    }
+
+    public void TogglePopupAssignmentPanel(GameObject popup2)
+    {
+        if (popup2 != null)
+        {
+            bool isActive = popup2.activeSelf;
+            popup2.SetActive(!isActive);
         }
     }
 
@@ -114,7 +124,7 @@ public class EnterCodeController : MonoBehaviour
     }
     private void searchAssignment()
     {
-        FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
+        FirebaseDatabase.DefaultInstance.GetReference("Assignment2").GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {
@@ -133,14 +143,24 @@ public class EnterCodeController : MonoBehaviour
                     if (assignment.Key == inputField.text.ToString())
                     {
                         messageTxt.text = "";
-                        //cid = assignment.Key.ToString();
+                        aid = assignment.Key.ToString();
+                        print("ASSIGNMENT ID IS: " + aid);
                         //Debug.Log("" + dictUser["name"] + " - " + dictUser["email"]+ user.Key);
                         //Debug.Log(uid);
-                        //PlayerPrefs.SetString("challengedID", uid);
+                        PlayerPrefs.SetString("assignmentID", aid);
                         //selected2 = true;
                         selected += 1;
                         Debug.Log(" found in assignment");
                         //break;
+
+                        //load assignment from db
+                        string assignmentData = assignment.GetRawJsonValue();
+
+                        //load challenge into questionloader for further processing
+                        QuestionLoader.Instance.assignment = JsonUtility.FromJson<Assignment>(assignmentData);
+
+                        idText2.text = "ID: " + aid;
+                        TogglePopupAssignmentPanel(popup2);
                     }
                 }
                 checking();
