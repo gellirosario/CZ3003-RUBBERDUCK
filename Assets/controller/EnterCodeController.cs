@@ -17,8 +17,8 @@ public class EnterCodeController : MonoBehaviour
     private bool isFirebaseInitialized = false;
     public Text messageTxt;
     private string cid = null;
-    private bool selected = false;
-    private bool selected2 = false;
+    private int selected = 0;
+    
 
     public GameObject popup, leaderboard;
     public Text idText;
@@ -59,13 +59,11 @@ public class EnterCodeController : MonoBehaviour
 
     public void SearchCode()
     {
+        selected = 0;
         searchChallenge();
-        searchAssignment();
+
         
-         if(selected== false)
-        { 
-         messageTxt.text = "Cannot find code '" + inputField.text + "'";
-        }
+
 
     }
 
@@ -94,12 +92,11 @@ public class EnterCodeController : MonoBehaviour
                         Debug.Log(cid+"-cid");
                         PlayerPrefs.SetString("challengeID",cid);
                         
-                        selected = true;
+                        selected += 1;
                         Debug.Log(" found in challenges");
-                        //break;
-
+                        Debug.Log(selected);
                         //load challenge from db
-
+                        messageTxt.text = "";
                         string challengeData = challenge.GetRawJsonValue();
 
                         //load challenge into questionloader for further processing
@@ -112,7 +109,8 @@ public class EnterCodeController : MonoBehaviour
                
             }
         });
-        //return selected;
+        searchAssignment();
+
     }
     private void searchAssignment()
     {
@@ -134,20 +132,30 @@ public class EnterCodeController : MonoBehaviour
                     //Debug.Log("" + dictUser["challengeId"] + " - " + dictUser["challengeId"] + user.Key);
                     if (assignment.Key == inputField.text.ToString())
                     {
+                        messageTxt.text = "";
                         //cid = assignment.Key.ToString();
                         //Debug.Log("" + dictUser["name"] + " - " + dictUser["email"]+ user.Key);
                         //Debug.Log(uid);
                         //PlayerPrefs.SetString("challengedID", uid);
                         //selected2 = true;
-                        selected = true;
+                        selected += 1;
                         Debug.Log(" found in assignment");
                         //break;
                     }
                 }
-               
+                checking();
             }
         });
-        //return selected2;
+        
+    }
+    private void checking()
+    {
+        if (selected == 0)
+        {
+            messageTxt.text = "Cannot find code '" + inputField.text + "'";
+            
+        }
+
     }
     // Update is called once per frame
     void Update()
