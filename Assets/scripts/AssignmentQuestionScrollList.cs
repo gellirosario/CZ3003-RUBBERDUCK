@@ -36,6 +36,7 @@ public class AssignmentQuestionScrollList : MonoBehaviour
     private List<Assignment> retrieveAssignmentDataFromAssignmentController()
     {
         List<Assignment> assignmentQnList = new List<Assignment>(PlayerPrefs.GetInt("AssignmentQuestionListCount"));
+        //List<Assignment> filteredAssignmentQnList = new List<Assignment>();
 
         if (assignmentQnList.Capacity == 0)
             return null;
@@ -59,14 +60,65 @@ public class AssignmentQuestionScrollList : MonoBehaviour
             assignmentQnList[i].option2 = PlayerPrefs.GetString("AssignmentList(option2)" + i);
             assignmentQnList[i].option3 = PlayerPrefs.GetString("AssignmentList(option3)" + i);
             assignmentQnList[i].option4 = PlayerPrefs.GetString("AssignmentList(option4)" + i);
+
+            
         }
 
-        for (int i = 0; i < assignmentQuestionListCount; i++)
+        /*for (int i = 0; i < assignmentQuestionListCount; i++)
         {
-            print("Assignment Data contents");
-            print(assignmentQnList[i].assignmentName + assignmentQnList[i].qnID + assignmentQnList[i].world + assignmentQnList[i].stage + assignmentQnList[i].difficulty + assignmentQnList[i].question +
-                    assignmentQnList[i].answer + assignmentQnList[i].option1 + assignmentQnList[i].option2 + assignmentQnList[i].option3 + assignmentQnList[i].option4);
+            print("outside filteredAssignmentQnList");
+            print(" Index of assignmentQnList[i].assignmentName: " + i);
+            print(" Index of assignmentQnList[i+1].assignmentName: " + (i + 1).ToString());
+            print(" AssignmentQnList[i].assignmentName: " + assignmentQnList[i].assignmentName);
+            print(" AssignmentQnList[i+1].assignmentName: " + assignmentQnList[i+1].assignmentName);
+            // check if the list contains the same assignment names from the list of all assignment names
+
+            if (assignmentQnList[i].assignmentName != assignmentQnList[i + 1].assignmentName)
+            {
+                filteredAssignmentQnList.Add(new Assignment());
+                filteredAssignmentQnList[i].assignmentName = assignmentQnList[i].assignmentName;
+                filteredAssignmentQnList[i].qnID = assignmentQnList[i].qnID;
+                filteredAssignmentQnList[i].world = assignmentQnList[i].world;
+                filteredAssignmentQnList[i].stage = assignmentQnList[i].stage;
+                filteredAssignmentQnList[i].difficulty = assignmentQnList[i].difficulty;
+                filteredAssignmentQnList[i].question = assignmentQnList[i].question;
+                filteredAssignmentQnList[i].answer = assignmentQnList[i].answer;
+                filteredAssignmentQnList[i].option1 = assignmentQnList[i].option1;
+                filteredAssignmentQnList[i].option2 = assignmentQnList[i].option2;
+                filteredAssignmentQnList[i].option3 = assignmentQnList[i].option3;
+                filteredAssignmentQnList[i].option4 = assignmentQnList[i].option4;
+                break;
+            }
+                
+
+            print("in filteredAssignmentQnList");
+            Assignment assignment = new Assignment();
+            filteredAssignmentQnList.Add(assignment);
+            print(" Index of assignmentQnList[i].assignmentName: " + assignmentQnList[i].assignmentName);
+            filteredAssignmentQnList[i].assignmentName = assignmentQnList[i].assignmentName;
+            filteredAssignmentQnList[i].qnID = assignmentQnList[i].qnID;
+            filteredAssignmentQnList[i].world = assignmentQnList[i].world;
+            filteredAssignmentQnList[i].stage = assignmentQnList[i].stage;
+            filteredAssignmentQnList[i].difficulty = assignmentQnList[i].difficulty;
+            filteredAssignmentQnList[i].question = assignmentQnList[i].question;
+            filteredAssignmentQnList[i].answer = assignmentQnList[i].answer;
+            filteredAssignmentQnList[i].option1 = assignmentQnList[i].option1;
+            filteredAssignmentQnList[i].option2 = assignmentQnList[i].option2;
+            filteredAssignmentQnList[i].option3 = assignmentQnList[i].option3;
+            filteredAssignmentQnList[i].option4 = assignmentQnList[i].option4;
+       
         }
+
+        print("Filtered Assignment Data Size: " + filteredAssignmentQnList.Count);
+
+        for (int i = 0; i < filteredAssignmentQnList.Count; i++)
+        {
+            print(i);
+            print(filteredAssignmentQnList[i].assignmentName + "Qn id:" + filteredAssignmentQnList[i].qnID + "world: " +filteredAssignmentQnList[i].world + filteredAssignmentQnList[i].stage + filteredAssignmentQnList[i].difficulty + filteredAssignmentQnList[i].question +
+                    filteredAssignmentQnList[i].answer + filteredAssignmentQnList[i].option1 + filteredAssignmentQnList[i].option2 + filteredAssignmentQnList[i].option3 + filteredAssignmentQnList[i].option4);
+        }
+
+        return filteredAssignmentQnList;*/
 
         return assignmentQnList;
     }

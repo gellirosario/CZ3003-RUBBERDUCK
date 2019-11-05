@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 119341167}
   - component: {fileID: 119341166}
   - component: {fileID: 119341165}
-  - component: {fileID: 119341164}
   m_Layer: 5
   m_Name: ViewQuestionButton
   m_TagString: Untagged
@@ -160,18 +159,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000015283, y: -22}
   m_SizeDelta: {x: 287.9, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &119341164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119341162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4419e4812eb8c42b6b8cdc3f05bd46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &119341165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +210,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: viewquestion
+          m_StringArgument: ViewQuestion1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &119341166
@@ -625,7 +612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000018733554, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 157.15002, y: 62.130005}
   m_Pivot: {x: 0.9999999, y: 1.0000002}
 --- !u!114 &564441763
@@ -727,7 +714,6 @@ GameObject:
   - component: {fileID: 571660271}
   - component: {fileID: 571660270}
   - component: {fileID: 571660269}
-  - component: {fileID: 571660268}
   m_Layer: 5
   m_Name: CreateQuestionButton
   m_TagString: Untagged
@@ -755,18 +741,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000045798, y: 133}
   m_SizeDelta: {x: 287.9, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &571660268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571660266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4419e4812eb8c42b6b8cdc3f05bd46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &571660269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,7 +909,6 @@ GameObject:
   - component: {fileID: 772638983}
   - component: {fileID: 772638982}
   - component: {fileID: 772638981}
-  - component: {fileID: 772638980}
   m_Layer: 5
   m_Name: DeleteQuestionButton
   m_TagString: Untagged
@@ -963,18 +936,6 @@ RectTransform:
   m_AnchoredPosition: {x: -9.1859e-11, y: -187}
   m_SizeDelta: {x: 287.9, y: 73.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &772638980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772638978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4419e4812eb8c42b6b8cdc3f05bd46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &772638981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,7 +1289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3.7199993}
+  m_AnchoredPosition: {x: 0, y: 3.7200012}
   m_SizeDelta: {x: 0, y: -7.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783387686

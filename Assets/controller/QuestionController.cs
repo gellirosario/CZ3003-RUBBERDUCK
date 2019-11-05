@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using Firebase.Extensions;
 
 public class QuestionController : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class QuestionController : MonoBehaviour
     public Dropdown dropdownWorld;
     public Dropdown dropdownTopic;
     public Dropdown dropdownLevel;
-    
+    public Question questionData { get; private set; }
+
 
     public List<Question> questionList_All = new List<Question>();
 
@@ -176,6 +178,56 @@ public class QuestionController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+
+    public void LoadQuestion()
+    {
+        Debug.LogFormat("----HERE---");
+        Debug.LogFormat("----QUESTION INFO---");
+
+        FirebaseDatabase.DefaultInstance.GetReference("Questions").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("Error in data retrieval from Question table");
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                foreach (DataSnapshot qnid in snapshot.Children)
+                {
+                    var qnIDDict = (IDictionary<string, object>)qnid.Value;
+
+                    foreach (KeyValuePair<string, object> kvp in qnIDDict)
+                    {
+                        Debug.LogFormat("QUESTION DETAILS ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                    }
+
+
+                    questionData = new Question(qnIDDict);
+                    questionList_All.Add(questionData);
+                }
+            }
+            
+
+            print("Current list of questions in question id: " + questionList_All.Count);
+            PlayerPrefs.SetInt("QuestionListCount", questionList_All.Count);
+
+            for (var i = 0; i < questionList_All.Count; i++)
+            {
+                PlayerPrefs.SetInt("QuestionList(qnID)" + i, questionList_All[i].qnID);
+                PlayerPrefs.SetInt("QuestionList(world)" + i, questionList_All[i].world);
+                PlayerPrefs.SetInt("QuestionList(stage)" + i, questionList_All[i].stage);
+                PlayerPrefs.SetString("QuestionList(difficulty)" + i, questionList_All[i].difficulty);
+                PlayerPrefs.SetString("QuestionList(question)" + i, questionList_All[i].question);
+                PlayerPrefs.SetInt("QuestionList(answer)" + i, questionList_All[i].answer);
+                PlayerPrefs.SetString("QuestionList(option1)" + i, questionList_All[i].option1);
+                PlayerPrefs.SetString("QuestionList(option2)" + i, questionList_All[i].option2);
+                PlayerPrefs.SetString("QuestionList(option3)" + i, questionList_All[i].option3);
+                PlayerPrefs.SetString("QuestionList(option4)" + i, questionList_All[i].option4);
+            }
+        });
     }
 
     public void DeleteQuestion()
