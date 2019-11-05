@@ -21,7 +21,7 @@ public class EnterCodeController : MonoBehaviour
     private int selected = 0;
     
 
-    public GameObject popup, popup2, leaderboard;
+    public GameObject popup, popup2;
     public Text idText, idText2;
 
     void Awake()
