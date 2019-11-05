@@ -64,11 +64,9 @@ public class ViewChallengeController : MonoBehaviour
                 DataSnapshot snapshot = task.Result;
                 foreach (DataSnapshot challenge in snapshot.Children)
                 {
-                    
                     string challengeData = challenge.GetRawJsonValue();
                     Debug.Log(challengeData);
 
-                   
                     challengesData = JsonUtility.FromJson<Challenge>(challengeData);
 
                     if(loadCreatedChallenge(challengesData, challengeData, crCount)){
@@ -101,7 +99,6 @@ public class ViewChallengeController : MonoBehaviour
             crQns.text += createdData.challengeQns.Count.ToString() + "\n";
             crPlayers.text += createdData.challengePlayers.Count.ToString() + "\n";
             crNum.text += count + ".\n";
-            count++;
 
             Debug.Log("text " + crId.text);
             Debug.Log(crQns.text);
@@ -131,7 +128,6 @@ public class ViewChallengeController : MonoBehaviour
                 comQns.text += completedData.challengeQns.Count.ToString() + "\n";
                 comScore.text += completedData.challengePlayers[index].score + "\n";
                 comNum.text += count + ".\n";
-                count++;
 
                 return true;
             }
