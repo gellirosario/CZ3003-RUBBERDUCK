@@ -1829,7 +1829,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
     - target: {fileID: 6916774072535982258, guid: 1cdb99aa2bf4c044da1d7421d5803435,
         type: 3}
       propertyPath: m_fontSize
