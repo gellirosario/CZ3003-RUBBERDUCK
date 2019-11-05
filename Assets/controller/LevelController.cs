@@ -234,10 +234,11 @@ public class LevelController : MonoBehaviour
                 }
 
                 // Filter question list according to difficulty
+                doUpdate = false; // Set to false until the player answered
                 SetQuestion(difficulty);
 
                 isFirst = false; // Not first question
-                doUpdate = false; // Set to false until the player answered
+                
             }
 
         }
@@ -295,7 +296,6 @@ public class LevelController : MonoBehaviour
         o3Text.text = "c. " + o3;
         o4Text.text = "d. " + o4;
 
-        doUpdate = false;
     }
     
     public void SetDifficulty(string difficulty)
