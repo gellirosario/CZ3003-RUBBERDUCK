@@ -918,6 +918,9 @@ MonoBehaviour:
   scoreTxt: {fileID: 1494797774}
   stageTxt: {fileID: 851167191}
   feedbackTxt: {fileID: 928003152}
+  star1: {fileID: 1303698884}
+  star2: {fileID: 23995539}
+  star3: {fileID: 1966786562}
 --- !u!4 &1218566939
 Transform:
   m_ObjectHideFlags: 0
