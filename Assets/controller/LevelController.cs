@@ -605,18 +605,28 @@ public class LevelController : MonoBehaviour
                             PlayerPrefs.GetInt("SelectedStage");
 
         int stars = 0;
-        double percentageWrong = 0;
 
-        percentageWrong = qnWrong / level;
-        if (percentageWrong == 0)
+        //set mastery level
+        switch (qnWrong)
         {
-            stars = 3;
-        }
-        else if (percentageWrong >= 0.5)
-        {
-            stars = 2;
+            case 0:
+                stars = 3;
+                break;
+            case 1:
+                stars = 2;
+                break;
+            case 2:
+                stars = 1;
+                break;
+            case 3:
+                stars = 0;
+                break;
+            default:
+                break;
         }
 
+        PlayerPrefs.SetInt("Stars", stars);
+        
         reference.Child("Player").Child(PlayerPrefs.GetString("UserID")).Child("mastery").Child(worldStage).SetValueAsync(stars);
     }
 
