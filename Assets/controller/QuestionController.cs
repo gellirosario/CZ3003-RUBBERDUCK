@@ -12,7 +12,9 @@ public class QuestionController : MonoBehaviour
     private DatabaseReference reference;
     public Button createQuestionBtn;
     public Button deleteQuestionBtn;
-
+    public string uid;
+    public Text displayDeleteMessage;
+    public InputField deleteQuestionInput;
     public InputField answerInputField;
     public InputField questionInputField;
     public InputField option1InputField;
@@ -22,7 +24,6 @@ public class QuestionController : MonoBehaviour
     public Dropdown dropdownWorld;
     public Dropdown dropdownTopic;
     public Dropdown dropdownLevel;
-    public Dropdown dropdownAnswer;
     public Question questionData { get; private set; }
 
 
@@ -32,7 +33,8 @@ public class QuestionController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
@@ -42,7 +44,7 @@ public class QuestionController : MonoBehaviour
                 // Get the root reference location of the database.
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-             
+
             }
             else
             {
@@ -57,7 +59,7 @@ public class QuestionController : MonoBehaviour
         //print("Before loading questionlist count: " + questionList.Count);
         //if (questionList.Count == 0)
         //{
-          //  questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(1,1);
+        //  questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(1,1);
         //}
     }
 
@@ -92,9 +94,12 @@ public class QuestionController : MonoBehaviour
 
                 DataSnapshot snapshot = task.Result;
 
+
                 //print("test: " + snapshot.Child("Questions").ChildrenCount);
+
                 qid = (int)snapshot.Child("Questions").ChildrenCount + 1;
-                print("QID" + qid);
+                print("TOTAL CHILD VALUE" + snapshot.Child("Questions").ChildrenCount);
+                print("==============================QID2==========================" + qid2);
 
                 //LocPickerString = LocationPicker.GetComponent.< UI.Dropdown > ().itemText.text
                 //print("Level" + dropdownLevel.options[dropdownLevel.value].text);
@@ -102,8 +107,8 @@ public class QuestionController : MonoBehaviour
                 //add
                 //print(diff);
 
-                Question question = new Question(qid, dropdownWorld.value+1, dropdownTopic.value+1, (dropdownLevel.value+1).ToString()
-                 , questionInputField.text, dropdownAnswer.value+1,
+                Question question = new Question(qid, dropdownWorld.value, dropdownTopic.value, dropdownLevel.value.ToString()
+                 , questionInputField.text, int.Parse(answerInputField.text),
                 option1InputField.text, option2InputField.text, option3InputField.text, option4InputField.text);
                 string json = JsonUtility.ToJson(question);
 
@@ -111,7 +116,7 @@ public class QuestionController : MonoBehaviour
                 reference.Child("Questions").Child(qid.ToString()).SetRawJsonValueAsync(json);
             }
         });
-    
+
 
         /*Question question = new Question(1234, 123, 274,
                     "difficulty","question", 456,
@@ -210,7 +215,7 @@ public class QuestionController : MonoBehaviour
                     questionList_All.Add(questionData);
                 }
             }
-            
+
 
             print("Current list of questions in question id: " + questionList_All.Count);
             PlayerPrefs.SetInt("QuestionListCount", questionList_All.Count);
@@ -231,7 +236,7 @@ public class QuestionController : MonoBehaviour
         });
     }
 
-    public void DeleteQuestion()
+    /*public void DeleteQuestion()
     {
         //Debug.LogFormat("Question: " + questionInputField.text);
 
@@ -242,5 +247,59 @@ public class QuestionController : MonoBehaviour
         //reference.Child("Questions").Child("1234").RemoveValueAsync();
         //displayDeleteMessage.text = deleteAssignmentInput.text + " Successfully Deleted" ;
 
+    }*/
+
+    public void DeleteQuestion()
+    {
+        bool questionIdFound = false;
+        Debug.LogFormat("----HERE---");
+        uid = PlayerPrefs.GetString("UserID");
+        Debug.LogFormat("----Question INFO ID---" + uid);
+
+        FirebaseDatabase.DefaultInstance.GetReference("Questions").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("Error in data retrieval from Question table");
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                print("=================================REACH DELETE QUESTION 1===================================");
+                foreach (DataSnapshot questionNode in snapshot.Children)
+                {
+                    print("=================================REACH DELETE QUESTION 2===================================");
+
+                   //var questiontDict = (IDictionary<string, object>)questionNode.Value;
+
+                   // Debug.Log("QUESTION NAME:" + key);
+                    Debug.Log("Inputted Text:" + deleteQuestionInput.text);
+                    print("QUESTION KEY" + questionNode.Key);
+
+                    if (questionNode.Key == deleteQuestionInput.text.ToString())
+                    {
+                        reference.Child("Questions").Child(questionNode.Key).RemoveValueAsync();
+
+                        displayDeleteMessage.text = deleteQuestionInput.text + "\n Successfully Deleted";
+                        questionIdFound = true;
+                        break;
+                    }
+                }
+            }
+        });
+
+        if (!questionIdFound)
+        {
+            displayDeleteMessage.text = deleteQuestionInput.text + "\n Is Not Found In The Database";
+        }
+
+        Invoke("ClearMessage", 3);
     }
+
+    void ClearMessage()
+    {
+        deleteQuestionInput.text = "";
+        displayDeleteMessage.text = "";
+    }
+
 }
