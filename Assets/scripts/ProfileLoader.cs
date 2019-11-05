@@ -246,7 +246,7 @@ public class ProfileLoader : MonoBehaviour
                 RunOnMainThread(() =>
                 {
                     // Hide loading screen after finished loading
-                    HideLoadingScreen();
+                    //HideLoadingScreen();
                     return 0;
                 });
             }
