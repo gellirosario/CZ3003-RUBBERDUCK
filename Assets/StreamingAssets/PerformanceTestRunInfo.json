@@ -17,7 +17,7 @@
         "RevisionValue": 15453773
     },
     "BuildSettings": {
-        "Platform": "WindowsEditor",
+        "Platform": "",
         "BuildTarget": "Android",
         "DevelopmentPlayer": false,
         "AndroidBuildSystem": "Gradle"
@@ -36,22 +36,22 @@
         "BlendWeights": ""
     },
     "PlayerSettings": {
-        "ScriptingBackend": "",
+        "ScriptingBackend": "Mono2x",
         "VrSupported": false,
-        "MtRendering": false,
+        "MtRendering": true,
         "GraphicsJobs": false,
         "GpuSkinning": false,
-        "GraphicsApi": "",
-        "Batchmode": "",
-        "StereoRenderingPath": "",
-        "RenderThreadingMode": "",
-        "AndroidMinimumSdkVersion": "",
-        "AndroidTargetSdkVersion": "",
+        "GraphicsApi": "Vulkan",
+        "Batchmode": "False",
+        "StereoRenderingPath": "MultiPass",
+        "RenderThreadingMode": "MultiThreaded",
+        "AndroidMinimumSdkVersion": "AndroidApiLevel16",
+        "AndroidTargetSdkVersion": "AndroidApiLevel28",
         "EnabledXrTargets": [],
         "ScriptingRuntimeVersion": ""
     },
     "TestSuite": "",
-    "StartTime": 1572960167882.3362,
+    "StartTime": 1572969730599.6855,
     "EndTime": 0.0,
     "Results": []
 }
