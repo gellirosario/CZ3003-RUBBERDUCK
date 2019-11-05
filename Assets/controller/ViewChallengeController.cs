@@ -11,7 +11,7 @@ using System;
 public class ViewChallengeController : MonoBehaviour
 {
     string id, username;
-    int index, count;
+    int index, crCount, comCount;
 
     /*---------created----------*/
     public Text crId, crQns, crPlayers, crNum;
@@ -59,20 +59,25 @@ public class ViewChallengeController : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                count = 1; index = 0;
+                crCount = 1; comCount = 1; index = 0;
 
                 DataSnapshot snapshot = task.Result;
                 foreach (DataSnapshot challenge in snapshot.Children)
                 {
+                    
                     string challengeData = challenge.GetRawJsonValue();
                     Debug.Log(challengeData);
 
                    
                     challengesData = JsonUtility.FromJson<Challenge>(challengeData);
 
-                    loadCreatedChallenge(challengesData, challengeData, count);
-                    loadCompletedChallenge(challengesData, challengeData, count);
-                    
+                    if(loadCreatedChallenge(challengesData, challengeData, crCount)){
+                        crCount++;
+                    }
+
+                    if(loadCompletedChallenge(challengesData, challengeData, comCount)){
+                        comCount++;
+                    }
                 }
                 index++;
             }
@@ -80,7 +85,7 @@ public class ViewChallengeController : MonoBehaviour
         });
     }
 
-    public void loadCreatedChallenge(Challenge challengesDate, string challengeData, int count)
+    public bool loadCreatedChallenge(Challenge challengesDate, string challengeData, int count)
     {
         Debug.Log("---created----");
         if (challengesData.username == username)
@@ -101,10 +106,13 @@ public class ViewChallengeController : MonoBehaviour
             Debug.Log("text " + crId.text);
             Debug.Log(crQns.text);
             Debug.Log(crPlayers.text);
+
+            return true;
         }
+        return false;
     }
 
-    public void loadCompletedChallenge(Challenge challengesDate, string challengeData, int count)
+    public bool loadCompletedChallenge(Challenge challengesDate, string challengeData, int count)
     {
         Debug.Log("---completed----");
         try
@@ -124,14 +132,17 @@ public class ViewChallengeController : MonoBehaviour
                 comScore.text += completedData.challengePlayers[index].score + "\n";
                 comNum.text += count + ".\n";
                 count++;
+
+                return true;
             }
+            return false;
         }
         catch (Exception ex)
         {
             Debug.Log(ex);
+            return false;
         }
     }
-
 
 
     void Start()
