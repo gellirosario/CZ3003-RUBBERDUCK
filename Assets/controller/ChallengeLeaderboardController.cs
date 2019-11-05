@@ -19,6 +19,7 @@ public class ChallengeLeaderboardController : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("Initiating Challenge LB Controller...");
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
@@ -36,7 +37,7 @@ public class ChallengeLeaderboardController : MonoBehaviour
         });
     }
 
-    void Start()
+    void OnEnable()
     {
         positions.text = "";
         playerNames.text = "";
@@ -61,6 +62,7 @@ public class ChallengeLeaderboardController : MonoBehaviour
                 {
                     if (challenge.Key == PlayerPrefs.GetString("challengeID"))
                     {
+                        Debug.Log("THIS CHALLENGE IS : " + PlayerPrefs.GetString("challengeID"));
                         string challengeData = challenge.GetRawJsonValue();
                         challengeEntries = JsonUtility.FromJson<Challenge>(challengeData).challengePlayers;
                         Debug.Log("Found challenge entries: " + challengeEntries.Count);
@@ -84,6 +86,11 @@ public class ChallengeLeaderboardController : MonoBehaviour
             playerNames.text += entriesToPrint[i].name + "\n";
             scores.text += entriesToPrint[i].score + "\n";
         }
+    }
+
+    public void CloseLeaderboard()
+    {
+        gameObject.SetActive(false);
     }
 
 }

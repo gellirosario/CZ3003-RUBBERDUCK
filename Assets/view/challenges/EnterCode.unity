@@ -2586,11 +2586,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 951217429}
+      objectReference: {fileID: 7858029905075064421}
+    - target: {fileID: 7858029905976121174, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseLeaderboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858029905976121174, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858029905976121174, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858029905976121174, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858029905976121174, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7858029905720887844, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 257.53845
+      value: 259.0329
       objectReference: {fileID: 0}
     - target: {fileID: 7858029906345165269, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
@@ -2610,12 +2635,12 @@ PrefabInstance:
     - target: {fileID: 7858029906345165269, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -128.76923
+      value: -129.51645
       objectReference: {fileID: 0}
     - target: {fileID: 7858029906345165269, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 257.53845
+      value: 259.0329
       objectReference: {fileID: 0}
     - target: {fileID: 7858029904514725273, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
@@ -2635,12 +2660,12 @@ PrefabInstance:
     - target: {fileID: 7858029904514725273, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -128.76923
+      value: -129.51645
       objectReference: {fileID: 0}
     - target: {fileID: 7858029904514725273, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 257.53845
+      value: 259.0329
       objectReference: {fileID: 0}
     - target: {fileID: 7858029905379536592, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
@@ -2660,12 +2685,12 @@ PrefabInstance:
     - target: {fileID: 7858029905379536592, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -128.76923
+      value: -129.51645
       objectReference: {fileID: 0}
     - target: {fileID: 7858029905379536592, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 257.53845
+      value: 259.0329
       objectReference: {fileID: 0}
     - target: {fileID: 7858029905781825580, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
         type: 3}
@@ -2679,3 +2704,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f36cd853bd64634a9a30b9f0e43e3c1, type: 3}
+--- !u!114 &7858029905075064421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7858029905327067104, guid: 9f36cd853bd64634a9a30b9f0e43e3c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7858029905075064420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319799680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2d9852151ea8b4baf6530ee7e4c717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
