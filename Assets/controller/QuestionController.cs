@@ -99,7 +99,6 @@ public class QuestionController : MonoBehaviour
 
                 qid = (int)snapshot.Child("Questions").ChildrenCount + 1;
                 print("TOTAL CHILD VALUE" + snapshot.Child("Questions").ChildrenCount);
-                print("==============================QID2==========================" + qid2);
 
                 //LocPickerString = LocationPicker.GetComponent.< UI.Dropdown > ().itemText.text
                 //print("Level" + dropdownLevel.options[dropdownLevel.value].text);
