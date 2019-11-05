@@ -24,6 +24,7 @@ public class QuestionController : MonoBehaviour
     public Dropdown dropdownWorld;
     public Dropdown dropdownStage;
     public Dropdown dropdownDifficulty;
+    public Dropdown dropdownAnswer;
     public Question questionData { get; private set; }
 
 
@@ -100,7 +101,7 @@ public class QuestionController : MonoBehaviour
                 //print(diff);
 
                 Question question = new Question(qid, dropdownWorld.value, dropdownStage.value, dropdownDifficulty.value.ToString()
-                 , questionInputField.text, int.Parse(answerInputField.text),
+                 , questionInputField.text, dropdownAnswer.value,
                 option1InputField.text, option2InputField.text, option3InputField.text, option4InputField.text);
                 string json = JsonUtility.ToJson(question);
 

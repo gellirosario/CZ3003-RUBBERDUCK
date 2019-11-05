@@ -2615,6 +2615,7 @@ MonoBehaviour:
   dropdownWorld: {fileID: 0}
   dropdownStage: {fileID: 0}
   dropdownDifficulty: {fileID: 0}
+  dropdownAnswer: {fileID: 0}
   questionList_All: []
 --- !u!1 &927809786
 GameObject:
@@ -5267,8 +5268,9 @@ MonoBehaviour:
   option3InputField: {fileID: 1491027228}
   option4InputField: {fileID: 1900353292}
   dropdownWorld: {fileID: 2064650423}
-  dropdownStage: {fileID: 0}
-  dropdownDifficulty: {fileID: 0}
+  dropdownStage: {fileID: 1094694158}
+  dropdownDifficulty: {fileID: 2032846212}
+  dropdownAnswer: {fileID: 1956580561}
   questionList_All: []
 --- !u!1 &1582342032
 GameObject:
