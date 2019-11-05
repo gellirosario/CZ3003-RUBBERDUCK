@@ -28,7 +28,7 @@ public class QuestionContainer : MonoBehaviour
         questionItem = currentItem;
         scrollList = currentScrollList;
 
-        assignmentLabel.text = questionItem.assignmentTxt;
+        //assignmentLabel.text = questionItem.assignmentTxt;
         worldText.text = questionItem.worldTxt;
         stageText.text = questionItem.stageTxt;
         difficultyText.text = questionItem.difficultyTxt;

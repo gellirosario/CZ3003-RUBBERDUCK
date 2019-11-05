@@ -89,7 +89,7 @@ public class QuestionScrollList : MonoBehaviour
             QuestionItem1 questionItem = new QuestionItem1();
             questionItemList.Add(questionItem);
 
-            questionItem.assignmentTxt = "";
+            //questionItem.assignmentTxt = "";
             questionItem.worldTxt = "Topic: " + questionList[i].world.ToString();
             questionItem.stageTxt = "Subtopic: " + questionList[i].stage.ToString();
             questionItem.difficultyTxt = questionList[i].difficulty;
@@ -108,6 +108,7 @@ public class QuestionScrollList : MonoBehaviour
 
             QuestionContainer questionContainer = newContainer.GetComponent<QuestionContainer>();
             print("Before QuestionContainer SetUp");
+            print("QUESTION ITEM COUNT: " + questionItemList);
             questionContainer.Setup(questionItem, this);
             print("After QuestionContainer SetUp");
         }
