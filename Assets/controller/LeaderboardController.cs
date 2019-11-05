@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LeaderboardController : MonoBehaviour
 {
    
-    public Text qns, pts, topName, num;
+    public Text qns, pts, topName, num, nullMsg;
     
     void Start()
     {
@@ -28,6 +28,11 @@ public class LeaderboardController : MonoBehaviour
             topName.text += item.name + "\n";
             num.text += i + ".\n";
             i++;
+        }
+
+        if(i==1)
+        {
+            nullMsg.text = "No data found.";
         }
 
     }

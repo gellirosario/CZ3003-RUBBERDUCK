@@ -64,7 +64,7 @@ public class EnterCodeController : MonoBehaviour
         
          if(selected== false)
         { 
-         //messageTxt.text = "Cannot find code " + inputField.text + " in firebase";
+         messageTxt.text = "Cannot find code '" + inputField.text + "'";
         }
 
     }

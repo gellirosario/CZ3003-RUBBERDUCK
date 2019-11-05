@@ -14,10 +14,10 @@ public class ViewChallengeController : MonoBehaviour
     int index, crCount, comCount;
 
     /*---------created----------*/
-    public Text crId, crQns, crPlayers, crNum;
+    public Text crId, crQns, crPlayers, crNum, crNullMsg;
 
     /*--------completed---------*/
-    public Text comId, comName, comScore, comQns, comNum;
+    public Text comId, comName, comScore, comQns, comNum, comNullMsg;
 
     private FirebaseApp app;
     private DatabaseReference reference;
@@ -78,8 +78,17 @@ public class ViewChallengeController : MonoBehaviour
                     }
                 }
                 index++;
-            }
 
+                if (crCount == 1)
+                {
+                    crNullMsg.text = "No data found.";
+                }
+
+                if (comCount == 1)
+                {
+                    comNullMsg.text = "No data found.";
+                }
+            }
         });
     }
 
