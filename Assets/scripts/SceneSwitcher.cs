@@ -9,5 +9,17 @@ public class SceneSwitcher : MonoBehaviour
     {
        SceneManager.LoadScene(sceneName);
     }
-    
+
+    public void GoToPlayerOrTeacherMain()
+    {
+        if(PlayerPrefs.GetString("UserType") == "Player")
+        {
+            SceneManager.LoadScene("PlayerMain");
+        }
+        else if (PlayerPrefs.GetString("UserType") == "Teacher")
+        {
+            SceneManager.LoadScene("TeacherMain");
+        }
+    }
+
 }
