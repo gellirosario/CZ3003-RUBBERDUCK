@@ -294,6 +294,8 @@ public class LevelController : MonoBehaviour
         o2Text.text = "b. " + o2;
         o3Text.text = "c. " + o3;
         o4Text.text = "d. " + o4;
+
+        doUpdate = false;
     }
     
     public void SetDifficulty(string difficulty)
@@ -328,6 +330,8 @@ public class LevelController : MonoBehaviour
     // Check selection option
     public void CheckAnswer(int selectedOption)
     {
+        doUpdate = false;
+
         if (selectedOption == answer)
         {
             //==================
