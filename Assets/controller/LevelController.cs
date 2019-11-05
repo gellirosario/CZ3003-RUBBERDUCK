@@ -304,10 +304,10 @@ public class LevelController : MonoBehaviour
             switch (difficulty)
             {
                 case "Easy":
-                    difficulty = "Normal";
+                    this.difficulty = "Normal";
                     break;
                 case "Normal":
-                    difficulty = "Hard";
+                    this.difficulty = "Hard";
                     break;
             }
         }
@@ -316,10 +316,10 @@ public class LevelController : MonoBehaviour
             switch (difficulty)
             {
                 case "Normal":
-                    difficulty = "Easy";
+                    this.difficulty = "Easy";
                     break;
                 case "Hard":
-                    difficulty = "Normal";
+                    this.difficulty = "Normal";
                     break;
             }
         }
