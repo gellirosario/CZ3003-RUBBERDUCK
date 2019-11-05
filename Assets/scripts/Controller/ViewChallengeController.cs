@@ -10,8 +10,8 @@ using System;
 
 public class ViewChallengeController : MonoBehaviour
 {
-    string id, username;
-    int index, crCount, comCount;
+    string username;
+    int crCount, comCount;
 
     /*---------created----------*/
     public Text crId, crQns, crPlayers, crNum, crNullMsg;
@@ -59,7 +59,7 @@ public class ViewChallengeController : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                crCount = 1; comCount = 1; index = 0;
+                crCount = 1; comCount = 1;
 
                 DataSnapshot snapshot = task.Result;
                 foreach (DataSnapshot challenge in snapshot.Children)
@@ -69,15 +69,16 @@ public class ViewChallengeController : MonoBehaviour
 
                     challengesData = JsonUtility.FromJson<Challenge>(challengeData);
 
-                    if(loadCreatedChallenge(challengesData, challengeData, crCount)){
+                    if (loadCreatedChallenge(challengesData, challengeData, crCount))
+                    {
                         crCount++;
                     }
 
-                    if(loadCompletedChallenge(challengesData, challengeData, comCount)){
+                    if (loadCompletedChallenge(challengesData, challengeData, comCount))
+                    {
                         comCount++;
                     }
                 }
-                index++;
 
                 if (crCount == 1)
                 {
@@ -92,7 +93,7 @@ public class ViewChallengeController : MonoBehaviour
         });
     }
 
-    public bool loadCreatedChallenge(Challenge challengesDate, string challengeData, int count)
+    public bool loadCreatedChallenge(Challenge challengesData, string challengeData, int count)
     {
         Debug.Log("---created----");
         if (challengesData.username == username)
@@ -118,35 +119,45 @@ public class ViewChallengeController : MonoBehaviour
         return false;
     }
 
-    public bool loadCompletedChallenge(Challenge challengesDate, string challengeData, int count)
+    public bool loadCompletedChallenge(Challenge challengesData, string challengeData, int count)
     {
         Debug.Log("---completed----");
         try
         {
-            if (challengesData.challengePlayers[index].name == username)
+            int index;
+            Debug.Log("count" + challengesData.challengePlayers.Count);
+            for (index = 0; index < challengesData.challengePlayers.Count; index++)
             {
-                completedData = JsonUtility.FromJson<Challenge>(challengeData);
+                if (challengesData.challengePlayers[index].name == username)
+                {
+                    completedData = JsonUtility.FromJson<Challenge>(challengeData);
 
-                Debug.Log("id " + completedData.challengeId);
-                Debug.Log("creator " + completedData.username);
-                Debug.Log("qns " + completedData.challengeQns.Count.ToString());
-                Debug.Log("score " + completedData.challengePlayers[index].score);
+                    comId.text += completedData.challengeId + "\n";
+                    comName.text += completedData.username + "\n";
+                    comQns.text += completedData.challengeQns.Count.ToString() + "\n";
+                    comScore.text += completedData.challengePlayers[index].score + "\n";
+                    comNum.text += count + ".\n";
 
-                comId.text += completedData.challengeId + "\n";
-                comName.text += completedData.username + "\n";
-                comQns.text += completedData.challengeQns.Count.ToString() + "\n";
-                comScore.text += completedData.challengePlayers[index].score + "\n";
-                comNum.text += count + ".\n";
+                    Debug.Log("found completed" + completedData.challengePlayers[index]);
+                    Debug.Log("completed id " + completedData.challengeId);
+                    Debug.Log("completed creator " + completedData.username);
+                    Debug.Log("completed qns " + completedData.challengeQns.Count.ToString());
+                    Debug.Log("completed score " + completedData.challengePlayers[index].score);
 
-                return true;
+                    return true;
+                } 
+                Debug.Log("nothing found on  index " + index);
+                index++;
             }
+            Debug.Log("nothing found");
             return false;
         }
         catch (Exception ex)
         {
             Debug.Log(ex);
-            return false;
         }
+        Debug.Log("nothing found");
+        return false;
     }
 
 
