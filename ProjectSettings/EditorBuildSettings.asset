@@ -92,4 +92,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/question/ViewQuestion.unity
     guid: 050553a84ef488844bf7ce5a4c905bce
+  - enabled: 1
+    path: Assets/view/play/AssignmentLevel.unity
+    guid: a57bf98ec47071c42a14b1ac7c3522e6
   m_configObjects: {}

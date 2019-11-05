@@ -15,7 +15,7 @@ public class AssignmentEntry //this class is for storing player ids that have co
     }
 }
 
-public class Assignment 
+public class Assignment
 {
     public string assignmentId;
     public string assignmentCreator;
@@ -43,7 +43,7 @@ public class Assignment
 
     public Assignment(List<int> qns, string creator)
     {
-        this.assignmentId = generateId();
+        this.assignmentId = generateAssignmentID();
         this.assignmentQns = qns;
         this.assignmentCreator = creator;
         this.assignmentPlayers = new List<AssignmentEntry>();
@@ -57,9 +57,10 @@ public class Assignment
         this.assignmentPlayers = players;
     }*/
 
-    public Assignment(string id, List<int> qns, string creator)
+    public Assignment(string assignmentName, List<int> qns, string creator)
     {
-        this.assignmentId = id;
+        this.assignmentName = assignmentName;
+        this.assignmentId = generateAssignmentID();
         this.assignmentQns = qns;
         this.assignmentCreator = creator;
     }
@@ -70,7 +71,7 @@ public class Assignment
     }
 
     //generate an 5-character long random ID for the assignments
-    private string generateId()
+    private string generateAssignmentID()
     {
         string id = "";
 
@@ -87,7 +88,7 @@ public class Assignment
 
 
 
-/// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Assignment()
     {
@@ -95,7 +96,7 @@ public class Assignment
 
     public Assignment(string assignmentName, int qnID, int world, int stage, string difficulty, string question, int answer, string o1, string o2, string o3, string o4)
     {
-       
+
         this.assignmentName = assignmentName;
         this.qnID = qnID;
         this.world = world;
@@ -112,7 +113,7 @@ public class Assignment
     // Updating IDictionary to Class
     public Assignment(IDictionary<string, object> dict)
     {
-        
+
         this.assignmentName = dict["assignmentName"].ToString();
         this.qnID = int.Parse(dict["qnID"].ToString());
         this.world = int.Parse(dict["world"].ToString());
@@ -126,5 +127,5 @@ public class Assignment
         this.option4 = dict["option4"].ToString();
     }
 
-    
+
 }
