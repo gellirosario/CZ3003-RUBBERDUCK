@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using UnityEngine.SceneManagement;
 
 public class CreateChallengeController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class CreateChallengeController : MonoBehaviour
 
     private FirebaseApp app;
     private DatabaseReference reference;
+
+    public Challenge newChallenge;
 
     private void Start()
     {
@@ -122,7 +125,7 @@ public class CreateChallengeController : MonoBehaviour
         //get name of challenge creator
         string creator = ProfileLoader.userData.name;
 
-        Challenge newChallenge = new Challenge(questionList, creator);
+        newChallenge = new Challenge(questionList, creator);
 
         Debug.Log("Challenge created with ID of " + newChallenge.challengeId);
 
@@ -197,5 +200,12 @@ public class CreateChallengeController : MonoBehaviour
         }
 
         return randomList;
+    }
+
+    public void PlayChallenge()
+    {
+        PlayerPrefs.SetString("challengeID", newChallenge.challengeId);
+        QuestionLoader.Instance.challenge = newChallenge;
+        SceneManager.LoadScene("ChallengeLevel");
     }
 }
