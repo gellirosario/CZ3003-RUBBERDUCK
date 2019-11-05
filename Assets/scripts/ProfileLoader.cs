@@ -175,10 +175,12 @@ public class ProfileLoader : MonoBehaviour
 
                     }
                 }
+                /*
                 Debug.Log(playerData.characterID);
                 Debug.Log(playerData.mastery);
                 Debug.Log(playerData.totalPoints);
                 Debug.Log(playerData.totalQnAnswered);
+                */
 
                 RunOnMainThread(() =>
                 {
@@ -240,6 +242,13 @@ public class ProfileLoader : MonoBehaviour
                         }
                     }
                 }
+
+                RunOnMainThread(() =>
+                {
+                    // Hide loading screen after finished loading
+                    HideLoadingScreen();
+                    return 0;
+                });
             }
         });
     }

@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 4318938738256105738}
   - component: {fileID: 7529598178062326514}
   - component: {fileID: 8363186332244662136}
+  - component: {fileID: 7258913566835523538}
   m_Layer: 0
   m_Name: QuestionBox
   m_TagString: Untagged
@@ -225,6 +226,30 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &7258913566835523538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610109007022788216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a3187751cc51e4faaf760d76708b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newImage: {fileID: 4318938738256105738}
+  assignmentLabel: {fileID: 1660792402396169254}
+  worldText: {fileID: 5455794316907444978}
+  stageText: {fileID: 5344864744385489495}
+  difficultyText: {fileID: 1743644003740181205}
+  questionIDText: {fileID: 1263257946178184434}
+  questionText: {fileID: 6263395813306771399}
+  o1Text: {fileID: 8778431005307791835}
+  o2Text: {fileID: 3083439428911087909}
+  o3Text: {fileID: 6269893316513987286}
+  o4Text: {fileID: 666865965803437606}
+  answerText: {fileID: 2665792449215564055}
 --- !u!1 &3664486176677302156
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +503,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AssignmentName
+  m_Text: Name
 --- !u!1 &4997822098789865200
 GameObject:
   m_ObjectHideFlags: 0

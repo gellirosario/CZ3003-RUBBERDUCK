@@ -99,16 +99,17 @@ public class LogInController : MonoBehaviour
             
             RunOnMainThread(() =>
             {
-                //PlayerPrefs.SetString("LoginUser", user != null ? user.Email : "Unknown");
                 PlayerPrefs.SetString("UserID", user.UserId.ToString());
-
-                 if(Regex.IsMatch(user.Email, MatchTeacherEmailPattern))
+                
+                if (Regex.IsMatch(user.Email, MatchTeacherEmailPattern))
                 {
-                    SceneManager.LoadScene("TeacherMain");
+                    SceneManager.LoadScene("TeacherMain"); // Go to Teacher Main Menu
+                    PlayerPrefs.SetString("UserType", "Teacher"); // Set User Type - Teacher
                 }
                 else
                 {
-                    SceneManager.LoadScene("PlayerMain");
+                    SceneManager.LoadScene("PlayerMain"); // Go to Player Main Menu
+                    PlayerPrefs.SetString("UserType", "Player"); // Set User Type - Player
                 }
 
                 
