@@ -138,7 +138,7 @@ public class ViewChallengeController : MonoBehaviour
                     comScore.text += completedData.challengePlayers[index].score + "\n";
                     comNum.text += count + ".\n";
 
-                    Debug.Log("found completed" + completedData.challengePlayers[index]);
+                    Debug.Log("found completed " + completedData.challengePlayers[index]);
                     Debug.Log("completed id " + completedData.challengeId);
                     Debug.Log("completed creator " + completedData.username);
                     Debug.Log("completed qns " + completedData.challengeQns.Count.ToString());
@@ -149,8 +149,6 @@ public class ViewChallengeController : MonoBehaviour
                 Debug.Log("nothing found on  index " + index);
                 index++;
             }
-            Debug.Log("nothing found");
-            return false;
         }
         catch (Exception ex)
         {
