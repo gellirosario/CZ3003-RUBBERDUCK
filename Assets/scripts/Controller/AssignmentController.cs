@@ -15,10 +15,16 @@ public class AssignmentController : MonoBehaviour
     public InputField deleteAssignmentInput;
     public Text displayDeleteMessage;
     public string uid;
+    private bool assignmentNameFound = false;
+    int dictItems = -1;
+    int dictCount = 0;
+
     private List<Question> questionList = new List<Question>();
-    //private List<Assignment> assignmentList = new List<Assignment>();
     private List<string> assignmentNameList = new List<string>();
     private List<Assignment> assignmentQuestionList = new List<Assignment>();
+
+    public GameObject popupSuccess, popupFailure;
+    public Text idText, warningText;
     public Assignment assignmentData { get; private set; }
     private DatabaseReference reference;
 
@@ -65,7 +71,24 @@ public class AssignmentController : MonoBehaviour
         }
     }
 
+    //toggles the popup window on assignment deletion
+    public void TogglePopupSuccess(GameObject popupSuccess)
+    {
+        if (popupSuccess != null)
+        {
+            bool isActive = popupSuccess.activeSelf;
+            popupSuccess.SetActive(!isActive);
+        }
+    }
 
+    public void TogglePopupFailure(GameObject popupFailure)
+    {
+        if (popupFailure != null)
+        {
+            bool isActive = popupFailure.activeSelf;
+            popupFailure.SetActive(!isActive);
+        }
+    }
     public void SaveAssignment()
     {
         print("After loading questionlist count: " + questionList.Count);
@@ -162,10 +185,11 @@ public class AssignmentController : MonoBehaviour
 
     public void DeleteAssignment()
     {
-        bool assignmentNameFound = false;
+        PlayerPrefs.SetString("DeleteAssignmentCode", deleteAssignmentInput.text);
         Debug.LogFormat("----HERE---");
         uid = PlayerPrefs.GetString("UserID");
         Debug.LogFormat("----ASSIGNMENT INFO ID---" + uid);
+        idText.text = "Assignment Code: " + deleteAssignmentInput.text;
 
         FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
         {
@@ -183,35 +207,39 @@ public class AssignmentController : MonoBehaviour
                     if (assignmentNode.Key == uid)
                     {
                         var assignmentDict = (IDictionary<string, object>)assignmentNode.Value;
+                        Debug.Log("Dictionary items:" + assignmentDict.Count);
+                        dictItems = assignmentDict.Count;
+                        dictCount = 0;
+
                         foreach (var key in assignmentDict.Keys) // loop through keys
                         {
                             Debug.Log("ASSIGNMENT NAME:" + key);
                             Debug.Log("Inputted Text:" + deleteAssignmentInput.text);
                             if (key.ToString() == deleteAssignmentInput.text.ToString())
                             {
-                                reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(deleteAssignmentInput.text).RemoveValueAsync();
-                                displayDeleteMessage.text = deleteAssignmentInput.text + "\n Successfully Deleted";
+                                dictCount += 1;
+                                //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(deleteAssignmentInput.text).RemoveValueAsync();
+                                warningText.text = "Click Confirm to delete " + deleteAssignmentInput.text;
+                                //TogglePopupSuccess(popupSuccess);
+                                TogglePopupFailure(popupFailure);
                                 assignmentNameFound = true;
                                 break;
                             }
                         }
-
                     }
                 }
             }
         });
 
-        if (!assignmentNameFound)
-        {
-            displayDeleteMessage.text = deleteAssignmentInput.text + "\n Is Not Found In The Database";
-        }
-
-        Invoke("ClearMessage", 3);
+        DisplayPopUpMsg();
     }
 
-    void ClearMessage()
+    public void DisplayPopUpMsg()
     {
-        deleteAssignmentInput.text = "";
-        displayDeleteMessage.text = "";
+        if (!assignmentNameFound && (dictCount == dictItems))
+        {
+            TogglePopupFailure(popupFailure);
+        }
+
     }
 }
