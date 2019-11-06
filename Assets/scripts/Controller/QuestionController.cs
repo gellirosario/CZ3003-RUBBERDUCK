@@ -116,7 +116,7 @@ public class QuestionController : MonoBehaviour
                 //add
                 //print(diff);
 
-                Question question = new Question(idTracker, dropdownWorld.value + 1, dropdownStage.value + 1, dropdownDifficulty.options[(dropdownDifficulty.value + 1)].text
+                Question question = new Question(idTracker, dropdownWorld.value + 1, dropdownStage.value + 1, dropdownDifficulty.options[dropdownDifficulty.value].text
                  , questionInputField.text, dropdownAnswer.value + 1,
                 option1InputField.text, option2InputField.text, option3InputField.text, option4InputField.text);
                 string json = JsonUtility.ToJson(question);
