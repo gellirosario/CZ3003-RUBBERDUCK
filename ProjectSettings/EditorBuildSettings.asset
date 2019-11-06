@@ -53,7 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/assignments/CreateAssignment.unity
     guid: 1f7f61b2a0b9d60419996b6a540c3681
-  - enabled: 1
+  - enabled: 0
     path: Assets/view/assignments/DeleteAssignment.unity
     guid: 3b1990ba6f17eae4ab5516059c4cea55
   - enabled: 1
@@ -98,4 +98,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/question/SelectQuestion.unity
     guid: 197bf1164f4f7614faa644ad2c62af0e
+  - enabled: 1
+    path: Assets/view/assignments/DeleteAssignment1.unity
+    guid: 453c1c42f08a7214cb202d76268cbffb
   m_configObjects: {}

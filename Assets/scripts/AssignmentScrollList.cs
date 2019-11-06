@@ -117,6 +117,7 @@ public class AssignmentScrollList : MonoBehaviour
     public void OnButtonClick(string assignmentName)
     {
         Debug.Log(assignmentName);
+        PlayerPrefs.SetString("assignNameCode", assignmentName);
         SceneSwitcher sceneSwitch = gameObject.AddComponent<SceneSwitcher>();
         sceneSwitch.LoadNextScene("AssignmentQuestionList");
     }
