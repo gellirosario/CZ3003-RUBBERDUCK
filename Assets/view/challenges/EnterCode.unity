@@ -1559,7 +1559,7 @@ MonoBehaviour:
   inputField: {fileID: 1458394546}
   messageTxt: {fileID: 2020406219}
   popup: {fileID: 343735950}
-  popup2: {fileID: 998571019}
+  popup2: {fileID: 1182428802}
   idText: {fileID: 2095614719}
   idText2: {fileID: 2095614719}
 --- !u!4 &951217430
