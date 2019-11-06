@@ -49,7 +49,7 @@ public class DeleteAssignmentQuestion : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
+        /*FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {
@@ -59,8 +59,9 @@ public class DeleteAssignmentQuestion : MonoBehaviour
             {
                 reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentCode")).RemoveValueAsync();
             }
-        });
+        });*/
 
-        
+        reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentCode")).RemoveValueAsync();
+
     }
 }
