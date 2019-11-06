@@ -1074,6 +1074,7 @@ MonoBehaviour:
   dropdownWorld: {fileID: 755083739}
   dropdownStage: {fileID: 586362920}
   dropdownDifficulty: {fileID: 1707542988}
+  dropdownAnswer: {fileID: 0}
   questionList_All: []
 --- !u!1 &601313420
 GameObject:
@@ -3133,7 +3134,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TeacherMain
+          m_StringArgument: question
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &1436084097
