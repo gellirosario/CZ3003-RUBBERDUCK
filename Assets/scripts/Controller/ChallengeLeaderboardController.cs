@@ -19,6 +19,11 @@ public class ChallengeLeaderboardController : MonoBehaviour
 
     void Awake()
     {
+
+    }
+
+    void OnEnable()
+    {
         Debug.Log("Initiating Challenge LB Controller...");
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -26,6 +31,7 @@ public class ChallengeLeaderboardController : MonoBehaviour
             {
                 FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
                 reference = FirebaseDatabase.DefaultInstance.RootReference;
+                retrieveChallengeFromDB();
 
             }
             else
@@ -35,15 +41,10 @@ public class ChallengeLeaderboardController : MonoBehaviour
                 // Firebase Unity SDK is not safe to use here.
             }
         });
-    }
 
-    void OnEnable()
-    {
         positions.text = "";
         playerNames.text = "";
         scores.text = "";
-
-        retrieveChallengeFromDB();
     }
 
     private void retrieveChallengeFromDB()
