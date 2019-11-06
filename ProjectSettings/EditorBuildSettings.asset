@@ -95,4 +95,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/view/play/AssignmentLevel.unity
     guid: a57bf98ec47071c42a14b1ac7c3522e6
+  - enabled: 1
+    path: Assets/view/question/SelectQuestion.unity
+    guid: 197bf1164f4f7614faa644ad2c62af0e
   m_configObjects: {}

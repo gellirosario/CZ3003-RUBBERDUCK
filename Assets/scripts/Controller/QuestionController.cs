@@ -66,7 +66,7 @@ public class QuestionController : MonoBehaviour
         Debug.LogFormat("Question: " + questionInputField.text);
 
         print("Question: " + questionInputField.text);
-        print("Answer: " + answerInputField.text);
+        //print("Answer: " + answerInputField.text);
 
         // Set up the Editor before calling into the realtime database.
         FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
@@ -210,8 +210,8 @@ public class QuestionController : MonoBehaviour
 
             for (var i = 0; i < questionList_All.Count; i++)
             {
-                if (((dropdownWorld.value + 1) == questionList_All[i].world) && ((dropdownStage.value + 1) == questionList_All[i].stage) && (dropdownDifficulty.value.ToString() == questionList_All[i].difficulty))
-                {
+                //if (((dropdownWorld.value + 1) == questionList_All[i].world) && ((dropdownStage.value + 1) == questionList_All[i].stage) && (dropdownDifficulty.value.ToString() == questionList_All[i].difficulty))
+                //{
                     PlayerPrefs.SetInt("QuestionList(qnID)" + i, questionList_All[i].qnID);
                     PlayerPrefs.SetInt("QuestionList(world)" + i, questionList_All[i].world);
                     PlayerPrefs.SetInt("QuestionList(stage)" + i, questionList_All[i].stage);
@@ -222,8 +222,10 @@ public class QuestionController : MonoBehaviour
                     PlayerPrefs.SetString("QuestionList(option2)" + i, questionList_All[i].option2);
                     PlayerPrefs.SetString("QuestionList(option3)" + i, questionList_All[i].option3);
                     PlayerPrefs.SetString("QuestionList(option4)" + i, questionList_All[i].option4);
-                }
+                //}
             }
+
+            questionList_All.Clear();
         });
     }
 

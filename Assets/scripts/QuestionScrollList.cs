@@ -72,7 +72,18 @@ public class QuestionScrollList : MonoBehaviour
 
     void RefreshDisplay()
     {
+        RemoveQuestionContainers();
         AddQuestionContainers();
+    }
+
+    private void RemoveQuestionContainers()
+    {
+        questionItemList.Clear();
+        while (contentPanel.childCount > 0)
+        {
+            GameObject toRemove = transform.GetChild(0).gameObject;
+            questionObjectPool.ReturnObject(toRemove);
+        }
     }
 
     private void AddQuestionContainers()

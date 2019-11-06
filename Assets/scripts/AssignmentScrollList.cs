@@ -76,6 +76,7 @@ public class AssignmentScrollList : MonoBehaviour
 
     private void RemoveButtons()
     {
+        itemList.Clear();
         while (contentPanel.childCount > 0)
         {
             GameObject toRemove = transform.GetChild(0).gameObject;
@@ -85,6 +86,7 @@ public class AssignmentScrollList : MonoBehaviour
 
     private void AddButtons()
     {
+        
         print("local assignmentlist: " + assignmentNameList.Capacity);
         if (assignmentNameList.Capacity == 0)
             return;
