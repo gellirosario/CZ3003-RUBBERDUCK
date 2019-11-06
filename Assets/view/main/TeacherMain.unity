@@ -1240,11 +1240,11 @@ RectTransform:
   m_Father: {fileID: 1072494650}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: -279}
-  m_SizeDelta: {x: 356.6, y: 76.2}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 76}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1342627970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,6 +1841,7 @@ MonoBehaviour:
   dropdownWorld: {fileID: 0}
   dropdownStage: {fileID: 0}
   dropdownDifficulty: {fileID: 0}
+  dropdownAnswer: {fileID: 0}
   questionList_All: []
 --- !u!114 &1949761258
 MonoBehaviour:
