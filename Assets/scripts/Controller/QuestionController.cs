@@ -74,7 +74,7 @@ public class QuestionController : MonoBehaviour
         // Get the root reference location of the database.
         reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        reference.GetValueAsync().ContinueWith(task =>
+        reference.Child("Questions").GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted)
             {
@@ -90,9 +90,25 @@ public class QuestionController : MonoBehaviour
 
                 //print("test: " + snapshot.Child("Questions").ChildrenCount);
 
-                qid = (int)snapshot.Child("Questions").ChildrenCount + 1;
-                print("TOTAL CHILD VALUE" + snapshot.Child("Questions").ChildrenCount);
+                int idTracker = 0;
 
+                //get the biggest qn id value in db
+                foreach (DataSnapshot questionNode in snapshot.Children)
+                {
+                    //qid = JsonUtility.FromJson<int>(questionNode.GetRawJsonValue());
+                    qid = int.Parse(questionNode.Key.ToString());
+                    if(qid > idTracker)
+                    {
+                        idTracker = qid;
+                    }
+                }
+                Debug.Log(idTracker);
+
+                //increment by 1 for new qn
+                idTracker++;
+
+                //qid = (int)snapshot.Child("Questions").ChildrenCount + 1;
+                //print("TOTAL CHILD VALUE" + snapshot.Child("Questions").ChildrenCount);
 
                 //LocPickerString = LocationPicker.GetComponent.< UI.Dropdown > ().itemText.text
                 //print("Level" + dropdownLevel.options[dropdownLevel.value].text);
@@ -106,7 +122,7 @@ public class QuestionController : MonoBehaviour
                 string json = JsonUtility.ToJson(question);
 
                 print("test:" + json);
-                reference.Child("Questions").Child(qid.ToString()).SetRawJsonValueAsync(json);
+                reference.Child("Questions").Child(idTracker.ToString()).SetRawJsonValueAsync(json);
             }
         });
     }
