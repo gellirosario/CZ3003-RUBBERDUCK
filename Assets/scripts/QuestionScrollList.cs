@@ -97,31 +97,35 @@ public class QuestionScrollList : MonoBehaviour
 
         for (int i = 0; i < itemQuestionCount; i++)
         {
-            QuestionItem1 questionItem = new QuestionItem1();
-            questionItemList.Add(questionItem);
+            if (questionList[i].world == 1 && questionList[i].stage == 1)
+            {
+                QuestionItem1 questionItem = new QuestionItem1();
+                questionItemList.Add(questionItem);
 
-            //questionItem.assignmentTxt = "";
-            questionItem.worldTxt = "Topic: " + questionList[i].world.ToString();
-            questionItem.stageTxt = "Subtopic: " + questionList[i].stage.ToString();
-            questionItem.difficultyTxt = questionList[i].difficulty;
-            questionItem.questionIDTxt = "Qn No.: " + questionList[i].qnID.ToString();
-            questionItem.questionTxt = questionList[i].question;
-            questionItem.o1Txt = questionList[i].option1;
-            questionItem.o2Txt = questionList[i].option2;
-            questionItem.o3Txt = questionList[i].option3;
-            questionItem.o4Txt = questionList[i].option4;
-            questionItem.answerTxt = "Answer: " + questionList[i].answer.ToString();
+                //questionItem.assignmentTxt = "";
+                questionItem.worldTxt = "Topic: " + questionList[i].world.ToString();
+                questionItem.stageTxt = "Subtopic: " + questionList[i].stage.ToString();
+                questionItem.difficultyTxt = questionList[i].difficulty;
+                questionItem.questionIDTxt = "Qn No.: " + questionList[i].qnID.ToString();
+                questionItem.questionTxt = questionList[i].question;
+                questionItem.o1Txt = questionList[i].option1;
+                questionItem.o2Txt = questionList[i].option2;
+                questionItem.o3Txt = questionList[i].option3;
+                questionItem.o4Txt = questionList[i].option4;
+                questionItem.answerTxt = "Answer: " + questionList[i].answer.ToString();
 
-            GameObject newContainer = questionObjectPool.GetObject();
+                GameObject newContainer = questionObjectPool.GetObject();
 
-            //newContainer.transform.SetParent(contentPanel); //Sets "newParent" as the new parent of the player GameObject
-            newContainer.transform.SetParent(contentPanel, false); //Same as above, except this makes the player keep its local orientation rather than its global orientation.
+                //newContainer.transform.SetParent(contentPanel); //Sets "newParent" as the new parent of the player GameObject
+                newContainer.transform.SetParent(contentPanel, false); //Same as above, except this makes the player keep its local orientation rather than its global orientation.
 
-            QuestionContainer questionContainer = newContainer.GetComponent<QuestionContainer>();
-            print("Before QuestionContainer SetUp");
-            print("QUESTION ITEM COUNT: " + questionItemList);
-            questionContainer.Setup(questionItem, this);
-            print("After QuestionContainer SetUp");
+                QuestionContainer questionContainer = newContainer.GetComponent<QuestionContainer>();
+                print("Before QuestionContainer SetUp");
+                print("QUESTION ITEM COUNT: " + questionItemList);
+                questionContainer.Setup(questionItem, this);
+                print("After QuestionContainer SetUp");
+            }
         }
+
     }
 }
