@@ -187,10 +187,10 @@ public class QuestionController : MonoBehaviour
                 {
                     var qnIDDict = (IDictionary<string, object>)qnid.Value;
 
-                    foreach (KeyValuePair<string, object> kvp in qnIDDict)
-                    {
-                        Debug.LogFormat("QUESTION DETAILS ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-                    }
+                    //foreach (KeyValuePair<string, object> kvp in qnIDDict)
+                    //{
+                    //    Debug.LogFormat("QUESTION DETAILS ---- Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                    //}
 
 
                     questionData = new Question(qnIDDict);
