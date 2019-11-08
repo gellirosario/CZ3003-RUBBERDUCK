@@ -185,11 +185,11 @@ public class AssignmentController : MonoBehaviour
 
     public void DeleteAssignment()
     {
-        PlayerPrefs.SetString("DeleteAssignmentCode", deleteAssignmentInput.text);
-        Debug.LogFormat("----HERE---");
+        Debug.LogError("===test====+" + deleteAssignmentInput.text.ToString());
+        PlayerPrefs.SetString("DeleteAssignmentCode", deleteAssignmentInput.text.ToString());
         uid = PlayerPrefs.GetString("UserID");
         Debug.LogFormat("----ASSIGNMENT INFO ID---" + uid);
-        idText.text = "Assignment Code: " + deleteAssignmentInput.text;
+        idText.text = "Assignment Code: " + deleteAssignmentInput.text.ToString();
 
         FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
         {

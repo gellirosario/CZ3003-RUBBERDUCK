@@ -61,6 +61,7 @@ public class DeleteAssignmentQuestion : MonoBehaviour
             }
         });*/
 
+        Debug.LogFormat("DELETE " + PlayerPrefs.GetString("DeleteAssignmentCode"));
         reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentCode")).RemoveValueAsync();
 
     }
