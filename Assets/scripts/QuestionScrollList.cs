@@ -102,16 +102,106 @@ public class QuestionScrollList : MonoBehaviour
                 QuestionItem1 questionItem = new QuestionItem1();
                 questionItemList.Add(questionItem);
 
-                //questionItem.assignmentTxt = "";
-                questionItem.worldTxt = "Topic: " + questionList[i].world.ToString();
-                questionItem.stageTxt = "Subtopic: " + questionList[i].stage.ToString();
-                questionItem.difficultyTxt = questionList[i].difficulty;
-                questionItem.questionIDTxt = "Qn No.: " + questionList[i].qnID.ToString();
+                int topic = questionList[i].world;
+                int subtopic = questionList[i].stage;
+
+                switch (topic)
+                {
+                    case 1:
+                        questionItem.worldTxt = "Topic: Requirements";
+                        switch (subtopic)
+                        {
+                            case 1:
+                                questionItem.stageTxt = "Subtopic: Software Engineering Principles";
+                                break;
+                            case 2:
+                                questionItem.stageTxt = "Subtopic: Requirements Analysis";
+                                break;
+                            case 3:
+                                questionItem.stageTxt = "Subtopic: Modelling";
+                                break;
+                        }
+                        break;
+
+                    case 2:
+                        questionItem.worldTxt = "Topic: Design";
+                        switch (subtopic)
+                        {
+                            case 1:
+                                questionItem.stageTxt = "Subtopic: Architectural Designs";
+                                break;
+                            case 2:
+                                questionItem.stageTxt = "Subtopic: Design Concepts";
+                                break;
+                            case 3:
+                                questionItem.stageTxt = "Subtopic: Component Level Designs";
+                                break;
+                        }
+                        break;
+
+                    case 3:
+                        questionItem.worldTxt = "Topic: Testing";
+                        switch (subtopic)
+                        {
+                            case 1:
+                                questionItem.stageTxt = "Subtopic: Software Elements";
+                                break;
+                            case 2:
+                                questionItem.stageTxt = "Subtopic: Software Components";
+                                break;
+                            case 3:
+                                questionItem.stageTxt = "Subtopic: Software Configuration";
+                                break;
+                        }
+                        break;
+
+                    case 4:
+                        questionItem.worldTxt = "Topic: Implementation";
+                        switch (subtopic)
+                        {
+                            case 1:
+                                questionItem.stageTxt = "Subtopic: Software Testing Techniques and Strategies";
+                                break;
+                            case 2:
+                                questionItem.stageTxt = "Subtopic: Testing Application";
+                                break;
+                            case 3:
+                                questionItem.stageTxt = "Subtopic: Software Testing";
+                                break;
+                        }
+                        break;
+
+                    case 5:
+                        questionItem.worldTxt = "Topic: Maintenance";
+                        switch (subtopic)
+                        {
+                            case 1:
+                                questionItem.stageTxt = "Subtopic: Software Management";
+                                break;
+                            case 2:
+                                questionItem.stageTxt = "Subtopic: Software Configuration";
+                                break;
+                            case 3:
+                                questionItem.stageTxt = "Subtopic: Quality Management";
+                                break;
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+
+                questionItem.assignmentTxt = "";
+                //questionItem.worldTxt = "Topic: " + questionList[i].world.ToString();
+                //questionItem.stageTxt = "Subtopic: " + questionList[i].stage.ToString();
+                questionItem.difficultyTxt = "Difficulty: \n" + questionList[i].difficulty;
+                questionItem.questionIDTxt = "Qn No: " + questionList[i].qnID.ToString();
                 questionItem.questionTxt = questionList[i].question;
-                questionItem.o1Txt = questionList[i].option1;
-                questionItem.o2Txt = questionList[i].option2;
-                questionItem.o3Txt = questionList[i].option3;
-                questionItem.o4Txt = questionList[i].option4;
+                questionItem.o1Txt = "1. " + questionList[i].option1;
+                questionItem.o2Txt = "2. " + questionList[i].option2;
+                questionItem.o3Txt = "3. " + questionList[i].option3;
+                questionItem.o4Txt = "4. " + questionList[i].option4;
                 questionItem.answerTxt = "Answer: " + questionList[i].answer.ToString();
 
                 GameObject newContainer = questionObjectPool.GetObject();

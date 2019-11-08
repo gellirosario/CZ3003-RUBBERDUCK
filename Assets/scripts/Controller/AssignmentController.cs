@@ -24,7 +24,7 @@ public class AssignmentController : MonoBehaviour
     private List<Assignment> assignmentQuestionList = new List<Assignment>();
 
     public GameObject popupSuccess, popupFailure;
-    public Text idText, warningText;
+    public Text idText, warningText, idText2, warningText2;
     public Assignment assignmentData { get; private set; }
     private DatabaseReference reference;
 
@@ -89,6 +89,8 @@ public class AssignmentController : MonoBehaviour
             popupFailure.SetActive(!isActive);
         }
     }
+
+
     public void SaveAssignment()
     {
         print("After loading questionlist count: " + questionList.Count);
@@ -183,13 +185,15 @@ public class AssignmentController : MonoBehaviour
         });
     }
 
+    int checkcode = 0;
+
     public void DeleteAssignment()
     {
         Debug.LogError("===test====+" + deleteAssignmentInput.text.ToString());
-        PlayerPrefs.SetString("DeleteAssignmentCode", deleteAssignmentInput.text.ToString());
+        PlayerPrefs.SetString("DeleteAssignmentName", deleteAssignmentInput.text.ToString());
         uid = PlayerPrefs.GetString("UserID");
         Debug.LogFormat("----ASSIGNMENT INFO ID---" + uid);
-        idText.text = "Assignment Code: " + deleteAssignmentInput.text.ToString();
+        
 
         FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
         {
@@ -217,28 +221,36 @@ public class AssignmentController : MonoBehaviour
                             Debug.Log("Inputted Text:" + deleteAssignmentInput.text);
                             if (key.ToString() == deleteAssignmentInput.text.ToString())
                             {
+                                idText.text = "Assignment Name: " + deleteAssignmentInput.text.ToString();
                                 dictCount += 1;
                                 //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(deleteAssignmentInput.text).RemoveValueAsync();
                                 warningText.text = "Click Confirm to delete " + deleteAssignmentInput.text;
-                                //TogglePopupSuccess(popupSuccess);
-                                TogglePopupFailure(popupFailure);
+                                
+                                checkcode += 1;
                                 assignmentNameFound = true;
                                 break;
                             }
                         }
                     }
                 }
+                DisplayPopUpMsg();
             }
         });
-
-        DisplayPopUpMsg();
     }
 
     public void DisplayPopUpMsg()
     {
-        if (!assignmentNameFound && (dictCount == dictItems))
+        print("============= CHECK CODE " + checkcode);
+        if (checkcode == 0)
         {
+            idText2.text = "Assignment Name: " + deleteAssignmentInput.text.ToString();
+            warningText2.text = "";
             TogglePopupFailure(popupFailure);
+        }
+        else
+        {
+            TogglePopupSuccess(popupSuccess);
+            checkcode = 0;
         }
 
     }

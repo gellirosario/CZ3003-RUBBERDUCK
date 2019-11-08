@@ -11,6 +11,7 @@ using Firebase.Extensions;
 public class DeleteAssignmentQuestion : MonoBehaviour
 {
     private DatabaseReference reference;
+    private GameObject popupSuccess;
 
     void Start()
     {
@@ -35,34 +36,16 @@ public class DeleteAssignmentQuestion : MonoBehaviour
         });
     }
 
-
-
-
-
     public void ConfirmDelete()
     {
-        StartCoroutine(DeleteAssignmentCode());
-        //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(deleteAssignmentInput.text).RemoveValueAsync();
+        StartCoroutine(DeleteAssignmentName());
     }
 
-    private IEnumerator DeleteAssignmentCode()
+    private IEnumerator DeleteAssignmentName()
     {
         yield return new WaitForEndOfFrame();
 
-        /*FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted)
-            {
-                Debug.Log("Error in data retrieval from Assignment table");
-            }
-            else if (task.IsCompleted)
-            {
-                reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentCode")).RemoveValueAsync();
-            }
-        });*/
-
-        Debug.LogFormat("DELETE " + PlayerPrefs.GetString("DeleteAssignmentCode"));
-        reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentCode")).RemoveValueAsync();
-
+        Debug.LogFormat("DELETE " + PlayerPrefs.GetString("DeleteAssignmentName"));
+        reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentName")).RemoveValueAsync();
     }
 }
