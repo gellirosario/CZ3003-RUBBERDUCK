@@ -12,6 +12,7 @@ public class DeleteAssignmentQuestion : MonoBehaviour
 {
     private DatabaseReference reference;
     private GameObject popupSuccess;
+    public Text feedbackText;
 
     void Start()
     {
@@ -47,5 +48,6 @@ public class DeleteAssignmentQuestion : MonoBehaviour
 
         Debug.LogFormat("DELETE " + PlayerPrefs.GetString("DeleteAssignmentName"));
         reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentName")).RemoveValueAsync();
+        feedbackText.text = PlayerPrefs.GetString("DeleteAssignmentName") + " Successfully Deleted";
     }
 }
