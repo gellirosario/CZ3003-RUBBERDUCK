@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -171,7 +169,7 @@ public class AssignmentLevelController : MonoBehaviour
     {
         if (doUpdate == true && questionList != null && questionsLeft > 0)
         {
-            Debug.Log(questionsLeft);
+            Debug.Log("Questions Left: " + questionsLeft);
 
             switch (randomEnemy)
             {

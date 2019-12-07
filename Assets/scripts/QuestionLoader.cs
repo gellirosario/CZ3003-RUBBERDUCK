@@ -131,18 +131,23 @@ public class QuestionLoader : MonoBehaviour
     {
         List<Question> questionList = new List<Question>();
 
+        print("Outside assignment questions");
+        print("Assignment questions count: " + this.assignment.assignmentQns.Count);
         for (int i = 0; i < this.assignment.assignmentQns.Count; i++)
-        {
-            for (int j = 0; j < questionList_All.Count; j++)
             {
-                if (this.assignment.assignmentQns[i] == questionList_All[j].qnID)
+                for (int j = 0; j < questionList_All.Count; j++)
                 {
-                    questionList.Add(questionList_All[j]);
-                    //Debug.Log(questionList_All[j].qnID + " Added");
+                print("Inside assignment questions");
+                if (this.assignment.assignmentQns[i] == questionList_All[j].qnID)
+                    {
+                        questionList.Add(questionList_All[j]);
+                        //Debug.Log(questionList_All[j].qnID + " Added");
+                    }
                 }
-            }
 
-        }
+            }
+        
+        
         return questionList;
     }
 
@@ -174,5 +179,10 @@ public class QuestionLoader : MonoBehaviour
         }
 
         return questionList_Filtered;
+    }
+
+    public List<Question> passmeAllQuestions()
+    {
+        return questionList_All;
     }
 }

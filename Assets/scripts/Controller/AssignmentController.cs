@@ -15,34 +15,17 @@ public class AssignmentController : MonoBehaviour
     public InputField deleteAssignmentInput;
     public Text displayDeleteMessage;
     public string uid;
-    private bool assignmentNameFound = false;
-    int dictItems = -1;
-    int dictCount = 0;
 
     private List<Question> questionList = new List<Question>();
     private List<string> assignmentNameList = new List<string>();
     private List<Assignment> assignmentQuestionList = new List<Assignment>();
 
     public GameObject popupSuccess, popupFailure;
-    public Text idText, warningText, idText2, warningText2;
+    public Text idText, warningText, idText2, warningText2, feedbackText;
     public Assignment assignmentData { get; private set; }
     private DatabaseReference reference;
 
     private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = this;
-            //DontDestroyOnLoad(gameObject);
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
     {
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -63,12 +46,45 @@ public class AssignmentController : MonoBehaviour
             }
         });
 
-        // Retrieve Question List According to World and Stage
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        /*Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Set up the Editor before calling into the realtime database.
+                FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://teamrubberduck-1420e.firebaseio.com/");
+
+                // Get the root reference location of the database.
+                reference = FirebaseDatabase.DefaultInstance.RootReference;
+
+            }
+            else
+            {
+                UnityEngine.Debug.LogError(System.String.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });*/
+
+        /*// Retrieve Question List According to World, Stage and Difficulty
         print("Before loading questionlist count: " + questionList.Count);
         if (questionList.Count == 0)
         {
-            questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(1, 1);
-        }
+            questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(1,1);
+        }*/
     }
 
     //toggles the popup window on assignment deletion
@@ -91,19 +107,45 @@ public class AssignmentController : MonoBehaviour
     }
 
 
-    public void SaveAssignment()
+    public void SaveAssignment(List<int> qnsList)
     {
-        print("After loading questionlist count: " + questionList.Count);
-        DatabaseReference referenceRef = reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(createAssignmentInput.text);
+        print("Enter save assignment");
+        print("Before loading questionlist count: " + questionList.Count);
+        //questionList = QuestionLoader.Instance.FilterQuestionsFromAssignment();
+        List<Question> allQns = new List<Question>();
+        allQns = QuestionLoader.Instance.passmeAllQuestions();
 
+        for (int i = 0; i < qnsList.Count; i++)
+        {
+            for (int j = 0; j < allQns.Count; j++)
+            {
+                if (qnsList[i] == allQns[j].qnID)
+                {
+                    questionList.Add(allQns[j]);
+                    //Debug.Log(questionList_All[j].qnID + " Added");
+                }
+            }
+
+        }
+
+        print("After loading questionlist count: " + questionList.Count);
+        print("Assignment Name Inputted Text: " + createAssignmentInput.text.ToString());
+        DatabaseReference referenceRef = reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(createAssignmentInput.text);
+        print("Before looping the qnsList");
         for (int i = 0; i < questionList.Count; i++)
         {
+            print("Inside looping the qnsList");
             Assignment assignment = new Assignment(createAssignmentInput.text, questionList[i].qnID, questionList[i].world, questionList[i].stage, questionList[i].difficulty,
                 questionList[i].question, questionList[i].answer, questionList[i].option1, questionList[i].option2, questionList[i].option3, questionList[i].option4);
             string json = JsonUtility.ToJson(assignment);
             //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(assignment.assignmentName).SetRawJsonValueAsync(json);
             referenceRef.Child((i + 1).ToString()).SetRawJsonValueAsync(json);
         }
+
+        // Clear the number of questions to 0 after adding to firebase
+        questionList.Clear();
+
+        // Clear the Input text on the screen after adding to firebase
         createAssignmentInput.text = "";
     }
 
@@ -211,23 +253,21 @@ public class AssignmentController : MonoBehaviour
                     if (assignmentNode.Key == uid)
                     {
                         var assignmentDict = (IDictionary<string, object>)assignmentNode.Value;
-                        Debug.Log("Dictionary items:" + assignmentDict.Count);
-                        dictItems = assignmentDict.Count;
-                        dictCount = 0;
+                        
 
                         foreach (var key in assignmentDict.Keys) // loop through keys
                         {
                             Debug.Log("ASSIGNMENT NAME:" + key);
-                            Debug.Log("Inputted Text:" + deleteAssignmentInput.text);
+                            Debug.Log("Inputted Delete Assignment Text:" + deleteAssignmentInput.text);
                             if (key.ToString() == deleteAssignmentInput.text.ToString())
                             {
                                 idText.text = "Assignment Name: " + deleteAssignmentInput.text.ToString();
-                                dictCount += 1;
+                                
                                 //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(deleteAssignmentInput.text).RemoveValueAsync();
                                 warningText.text = "Click Confirm to delete " + deleteAssignmentInput.text;
                                 
                                 checkcode += 1;
-                                assignmentNameFound = true;
+                                
                                 break;
                             }
                         }

@@ -235,7 +235,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1162451876}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1162451876}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:
@@ -1794,7 +1794,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1162451877}
   - component: {fileID: 1162451876}
-  - component: {fileID: 1162451878}
   m_Layer: 0
   m_Name: AssignmentLevelController
   m_TagString: Untagged
@@ -1809,7 +1808,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162451875}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc8d7ac0cb647cd4f84c101ab369c729, type: 3}
   m_Name: 
@@ -1850,40 +1849,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1162451878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162451875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ca00324e6a3034e9afa65f1a10f6ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questionTxt: {fileID: 139253356}
-  levelTxt: {fileID: 1832314904}
-  o1Text: {fileID: 919084134}
-  o2Text: {fileID: 187615540}
-  o3Text: {fileID: 473335392}
-  o4Text: {fileID: 657284059}
-  option1Btn: {fileID: 1034041464}
-  option2Btn: {fileID: 44365060}
-  option3Btn: {fileID: 1983180499}
-  option4Btn: {fileID: 1236286355}
-  scoreTxt: {fileID: 1136498030}
-  difficultyTxt: {fileID: 819180089}
-  character1Anim: {fileID: 590364321}
-  character2Anim: {fileID: 1336902613}
-  enemy1Anim: {fileID: 1790335348}
-  enemy2Anim: {fileID: 191062951}
-  enemy3Anim: {fileID: 379042108}
-  charSprite1: {fileID: 590364320}
-  charSprite2: {fileID: 1336902612}
-  enemySprite1: {fileID: 1790335345}
-  enemySprite2: {fileID: 191062948}
-  enemySprite3: {fileID: 379042105}
 --- !u!1 &1177098419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,7 +2041,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1162451876}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:
@@ -2989,7 +2954,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1162451876}
         m_MethodName: CheckAnswer
         m_Mode: 3
         m_Arguments:

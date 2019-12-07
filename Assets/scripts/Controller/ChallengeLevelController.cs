@@ -64,7 +64,10 @@ public class ChallengeLevelController : MonoBehaviour
 
     public void Awake()
     {
+        // Select the chosen character by the character id
         selectedChar = PlayerPrefs.GetInt("CharacterID");
+
+        // Randomly select 1 enemy from the 3 available enemies (index range 0 to 2)
         randomEnemy = Random.Range(0, 2);
 
         switch (selectedChar)
@@ -156,8 +159,9 @@ public class ChallengeLevelController : MonoBehaviour
     {
         if (doUpdate == true && questionList != null && questionsLeft > 0)
         {
-            Debug.Log(questionsLeft);
+            Debug.Log("Questions Left: " + questionsLeft);
 
+            // Set the randomized enemy to be idle
             switch (randomEnemy)
             {
                 case 0:
@@ -202,6 +206,7 @@ public class ChallengeLevelController : MonoBehaviour
         questionsLeft--;
         if (selectedOption == answer) //if correct
         {
+            // Character initiates an attack on enemy
             switch (selectedChar)
             {
                 case 0:
@@ -212,6 +217,7 @@ public class ChallengeLevelController : MonoBehaviour
                     break;
             }
 
+            // Enemy receives a damage from character
             switch (randomEnemy)
             {
                 case 0:
@@ -265,6 +271,7 @@ public class ChallengeLevelController : MonoBehaviour
 
             else
             {
+                // Set the character to be ready
                 switch (selectedChar)
                 {
                     case 0:
@@ -300,6 +307,7 @@ public class ChallengeLevelController : MonoBehaviour
             // Set no. of QN Wrong
             qnWrong += 1;
 
+            // Character receives a damage from enemy
             switch (selectedChar)
             {
                 case 0:
@@ -310,6 +318,7 @@ public class ChallengeLevelController : MonoBehaviour
                     break;
             }
 
+            // Enemy initiates an attack on character
             switch (randomEnemy)
             {
                 case 0:

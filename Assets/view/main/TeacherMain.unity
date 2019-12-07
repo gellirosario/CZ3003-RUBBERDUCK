@@ -1859,6 +1859,13 @@ MonoBehaviour:
   deleteAssignmentInput: {fileID: 0}
   displayDeleteMessage: {fileID: 0}
   uid: 
+  popupSuccess: {fileID: 0}
+  popupFailure: {fileID: 0}
+  idText: {fileID: 0}
+  warningText: {fileID: 0}
+  idText2: {fileID: 0}
+  warningText2: {fileID: 0}
+  feedbackText: {fileID: 0}
 --- !u!1 &1958514660
 GameObject:
   m_ObjectHideFlags: 0

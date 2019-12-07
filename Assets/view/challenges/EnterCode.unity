@@ -2572,7 +2572,7 @@ GameObject:
   - component: {fileID: 1613373715}
   - component: {fileID: 1613373714}
   m_Layer: 0
-  m_Name: PlayBtn
+  m_Name: DoAssignmentBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

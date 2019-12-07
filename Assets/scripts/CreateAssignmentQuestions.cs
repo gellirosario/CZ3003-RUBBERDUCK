@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using Firebase.Extensions;
 
 public class CreateAssignmentQuestions : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class CreateAssignmentQuestions : MonoBehaviour
     public Text noOfQns;
     public Dropdown difficultyDropdown, worldDropdown, stageDropdown;
 
-    public GameObject popup;
-    public Text idText, warningText;
+    public GameObject popup, popUpDuplicate;
+    public Text idText, warningText, warningText2, assignmentText;
 
     public const int MIN_QNS = 1;
     public const int MAX_QNS = 10;
@@ -21,6 +22,7 @@ public class CreateAssignmentQuestions : MonoBehaviour
     public string difficulty;
     public int world;
     public int stage;
+    public bool checkForDuplicateAssignmentName = false;
 
     private FirebaseApp app;
     private DatabaseReference reference;
@@ -96,6 +98,15 @@ public class CreateAssignmentQuestions : MonoBehaviour
         }
     }
 
+    public void TogglePopupDuplicate()
+    {
+        if (popUpDuplicate != null)
+        {
+            bool isActive = popUpDuplicate.activeSelf;
+            popUpDuplicate.SetActive(!isActive);
+        }
+    }
+
     public void IncrementNoOfQns()
     {
         int val = int.Parse(noOfQns.text);
@@ -115,6 +126,15 @@ public class CreateAssignmentQuestions : MonoBehaviour
 
     public void CreateQuestions()
     {
+        /*checkForDuplicateName();
+
+        if (checkForDuplicateAssignmentName)
+        {
+            print("Reach checkforduplicatename");
+            return;
+        }*/
+            
+
         string difficultySelected = difficultyDropdown.options[difficultyDropdown.value].text;
         world = worldDropdown.value + 1;
         stage = stageDropdown.value + 1;
@@ -144,11 +164,15 @@ public class CreateAssignmentQuestions : MonoBehaviour
 
         idText.text = "Assignment ID: " + newAssignment.assignmentId;
         PlayerPrefs.SetString("NewAssignmentID", newAssignment.assignmentId);
-
         TogglePopup();
+        print("Reach here 1");
+        AssignmentController.Instance.SaveAssignment(questionList);
+        print("Reach here 2");
+        
     }
 
-    //generates a randomized list of questions with specified difficulty, world, stage, and number of questions
+
+    //generates a list of questions with specified difficulty, world, stage, and number of questions
     private List<int> GenerateQuestions(int NoOfQns, int world, int stage, string difficulty)
     {
         List<int> questionList = new List<int>();
@@ -239,6 +263,57 @@ public class CreateAssignmentQuestions : MonoBehaviour
         }
 
         return qnList;
+    }
+
+    // For checking of duplicate assignment name when creating new assignment name
+    public void checkForDuplicateName()
+    {
+
+        Debug.LogError("===test====+" + createAssignmentInput.text.ToString());
+        string uid = PlayerPrefs.GetString("UserID");
+        Debug.LogFormat("----ASSIGNMENT INFO User ID---" + uid);
+
+        FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("Error in data retrieval from Assignment table");
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                foreach (DataSnapshot assignmentNode in snapshot.Children)
+                {
+                    Debug.Log("USER ID OF FIREBASE:" + assignmentNode.Key);
+                    Debug.Log("USER ID OF CURRENT USER:" + uid);
+                    if (assignmentNode.Key == uid)
+                    {
+                        var assignmentDict = (IDictionary<string, object>)assignmentNode.Value;
+
+                        foreach (var key in assignmentDict.Keys) // loop through keys
+                        {
+                            Debug.Log("ASSIGNMENT NAME:" + key);
+                            Debug.Log("Inputted Create Assignment Text:" + createAssignmentInput.text);
+
+                            if (key.ToString() == createAssignmentInput.text.ToString())
+                            {
+                                print("Duplicate Assignment Name Found");
+                                assignmentText.text = "Assignment Name: " + createAssignmentInput.text.ToString();
+                                warningText2.text = "Please try another assignment name !!!";
+                                checkForDuplicateAssignmentName = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (checkForDuplicateAssignmentName)
+                {
+                    TogglePopupDuplicate();
+                    return;
+                }
+                CreateQuestions();   
+            }
+        });
     }
 
 }

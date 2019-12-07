@@ -45,6 +45,7 @@ public class AssignmentScrollList : MonoBehaviour
     {
         List<string> assignmentNamesList = new List<string>(PlayerPrefs.GetInt("AssignmentNameListCount"));
 
+        print("Assignment list capacity: " + assignmentNamesList.Capacity);
         if (assignmentNamesList.Capacity == 0)
             return null;
 
@@ -87,9 +88,9 @@ public class AssignmentScrollList : MonoBehaviour
     private void AddButtons()
     {
         
-        print("local assignmentlist: " + assignmentNameList.Capacity);
         if (assignmentNameList.Capacity == 0)
             return;
+        print("local assignmentlist: " + assignmentNameList.Capacity);
         print("reach here");
         itemList.Capacity = assignmentNameList.Capacity;
         print("Item List capacity count: " + itemList.Capacity);
