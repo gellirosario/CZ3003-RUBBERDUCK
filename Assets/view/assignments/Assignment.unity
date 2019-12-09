@@ -525,11 +525,16 @@ MonoBehaviour:
   createAssignmentInput: {fileID: 0}
   deleteAssignmentInput: {fileID: 0}
   displayDeleteMessage: {fileID: 0}
+  assignmentNameDropdown: {fileID: 0}
   uid: 
+  assignmentNameSelected: 
   popupSuccess: {fileID: 0}
   popupFailure: {fileID: 0}
   idText: {fileID: 0}
   warningText: {fileID: 0}
+  idText2: {fileID: 0}
+  warningText2: {fileID: 0}
+  feedbackText: {fileID: 0}
 --- !u!1 &813483117
 GameObject:
   m_ObjectHideFlags: 0

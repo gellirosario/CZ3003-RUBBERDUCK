@@ -84,9 +84,9 @@ public class AssignmentQuestionScrollList : MonoBehaviour
 
     private void AddQuestionContainers()
     {
-        print("Local assignmentQuestionList: " + assignmentQuestionList.Capacity);
         if (assignmentQuestionList.Capacity == 0)
             return;
+        print("Local assignmentQuestionList: " + assignmentQuestionList.Capacity);
         questionItemList.Capacity = assignmentQuestionList.Capacity;
         print("Item List capacity count: " + questionItemList.Capacity);
         int itemQuestionCount = questionItemList.Capacity;

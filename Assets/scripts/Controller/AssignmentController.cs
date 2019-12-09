@@ -14,11 +14,13 @@ public class AssignmentController : MonoBehaviour
     public InputField createAssignmentInput;
     public InputField deleteAssignmentInput;
     public Text displayDeleteMessage;
-    public string uid;
+    public Dropdown assignmentNameDropdown;
+    public string uid, assignmentNameSelected;
 
     private List<Question> questionList = new List<Question>();
     private List<string> assignmentNameList = new List<string>();
     private List<Assignment> assignmentQuestionList = new List<Assignment>();
+    
 
     public GameObject popupSuccess, popupFailure;
     public Text idText, warningText, idText2, warningText2, feedbackText;
@@ -46,13 +48,16 @@ public class AssignmentController : MonoBehaviour
             }
         });
 
-        if (Instance != null && Instance != this)
+        /*//Refresh the assignment names on the DropDown Box 
+        OnDeleteButton();*/
+
+        if (Instance != null && Instance != this) // Determine if our instance is already assigned to something else
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); // Since we already have a assignmentcontroller assigned somewhere else, we don't need a duplicate
         }
-        else
+        else // Determine if our instance is null
         {
-            Instance = this;
+            Instance = this;  // assign instance to this instance of the class
             //DontDestroyOnLoad(gameObject);
         }
     }
@@ -85,6 +90,8 @@ public class AssignmentController : MonoBehaviour
         {
             questionList = QuestionLoader.Instance.FilterQuestionsByWorldAndStage(1,1);
         }*/
+
+        //OnDeleteButton();
     }
 
     //toggles the popup window on assignment deletion
@@ -130,7 +137,9 @@ public class AssignmentController : MonoBehaviour
 
         print("After loading questionlist count: " + questionList.Count);
         print("Assignment Name Inputted Text: " + createAssignmentInput.text.ToString());
+
         DatabaseReference referenceRef = reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(createAssignmentInput.text);
+       
         print("Before looping the qnsList");
         for (int i = 0; i < questionList.Count; i++)
         {
@@ -171,10 +180,13 @@ public class AssignmentController : MonoBehaviour
                     Debug.Log("USER ID OF CURRENT USER:" + uid);
                     if (userid.Key == uid)
                     {
+                        
                         foreach (DataSnapshot assignmentname in userid.Children)
                         {
                             print("reach here");
                             Debug.LogFormat("ASSIGNMENT NAME ---- Key = {0}", assignmentname.Key);
+                            
+
                             foreach (DataSnapshot assignmentquestionid in assignmentname.Children)
                             {
                                 Debug.LogFormat("ASSIGNMENT QUESTION ID ---- Key = {0}", assignmentquestionid.Key);
@@ -188,10 +200,13 @@ public class AssignmentController : MonoBehaviour
 
                                 assignmentData = new Assignment(assignmentQnIDDict);
                                 Debug.Log("Assignment Name: " + assignmentData.assignmentName);
+
                                 // adding list of questions in assignment names
                                 assignmentQuestionList.Add(assignmentData);
+
                                 //assignmentList.Add(assignmentData);
                                 print("Assignment list count: " + assignmentQuestionList.Count);
+
                             }
 
                             // adding list of assignment names
@@ -206,6 +221,7 @@ public class AssignmentController : MonoBehaviour
             for (var i = 0; i < assignmentNameList.Count; i++)
             {
                 PlayerPrefs.SetString("AssignmentNameList" + i, assignmentNameList[i]);
+                print("Index saved: " + i);
             }
 
             print("Current list of questions in assignment name: " + assignmentQuestionList.Count);
@@ -227,16 +243,40 @@ public class AssignmentController : MonoBehaviour
         });
     }
 
+    /*//Refresh the assignment names on the DropDown Box
+    public void OnDeleteButton()
+    {
+        List<string> options = new List<string>();
+        assignmentNameDropdown.ClearOptions();
+        options.Clear();
+
+        int assignmentNameListCount = PlayerPrefs.GetInt("AssignmentNameListCount");
+        print("Count: " + assignmentNameListCount);
+        
+        for (var i = 0; i < assignmentNameListCount; i++)
+        {
+            //assignmentNameDropdown.options[i].text = PlayerPrefs.GetString("AssignmentNameList" + i);
+            options.Add(PlayerPrefs.GetString("AssignmentNameList" + i));
+            print("Index: " + i);
+        }
+        assignmentNameDropdown.AddOptions(options);
+        assignmentNameDropdown.RefreshShownValue();
+    }*/
+
     int checkcode = 0;
 
     public void DeleteAssignment()
     {
+        //assignmentNameSelected = assignmentNameDropdown.options[assignmentNameDropdown.value].text;
+
         Debug.LogError("===test====+" + deleteAssignmentInput.text.ToString());
         PlayerPrefs.SetString("DeleteAssignmentName", deleteAssignmentInput.text.ToString());
+        //Debug.LogError("===test====+" + assignmentNameSelected);
+        //PlayerPrefs.SetString("DeleteAssignmentNameViaDropdown", assignmentNameSelected);
+
         uid = PlayerPrefs.GetString("UserID");
         Debug.LogFormat("----ASSIGNMENT INFO ID---" + uid);
         
-
         FirebaseDatabase.DefaultInstance.GetReference("Assignment").GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
@@ -259,13 +299,18 @@ public class AssignmentController : MonoBehaviour
                         {
                             Debug.Log("ASSIGNMENT NAME:" + key);
                             Debug.Log("Inputted Delete Assignment Text:" + deleteAssignmentInput.text);
-                            if (key.ToString() == deleteAssignmentInput.text.ToString())
+                            //Debug.Log("Selected Delete Assignment Text:" + assignmentNameSelected);
+
+                            if (key.ToString() == deleteAssignmentInput.text.ToString()/*key.ToString() == assignmentNameSelected*/)
                             {
                                 idText.text = "Assignment Name: " + deleteAssignmentInput.text.ToString();
-                                
+                                //idText.text = "Assignment Name: " + assignmentNameSelected;
+
                                 //reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(deleteAssignmentInput.text).RemoveValueAsync();
+
                                 warningText.text = "Click Confirm to delete " + deleteAssignmentInput.text;
-                                
+                                //warningText.text = "Click Confirm to delete " + assignmentNameSelected;
+
                                 checkcode += 1;
                                 
                                 break;
@@ -284,6 +329,8 @@ public class AssignmentController : MonoBehaviour
         if (checkcode == 0)
         {
             idText2.text = "Assignment Name: " + deleteAssignmentInput.text.ToString();
+            //idText2.text = "Assignment Name: " + assignmentNameSelected;
+
             warningText2.text = "";
             TogglePopupFailure(popupFailure);
         }
@@ -293,5 +340,6 @@ public class AssignmentController : MonoBehaviour
             checkcode = 0;
         }
 
+        deleteAssignmentInput.text = "";
     }
 }

@@ -49,5 +49,9 @@ public class DeleteAssignmentQuestion : MonoBehaviour
         Debug.LogFormat("DELETE " + PlayerPrefs.GetString("DeleteAssignmentName"));
         reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentName")).RemoveValueAsync();
         feedbackText.text = PlayerPrefs.GetString("DeleteAssignmentName") + " Successfully Deleted";
+
+        /*Debug.LogFormat("DELETE " + PlayerPrefs.GetString("DeleteAssignmentNameViaDropdown"));
+        reference.Child("Assignment").Child(PlayerPrefs.GetString("UserID")).Child(PlayerPrefs.GetString("DeleteAssignmentNameViaDropdown")).RemoveValueAsync();
+        feedbackText.text = PlayerPrefs.GetString("DeleteAssignmentNameViaDropdown") + " Successfully Deleted";*/
     }
 }

@@ -928,6 +928,17 @@ MonoBehaviour:
           m_StringArgument: Assignment
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1581003203}
+        m_MethodName: LoadAssignment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &744658338
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1373,6 +1384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581003202}
   - component: {fileID: 1581003201}
+  - component: {fileID: 1581003203}
   m_Layer: 0
   m_Name: ButtonObjectPool
   m_TagString: Untagged
@@ -1407,6 +1419,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1581003203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581003200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96faf79af15a0f4499273f12f50220e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createAssignmentInput: {fileID: 0}
+  deleteAssignmentInput: {fileID: 0}
+  displayDeleteMessage: {fileID: 0}
+  assignmentNameDropdown: {fileID: 0}
+  uid: 
+  popupSuccess: {fileID: 0}
+  popupFailure: {fileID: 0}
+  idText: {fileID: 0}
+  warningText: {fileID: 0}
+  idText2: {fileID: 0}
+  warningText2: {fileID: 0}
+  feedbackText: {fileID: 0}
 --- !u!1 &1728825660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,7 +1679,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2027018637}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

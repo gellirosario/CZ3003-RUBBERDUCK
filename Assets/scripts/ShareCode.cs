@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class ShareCode : MonoBehaviour
 {
-    public void ClickShare()
+    public void ClickShare(string challengeOrAssignment)
     {
-        StartCoroutine(TakeSSAndShare()); 
+        StartCoroutine(TakeSSAndShare(challengeOrAssignment)); 
     }
-    private IEnumerator TakeSSAndShare()
+    private IEnumerator TakeSSAndShare(string challengeOrAssignment)
     {
         yield return new WaitForEndOfFrame();
 
-        new NativeShare().SetSubject("").SetText("Join my challenge! Code: " + PlayerPrefs.GetString("NewChallengeID")).Share();
+        if(challengeOrAssignment == "challenge")
+            new NativeShare().SetSubject("").SetText("Join my challenge! Code: " + PlayerPrefs.GetString("NewChallengeID")).Share();
+        else
+            new NativeShare().SetSubject("").SetText("Join my assignment! Code: " + PlayerPrefs.GetString("NewAssignmentID")).Share();
     }
 }

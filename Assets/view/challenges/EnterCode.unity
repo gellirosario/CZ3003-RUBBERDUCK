@@ -1561,7 +1561,7 @@ MonoBehaviour:
   popup: {fileID: 343735950}
   popup2: {fileID: 1182428802}
   idText: {fileID: 2095614719}
-  idText2: {fileID: 2095614719}
+  idText2: {fileID: 1884778669}
 --- !u!4 &951217430
 Transform:
   m_ObjectHideFlags: 0
@@ -3233,7 +3233,7 @@ GameObject:
   - component: {fileID: 1884778670}
   - component: {fileID: 1884778669}
   m_Layer: 0
-  m_Name: IDText
+  m_Name: IDText2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

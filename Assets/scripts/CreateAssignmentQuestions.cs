@@ -293,7 +293,7 @@ public class CreateAssignmentQuestions : MonoBehaviour
                         foreach (var key in assignmentDict.Keys) // loop through keys
                         {
                             Debug.Log("ASSIGNMENT NAME:" + key);
-                            Debug.Log("Inputted Create Assignment Text:" + createAssignmentInput.text);
+                            Debug.Log("Inputted Create Assignment Text:" + createAssignmentInput.text.ToString());
 
                             if (key.ToString() == createAssignmentInput.text.ToString())
                             {
